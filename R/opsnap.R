@@ -28,9 +28,35 @@ filter_nas = function(d) {
 }
 
 op_plot_offence = function(d) {
-  d |>
-    ggplot::ggplot() +
-    ggplot::geom_bar(ggplot2::aes(x = offence)) +
+  ggplot2::ggplot(d) +
+    ggplot2::geom_bar(ggplot2::aes(x = offence)) +
     # Make x labels vertical
-    ggplot::theme(axis.text.x = element_text(angle = 90, hjust = 1))
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1))
+}
+
+op_geocode = function(d, region = "West Yorkshire") {
+    d_locations_string = d |>
+        dplyr::pull(location)
+    d_locations_string = paste(d_locations_string, region, sep = ", ")
+        
+    d_locations = lapply(d_locations_string, FUN = stplanr::geo_code)
+    
+    d_locations_lengths = sapply(d_locations, function(x) {
+        length(x)
+    })
+    d_is_geo = d_locations_lengths > 0
+    d_with_geo = d[d_is_geo, ]
+    d_locations = d_locations[d_is_geo]
+    
+    d_point = lapply(d_locations, function(x) {
+        sf::st_point(matrix(x, ncol = 2))
+    })
+    d_sfc = sf::st_sfc(d_point) |>
+        sf::st_sf(crs = "EPSG:4326")
+    d_sf = sf::st_sf(
+        d_with_geo,
+        geometry = d_sfc |> sf::st_geometry()
+    )
+    
+    return(d_sf)
 }

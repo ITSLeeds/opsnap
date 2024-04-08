@@ -12,6 +12,8 @@ usethis::use_package("stplanr")
 usethis::use_package("ggplot2")
 usethis::use_package("dplyr")
 usethis::use_r("opsnap")
+# MIT license:
+usethis::use_mit_license("Leeds Institute for Transport Studies")
 
 # Add CI
 usethis::use_github_action_check_standard()
@@ -61,33 +63,10 @@ names(d)
 #  [9] "...9"                    "OFF LOCATION"
 ```
 
-
+```{r}
 # Function to clean up column names
-
-
-d_locations = d |>
-  dplyr::pull(`OFF LOCATION`) |>
-  head(10) |>
-  lapply(FUN = stplanr::geo_code)
-# d_geocoded = d |>
-#   tidygeocoder::geocode("OFF LOCATION")
-d_locations[[1]]
-matrix(d_locations[[1]], ncol = 2)
-sf::st_point(matrix(d_locations[[1]], ncol = 2))
-d_locations_lengths = sapply(d_locations, function(x) {
-    length(x)
-    })
-
-d_sf = lapply(d_locations[d_locations_lengths > 0], function(x) {
-  sf::st_point(matrix(x, ncol = 2))
-})
-d_sfc = sf::st_sfc(d_sf) |>
-    sf::st_sf(crs = "EPSG:4326")
-d_sf = sf::st_sf(
-    d |> slice(1:10) |> filter(d_locations_lengths > 0),
-    geometry = d_sfc |> sf::st_geometry()
-)
-
+d_sample = d[1:50, ]
+d_sf = opsnap:::op_geocode(d_sample)
 mapview::mapview(d_sf)
 ```
 
