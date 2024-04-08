@@ -188,7 +188,7 @@
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Reduce nchar of OFFENCE</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>OFFENCE <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu">str_sub</span><span class="op">(</span><span class="va">OFFENCE</span>, <span class="fl">1</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>OFFENCE <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html" class="external-link">str_sub</a></span><span class="op">(</span><span class="va">OFFENCE</span>, <span class="fl">1</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">OFFENCE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Count number of rows in each group</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -202,8 +202,9 @@
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>`use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license</li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
 
