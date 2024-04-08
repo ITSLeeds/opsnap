@@ -1,5 +1,10 @@
 
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/ITSLeeds/opsnap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ITSLeeds/opsnap/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # Installation
 
 Install the package from GitHub:
