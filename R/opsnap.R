@@ -1,5 +1,5 @@
-download_and_read = function(u, remove_nas = TRUE) {
-    tmp = file.path(tempdir(), basename(u))
+download_and_read = function(u, remove_nas = TRUE, dir = "raw_data/west-yorkshire", filter_nas = FALSE) {
+    tmp = file.path(dir, basename(u))
     if (!file.exists(tmp)) {
         utils::download.file(u, tmp, mode = "wb")
     }
@@ -8,7 +8,9 @@ download_and_read = function(u, remove_nas = TRUE) {
     })
     names(d) = clean_names(names(d))
     d = select_columns(d)
-    d = d |> filter_nas()
+    if (filter_nas) {
+        d = filter_nas(d)
+    }
     return(d)
 }
 
@@ -17,6 +19,8 @@ clean_names = function(x) {
     gsub("REPORTER TRANSPORT ", "", x = _) |>
     gsub("OFFENDER VEHICLE ", "", x = _) |>
     gsub("OFF ", "", x = _) |>
+    gsub("OFFENCE ", "", x = _) |>
+    gsub(toupper("recommended disposal at point of triage"), "disposal", x = _) |>
     gsub("DATE OF SUBMISSION", "DATE", x = _) |>
     tolower()
 }
@@ -38,29 +42,39 @@ op_plot_offence = function(d) {
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1))
 }
 
-op_geocode = function(d, region = "West Yorkshire") {
-    d_locations_string = d |>
+op_geocode = function(d, region = "West Yorkshire", method = "google") {
+    address = d |>
         dplyr::pull(location)
-    d_locations_string = paste(d_locations_string, region, sep = ", ")
-        
-    d_locations = lapply(d_locations_string, FUN = stplanr::geo_code)
-    
-    d_locations_lengths = sapply(d_locations, function(x) {
-        length(x)
-    })
-    d_is_geo = d_locations_lengths > 0
-    d_with_geo = d[d_is_geo, ]
-    d_locations = d_locations[d_is_geo]
-    
-    d_point = lapply(d_locations, function(x) {
-        sf::st_point(matrix(x, ncol = 2))
-    })
-    d_sfc = sf::st_sfc(d_point) |>
-        sf::st_sf(crs = "EPSG:4326")
-    d_sf = sf::st_sf(
-        d_with_geo,
-        geometry = d_sfc |> sf::st_geometry()
+    address = paste(address, region, sep = ", ")
+    d_locations_unique = unique(address)
+    n_locations = length(d_locations_unique)
+    percent_duplicated = 1 - n_locations / length(address)
+    message(
+        "Number of unique locations: ", n_locations,
+        "\nPercent duplicated: ", (percent_duplicated * 100) |> round(2),
+        "%"
     )
+        
+    # d_locations = lapply(address, FUN = stplanr::geo_code)
+
+    d_locations = tidygeocoder::geocode(tibble(address), address = address, method = method)
     
-    return(d_sf)
+    # d_locations_lengths = sapply(d_locations, function(x) {
+    #     length(x)
+    # })
+    # d_is_geo = d_locations_lengths > 0
+    # d_with_geo = d[d_is_geo, ]
+    # d_locations = d_locations[d_is_geo]
+    
+    # d_point = lapply(d_locations, function(x) {
+    #     sf::st_point(matrix(x, ncol = 2))
+    # })
+    # d_sfc = sf::st_sfc(d_point) |>
+    #     sf::st_sf(crs = "EPSG:4326")
+    # d_sf = sf::st_sf(
+    #     d_with_geo,
+    #     geometry = d_sfc |> sf::st_geometry()
+    # )
+    
+    return(d_locations)
 }

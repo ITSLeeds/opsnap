@@ -20,6 +20,20 @@ from the West Yorkshire Police Operation Snap database. The data is
 available at the following URL:
 https://www.westyorkshire.police.uk/SaferRoadsSubmissions
 
+Data for the following years are provided:
+
+| file_names                             |
+|:---------------------------------------|
+| operation_snap_oct-dec_2023_0.xlsx     |
+| operation_snap_july-sept_2023.xlsx     |
+| operation_snap_apr-jun_2023_data.xlsx  |
+| operation_snap_jan-mar_2023_data.xlsx  |
+| operation_snap_oct-dec_2022_data.xlsx  |
+| operation_snap_jul-sept_2022_data.xlsx |
+| operation_snap_apr-jun_2022_data.xlsx  |
+| operation_snap_jan-mar_2022_data.xlsx  |
+| operation_snap_2021_data.xlsx          |
+
 The data is open acess and looks like this, with names cleaned up by the
 package:
 
@@ -27,27 +41,18 @@ package:
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
 names(d)
-```
-
-    [1] "mode"     "make"     "model"    "colour"   "offence"  "district" "disposal"
-    [8] "date"     "location"
-
-``` r
 # Old names:
 #  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  
 #  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"
 #  [5] "OFFENCE"                 "DISTRICT"               
 #  [7] "DISPOSAL"                "DATE OF SUBMISSION"     
 #  [9] "...9"                    "OFF LOCATION"
+# New names:
+# [1] "mode"     "make"     "model"    "colour"   "offence"  "district" "disposal"
+# [8] "date"     "location"
 ```
 
-The data looks like this (first 3 rows shown):
-
-``` r
-d |>
-  head(3) |>
-  knitr::kable()
-```
+<!-- The data looks like this (first 3 rows shown): -->
 
 | mode           | make    | model | colour | offence                                                  | district | disposal           | date       | location                         |
 |:---------------|:--------|:------|:-------|:---------------------------------------------------------|:---------|:-------------------|:-----------|:---------------------------------|
@@ -55,39 +60,57 @@ d |>
 | Cyclist        | Citroen | DS3   | WHITE  | RT88576 Drive without reasonable consideration to others | BD       | Educational Course | 2023-10-01 | DALTON BANK ROAD, HUDDERSFIELD   |
 | Vehicle driver | Audi    | S3    | BLACK  | RT88760 Fail to comply with solid white lines            | LD       | Educational Course | 2023-10-01 | A1 North Wetherby, Leeds         |
 
+There are 18363 records in the data, with increasing numbers of records
+over time (average n. records per month shown below):
+
+<img src="man/figures/README-unnamed-chunk-8-1.png"
+style="width:100.0%" />
+
+As shown in the graph above, some records 68.9% have missing values for
+locations (these records did not classify as an offence). Filtering
+these out leaves 12658 complete records.
+
+There are 6479 unique locations in the data, with the most common
+locations shown below:
+
+| location                                       |    n | percent_records |
+|:-----------------------------------------------|-----:|:----------------|
+| NA                                             | 3826 | 30.2259%        |
+| Meanwood Road, Leeds                           |   34 | 0.2686%         |
+| Westgate J/W Park Square West, Leeds           |   31 | 0.2449%         |
+| Dewsbury Road, Ossett                          |   29 | 0.2291%         |
+| Chapeltown Road, Leeds                         |   24 | 0.1896%         |
+| Highgate Road, Bradford                        |   22 | 0.1738%         |
+| M62 EASTBOUND, BRIGHOUSE                       |   19 | 0.1501%         |
+| Clayton Road, Bradford                         |   18 | 0.1422%         |
+| Tongue Lane, Leeds                             |   18 | 0.1422%         |
+| WESTGATE junction with PARK SQUARE WEST, LEEDS |   18 | 0.1422%         |
+
+# Geocoding
+
 We provide a function to geocode the records:
 
 ``` r
-# Function to clean up column names
-d_sample = d[1:50, ]
+d_sample = d[1:5, ]
 d_sf = opsnap:::op_geocode(d_sample)
 mapview::mapview(d_sf)
 ```
 
-![](README_files/figure-commonmark/unnamed-chunk-6-1.png)
+# Analysis
 
-You can query the data downloaded with `opsnap` functions, e.g. as
-follows (results not shown):
+Due to inaccuracy in the geocoding, we only know the locations of the
+records to within around 500m of each crash (although we can link to
+specific roads). We’ll present the geographic distribution of crashes
+using a 500m grid:
 
-``` r
-table(d$offence) |>
-  sort()
-```
+<img src="man/figures/README-unnamed-chunk-12-1.png"
+style="width:100.0%" />
 
-Let’s make a plot of the data:
+The results show there is one outlier with a very high number of
+crashes. We can remove this and plot the data again:
 
-``` r
-d |>
-  # Reduce nchar of offence
-  mutate(offence = stringr::str_sub(offence, 1, 60)) |>
-  group_by(offence) |>
-  # Count number of rows in each group
-  mutate(n = n()) |>
-  filter(n > nrow(d) / 50)|>
-  ggplot() +
-  geom_bar(aes(offence)) +
-  # Make x labels vertical
-  theme(axis.text.x = element_text(angle = 60, hjust = 1))
-```
+<img src="man/figures/README-unnamed-chunk-13-1.png"
+style="width:100.0%" />
 
-![](README_files/figure-commonmark/unnamed-chunk-8-1.png)
+<!-- You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown): -->
+<!-- Let's make a plot of the data: -->

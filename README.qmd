@@ -1,5 +1,9 @@
 ---
 format: gfm
+execute: 
+  message: false
+  warning: false
+  echo: false
 ---
 
 <!-- badges: start -->
@@ -39,6 +43,12 @@ remotes::install_github("ITSLeeds/opsnap")
 
 ```{r}
 #| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
 library(tidyverse)
 remotes::install_github("ITSLeeds/opsnap")
 ```
@@ -53,9 +63,52 @@ devtools::load_all()
 
 The `opsnap` package provides a function to download and read in data from the West Yorkshire Police Operation Snap database. The data is available at the following URL: https://www.westyorkshire.police.uk/SaferRoadsSubmissions
 
+Data for the following years are provided:
+
+```{r}
+#| echo: false
+library(rvest)
+query = ".file-link a"
+url = "https://www.westyorkshire.police.uk/SaferRoadsSubmissions"
+files_available = read_html(url) |>
+  html_nodes(query) |>
+  html_text()
+links_available = read_html(url) |>
+  html_nodes(query) |>
+  html_attr("href")
+urls = paste0("https://www.westyorkshire.police.uk", links_available)
+file_names = basename(links_available)
+tibble::tibble(file_names) |>
+  knitr::kable()
+
+# In preparation for reading-in all data:
+date_str = format(Sys.Date(), "%Y-%m")
+file_name = paste0("data/west-yorkshire/operation_snap_", date_str, ".csv")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+# Download them to raw_data/west-yorkshire:
+dir.create("raw_data/west-yorkshire", recursive = TRUE, showWarnings = FALSE)
+pbapply::pblapply(urls, function(u) {
+  download.file(u, paste0("raw_data/west-yorkshire/", basename(u)))
+})
+
+# Test with 2nd url:
+u = urls[2]
+d2 = opsnap:::download_and_read(u)
+d_all = purrr::map_df(urls, opsnap:::download_and_read)
+dir.create("data/west-yorkshire", recursive = TRUE, showWarnings = FALSE)
+# Date to nearest month:
+write_csv(d_all, file_name)
+```
+
 The data is open acess and looks like this, with names cleaned up by the package:
 
 ```{r}
+#| eval: false
+#| echo: true
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
 names(d)
@@ -65,37 +118,133 @@ names(d)
 #  [5] "OFFENCE"                 "DISTRICT"               
 #  [7] "DISPOSAL"                "DATE OF SUBMISSION"     
 #  [9] "...9"                    "OFF LOCATION"
+# New names:
+# [1] "mode"     "make"     "model"    "colour"   "offence"  "district" "disposal"
+# [8] "date"     "location"
 ```
 
-The data looks like this (first 3 rows shown):
+<!-- The data looks like this (first 3 rows shown): -->
 
 ```{r}
-d |>
+#| echo: false
+d_all = read_csv(file_name)
+d_all |>
   head(3) |>
   knitr::kable()
 ```
 
+There are `r nrow(d_all)` records in the data, with increasing numbers of records over time (average n. records per month shown below):
+
+```{r}
+d_all_monthly = d_all |>
+  mutate(month = lubridate::floor_date(date, "month")) |>
+  group_by(month) |>
+  summarise(n = n()) |>
+  mutate(records = "all")
+d = d_all |>
+  opsnap:::filter_nas()
+d_complete_monthly = d |>
+  mutate(month = lubridate::floor_date(date, "month")) |>
+  group_by(month) |>
+  summarise(n = n()) |>
+  mutate(records = "complete")
+d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
+d_monthly |>
+  ggplot() +
+  geom_line(aes(month, n, colour = records)) +
+  geom_smooth(aes(month, n, colour = records), method = "lm", se = FALSE) +
+  labs(title = "Number of records in West Yorkshire Police Operation Snap data",
+       x = "Date",
+       y = "Number of records per month")
+```
+
+As shown in the graph above, some records `r round(nrow(d) / nrow(d_all) * 100, 1)`% have missing values for locations (these records did not classify as an offence). Filtering these out leaves `r nrow(d)` complete records.
+
+There are `r unique(d$location) |> length()` unique locations in the data, with the most common locations shown below:
+
+```{r}
+#| echo: false
+d |>
+  count(location, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  arrange(desc(n)) |>
+  head(10) |>
+  knitr::kable()
+```
+
+# Geocoding
+
 We provide a function to geocode the records:
 
 ```{r}
-# Function to clean up column names
-d_sample = d[1:50, ]
+#| eval: false
+#| echo: true
+d_sample = d[1:5, ]
 d_sf = opsnap:::op_geocode(d_sample)
 mapview::mapview(d_sf)
 ```
 
-You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown):
+```{r}
+#| eval: false
+#| echo: false
+# Geocode all data:
+d_geocoded = opsnap:::op_geocode(d)
+d_geometries = d_geocoded |>
+  sf::st_as_sf(coords = c("long", "lat"), crs = 4326)
+d_sf = sf::st_sf(
+  d,
+  geometry = d_geometries$geometry
+)
+west_yorkshire = pct::get_pct_zones("west-yorkshire")
+sf::sf_use_s2(FALSE)
+d_sf_wy = d_sf[west_yorkshire, ]
+# Sanity check
+d_sf_wy |>
+  sample_n(1000) |>
+  # mapview::mapview()
+  plot()
+# Save to file:
+sf::write_sf(d_sf_wy, paste0("data/west-yorkshire/operation_snap_geocoded_", date_str, ".gpkg"))
+```
+
+# Analysis
+
+Due to inaccuracy in the geocoding, we only know the locations of the records to within around 500m of each crash (although we can link to specific roads).
+We'll present the geographic distribution of crashes using a 500m grid:
+
+```{r}
+d_sf = sf::read_sf(paste0("data/west-yorkshire/operation_snap_geocoded_", date_str, ".gpkg"))
+d_projected = sf::st_transform(d_sf, 27700)
+library(terra)
+raster_template = rast(ext(d_projected), res = 500)
+raster_count = rasterize(d_projected, raster_template, fun = "length")
+plot(raster_count)
+```
+
+The results show there is one outlier with a very high number of crashes. We can remove this and plot the data again:
+
+```{r}
+raster_count_no_outlier = raster_count |>
+  clamp(-Inf, 100)
+plot(raster_count_no_outlier)
+```
+
+<!-- You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown): -->
 
 
 ```{r}
 #| eval: false
+#| echo: false
 table(d$offence) |>
   sort()
 ```
 
-Let's make a plot of the data:
+<!-- Let's make a plot of the data: -->
 
 ```{r}
+#| eval: false
+#| echo: false
 d |>
   # Reduce nchar of offence
   mutate(offence = stringr::str_sub(offence, 1, 60)) |>
