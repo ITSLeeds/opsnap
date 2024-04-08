@@ -71,6 +71,8 @@ d |>
   knitr::kable()
 ```
 
+We provide a function to geocode the records:
+
 ```{r}
 # Function to clean up column names
 d_sample = d[1:50, ]
@@ -78,12 +80,16 @@ d_sf = opsnap:::op_geocode(d_sample)
 mapview::mapview(d_sf)
 ```
 
+You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown):
+
 
 ```{r}
+#| eval: false
 table(d$offence) |>
   sort()
 ```
 
+Let's make a plot of the data:
 
 ```{r}
 d |>
@@ -96,6 +102,6 @@ d |>
   ggplot() +
   geom_bar(aes(offence)) +
   # Make x labels vertical
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
   
 ```

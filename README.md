@@ -21,12 +21,6 @@ package:
 ``` r
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
-```
-
-    New names:
-    • `` -> `...9`
-
-``` r
 names(d)
 ```
 
@@ -50,11 +44,13 @@ d |>
   knitr::kable()
 ```
 
-| mode              | make       | model | colour | offence | district | disposal | date       | location                                   |
-|:------------------|:-----------|:------|:-------|:--------|:---------|:---------|:-----------|:-------------------------------------------|
-| Vehicle driver    | Volkswagen | GOLF  | BLACK  | N/A     | BD       | NFA      | 2023-10-01 | A1 Exit Slip onto M62 Eastbound, Wakefield |
-| Vehicle passenger | Audi       | A4    | BLACK  | N/A     | unknown  | NFA      | 2023-10-01 | A1 Wentworth, Pontefract                   |
-| Vehicle driver    | Volkswagen | Golf  | Red    | N/A     | BD       | NFA      | 2023-10-01 | A120 Leeds Ring Road, Moortown, Leeds      |
+| mode           | make    | model | colour | offence                                                  | district | disposal           | date       | location                         |
+|:---------------|:--------|:------|:-------|:---------------------------------------------------------|:---------|:-------------------|:-----------|:---------------------------------|
+| Cyclist        | Honda   | JAZZ  | BLUE   | RT88576 Drive without reasonable consideration to others | BD       | Educational Course | 2023-10-01 | A650 SIR FRED HOYLE WAY, BINGLEY |
+| Cyclist        | Citroen | DS3   | WHITE  | RT88576 Drive without reasonable consideration to others | BD       | Educational Course | 2023-10-01 | DALTON BANK ROAD, HUDDERSFIELD   |
+| Vehicle driver | Audi    | S3    | BLACK  | RT88760 Fail to comply with solid white lines            | LD       | Educational Course | 2023-10-01 | A1 North Wetherby, Leeds         |
+
+We provide a function to geocode the records:
 
 ``` r
 # Function to clean up column names
@@ -65,13 +61,15 @@ mapview::mapview(d_sf)
 
 ![](README_files/figure-commonmark/unnamed-chunk-6-1.png)
 
+You can query the data downloaded with `opsnap` functions, e.g. as
+follows (results not shown):
+
 ``` r
 table(d$offence) |>
   sort()
 ```
 
-    N/A 
-    546 
+Let’s make a plot of the data:
 
 ``` r
 d |>
@@ -84,7 +82,7 @@ d |>
   ggplot() +
   geom_bar(aes(offence)) +
   # Make x labels vertical
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
 ```
 
 ![](README_files/figure-commonmark/unnamed-chunk-8-1.png)
