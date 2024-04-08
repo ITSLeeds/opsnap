@@ -62,25 +62,56 @@
 <h1 id="opsnap-data">Opsnap data<a class="anchor" aria-label="anchor" href="#opsnap-data"></a>
 </h1>
 <p>The <code>opsnap</code> package provides a function to download and read in data from the West Yorkshire Police Operation Snap database. The data is available at the following URL: <a href="https://www.westyorkshire.police.uk/SaferRoadsSubmissions" class="external-link uri">https://www.westyorkshire.police.uk/SaferRoadsSubmissions</a></p>
+<p>Data for the following years are provided:</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left">file_names</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">operation_snap_oct-dec_2023_0.xlsx</td>
+</tr>
+<tr class="even">
+<td align="left">operation_snap_july-sept_2023.xlsx</td>
+</tr>
+<tr class="odd">
+<td align="left">operation_snap_apr-jun_2023_data.xlsx</td>
+</tr>
+<tr class="even">
+<td align="left">operation_snap_jan-mar_2023_data.xlsx</td>
+</tr>
+<tr class="odd">
+<td align="left">operation_snap_oct-dec_2022_data.xlsx</td>
+</tr>
+<tr class="even">
+<td align="left">operation_snap_jul-sept_2022_data.xlsx</td>
+</tr>
+<tr class="odd">
+<td align="left">operation_snap_apr-jun_2022_data.xlsx</td>
+</tr>
+<tr class="even">
+<td align="left">operation_snap_jan-mar_2022_data.xlsx</td>
+</tr>
+<tr class="odd">
+<td align="left">operation_snap_2021_data.xlsx</td>
+</tr>
+</tbody>
+</table>
 <p>The data is open acess and looks like this, with names cleaned up by the package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">u</span> <span class="op">=</span> <span class="st">"https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"</span></span>
 <span><span class="va">d</span> <span class="op">=</span> <span class="fu">opsnap</span><span class="fu">:::</span><span class="fu">download_and_read</span><span class="op">(</span><span class="va">u</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"mode"</span>     <span class="st">"make"</span>     <span class="st">"model"</span>    <span class="st">"colour"</span>   <span class="st">"offence"</span>  <span class="st">"district"</span> <span class="st">"disposal"</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>[<span class="dv">8</span>] <span class="st">"date"</span>     <span class="st">"location"</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Old names:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span>
+<span><span class="co"># Old names:</span></span>
 <span><span class="co">#  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  </span></span>
 <span><span class="co">#  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"</span></span>
 <span><span class="co">#  [5] "OFFENCE"                 "DISTRICT"               </span></span>
 <span><span class="co">#  [7] "DISPOSAL"                "DATE OF SUBMISSION"     </span></span>
-<span><span class="co">#  [9] "...9"                    "OFF LOCATION"</span></span></code></pre></div>
-<p>The data looks like this (first 3 rows shown):</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">d</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#  [9] "...9"                    "OFF LOCATION"</span></span>
+<span><span class="co"># New names:</span></span>
+<span><span class="co"># [1] "mode"     "make"     "model"    "colour"   "offence"  "district" "disposal"</span></span>
+<span><span class="co"># [8] "date"     "location"</span></span></code></pre></div>
+<!-- The data looks like this (first 3 rows shown): -->
 <table class="table">
 <colgroup>
 <col width="9%">
@@ -140,31 +171,93 @@
 </tr>
 </tbody>
 </table>
+<p>There are 18363 records in the data, with increasing numbers of records over time (average n. records per month shown below):</p>
+<p><img src="reference/figures/README-unnamed-chunk-8-1.png" style="width:100.0%"></p>
+<p>As shown in the graph above, some records 68.9% have missing values for locations (these records did not classify as an offence). Filtering these out leaves 12658 complete records.</p>
+<p>There are 6479 unique locations in the data, with the most common locations shown below:</p>
+<table class="table">
+<colgroup>
+<col width="67%">
+<col width="8%">
+<col width="23%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">location</th>
+<th align="right">n</th>
+<th align="left">percent_records</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">3826</td>
+<td align="left">30.2259%</td>
+</tr>
+<tr class="even">
+<td align="left">Meanwood Road, Leeds</td>
+<td align="right">34</td>
+<td align="left">0.2686%</td>
+</tr>
+<tr class="odd">
+<td align="left">Westgate J/W Park Square West, Leeds</td>
+<td align="right">31</td>
+<td align="left">0.2449%</td>
+</tr>
+<tr class="even">
+<td align="left">Dewsbury Road, Ossett</td>
+<td align="right">29</td>
+<td align="left">0.2291%</td>
+</tr>
+<tr class="odd">
+<td align="left">Chapeltown Road, Leeds</td>
+<td align="right">24</td>
+<td align="left">0.1896%</td>
+</tr>
+<tr class="even">
+<td align="left">Highgate Road, Bradford</td>
+<td align="right">22</td>
+<td align="left">0.1738%</td>
+</tr>
+<tr class="odd">
+<td align="left">M62 EASTBOUND, BRIGHOUSE</td>
+<td align="right">19</td>
+<td align="left">0.1501%</td>
+</tr>
+<tr class="even">
+<td align="left">Clayton Road, Bradford</td>
+<td align="right">18</td>
+<td align="left">0.1422%</td>
+</tr>
+<tr class="odd">
+<td align="left">Tongue Lane, Leeds</td>
+<td align="right">18</td>
+<td align="left">0.1422%</td>
+</tr>
+<tr class="even">
+<td align="left">WESTGATE junction with PARK SQUARE WEST, LEEDS</td>
+<td align="right">18</td>
+<td align="left">0.1422%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level1">
+<h1 id="geocoding">Geocoding<a class="anchor" aria-label="anchor" href="#geocoding"></a>
+</h1>
 <p>We provide a function to geocode the records:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Function to clean up column names</span></span>
-<span><span class="va">d_sample</span> <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="op">]</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d_sample</span> <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span>
 <span><span class="va">d_sf</span> <span class="op">=</span> <span class="fu">opsnap</span><span class="fu">:::</span><span class="fu">op_geocode</span><span class="op">(</span><span class="va">d_sample</span><span class="op">)</span></span>
 <span><span class="fu">mapview</span><span class="fu">::</span><span class="fu">mapview</span><span class="op">(</span><span class="va">d_sf</span><span class="op">)</span></span></code></pre></div>
-<p><img src="README_files/figure-commonmark/unnamed-chunk-6-1.png"></p>
-<p>You can query the data downloaded with <code>opsnap</code> functions, e.g. as follows (results not shown):</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">offence</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Let’s make a plot of the data:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">d</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Reduce nchar of offence</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>offence <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html" class="external-link">str_sub</a></span><span class="op">(</span><span class="va">offence</span>, <span class="fl">1</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">offence</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="co"># Count number of rows in each group</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span><span class="op">|&gt;</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">offence</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># Make x labels vertical</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">60</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="README_files/figure-commonmark/unnamed-chunk-8-1.png"></p>
+</div>
+<div class="section level1">
+<h1 id="analysis">Analysis<a class="anchor" aria-label="anchor" href="#analysis"></a>
+</h1>
+<p>Due to inaccuracy in the geocoding, we only know the locations of the records to within around 500m of each crash (although we can link to specific roads). We’ll present the geographic distribution of crashes using a 500m grid:</p>
+<p><img src="reference/figures/README-unnamed-chunk-12-1.png" style="width:100.0%"></p>
+<p>The results show there is one outlier with a very high number of crashes. We can remove this and plot the data again:</p>
+<p><img src="reference/figures/README-unnamed-chunk-13-1.png" style="width:100.0%"></p>
+<!-- You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown): -->
+<!-- Let's make a plot of the data: -->
 </div>
 
   </main><aside class="col-md-3"><div class="license">
