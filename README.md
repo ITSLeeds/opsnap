@@ -66,25 +66,26 @@ over time (average n. records per month shown below):
 <img src="man/figures/README-unnamed-chunk-8-1.png"
 style="width:100.0%" />
 
-As shown in the graph above, some records 68.9% have missing values for
-locations (these records did not classify as an offence). Filtering
-these out leaves 12658 complete records.
+As shown in the graph above, some records (68.9%) have missing values
+for the ‘offence’ column (these records did not classify as an offence).
+Many records lack either an offence or a location (48.1%). Filtering
+these out leaves 8832 complete records.
 
-There are 6479 unique locations in the data, with the most common
+There are 6478 unique locations in the data, with the most common
 locations shown below:
 
-| location                                       |    n | percent_records |
-|:-----------------------------------------------|-----:|:----------------|
-| NA                                             | 3826 | 30.2259%        |
-| Meanwood Road, Leeds                           |   34 | 0.2686%         |
-| Westgate J/W Park Square West, Leeds           |   31 | 0.2449%         |
-| Dewsbury Road, Ossett                          |   29 | 0.2291%         |
-| Chapeltown Road, Leeds                         |   24 | 0.1896%         |
-| Highgate Road, Bradford                        |   22 | 0.1738%         |
-| M62 EASTBOUND, BRIGHOUSE                       |   19 | 0.1501%         |
-| Clayton Road, Bradford                         |   18 | 0.1422%         |
-| Tongue Lane, Leeds                             |   18 | 0.1422%         |
-| WESTGATE junction with PARK SQUARE WEST, LEEDS |   18 | 0.1422%         |
+| location                                       |   n | percent_records |
+|:-----------------------------------------------|----:|:----------------|
+| Meanwood Road, Leeds                           |  34 | 0.385%          |
+| Westgate J/W Park Square West, Leeds           |  31 | 0.351%          |
+| Dewsbury Road, Ossett                          |  29 | 0.328%          |
+| Chapeltown Road, Leeds                         |  24 | 0.272%          |
+| Highgate Road, Bradford                        |  22 | 0.249%          |
+| M62 EASTBOUND, BRIGHOUSE                       |  19 | 0.215%          |
+| Clayton Road, Bradford                         |  18 | 0.204%          |
+| Tongue Lane, Leeds                             |  18 | 0.204%          |
+| WESTGATE junction with PARK SQUARE WEST, LEEDS |  18 | 0.204%          |
+| Manchester Road, Bradford                      |  17 | 0.192%          |
 
 # Geocoding
 

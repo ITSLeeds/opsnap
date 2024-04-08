@@ -30,9 +30,16 @@ select_columns = function(d) {
   d = d[, !names_remove]
 }
 
-filter_nas = function(d) {
+filter_offence_nas = function(d) {
   d |>
-    dplyr::filter(!offence == "N/A")
+    dplyr::filter(!offence == "N/A") |>
+    dplyr::filter(!is.na(offence))
+}
+
+filter_location_nas = function(d) {
+  d |>
+    dplyr::filter(!location == "N/A") |>
+    dplyr::filter(!is.na(location))
 }
 
 op_plot_offence = function(d) {

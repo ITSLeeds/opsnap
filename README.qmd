@@ -54,7 +54,7 @@ remotes::install_github("ITSLeeds/opsnap")
 ```
 
 ```{r}
-#| eval: false
+#| include: false
 #| echo: false
 devtools::load_all()
 ```
@@ -141,24 +141,34 @@ d_all_monthly = d_all |>
   group_by(month) |>
   summarise(n = n()) |>
   mutate(records = "all")
-d = d_all |>
-  opsnap:::filter_nas()
+d_offence = d_all |>
+  opsnap:::filter_offence_nas()
+d_offence_monthly = d_offence |>
+  mutate(month = lubridate::floor_date(date, "month")) |>
+  group_by(month) |>
+  summarise(n = n()) |>
+  mutate(records = "complete_offence")
+d = d_offence |>
+  opsnap:::filter_location_nas()
 d_complete_monthly = d |>
   mutate(month = lubridate::floor_date(date, "month")) |>
   group_by(month) |>
   summarise(n = n()) |>
   mutate(records = "complete")
-d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
+d_monthly = bind_rows(d_all_monthly, d_offence_monthly, d_complete_monthly)
 d_monthly |>
   ggplot() +
-  geom_line(aes(month, n, colour = records)) +
-  geom_smooth(aes(month, n, colour = records), method = "lm", se = FALSE) +
+  geom_line(aes(month, n, colour = records), alpha = 0.5, size = 2) +
+  # geom_smooth(aes(month, n, colour = records), method = "lm", se = FALSE) +
   labs(title = "Number of records in West Yorkshire Police Operation Snap data",
        x = "Date",
-       y = "Number of records per month")
+       y = "Number of records per month") +
+  theme_minimal()
 ```
 
-As shown in the graph above, some records `r round(nrow(d) / nrow(d_all) * 100, 1)`% have missing values for locations (these records did not classify as an offence). Filtering these out leaves `r nrow(d)` complete records.
+As shown in the graph above, some records (`r round(nrow(d_offence) / nrow(d_all) * 100, 1)`%) have missing values for the 'offence' column (these records did not classify as an offence). 
+Many records lack either an offence or a location (`r round(nrow(d) / nrow(d_all) * 100, 1)`%).
+Filtering these out leaves `r nrow(d)` complete records.
 
 There are `r unique(d$location) |> length()` unique locations in the data, with the most common locations shown below:
 
@@ -190,7 +200,11 @@ mapview::mapview(d_sf)
 #| echo: false
 # Geocode all data:
 d_geocoded = opsnap:::op_geocode(d)
+table(d_geocoded$address) |>
+  sort() |>
+  tail(1)
 d_geometries = d_geocoded |>
+  filter(address != "NA, West Yorkshire") |>
   sf::st_as_sf(coords = c("long", "lat"), crs = 4326)
 d_sf = sf::st_sf(
   d,
