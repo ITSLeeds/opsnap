@@ -63,6 +63,14 @@ names(d)
 #  [9] "...9"                    "OFF LOCATION"
 ```
 
+The data looks like this (first 3 rows shown):
+
+```{r}
+d |>
+  head(3) |>
+  knitr::kable()
+```
+
 ```{r}
 # Function to clean up column names
 d_sample = d[1:50, ]
@@ -72,21 +80,21 @@ mapview::mapview(d_sf)
 
 
 ```{r}
-table(d$OFFENCE) |>
+table(d$offence) |>
   sort()
 ```
 
 
 ```{r}
 d |>
-  # Reduce nchar of OFFENCE
-  mutate(OFFENCE = stringr::str_sub(OFFENCE, 1, 60)) |>
-  group_by(OFFENCE) |>
+  # Reduce nchar of offence
+  mutate(offence = stringr::str_sub(offence, 1, 60)) |>
+  group_by(offence) |>
   # Count number of rows in each group
   mutate(n = n()) |>
   filter(n > nrow(d) / 50)|>
   ggplot() +
-  geom_bar(aes(OFFENCE)) +
+  geom_bar(aes(offence)) +
   # Make x labels vertical
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
   

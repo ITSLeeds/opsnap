@@ -1,7 +1,11 @@
 download_and_read = function(u, remove_nas = TRUE) {
-    tmp = tempfile(fileext = ".xlsx")
-    utils::download.file(u, tmp, mode = "wb")
-    d = readxl::read_excel(tmp)
+    tmp = file.path(tempdir(), basename(u))
+    if (!file.exists(tmp)) {
+        utils::download.file(u, tmp, mode = "wb")
+    }
+    suppressMessages({
+        d = readxl::read_excel(tmp)
+    })
     names(d) = clean_names(names(d))
     d = select_columns(d)
     d = d |> filter_nas()
@@ -24,7 +28,7 @@ select_columns = function(d) {
 
 filter_nas = function(d) {
   d |>
-    dplyr::filter(offence == "N/A")
+    dplyr::filter(!offence == "N/A")
 }
 
 op_plot_offence = function(d) {
