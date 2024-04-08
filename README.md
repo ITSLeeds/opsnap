@@ -1,5 +1,18 @@
 
 
+# Installation
+
+Install the package from GitHub:
+
+``` r
+remotes::install_github("ITSLeeds/opsnap")
+```
+
+    Using github PAT from envvar GITHUB_PAT
+
+    Skipping install of 'opsnap' from a github remote, the SHA1 (f3952b21) has not changed since last install.
+      Use `force = TRUE` to force installation
+
 ``` r
 library(tidyverse)
 ```
@@ -17,12 +30,7 @@ library(tidyverse)
 
 ``` r
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
-download_and_read = function(u) {
-    tmp = tempfile(fileext = ".xlsx")
-    download.file(u, tmp, mode = "wb")
-    readxl::read_excel(tmp)
-}
-d = download_and_read(u)
+d = opsnap:::download_and_read(u)
 ```
 
     New names:
@@ -86,7 +94,7 @@ d_sf = sf::st_sf(
 mapview::mapview(d_sf)
 ```
 
-![](README_files/figure-commonmark/unnamed-chunk-1-1.png)
+![](README_files/figure-commonmark/unnamed-chunk-3-1.png)
 
 ``` r
 table(d$OFFENCE) |>
@@ -169,4 +177,4 @@ d |>
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-![](README_files/figure-commonmark/unnamed-chunk-3-1.png)
+![](README_files/figure-commonmark/unnamed-chunk-5-1.png)

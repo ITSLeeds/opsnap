@@ -18,13 +18,23 @@ usethis::use_r("opsnap")
 
 Install the package from GitHub:
 
-```{r}
+```r
 remotes::install_github("ITSLeeds/opsnap")
 ```
 
+```{r}
+#| include: false
+library(tidyverse)
+remotes::install_github("ITSLeeds/opsnap")
+```
+
+# Opsnap data
+
+The `opsnap` package provides a function to download and read in data from the West Yorkshire Police Operation Snap database. The data is available at the following URL: https://www.westyorkshire.police.uk/SaferRoadsSubmissions
+
+The data is open acess and looks like this:
 
 ```{r}
-library(tidyverse)
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
 names(d)
@@ -32,7 +42,11 @@ names(d)
 #  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"
 #  [5] "OFFENCE"                 "DISTRICT"               
 #  [7] "DISPOSAL"                "DATE OF SUBMISSION"     
-#  [9] "...9"                    "OFF LOCATION"  
+#  [9] "...9"                    "OFF LOCATION"
+
+# Function to clean up column names
+
+
 d_locations = d |>
   dplyr::pull(`OFF LOCATION`) |>
   head(10) |>
