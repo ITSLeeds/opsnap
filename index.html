@@ -64,14 +64,11 @@
 <p>The data is open acess and looks like this, with names cleaned up by the package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">u</span> <span class="op">=</span> <span class="st">"https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"</span></span>
-<span><span class="va">d</span> <span class="op">=</span> <span class="fu">opsnap</span><span class="fu">:::</span><span class="fu">download_and_read</span><span class="op">(</span><span class="va">u</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>New names<span class="sc">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>• <span class="st">``</span> <span class="ot">-&gt;</span> <span class="st">`</span><span class="at">...9</span><span class="st">`</span></span></code></pre></div>
+<span><span class="va">d</span> <span class="op">=</span> <span class="fu">opsnap</span><span class="fu">:::</span><span class="fu">download_and_read</span><span class="op">(</span><span class="va">u</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"mode"</span>     <span class="st">"make"</span>     <span class="st">"model"</span>    <span class="st">"colour"</span>   <span class="st">"offence"</span>  <span class="st">"district"</span> <span class="st">"disposal"</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>[<span class="dv">8</span>] <span class="st">"date"</span>     <span class="st">"location"</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"mode"</span>     <span class="st">"make"</span>     <span class="st">"model"</span>    <span class="st">"colour"</span>   <span class="st">"offence"</span>  <span class="st">"district"</span> <span class="st">"disposal"</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>[<span class="dv">8</span>] <span class="st">"date"</span>     <span class="st">"location"</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Old names:</span></span>
 <span><span class="co">#  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  </span></span>
 <span><span class="co">#  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"</span></span>
@@ -79,21 +76,21 @@
 <span><span class="co">#  [7] "DISPOSAL"                "DATE OF SUBMISSION"     </span></span>
 <span><span class="co">#  [9] "...9"                    "OFF LOCATION"</span></span></code></pre></div>
 <p>The data looks like this (first 3 rows shown):</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="14%">
 <col width="9%">
 <col width="5%">
-<col width="6%">
-<col width="6%">
-<col width="7%">
-<col width="7%">
-<col width="9%">
+<col width="4%">
+<col width="4%">
 <col width="33%">
+<col width="5%">
+<col width="11%">
+<col width="6%">
+<col width="19%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">mode</th>
@@ -108,52 +105,53 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Vehicle driver</td>
-<td align="left">Volkswagen</td>
-<td align="left">GOLF</td>
-<td align="left">BLACK</td>
-<td align="left">N/A</td>
+<td align="left">Cyclist</td>
+<td align="left">Honda</td>
+<td align="left">JAZZ</td>
+<td align="left">BLUE</td>
+<td align="left">RT88576 Drive without reasonable consideration to others</td>
 <td align="left">BD</td>
-<td align="left">NFA</td>
+<td align="left">Educational Course</td>
 <td align="left">2023-10-01</td>
-<td align="left">A1 Exit Slip onto M62 Eastbound, Wakefield</td>
+<td align="left">A650 SIR FRED HOYLE WAY, BINGLEY</td>
 </tr>
 <tr class="even">
-<td align="left">Vehicle passenger</td>
-<td align="left">Audi</td>
-<td align="left">A4</td>
-<td align="left">BLACK</td>
-<td align="left">N/A</td>
-<td align="left">unknown</td>
-<td align="left">NFA</td>
+<td align="left">Cyclist</td>
+<td align="left">Citroen</td>
+<td align="left">DS3</td>
+<td align="left">WHITE</td>
+<td align="left">RT88576 Drive without reasonable consideration to others</td>
+<td align="left">BD</td>
+<td align="left">Educational Course</td>
 <td align="left">2023-10-01</td>
-<td align="left">A1 Wentworth, Pontefract</td>
+<td align="left">DALTON BANK ROAD, HUDDERSFIELD</td>
 </tr>
 <tr class="odd">
 <td align="left">Vehicle driver</td>
-<td align="left">Volkswagen</td>
-<td align="left">Golf</td>
-<td align="left">Red</td>
-<td align="left">N/A</td>
-<td align="left">BD</td>
-<td align="left">NFA</td>
+<td align="left">Audi</td>
+<td align="left">S3</td>
+<td align="left">BLACK</td>
+<td align="left">RT88760 Fail to comply with solid white lines</td>
+<td align="left">LD</td>
+<td align="left">Educational Course</td>
 <td align="left">2023-10-01</td>
-<td align="left">A120 Leeds Ring Road, Moortown, Leeds</td>
+<td align="left">A1 North Wetherby, Leeds</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p>We provide a function to geocode the records:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Function to clean up column names</span></span>
 <span><span class="va">d_sample</span> <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">50</span>, <span class="op">]</span></span>
 <span><span class="va">d_sf</span> <span class="op">=</span> <span class="fu">opsnap</span><span class="fu">:::</span><span class="fu">op_geocode</span><span class="op">(</span><span class="va">d_sample</span><span class="op">)</span></span>
 <span><span class="fu">mapview</span><span class="fu">::</span><span class="fu">mapview</span><span class="op">(</span><span class="va">d_sf</span><span class="op">)</span></span></code></pre></div>
 <p><img src="README_files/figure-commonmark/unnamed-chunk-6-1.png"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p>You can query the data downloaded with <code>opsnap</code> functions, e.g. as follows (results not shown):</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">offence</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>N<span class="sc">/</span>A </span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="dv">546</span> </span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p>Let’s make a plot of the data:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># Reduce nchar of offence</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>offence <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html" class="external-link">str_sub</a></span><span class="op">(</span><span class="va">offence</span>, <span class="fl">1</span>, <span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -164,16 +162,15 @@
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_bar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">offence</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Make x labels vertical</span></span>
-<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">60</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="README_files/figure-commonmark/unnamed-chunk-8-1.png"></p>
 </div>
 
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
