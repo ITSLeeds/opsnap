@@ -1,5 +1,5 @@
 Package: opsnap
-Title: Get Open Data from Operation Snap Police Records
+Title: Operation Snap Police Records
 Version: 0.0.0.9000
 Authors@R: c(
     person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("aut", "cre"),
