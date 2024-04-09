@@ -166,11 +166,10 @@ d_monthly |>
   theme_minimal()
 ```
 
-As shown in the graph above, some records (`r round(nrow(d_offence) / nrow(d_all) * 100, 1)`%) have missing values for the 'offence' column (these records did not classify as an offence). 
-Many records lack either an offence or a location (`r round(nrow(d) / nrow(d_all) * 100, 1)`%).
-Filtering these out leaves `r nrow(d)` complete records.
+As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column. 
+Many records lack either an offence or a location, leaving only `r round(nrow(d) / nrow(d_all) * 100, 1)`% or `r nrow(d)` complete records.
 
-There are `r unique(d$location) |> length()` unique locations in the data, with the most common locations shown below:
+There are `r unique(d$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown below:
 
 ```{r}
 #| echo: false
@@ -236,12 +235,12 @@ raster_count = rasterize(d_projected, raster_template, fun = "length")
 plot(raster_count)
 ```
 
-The results show there is one outlier with a very high number of crashes. We can remove this and plot the data again:
+<!-- The results show there is one outlier with a very high number of crashes. We can remove this and plot the data again: -->
 
 ```{r}
-raster_count_no_outlier = raster_count |>
-  clamp(-Inf, 100)
-plot(raster_count_no_outlier)
+# raster_count_no_outlier = raster_count |>
+#   clamp(-Inf, 100)
+# plot(raster_count_no_outlier)
 ```
 
 <!-- You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown): -->

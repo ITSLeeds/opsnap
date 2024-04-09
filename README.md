@@ -66,13 +66,12 @@ over time (average n. records per month shown below):
 <img src="man/figures/README-unnamed-chunk-8-1.png"
 style="width:100.0%" />
 
-As shown in the graph above, some records (68.9%) have missing values
-for the ‘offence’ column (these records did not classify as an offence).
-Many records lack either an offence or a location (48.1%). Filtering
-these out leaves 8832 complete records.
+As shown in the graph above, 68.9% have values for the ‘offence’ column.
+Many records lack either an offence or a location, leaving only 48.1% or
+8832 complete records.
 
-There are 6478 unique locations in the data, with the most common
-locations shown below:
+There are 6478 unique location text strings (addresses) in the data,
+with the most common locations shown below:
 
 | location                                       |   n | percent_records |
 |:-----------------------------------------------|----:|:----------------|
@@ -107,11 +106,6 @@ using a 500m grid:
 <img src="man/figures/README-unnamed-chunk-12-1.png"
 style="width:100.0%" />
 
-The results show there is one outlier with a very high number of
-crashes. We can remove this and plot the data again:
-
-<img src="man/figures/README-unnamed-chunk-13-1.png"
-style="width:100.0%" />
-
+<!-- The results show there is one outlier with a very high number of crashes. We can remove this and plot the data again: -->
 <!-- You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown): -->
 <!-- Let's make a plot of the data: -->
