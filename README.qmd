@@ -206,12 +206,35 @@ d_all |>
 The equivalent table excluding records with missing offence data is shown below:
 
 ```{r}
-d_offence |>
+d_all |>
+  opsnap:::filter_offence_nas() |>
+  filter(offence != "n/a") |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_offence)) |>
   mutate(percent_records = scales::percent(percent_records)) |>
   arrange(desc(n)) |>
   head(10) |>
+  knitr::kable()
+```
+
+The equivalent for cyclists, with the least common offences categorised as 'other', is shown below:
+
+```{r}
+d_all |>
+  opsnap:::filter_offence_nas() |>
+  filter(offence != "n/a") |>
+  filter(mode == "cyclist") |>
+  count(offence, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d_offence)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(
+    offence = ifelse(n < 20, "other", offence)
+  ) |>
+  group_by(offence) |>
+  summarise(n = sum(n), n_hybrid = n()) |>
+  arrange(n_hybrid, desc(n)) |>
+  select(-n_hybrid) |>
+  mutate(`% of total` = scales::percent(n / sum(n), accuracy = 0.1)) |>
   knitr::kable()
 ```
 
