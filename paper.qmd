@@ -3,6 +3,9 @@ title: "Cyclist video evidence of road traffic offences: Preliminary analysis of
 format: pdf
 number-sections: true
 bibliography: references.bib
+editor:
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r, include = FALSE}
