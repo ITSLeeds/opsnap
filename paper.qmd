@@ -175,9 +175,9 @@ The breakdown of records by mode of transport (of the observer) is shown below:
 d_all |>
   count(mode, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
-  knitr::kable()
+  knitr::kable(digits = 1)
 ```
 
 The offence text strings are quite long, with the most common offences shown below:
