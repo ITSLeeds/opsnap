@@ -1,4 +1,16 @@
-download_and_read = function(u, remove_nas = TRUE, dir = "raw_data/west-yorkshire", filter_nas = FALSE) {
+#' Download and read data from opsnap project
+#' 
+#' @param u URL of data
+#' @param remove_nas Remove NA values?
+#' @param dir Download directory
+#' @return Data frame
+#' @export
+#' @examples
+#' if (FALSE) {
+#' u = "https://www.westyorkshire.police.uk/sites/default/files/2023-10/operation_snap_july-sept_2023.xlsx"
+#' download_and_read(, dir = ".")
+#' }
+download_and_read = function(u, remove_nas = TRUE, dir = "raw_data/west-yorkshire") {
     tmp = file.path(dir, basename(u))
     if (!file.exists(tmp)) {
         utils::download.file(u, tmp, mode = "wb")
@@ -8,7 +20,7 @@ download_and_read = function(u, remove_nas = TRUE, dir = "raw_data/west-yorkshir
     })
     names(d) = clean_names(names(d))
     d = select_columns(d)
-    if (filter_nas) {
+    if (remove_nas) {
         d = filter_nas(d)
     }
     return(d)
