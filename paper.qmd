@@ -6,6 +6,47 @@ bibliography: references.bib
 editor:
   markdown: 
     wrap: sentence
+# knitr:
+#   opts_chunk:
+#     fig.path: images/
+# # # Uncomment for formatted version
+  # elsevier-pdf:
+  #   linestretch: 2
+  #   keep-tex: true
+  #   journal:
+  #     name: European Transport Research Review
+  #     formatting: preprint
+  #     model: 3p
+  #     cite-style: super
+# # # #   # pdf: default
+
+# # Uncomment the following line to produce the cover page
+author:
+  - name: Graham Farrell
+    affiliations:
+      - name: University of Leeds
+        address: TBC
+        orcid: TBC
+  - name: Robin Lovelace
+    email: r.lovelace@leeds.ac.uk
+    corresponding: true
+    affiliations:
+      - name: University of Leeds
+        address: Institute for Transport Studies, Leeds, LS2 9JT, United Kingdom
+        orcid: 0000-0001-5679-6536
+  - name: Steve O'Hern
+    affiliations:
+      - name: University of Leeds
+        address: Institute for Transport Studies, Leeds, LS2 9JT, United Kingdom
+        orcid: tbc
+keywords: 
+  - Cycling
+  - Hotspots 
+  - Road Safety
+  - Active Travel
+  - Transport Planning
+  - Near Misses
+date: last-modified
 ---
 
 ```{r, include = FALSE}
@@ -36,9 +77,9 @@ Research into video content, offence concentration, recidivism, repeat submitter
 
 # Introduction
 
-As shown in @sec-methods.
-
-test test [@prati2019].
+Dangerous and criminal driving are significant problems that take many forms [@simon1996] [@corbett2010; @corbett2003] (Corbett 2003, 2010).
+Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities (ref).
+Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (ref).
 
 # Methods and data {#sec-methods}
 
