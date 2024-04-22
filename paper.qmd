@@ -23,6 +23,17 @@ library(opsnap)
 
 # Abstract {.unnumbered}
 
+This study uses data from Operation Snap (Op Snap), the UK police’s national system to receive road users’ video evidence of road traffic offences.
+Data from one police force area for three calendar years, from its launch in 2021 (N= 18,363 records) is analysed.
+34.4% were submitted by cyclists (n=6,312).
+69% of records resulted in an offence being registered and of those and 63% were for driving ‘without reasonable consideration to others’ or ‘without due care and attention’.
+Three quarters (75.2%) resulted in the recommended disposal of an educational course (including conditional offers), a quarter in no further action, and fewer than 1% for court appearance.
+A preliminary research agenda using Op Snap data is outlined.
+In the first instance, comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional and local levels, replicating the findings of this study.
+Studies of disposal-related decision-making and the role of factors such as video quality and supporting evidence might identify good practice.
+Research into video content, offence concentration, recidivism, repeat submitters of evidence, and case progression including court cases, hold significant potential to inform policy and practice locally, nationally and internationally. 
+ 
+
 # Introduction
 
 As shown in @sec-methods.
@@ -51,7 +62,8 @@ devtools::load_all()
 
 # Opsnap data
 
-The `opsnap` package provides a function to download and read in data from the West Yorkshire Police Operation Snap database. The data is available at the following URL: https://www.westyorkshire.police.uk/SaferRoadsSubmissions
+The `opsnap` package provides a function to download and read in data from the West Yorkshire Police Operation Snap database.
+The data is available at the following URL: https://www.westyorkshire.police.uk/SaferRoadsSubmissions
 
 Data for the following years are provided:
 
@@ -169,7 +181,7 @@ d_monthly |>
   theme_minimal()
 ```
 
-As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column. 
+As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column.
 Many records lack either an offence or a location, leaving only `r round(nrow(d) / nrow(d_all) * 100, 1)`% or `r nrow(d)` complete records.
 
 The breakdown of records by mode of transport (of the observer) is shown below:
@@ -253,7 +265,6 @@ d |>
   head(10) |>
   knitr::kable()
 ```
-
 
 # Results
 
