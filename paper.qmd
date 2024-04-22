@@ -86,7 +86,80 @@ Almost half of cyclist fatalities involved collision with a car, with 56% on rur
 The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport]. 
  
 
+Furthermore, it is noted that cyclist crashes are underreported in police recorded datasets (refs) and the extent of injuries sustained by cyclists may be significantly higher when also considering hospital reported cases (references).
+Furthermore, under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions (reference).
+These incidents are often referred to as “near-misses” (reference). 
+ 
+
+In the UK it has been estimated that commuter cyclists experience approximately one near miss for every 6 miles of riding (reference).
+Previous research has also demonstrated that the concern regarding near misses is a barrier reported for people choosing not to cycle (...), with near misses associated with various driver behaviours including inattentive driving, aggressive driving, drivers driving too fast, drivers passing too close, being car doored, and being cut off by turning drivers (Refs).
+In their recent literature review of near miss cycling crashes, Ibrahim et al (ref) highlight the need for data on near misses to be recorded, as they provide rich information with which to study cyclist crash risk and identify factors associated with risk. 
+ 
+
+Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016] .
+A ‘close pass’ refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph) (XX REF). 
+Close passes take different forms including the ‘punishment pass’ by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024].
+There is no specific law in the UK Road Traffic Act 1988 for driving to close to cyclist, however there are two laws for careless driving which are commonly applied: RT88575- Drive without due care and attention; and RT99576 – Driver without reasonable consideration to others (ref). 
+
+ 
+
+-   A paragraph or two about justice/ road crime?? 
+
+This study highlights the potential of using open access data from Operation Snap, the UK police’s national system to receive road users’ video evidence of road traffic offences.
+Operation Snap, often referred to informally as ‘Op Snap’, was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 2018 (Road Safety GB 2018).
+It is now in operation nationally across England and Wales, each police force offering its own submission portal (XX NEED TO CHECK IF ALL HAVE IT)  for road users to submit video evidence.
+The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:   
+
+-   The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues. 
+
+-   The car registration number of the offending vehicle must be clearly visible. 
+
+-   The public should be prepared to sign a witness statement and possibly give evidence in court. 
+
+-   Statements for OpSnap can only be accepted from persons aged 18 or over.
+    If you are under 18 the incident should be reported by email to \[email\] [@davidson2022]. 
+
+This is, to our knowledge, the first peer-reviewed study to use this dataset.
+As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents.
+Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
+
 # Methods and data {#sec-methods}
+
+Open access data from West Yorkshire Safer Roads – Op Snap (West Yorkshire Police 2024) was used for this study, the media submissions portal having opened in July 2020 (West Yorkshire Police 2020).
+The West Yorkshire Police (WYP) data used here spanned calendar years 2021 and 2023.
+Data for 2021 was included, however it was far less numerous, with less than half the cases of either 2022 or 2023.
+This could relate to reduced road use during the COVID-19 pandemic . 
+ 
+
+The dataset consists of a tabulation of reported cases that have been submitted to the West Yorkshire Safer Roads Op Snap web portal. 
+ 
+
+The terms ‘record’ and ‘case’ are used interchangeably here to refer to a record in the Op Snap database, each of which represents the separate submission of video evidence by a road user. 
+
+The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers.
+Video footage is commonly recorded from on-board cameras. 
+For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, and are often referred to as ‘dash cams’.
+One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam (iCompario, 2024).
+For cyclists, footage is commonly recorded using helmet or handlebar mounted cameras, the proportion of cyclists using these cameras is unknown, however anecdotal evidence suggests that there is increased usage, with many choosing to record rides as proof if an incident does occur. 
+ 
+
+Complainants upload the footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make model and colour, the location and time of the incident, and details of the camera used to record the footage (ref).
+It is noted that only offences committed by registered motor vehicles can be reported as complainants are required to submit the registration number of the offending vehicle, which must also be readable in the uploaded footage. 
+
+ 
+
+A deidentified summary of the submitted cases is available for download, which also includes details of the reported offence and the disposal decision by police.
+This deidentified dataset forms the bases for the analysis presented in this study. 
+ 
+
+Each record contained an ‘Offence Location’ field.
+This was typically a street name and town or city name, or an intersection.
+Example offence locations included: ‘A58 Godley Road, Halifax’, ‘Keighley Road, Silsden’ , ‘Woodhouse Lane A660, Leeds’.
+Approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire. 
+
+However, it is a noted limitation that these are not precise geolocations but allow some broad analysis of the clustering of offences. 
+XX THERE WAS MISSING LOCATION DATA FOR SOME MONTHS – SO IT WASN’T ‘LOCATION NOT AVAILABLE’ MISSINGS BUT LOOKED MORE LIKE IT WAS OMITTED ACCIDENTALLY OR CUT? 
+ 
 
 ```{r}
 #| include: false
@@ -105,13 +178,6 @@ remotes::install_github("ITSLeeds/opsnap")
 #| echo: false
 devtools::load_all()
 ```
-
-# Opsnap data
-
-The `opsnap` package provides a function to download and read in data from the West Yorkshire Police Operation Snap database.
-The data is available at the following URL: https://www.westyorkshire.police.uk/SaferRoadsSubmissions
-
-Data for the following years are provided:
 
 ```{r}
 #| echo: false
@@ -190,7 +256,7 @@ d_all |>
   knitr::kable()
 ```
 
-# Preliminary analysis
+# Results
 
 There are `r nrow(d_all)` records in the data, with increasing numbers of records over time (average n. records per month shown in @fig-time):
 
@@ -310,16 +376,6 @@ d |>
   arrange(desc(n)) |>
   head(10) |>
   knitr::kable()
-```
-
-# Results
-
-Test results are shown in @fig-test.
-
-```{r}
-#| label: fig-test
-#| fig-cap: "Illustration of crashes over time"
-plot(1:9)
 ```
 
 # Discussion
