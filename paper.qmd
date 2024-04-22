@@ -81,6 +81,11 @@ Dangerous and criminal driving are significant problems that take many forms [@s
 Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities (ref).
 Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (ref).
 
+The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
+Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
+The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport]. 
+ 
+
 # Methods and data {#sec-methods}
 
 ```{r}
