@@ -3,6 +3,50 @@ title: "Cyclist video evidence of road traffic offences: Preliminary analysis of
 format: pdf
 number-sections: true
 bibliography: references.bib
+editor:
+  markdown: 
+    wrap: sentence
+# knitr:
+#   opts_chunk:
+#     fig.path: images/
+# # # Uncomment for formatted version
+  # elsevier-pdf:
+  #   linestretch: 2
+  #   keep-tex: true
+  #   journal:
+  #     name: European Transport Research Review
+  #     formatting: preprint
+  #     model: 3p
+  #     cite-style: super
+# # # #   # pdf: default
+
+# # Uncomment the following line to produce the cover page
+author:
+  - name: Graham Farrell
+    affiliations:
+      - name: University of Leeds
+        address: TBC
+        orcid: TBC
+  - name: Robin Lovelace
+    email: r.lovelace@leeds.ac.uk
+    corresponding: true
+    affiliations:
+      - name: University of Leeds
+        address: Institute for Transport Studies, Leeds, LS2 9JT, United Kingdom
+        orcid: 0000-0001-5679-6536
+  - name: Steve O'Hern
+    affiliations:
+      - name: University of Leeds
+        address: Institute for Transport Studies, Leeds, LS2 9JT, United Kingdom
+        orcid: tbc
+keywords: 
+  - Cycling
+  - Hotspots 
+  - Road Safety
+  - Active Travel
+  - Transport Planning
+  - Near Misses
+date: last-modified
 ---
 
 ```{r, include = FALSE}
@@ -20,13 +64,99 @@ library(opsnap)
 
 # Abstract {.unnumbered}
 
+This study uses data from Operation Snap (Op Snap), the UK police’s national system to receive road users’ video evidence of road traffic offences.
+Data from one police force area for three calendar years, from its launch in 2021 (N= 18,363 records) is analysed.
+34.4% were submitted by cyclists (n=6,312).
+69% of records resulted in an offence being registered and of those and 63% were for driving ‘without reasonable consideration to others’ or ‘without due care and attention’.
+Three quarters (75.2%) resulted in the recommended disposal of an educational course (including conditional offers), a quarter in no further action, and fewer than 1% for court appearance.
+A preliminary research agenda using Op Snap data is outlined.
+In the first instance, comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional and local levels, replicating the findings of this study.
+Studies of disposal-related decision-making and the role of factors such as video quality and supporting evidence might identify good practice.
+Research into video content, offence concentration, recidivism, repeat submitters of evidence, and case progression including court cases, hold significant potential to inform policy and practice locally, nationally and internationally. 
+ 
+
 # Introduction
 
-As shown in @sec-methods.
+Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
+Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities (ref).
+Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (ref).
 
-test test [@prati2019].
+The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
+Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
+The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport]. 
+ 
+
+Furthermore, it is noted that cyclist crashes are underreported in police recorded datasets (refs) and the extent of injuries sustained by cyclists may be significantly higher when also considering hospital reported cases (references).
+Furthermore, under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions (reference).
+These incidents are often referred to as “near-misses” (reference). 
+ 
+
+In the UK it has been estimated that commuter cyclists experience approximately one near miss for every 6 miles of riding (reference).
+Previous research has also demonstrated that the concern regarding near misses is a barrier reported for people choosing not to cycle (...), with near misses associated with various driver behaviours including inattentive driving, aggressive driving, drivers driving too fast, drivers passing too close, being car doored, and being cut off by turning drivers (Refs).
+In their recent literature review of near miss cycling crashes, Ibrahim et al (ref) highlight the need for data on near misses to be recorded, as they provide rich information with which to study cyclist crash risk and identify factors associated with risk. 
+ 
+
+Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016] .
+A ‘close pass’ refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph) (XX REF). 
+Close passes take different forms including the ‘punishment pass’ by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024].
+There is no specific law in the UK Road Traffic Act 1988 for driving to close to cyclist, however there are two laws for careless driving which are commonly applied: RT88575- Drive without due care and attention; and RT99576 – Driver without reasonable consideration to others (ref). 
+
+ 
+
+-   A paragraph or two about justice/ road crime?? 
+
+This study highlights the potential of using open access data from Operation Snap, the UK police’s national system to receive road users’ video evidence of road traffic offences.
+Operation Snap, often referred to informally as ‘Op Snap’, was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 2018 (Road Safety GB 2018).
+It is now in operation nationally across England and Wales, each police force offering its own submission portal (XX NEED TO CHECK IF ALL HAVE IT)  for road users to submit video evidence.
+The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:   
+
+-   The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues. 
+
+-   The car registration number of the offending vehicle must be clearly visible. 
+
+-   The public should be prepared to sign a witness statement and possibly give evidence in court. 
+
+-   Statements for OpSnap can only be accepted from persons aged 18 or over.
+    If you are under 18 the incident should be reported by email to \[email\] [@davidson2022]. 
+
+This is, to our knowledge, the first peer-reviewed study to use this dataset.
+As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents.
+Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
 
 # Methods and data {#sec-methods}
+
+Open access data from West Yorkshire Safer Roads – Op Snap (West Yorkshire Police 2024) was used for this study, the media submissions portal having opened in July 2020 (West Yorkshire Police 2020).
+The West Yorkshire Police (WYP) data used here spanned calendar years 2021 and 2023.
+Data for 2021 was included, however it was far less numerous, with less than half the cases of either 2022 or 2023.
+This could relate to reduced road use during the COVID-19 pandemic . 
+ 
+
+The dataset consists of a tabulation of reported cases that have been submitted to the West Yorkshire Safer Roads Op Snap web portal. 
+ 
+
+The terms ‘record’ and ‘case’ are used interchangeably here to refer to a record in the Op Snap database, each of which represents the separate submission of video evidence by a road user. 
+
+The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers.
+Video footage is commonly recorded from on-board cameras. 
+For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, and are often referred to as ‘dash cams’.
+One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam (iCompario, 2024).
+For cyclists, footage is commonly recorded using helmet or handlebar mounted cameras, the proportion of cyclists using these cameras is unknown, however anecdotal evidence suggests that there is increased usage, with many choosing to record rides as proof if an incident does occur. 
+ 
+
+Complainants upload the footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make model and colour, the location and time of the incident, and details of the camera used to record the footage (ref).
+It is noted that only offences committed by registered motor vehicles can be reported as complainants are required to submit the registration number of the offending vehicle, which must also be readable in the uploaded footage. 
+
+ 
+
+A deidentified summary of the submitted cases is available for download, which also includes details of the reported offence and the disposal decision by police.
+This deidentified dataset forms the bases for the analysis presented in this study. 
+ 
+
+Each record contained an ‘Offence Location’ field.
+This was typically a street name and town or city name, or an intersection.
+Example offence locations included: ‘A58 Godley Road, Halifax’, ‘Keighley Road, Silsden’ , ‘Woodhouse Lane A660, Leeds’.
+Approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire. 
+
 
 ```{r}
 #| include: false
@@ -45,12 +175,6 @@ remotes::install_github("ITSLeeds/opsnap")
 #| echo: false
 devtools::load_all()
 ```
-
-# Opsnap data
-
-The `opsnap` package provides a function to download and read in data from the West Yorkshire Police Operation Snap database. The data is available at the following URL: https://www.westyorkshire.police.uk/SaferRoadsSubmissions
-
-Data for the following years are provided:
 
 ```{r}
 #| echo: false
@@ -126,12 +250,15 @@ d_all = d_all |>
   )
 d_all |>
   head(3) |>
+  # Convert column names to title case:
+  rename_all(snakecase::to_title_case) |>
+  # snakecase::to_title_case
   knitr::kable()
 ```
 
-# Preliminary analysis
+# Results
 
-There are `r nrow(d_all)` records in the data, with increasing numbers of records over time (average n. records per month shown in @fig-time):
+There are `r nrow(d_all)` records in the data, with increasing numbers of records over time, as illustrated in @fig-time:
 
 ```{r}
 #| label: fig-time
@@ -155,67 +282,79 @@ d_complete_monthly = d |>
   group_by(month) |>
   summarise(n = n()) |>
   mutate(records = "complete")
-d_monthly = bind_rows(d_all_monthly, d_offence_monthly, d_complete_monthly)
+d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
 d_monthly |>
+  mutate(records = snakecase::to_title_case(records)) |> 
+  rename_all(snakecase::to_title_case) |> 
   ggplot() +
-  geom_line(aes(month, n, colour = records), alpha = 0.5, size = 2) +
+  geom_line(aes(Month, N, colour = Records), alpha = 0.5, size = 2) +
   # geom_smooth(aes(month, n, colour = records), method = "lm", se = FALSE) +
-  labs(title = "Number of records in West Yorkshire\nPolice Operation Snap data",
+  labs(title = "Number of records in West Yorkshire Police\nOperation Snap data",
        x = "Date",
        y = "Number of records per month") +
   theme_minimal()
 ```
 
-As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column. 
+As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column.
 Many records lack either an offence or a location, leaving only `r round(nrow(d) / nrow(d_all) * 100, 1)`% or `r nrow(d)` complete records.
 
-The breakdown of records by mode of transport (of the observer) is shown below:
+The breakdown of records by mode of transport (of the observer) is shown @tbl-mode.
 
 ```{r}
+#| label: tbl-mode
+#| tbl-cap: Number of OpSnap records by observer mode.
 d_all |>
   count(mode, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
+  rename_all(snakecase::to_title_case) |>
   knitr::kable()
 ```
 
-The offence text strings are quite long, with the most common offences shown below:
+The offence text strings are quite long, with the most common offences shown in @tbl-offences:
 
 ```{r}
+#| label: tbl-offences
+#| tbl-cap: Number and percentages of OpSnap records by offence type.
 d_all |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
+  rename_all(snakecase::to_title_case) |>
   knitr::kable()
 ```
 
-The equivalent table excluding records with missing offence data is shown below:
+<!-- The equivalent table excluding records with missing offence data is shown below: -->
 
 ```{r}
+#| include: false
 d_all |>
   opsnap:::filter_offence_nas() |>
   filter(offence != "n/a") |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
+  rename_all(snakecase::to_title_case) |>
   knitr::kable()
 ```
 
-The equivalent for cyclists, with the least common offences categorised as 'other', is shown below:
+The equivalent for cyclists, with the least common offences categorised as 'other', is shown in @tbl-offences-cyclist-observer.
 
 ```{r}
+#| label: tbl-offences-cyclist-observer
+#| tbl-cap: "Number and percentages of OpSnap records, submitted by cyclists, by offence type."
 d_all |>
   opsnap:::filter_offence_nas() |>
   filter(offence != "n/a") |>
   filter(mode == "cyclist") |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   mutate(
     offence = ifelse(n < 20, "other", offence)
   ) |>
@@ -224,42 +363,38 @@ d_all |>
   arrange(n_hybrid, desc(n)) |>
   select(-n_hybrid) |>
   mutate(`% of total` = scales::percent(n / sum(n), accuracy = 0.1)) |>
+  rename_all(snakecase::to_title_case) |> 
   knitr::kable()
 ```
 
-In terms 'disposal', the most common values are shown below:
+In terms 'disposal', the most common values are shown in @tbl-disposal.
 
 ```{r}
+#| label: tbl-disposal
+#| tbl-cap: "Most common disposal values in the OpSnap dataset."
 d_all |>
   count(disposal, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
+  rename_all(snakecase::to_title_case) |> 
   knitr::kable()
 ```
 
-There are `r unique(d$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown below:
+There are `r unique(d$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown in @tbl-locations:
 
 ```{r}
 #| echo: false
+#| label: tbl-locations
+#| tbl-cap: "Most common locations recorded in the OpSnap dataset"
 d |>
   count(location, sort = TRUE) |>
   mutate(percent_records = n / nrow(d)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
+  rename_all(snakecase::to_title_case) |> 
   knitr::kable()
-```
-
-
-# Results
-
-Test results are shown in @fig-test.
-
-```{r}
-#| label: fig-test
-#| fig-cap: "Illustration of crashes over time"
-plot(1:9)
 ```
 
 # Discussion

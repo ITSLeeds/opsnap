@@ -14,26 +14,26 @@ execute:
 #| echo: false
 #| eval: false
 # Package setup:
-usethis::use_description()
-usethis::use_package("sf")
-usethis::use_package("stplanr")
-usethis::use_package("ggplot2")
-usethis::use_package("dplyr")
-usethis::use_r("opsnap")
-
-# Rbuildignore the data folder:
-usethis::use_build_ignore("data")
-# MIT license:
-usethis::use_mit_license("Leeds Institute for Transport Studies")
-
-# Add CI
-usethis::use_github_action_check_standard()
-# Add pkgdown
-usethis::use_pkgdown()
-# Add pkgdown action
-usethis::use_github_action("pkgdown")
-# Add gh pages:
-usethis::use_github_pages()
+# usethis::use_description()
+# usethis::use_package("sf")
+# usethis::use_package("stplanr")
+# usethis::use_package("ggplot2")
+# usethis::use_package("dplyr")
+# usethis::use_r("opsnap")
+# 
+# # Rbuildignore the data folder:
+# usethis::use_build_ignore("data")
+# # MIT license:
+# usethis::use_mit_license("Leeds Institute for Transport Studies")
+# 
+# # Add CI
+# usethis::use_github_action_check_standard()
+# # Add pkgdown
+# usethis::use_pkgdown()
+# # Add pkgdown action
+# usethis::use_github_action("pkgdown")
+# # Add gh pages:
+# usethis::use_github_pages()
 ```
 
 # Installation
