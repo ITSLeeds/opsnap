@@ -1,0 +1,267 @@
+---
+title: "Cyclist video evidence of road traffic offences: Preliminary analysis of Operation Snap data and suggestions for a research agenda"
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = FALSE,
+  warning = FALSE
+)
+```
+
+```{r setup}
+library(opsnap)
+```
+
+# Abstract {.unnumbered}
+
+# Introduction
+
+As shown in @sec-methods.
+
+test test [@prati2019].
+
+# Methods and data {#sec-methods}
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+library(tidyverse)
+remotes::install_github("ITSLeeds/opsnap")
+```
+
+```{r}
+#| include: false
+#| echo: false
+devtools::load_all()
+```
+
+# Opsnap data
+
+The `opsnap` package provides a function to download and read in data from the West Yorkshire Police Operation Snap database. The data is available at the following URL: https://www.westyorkshire.police.uk/SaferRoadsSubmissions
+
+Data for the following years are provided:
+
+```{r}
+#| echo: false
+#| include: false
+library(rvest)
+query = ".file-link a"
+url = "https://www.westyorkshire.police.uk/SaferRoadsSubmissions"
+files_available = read_html(url) |>
+  html_nodes(query) |>
+  html_text()
+links_available = read_html(url) |>
+  html_nodes(query) |>
+  html_attr("href")
+urls = paste0("https://www.westyorkshire.police.uk", links_available)
+file_names = basename(links_available)
+tibble::tibble(file_names) |>
+  knitr::kable()
+
+# In preparation for reading-in all data:
+date_str = format(Sys.Date(), "%Y-%m")
+file_name = paste0("data/west-yorkshire/operation_snap_", date_str, ".csv")
+```
+
+```{r}
+#| eval: false
+#| echo: false
+# Download them to raw_data/west-yorkshire:
+dir.create("raw_data/west-yorkshire", recursive = TRUE, showWarnings = FALSE)
+pbapply::pblapply(urls, function(u) {
+  download.file(u, paste0("raw_data/west-yorkshire/", basename(u)))
+})
+
+# Test with 2nd url:
+u = urls[2]
+d2 = opsnap:::download_and_read(u)
+d_all = purrr::map_df(urls, opsnap:::download_and_read)
+dir.create("data/west-yorkshire", recursive = TRUE, showWarnings = FALSE)
+# Date to nearest month:
+write_csv(d_all, file_name)
+```
+
+The data is open acess and looks like this, with names cleaned up by the package:
+
+```{r}
+#| eval: false
+#| echo: true
+#| include: false
+u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
+d = opsnap:::download_and_read(u)
+names(d)
+# Old names:
+#  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  
+#  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"
+#  [5] "OFFENCE"                 "DISTRICT"               
+#  [7] "DISPOSAL"                "DATE OF SUBMISSION"     
+#  [9] "...9"                    "OFF LOCATION"
+# New names:
+# [1] "mode"     "make"     "model"    "colour"   "offence"  "district" "disposal"
+# [8] "date"     "location"
+```
+
+<!-- The data looks like this (first 3 rows shown): -->
+
+```{r}
+#| echo: false
+#| include: false
+d_all = read_csv(file_name)
+d_all = d_all |>
+  mutate(
+    mode = tolower(mode),
+    offence = tolower(offence),
+    disposal = tolower(disposal)
+  )
+d_all |>
+  head(3) |>
+  knitr::kable()
+```
+
+# Preliminary analysis
+
+There are `r nrow(d_all)` records in the data, with increasing numbers of records over time (average n. records per month shown in @fig-time):
+
+```{r}
+#| label: fig-time
+#| fig-cap: "Number of records per month in the opSnap dataset for West Yorkshire"
+d_all_monthly = d_all |>
+  mutate(month = lubridate::floor_date(date, "month")) |>
+  group_by(month) |>
+  summarise(n = n()) |>
+  mutate(records = "all")
+d_offence = d_all |>
+  opsnap:::filter_offence_nas()
+d_offence_monthly = d_offence |>
+  mutate(month = lubridate::floor_date(date, "month")) |>
+  group_by(month) |>
+  summarise(n = n()) |>
+  mutate(records = "complete_offence")
+d = d_offence |>
+  opsnap:::filter_location_nas()
+d_complete_monthly = d |>
+  mutate(month = lubridate::floor_date(date, "month")) |>
+  group_by(month) |>
+  summarise(n = n()) |>
+  mutate(records = "complete")
+d_monthly = bind_rows(d_all_monthly, d_offence_monthly, d_complete_monthly)
+d_monthly |>
+  ggplot() +
+  geom_line(aes(month, n, colour = records), alpha = 0.5, size = 2) +
+  # geom_smooth(aes(month, n, colour = records), method = "lm", se = FALSE) +
+  labs(title = "Number of records in West Yorkshire\nPolice Operation Snap data",
+       x = "Date",
+       y = "Number of records per month") +
+  theme_minimal()
+```
+
+As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column. 
+Many records lack either an offence or a location, leaving only `r round(nrow(d) / nrow(d_all) * 100, 1)`% or `r nrow(d)` complete records.
+
+The breakdown of records by mode of transport (of the observer) is shown below:
+
+```{r}
+d_all |>
+  count(mode, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d_all)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  arrange(desc(n)) |>
+  knitr::kable()
+```
+
+The offence text strings are quite long, with the most common offences shown below:
+
+```{r}
+d_all |>
+  count(offence, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d_all)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  arrange(desc(n)) |>
+  head(10) |>
+  knitr::kable()
+```
+
+The equivalent table excluding records with missing offence data is shown below:
+
+```{r}
+d_all |>
+  opsnap:::filter_offence_nas() |>
+  filter(offence != "n/a") |>
+  count(offence, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d_offence)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  arrange(desc(n)) |>
+  head(10) |>
+  knitr::kable()
+```
+
+The equivalent for cyclists, with the least common offences categorised as 'other', is shown below:
+
+```{r}
+d_all |>
+  opsnap:::filter_offence_nas() |>
+  filter(offence != "n/a") |>
+  filter(mode == "cyclist") |>
+  count(offence, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d_offence)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(
+    offence = ifelse(n < 20, "other", offence)
+  ) |>
+  group_by(offence) |>
+  summarise(n = sum(n), n_hybrid = n()) |>
+  arrange(n_hybrid, desc(n)) |>
+  select(-n_hybrid) |>
+  mutate(`% of total` = scales::percent(n / sum(n), accuracy = 0.1)) |>
+  knitr::kable()
+```
+
+In terms 'disposal', the most common values are shown below:
+
+```{r}
+d_all |>
+  count(disposal, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d_all)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  arrange(desc(n)) |>
+  knitr::kable()
+```
+
+There are `r unique(d$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown below:
+
+```{r}
+#| echo: false
+d |>
+  count(location, sort = TRUE) |>
+  mutate(percent_records = n / nrow(d)) |>
+  mutate(percent_records = scales::percent(percent_records)) |>
+  arrange(desc(n)) |>
+  head(10) |>
+  knitr::kable()
+```
+
+
+# Results
+
+Test results are shown in @fig-test.
+
+```{r}
+#| label: fig-test
+#| fig-cap: "Illustration of crashes over time"
+plot(1:9)
+```
+
+# Discussion
+
+# References
