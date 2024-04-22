@@ -77,7 +77,7 @@ Research into video content, offence concentration, recidivism, repeat submitter
 
 # Introduction
 
-Dangerous and criminal driving are significant problems that take many forms [@simon1996] [@corbett2010; @corbett2003] (Corbett 2003, 2010).
+Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
 Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities (ref).
 Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (ref).
 
@@ -157,9 +157,6 @@ This was typically a street name and town or city name, or an intersection.
 Example offence locations included: ‘A58 Godley Road, Halifax’, ‘Keighley Road, Silsden’ , ‘Woodhouse Lane A660, Leeds’.
 Approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire. 
 
-However, it is a noted limitation that these are not precise geolocations but allow some broad analysis of the clustering of offences. 
-XX THERE WAS MISSING LOCATION DATA FOR SOME MONTHS – SO IT WASN’T ‘LOCATION NOT AVAILABLE’ MISSINGS BUT LOOKED MORE LIKE IT WAS OMITTED ACCIDENTALLY OR CUT? 
- 
 
 ```{r}
 #| include: false
@@ -253,12 +250,15 @@ d_all = d_all |>
   )
 d_all |>
   head(3) |>
+  # Convert column names to title case:
+  rename_all(snakecase::to_title_case) |>
+  # snakecase::to_title_case
   knitr::kable()
 ```
 
 # Results
 
-There are `r nrow(d_all)` records in the data, with increasing numbers of records over time (average n. records per month shown in @fig-time):
+There are `r nrow(d_all)` records in the data, with increasing numbers of records over time, as illustrated in @fig-time:
 
 ```{r}
 #| label: fig-time
@@ -282,12 +282,14 @@ d_complete_monthly = d |>
   group_by(month) |>
   summarise(n = n()) |>
   mutate(records = "complete")
-d_monthly = bind_rows(d_all_monthly, d_offence_monthly, d_complete_monthly)
+d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
 d_monthly |>
+  mutate(records = snakecase::to_title_case(records)) |> 
+  rename_all(snakecase::to_title_case) |> 
   ggplot() +
-  geom_line(aes(month, n, colour = records), alpha = 0.5, size = 2) +
+  geom_line(aes(Month, N, colour = Records), alpha = 0.5, size = 2) +
   # geom_smooth(aes(month, n, colour = records), method = "lm", se = FALSE) +
-  labs(title = "Number of records in West Yorkshire\nPolice Operation Snap data",
+  labs(title = "Number of records in West Yorkshire Police\nOperation Snap data",
        x = "Date",
        y = "Number of records per month") +
   theme_minimal()
@@ -296,53 +298,63 @@ d_monthly |>
 As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column.
 Many records lack either an offence or a location, leaving only `r round(nrow(d) / nrow(d_all) * 100, 1)`% or `r nrow(d)` complete records.
 
-The breakdown of records by mode of transport (of the observer) is shown below:
+The breakdown of records by mode of transport (of the observer) is shown @tbl-mode.
 
 ```{r}
+#| label: tbl-mode
+#| tbl-cap: Number of OpSnap records by observer mode.
 d_all |>
   count(mode, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
+  rename_all(snakecase::to_title_case) |>
   knitr::kable()
 ```
 
-The offence text strings are quite long, with the most common offences shown below:
+The offence text strings are quite long, with the most common offences shown in @tbl-offences:
 
 ```{r}
+#| label: tbl-offences
+#| tbl-cap: Number and percentages of OpSnap records by offence type.
 d_all |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
+  rename_all(snakecase::to_title_case) |>
   knitr::kable()
 ```
 
-The equivalent table excluding records with missing offence data is shown below:
+<!-- The equivalent table excluding records with missing offence data is shown below: -->
 
 ```{r}
+#| include: false
 d_all |>
   opsnap:::filter_offence_nas() |>
   filter(offence != "n/a") |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
+  rename_all(snakecase::to_title_case) |>
   knitr::kable()
 ```
 
-The equivalent for cyclists, with the least common offences categorised as 'other', is shown below:
+The equivalent for cyclists, with the least common offences categorised as 'other', is shown in @tbl-offences-cyclist-observer.
 
 ```{r}
+#| label: tbl-offences-cyclist-observer
+#| tbl-cap: "Number and percentages of OpSnap records, submitted by cyclists, by offence type."
 d_all |>
   opsnap:::filter_offence_nas() |>
   filter(offence != "n/a") |>
   filter(mode == "cyclist") |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   mutate(
     offence = ifelse(n < 20, "other", offence)
   ) |>
@@ -351,30 +363,37 @@ d_all |>
   arrange(n_hybrid, desc(n)) |>
   select(-n_hybrid) |>
   mutate(`% of total` = scales::percent(n / sum(n), accuracy = 0.1)) |>
+  rename_all(snakecase::to_title_case) |> 
   knitr::kable()
 ```
 
-In terms 'disposal', the most common values are shown below:
+In terms 'disposal', the most common values are shown in @tbl-disposal.
 
 ```{r}
+#| label: tbl-disposal
+#| tbl-cap: "Most common disposal values in the OpSnap dataset."
 d_all |>
   count(disposal, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
+  rename_all(snakecase::to_title_case) |> 
   knitr::kable()
 ```
 
-There are `r unique(d$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown below:
+There are `r unique(d$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown in @tbl-locations:
 
 ```{r}
 #| echo: false
+#| label: tbl-locations
+#| tbl-cap: "Most common locations recorded in the OpSnap dataset"
 d |>
   count(location, sort = TRUE) |>
   mutate(percent_records = n / nrow(d)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
+  rename_all(snakecase::to_title_case) |> 
   knitr::kable()
 ```
 
