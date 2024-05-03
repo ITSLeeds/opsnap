@@ -85,7 +85,8 @@ tibble::tibble(file_names) |>
   knitr::kable()
 
 # In preparation for reading-in all data:
-date_str = format(Sys.Date(), "%Y-%m")
+# date_str = format(Sys.Date(), "%Y-%m")
+date_str = format(as.Date("2024-04-01"), "%Y-%m")
 file_name = paste0("data/west-yorkshire/operation_snap_", date_str, ".csv")
 ```
 
@@ -114,7 +115,7 @@ The data is open acess and looks like this, with names cleaned up by the package
 #| echo: true
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
-names(d)
+names(d_with_location)
 # Old names:
 #  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  
 #  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"
@@ -132,11 +133,7 @@ names(d)
 #| echo: false
 d_all = read_csv(file_name)
 d_all = d_all |>
-  mutate(
-    mode = tolower(mode),
-    offence = tolower(offence),
-    disposal = tolower(disposal)
-  )
+  mutate_if(is.character, tolower)
 d_all |>
   head(3) |>
   knitr::kable()
@@ -151,22 +148,18 @@ d_all_monthly = d_all |>
   mutate(month = lubridate::floor_date(date, "month")) |>
   group_by(month) |>
   summarise(n = n()) |>
-  mutate(records = "all")
-d_offence = d_all |>
+  mutate(records = "All")
+d_with_offence = d_all |>
   opsnap:::filter_offence_nas()
-d_offence_monthly = d_offence |>
-  mutate(month = lubridate::floor_date(date, "month")) |>
-  group_by(month) |>
-  summarise(n = n()) |>
-  mutate(records = "complete_offence")
-d = d_offence |>
+# nrow(d_all) - nrow(d_with_offence) # only 1 record -> ignore
+d_with_location = d_all |>
   opsnap:::filter_location_nas()
-d_complete_monthly = d |>
+d_with_location_monthly = d_with_location |>
   mutate(month = lubridate::floor_date(date, "month")) |>
   group_by(month) |>
   summarise(n = n()) |>
-  mutate(records = "complete")
-d_monthly = bind_rows(d_all_monthly, d_offence_monthly, d_complete_monthly)
+  mutate(records = "With location")
+d_monthly = bind_rows(d_all_monthly, d_with_location_monthly)
 d_monthly |>
   ggplot() +
   geom_line(aes(month, n, colour = records), alpha = 0.5, size = 2) +
@@ -174,19 +167,19 @@ d_monthly |>
   labs(title = "Number of records in West Yorkshire Police Operation Snap data",
        x = "Date",
        y = "Number of records per month") +
-  theme_minimal()
+  theme_minimal() +
+  ylim(c(0, NA))
 ```
 
-As shown in the graph above, `r round(nrow(d_offence) / nrow(d_all) * 100, 1)`% have values for the 'offence' column. 
-Many records lack either an offence or a location, leaving only `r round(nrow(d) / nrow(d_all) * 100, 1)`% or `r nrow(d)` complete records.
+As shown in the graph above not all (`r round(nrow(d_with_location) / nrow(d_all) * 100, 1)`%) records have values for the 'location' column.
 
-The breakdown of records by mode of transport (of the observer) is shown below:
+The breakdown of all records by mode of transport (of the observer) is shown below:
 
 ```{r}
 d_all |>
   count(mode, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(percent_records, accuracy = 0.1)) |>
   arrange(desc(n)) |>
   knitr::kable()
 ```
@@ -197,27 +190,27 @@ The offence text strings are quite long, with the most common offences shown bel
 d_all |>
   count(offence, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(percent_records, accuracy = 0.1)) |>
   arrange(desc(n)) |>
   head(10) |>
   knitr::kable()
 ```
 
-The equivalent table excluding records with missing offence data is shown below:
+The equivalent table excluding records with missing location data is shown below:
 
 ```{r}
 d_all |>
   opsnap:::filter_offence_nas() |>
   filter(offence != "n/a") |>
   count(offence, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = n / nrow(d_with_location)) |>
+  mutate(percent_records = scales::percent(percent_records, accuracy = 0.1)) |>
   arrange(desc(n)) |>
   head(10) |>
   knitr::kable()
 ```
 
-The equivalent for cyclists, with the least common offences categorised as 'other', is shown below:
+The equivalent for cyclists, with location present and the least common offences categorised as 'other', is shown below:
 
 ```{r}
 d_all |>
@@ -225,8 +218,8 @@ d_all |>
   filter(offence != "n/a") |>
   filter(mode == "cyclist") |>
   count(offence, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = n / nrow(d_with_location)) |>
+  mutate(percent_records = scales::percent(percent_records, accuracy = 0.1)) |>
   mutate(
     offence = ifelse(n < 20, "other", offence)
   ) |>
@@ -244,19 +237,20 @@ In terms 'disposal', the most common values are shown below:
 d_all |>
   count(disposal, sort = TRUE) |>
   mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = scales::percent(percent_records, accuracy = 0.1)) |>
   arrange(desc(n)) |>
   knitr::kable()
 ```
 
-There are `r unique(d$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown below:
+There are `r unique(d_with_location$location) |> length()` unique location text strings (addresses) in the data, with the most common locations shown below:
 
 ```{r}
 #| echo: false
-d |>
+d_with_location |>
+  mutate(location = tolower(location)) |> 
   count(location, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d)) |>
-  mutate(percent_records = scales::percent(percent_records)) |>
+  mutate(percent_records = n / nrow(d_with_location)) |>
+  mutate(percent_records = scales::percent(percent_records, accuracy = 0.1)) |>
   arrange(desc(n)) |>
   head(10) |>
   knitr::kable()
@@ -269,7 +263,7 @@ We provide a function to geocode the records:
 ```{r}
 #| eval: false
 #| echo: true
-d_sample = d[1:5, ]
+d_sample = d_with_location[1:5, ]
 d_sf = opsnap:::op_geocode(d_sample)
 mapview::mapview(d_sf)
 ```
@@ -278,7 +272,7 @@ mapview::mapview(d_sf)
 #| eval: false
 #| echo: false
 # Geocode all data:
-d_geocoded = opsnap:::op_geocode(d)
+d_geocoded = opsnap:::op_geocode(d_with_location)
 table(d_geocoded$address) |>
   sort() |>
   tail(1)
@@ -286,7 +280,7 @@ table(d_geocoded$address) |>
 #   filter(address != "NA, West Yorkshire") |>
   sf::st_as_sf(coords = c("long", "lat"), crs = 4326)
 d_sf = sf::st_sf(
-  d,
+  d_with_location,
   geometry = d_geometries$geometry
 )
 west_yorkshire = pct::get_pct_zones("west-yorkshire")
@@ -311,10 +305,28 @@ We'll present the geographic distribution of crashes using a 500m grid:
 
 ```{r}
 d_sf = sf::read_sf(paste0("data/west-yorkshire/operation_snap_geocoded_", date_str, ".gpkg"))
+```
+
+```{r}
+#| eval: false
+d_sf_aggregated = d_sf |> 
+  group_by(location) |> 
+  count(mode)
+library(tmap)
+tmap_mode("view")
+d_sf |> 
+  sample_n(1000) |> 
+  tm_shape() +
+  tm_dots()
+```
+
+
+```{r}
 d_projected = sf::st_transform(d_sf, 27700)
 library(terra)
 raster_template = rast(ext(d_projected), res = 500)
 raster_count = rasterize(d_projected, raster_template, fun = "length")
+# mapview::mapview(raster_count)
 plot(raster_count)
 ```
 
@@ -334,7 +346,7 @@ The map above represents `r nrow(d_sf)` incidents in West Yorkshire with an offe
 ```{r}
 #| eval: false
 #| echo: false
-table(d$offence) |>
+table(d_with_location$offence) |>
   sort()
 ```
 
@@ -349,7 +361,7 @@ d |>
   group_by(offence) |>
   # Count number of rows in each group
   mutate(n = n()) |>
-  filter(n > nrow(d) / 50)|>
+  filter(n > nrow(d_with_location) / 50)|>
   ggplot() +
   geom_bar(aes(offence)) +
   # Make x labels vertical

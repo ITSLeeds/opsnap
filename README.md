@@ -40,7 +40,7 @@ package:
 ``` r
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
-names(d)
+names(d_with_location)
 # Old names:
 #  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  
 #  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"
@@ -56,9 +56,9 @@ names(d)
 
 | mode           | make    | model | colour | offence                                                  | district | disposal           | date       | location                         |
 |:---------------|:--------|:------|:-------|:---------------------------------------------------------|:---------|:-------------------|:-----------|:---------------------------------|
-| cyclist        | Honda   | JAZZ  | BLUE   | rt88576 drive without reasonable consideration to others | BD       | educational course | 2023-10-01 | A650 SIR FRED HOYLE WAY, BINGLEY |
-| cyclist        | Citroen | DS3   | WHITE  | rt88576 drive without reasonable consideration to others | BD       | educational course | 2023-10-01 | DALTON BANK ROAD, HUDDERSFIELD   |
-| vehicle driver | Audi    | S3    | BLACK  | rt88760 fail to comply with solid white lines            | LD       | educational course | 2023-10-01 | A1 North Wetherby, Leeds         |
+| cyclist        | honda   | jazz  | blue   | rt88576 drive without reasonable consideration to others | bd       | educational course | 2023-10-01 | a650 sir fred hoyle way, bingley |
+| cyclist        | citroen | ds3   | white  | rt88576 drive without reasonable consideration to others | bd       | educational course | 2023-10-01 | dalton bank road, huddersfield   |
+| vehicle driver | audi    | s3    | black  | rt88760 fail to comply with solid white lines            | ld       | educational course | 2023-10-01 | a1 north wetherby, leeds         |
 
 # Preliminary analysis
 
@@ -68,58 +68,57 @@ over time (average n. records per month shown below):
 <img src="man/figures/README-unnamed-chunk-8-1.png"
 style="width:100.0%" />
 
-As shown in the graph above, 100% have values for the ‘offence’ column.
-Many records lack either an offence or a location, leaving only 69.6% or
-12782 complete records.
+As shown in the graph above not all (69.6%) records have values for the
+‘location’ column.
 
-The breakdown of records by mode of transport (of the observer) is shown
-below:
+The breakdown of all records by mode of transport (of the observer) is
+shown below:
 
 | mode              |    n | percent_records |
 |:------------------|-----:|:----------------|
-| vehicle driver    | 9167 | 49.92%          |
-| cyclist           | 6312 | 34.37%          |
-| pedestrian        | 1352 | 7.36%           |
-| vehicle passenger |  579 | 3.15%           |
-| unknown           |  497 | 2.71%           |
-| horse rider       |  407 | 2.22%           |
-| motorcyclist      |   48 | 0.26%           |
-| NA                |    1 | 0.01%           |
+| vehicle driver    | 9167 | 49.9%           |
+| cyclist           | 6312 | 34.4%           |
+| pedestrian        | 1352 | 7.4%            |
+| vehicle passenger |  579 | 3.2%            |
+| unknown           |  497 | 2.7%            |
+| horse rider       |  407 | 2.2%            |
+| motorcyclist      |   48 | 0.3%            |
+| NA                |    1 | 0.0%            |
 
 The offence text strings are quite long, with the most common offences
 shown below:
 
 | offence                                                                                                |    n | percent_records |
 |:-------------------------------------------------------------------------------------------------------|-----:|:----------------|
-| n/a                                                                                                    | 5706 | 31.0734%        |
-| rt88576 drive without reasonable consideration to others                                               | 4992 | 27.1851%        |
-| rt88575 drive without due care and attention                                                           | 2917 | 15.8852%        |
-| rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals | 1364 | 7.4280%         |
-| rt88971 fail to comply with red traffic light                                                          |  679 | 3.6977%         |
-| rt88966 motor vehicle fail to comply with endorsable s36 traffic sign                                  |  411 | 2.2382%         |
-| rv86019 use a handheld phone / device whilst driving a motor vehicle on a road                         |  357 | 1.9441%         |
-| rt88760 fail to comply with solid white lines                                                          |  265 | 1.4431%         |
-| rt88751 contravene give way sign                                                                       |  264 | 1.4377%         |
-| suspected contravene weight restriction.                                                               |  213 | 1.1599%         |
+| n/a                                                                                                    | 5706 | 31.1%           |
+| rt88576 drive without reasonable consideration to others                                               | 4992 | 27.2%           |
+| rt88575 drive without due care and attention                                                           | 2917 | 15.9%           |
+| rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals | 1364 | 7.4%            |
+| rt88971 fail to comply with red traffic light                                                          |  679 | 3.7%            |
+| rt88966 motor vehicle fail to comply with endorsable s36 traffic sign                                  |  411 | 2.2%            |
+| rv86019 use a handheld phone / device whilst driving a motor vehicle on a road                         |  357 | 1.9%            |
+| rt88760 fail to comply with solid white lines                                                          |  265 | 1.4%            |
+| rt88751 contravene give way sign                                                                       |  264 | 1.4%            |
+| suspected contravene weight restriction.                                                               |  213 | 1.2%            |
 
-The equivalent table excluding records with missing offence data is
+The equivalent table excluding records with missing location data is
 shown below:
 
 | offence                                                                                                |    n | percent_records |
 |:-------------------------------------------------------------------------------------------------------|-----:|:----------------|
-| rt88576 drive without reasonable consideration to others                                               | 4992 | 27.1866%        |
-| rt88575 drive without due care and attention                                                           | 2917 | 15.8861%        |
-| rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals | 1364 | 7.4284%         |
-| rt88971 fail to comply with red traffic light                                                          |  679 | 3.6979%         |
-| rt88966 motor vehicle fail to comply with endorsable s36 traffic sign                                  |  411 | 2.2383%         |
-| rv86019 use a handheld phone / device whilst driving a motor vehicle on a road                         |  357 | 1.9442%         |
-| rt88760 fail to comply with solid white lines                                                          |  265 | 1.4432%         |
-| rt88751 contravene give way sign                                                                       |  264 | 1.4378%         |
-| suspected contravene weight restriction.                                                               |  213 | 1.1600%         |
-| rt88751 contravene mandatory direction arrows                                                          |  212 | 1.1546%         |
+| rt88576 drive without reasonable consideration to others                                               | 4992 | 39.1%           |
+| rt88575 drive without due care and attention                                                           | 2917 | 22.8%           |
+| rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals | 1364 | 10.7%           |
+| rt88971 fail to comply with red traffic light                                                          |  679 | 5.3%            |
+| rt88966 motor vehicle fail to comply with endorsable s36 traffic sign                                  |  411 | 3.2%            |
+| rv86019 use a handheld phone / device whilst driving a motor vehicle on a road                         |  357 | 2.8%            |
+| rt88760 fail to comply with solid white lines                                                          |  265 | 2.1%            |
+| rt88751 contravene give way sign                                                                       |  264 | 2.1%            |
+| suspected contravene weight restriction.                                                               |  213 | 1.7%            |
+| rt88751 contravene mandatory direction arrows                                                          |  212 | 1.7%            |
 
-The equivalent for cyclists, with the least common offences categorised
-as ‘other’, is shown below:
+The equivalent for cyclists, with location present and the least common
+offences categorised as ‘other’, is shown below:
 
 | offence                                                                                                |    n | % of total |
 |:-------------------------------------------------------------------------------------------------------|-----:|:-----------|
@@ -135,37 +134,37 @@ In terms ‘disposal’, the most common values are shown below:
 
 | disposal           |    n | percent_records |
 |:-------------------|-----:|:----------------|
-| educational course | 9806 | 53.40%          |
-| nfa                | 5697 | 31.02%          |
-| conditional offer  | 2326 | 12.67%          |
-| court              |  307 | 1.67%           |
-| dsit investigation |  202 | 1.10%           |
-| rpu investigation  |   23 | 0.13%           |
-| fine               |    1 | 0.01%           |
-| NA                 |    1 | 0.01%           |
+| educational course | 9806 | 53.4%           |
+| nfa                | 5697 | 31.0%           |
+| conditional offer  | 2326 | 12.7%           |
+| court              |  307 | 1.7%            |
+| dsit investigation |  202 | 1.1%            |
+| rpu investigation  |   23 | 0.1%            |
+| fine               |    1 | 0.0%            |
+| NA                 |    1 | 0.0%            |
 
-There are 8800 unique location text strings (addresses) in the data,
+There are 8073 unique location text strings (addresses) in the data,
 with the most common locations shown below:
 
 | location                                       |   n | percent_records |
 |:-----------------------------------------------|----:|:----------------|
-| Meanwood Road, Leeds                           |  49 | 0.3834%         |
-| Dewsbury Road, Ossett                          |  48 | 0.3755%         |
-| Westgate J/W Park Square West, Leeds           |  38 | 0.2973%         |
-| Chapeltown Road, Leeds                         |  35 | 0.2738%         |
-| Park Square West, Leeds                        |  33 | 0.2582%         |
-| WESTGATE junction with PARK SQUARE WEST, LEEDS |  33 | 0.2582%         |
-| Hollingwood Lane, Bradford                     |  27 | 0.2112%         |
-| Highgate Road, Bradford                        |  26 | 0.2034%         |
-| Cemetery Road, Bradford                        |  25 | 0.1956%         |
-| Tongue Lane, Leeds                             |  25 | 0.1956%         |
+| meanwood road, leeds                           |  73 | 0.6%            |
+| dewsbury road, ossett                          |  56 | 0.4%            |
+| park square west, leeds                        |  54 | 0.4%            |
+| chapeltown road, leeds                         |  43 | 0.3%            |
+| tongue lane, leeds                             |  38 | 0.3%            |
+| westgate j/w park square west, leeds           |  38 | 0.3%            |
+| hollingwood lane, bradford                     |  34 | 0.3%            |
+| westgate junction with park square west, leeds |  33 | 0.3%            |
+| clayton road, bradford                         |  32 | 0.3%            |
+| highgate road, bradford                        |  32 | 0.3%            |
 
 # Geocoding
 
 We provide a function to geocode the records:
 
 ``` r
-d_sample = d[1:5, ]
+d_sample = d_with_location[1:5, ]
 d_sf = opsnap:::op_geocode(d_sample)
 mapview::mapview(d_sf)
 ```
@@ -180,7 +179,7 @@ records to within around 500m of each crash (although we can link to
 specific roads). We’ll present the geographic distribution of crashes
 using a 500m grid:
 
-<img src="man/figures/README-unnamed-chunk-17-1.png"
+<img src="man/figures/README-unnamed-chunk-19-1.png"
 style="width:100.0%" />
 
 The map above represents 8607 incidents in West Yorkshire with an
