@@ -194,7 +194,8 @@ tibble::tibble(file_names) |>
   knitr::kable()
 
 # In preparation for reading-in all data:
-date_str = format(Sys.Date(), "%Y-%m")
+# date_str = format(Sys.Date(), "%Y-%m")
+date_str = format(as.Date("2024-04-01"), "%Y-%m")
 file_name = paste0("data/west-yorkshire/operation_snap_", date_str, ".csv")
 ```
 
