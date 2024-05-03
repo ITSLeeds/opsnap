@@ -101,7 +101,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">u</span> <span class="op">=</span> <span class="st">"https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"</span></span>
 <span><span class="va">d</span> <span class="op">=</span> <span class="fu">opsnap</span><span class="fu">:::</span><span class="fu"><a href="reference/download_and_read.html">download_and_read</a></span><span class="op">(</span><span class="va">u</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">d_with_location</span><span class="op">)</span></span>
 <span><span class="co"># Old names:</span></span>
 <span><span class="co">#  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  </span></span>
 <span><span class="co">#  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"</span></span>
@@ -138,36 +138,36 @@
 <tbody>
 <tr class="odd">
 <td align="left">cyclist</td>
-<td align="left">Honda</td>
-<td align="left">JAZZ</td>
-<td align="left">BLUE</td>
+<td align="left">honda</td>
+<td align="left">jazz</td>
+<td align="left">blue</td>
 <td align="left">rt88576 drive without reasonable consideration to others</td>
-<td align="left">BD</td>
+<td align="left">bd</td>
 <td align="left">educational course</td>
 <td align="left">2023-10-01</td>
-<td align="left">A650 SIR FRED HOYLE WAY, BINGLEY</td>
+<td align="left">a650 sir fred hoyle way, bingley</td>
 </tr>
 <tr class="even">
 <td align="left">cyclist</td>
-<td align="left">Citroen</td>
-<td align="left">DS3</td>
-<td align="left">WHITE</td>
+<td align="left">citroen</td>
+<td align="left">ds3</td>
+<td align="left">white</td>
 <td align="left">rt88576 drive without reasonable consideration to others</td>
-<td align="left">BD</td>
+<td align="left">bd</td>
 <td align="left">educational course</td>
 <td align="left">2023-10-01</td>
-<td align="left">DALTON BANK ROAD, HUDDERSFIELD</td>
+<td align="left">dalton bank road, huddersfield</td>
 </tr>
 <tr class="odd">
 <td align="left">vehicle driver</td>
-<td align="left">Audi</td>
-<td align="left">S3</td>
-<td align="left">BLACK</td>
+<td align="left">audi</td>
+<td align="left">s3</td>
+<td align="left">black</td>
 <td align="left">rt88760 fail to comply with solid white lines</td>
-<td align="left">LD</td>
+<td align="left">ld</td>
 <td align="left">educational course</td>
 <td align="left">2023-10-01</td>
-<td align="left">A1 North Wetherby, Leeds</td>
+<td align="left">a1 north wetherby, leeds</td>
 </tr>
 </tbody>
 </table>
@@ -177,8 +177,8 @@
 </h1>
 <p>There are 18363 records in the data, with increasing numbers of records over time (average n. records per month shown below):</p>
 <p><img src="reference/figures/README-unnamed-chunk-8-1.png" style="width:100.0%"></p>
-<p>As shown in the graph above, 100% have values for the ‘offence’ column. Many records lack either an offence or a location, leaving only 69.6% or 12782 complete records.</p>
-<p>The breakdown of records by mode of transport (of the observer) is shown below:</p>
+<p>As shown in the graph above not all (69.6%) records have values for the ‘location’ column.</p>
+<p>The breakdown of all records by mode of transport (of the observer) is shown below:</p>
 <table class="table">
 <thead><tr class="header">
 <th align="left">mode</th>
@@ -189,42 +189,42 @@
 <tr class="odd">
 <td align="left">vehicle driver</td>
 <td align="right">9167</td>
-<td align="left">49.92%</td>
+<td align="left">49.9%</td>
 </tr>
 <tr class="even">
 <td align="left">cyclist</td>
 <td align="right">6312</td>
-<td align="left">34.37%</td>
+<td align="left">34.4%</td>
 </tr>
 <tr class="odd">
 <td align="left">pedestrian</td>
 <td align="right">1352</td>
-<td align="left">7.36%</td>
+<td align="left">7.4%</td>
 </tr>
 <tr class="even">
 <td align="left">vehicle passenger</td>
 <td align="right">579</td>
-<td align="left">3.15%</td>
+<td align="left">3.2%</td>
 </tr>
 <tr class="odd">
 <td align="left">unknown</td>
 <td align="right">497</td>
-<td align="left">2.71%</td>
+<td align="left">2.7%</td>
 </tr>
 <tr class="even">
 <td align="left">horse rider</td>
 <td align="right">407</td>
-<td align="left">2.22%</td>
+<td align="left">2.2%</td>
 </tr>
 <tr class="odd">
 <td align="left">motorcyclist</td>
 <td align="right">48</td>
-<td align="left">0.26%</td>
+<td align="left">0.3%</td>
 </tr>
 <tr class="even">
 <td align="left">NA</td>
 <td align="right">1</td>
-<td align="left">0.01%</td>
+<td align="left">0.0%</td>
 </tr>
 </tbody>
 </table>
@@ -244,56 +244,56 @@
 <tr class="odd">
 <td align="left">n/a</td>
 <td align="right">5706</td>
-<td align="left">31.0734%</td>
+<td align="left">31.1%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88576 drive without reasonable consideration to others</td>
 <td align="right">4992</td>
-<td align="left">27.1851%</td>
+<td align="left">27.2%</td>
 </tr>
 <tr class="odd">
 <td align="left">rt88575 drive without due care and attention</td>
 <td align="right">2917</td>
-<td align="left">15.8852%</td>
+<td align="left">15.9%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals</td>
 <td align="right">1364</td>
-<td align="left">7.4280%</td>
+<td align="left">7.4%</td>
 </tr>
 <tr class="odd">
 <td align="left">rt88971 fail to comply with red traffic light</td>
 <td align="right">679</td>
-<td align="left">3.6977%</td>
+<td align="left">3.7%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88966 motor vehicle fail to comply with endorsable s36 traffic sign</td>
 <td align="right">411</td>
-<td align="left">2.2382%</td>
+<td align="left">2.2%</td>
 </tr>
 <tr class="odd">
 <td align="left">rv86019 use a handheld phone / device whilst driving a motor vehicle on a road</td>
 <td align="right">357</td>
-<td align="left">1.9441%</td>
+<td align="left">1.9%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88760 fail to comply with solid white lines</td>
 <td align="right">265</td>
-<td align="left">1.4431%</td>
+<td align="left">1.4%</td>
 </tr>
 <tr class="odd">
 <td align="left">rt88751 contravene give way sign</td>
 <td align="right">264</td>
-<td align="left">1.4377%</td>
+<td align="left">1.4%</td>
 </tr>
 <tr class="even">
 <td align="left">suspected contravene weight restriction.</td>
 <td align="right">213</td>
-<td align="left">1.1599%</td>
+<td align="left">1.2%</td>
 </tr>
 </tbody>
 </table>
-<p>The equivalent table excluding records with missing offence data is shown below:</p>
+<p>The equivalent table excluding records with missing location data is shown below:</p>
 <table class="table">
 <colgroup>
 <col width="81%">
@@ -309,56 +309,56 @@
 <tr class="odd">
 <td align="left">rt88576 drive without reasonable consideration to others</td>
 <td align="right">4992</td>
-<td align="left">27.1866%</td>
+<td align="left">39.1%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88575 drive without due care and attention</td>
 <td align="right">2917</td>
-<td align="left">15.8861%</td>
+<td align="left">22.8%</td>
 </tr>
 <tr class="odd">
 <td align="left">rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals</td>
 <td align="right">1364</td>
-<td align="left">7.4284%</td>
+<td align="left">10.7%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88971 fail to comply with red traffic light</td>
 <td align="right">679</td>
-<td align="left">3.6979%</td>
+<td align="left">5.3%</td>
 </tr>
 <tr class="odd">
 <td align="left">rt88966 motor vehicle fail to comply with endorsable s36 traffic sign</td>
 <td align="right">411</td>
-<td align="left">2.2383%</td>
+<td align="left">3.2%</td>
 </tr>
 <tr class="even">
 <td align="left">rv86019 use a handheld phone / device whilst driving a motor vehicle on a road</td>
 <td align="right">357</td>
-<td align="left">1.9442%</td>
+<td align="left">2.8%</td>
 </tr>
 <tr class="odd">
 <td align="left">rt88760 fail to comply with solid white lines</td>
 <td align="right">265</td>
-<td align="left">1.4432%</td>
+<td align="left">2.1%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88751 contravene give way sign</td>
 <td align="right">264</td>
-<td align="left">1.4378%</td>
+<td align="left">2.1%</td>
 </tr>
 <tr class="odd">
 <td align="left">suspected contravene weight restriction.</td>
 <td align="right">213</td>
-<td align="left">1.1600%</td>
+<td align="left">1.7%</td>
 </tr>
 <tr class="even">
 <td align="left">rt88751 contravene mandatory direction arrows</td>
 <td align="right">212</td>
-<td align="left">1.1546%</td>
+<td align="left">1.7%</td>
 </tr>
 </tbody>
 </table>
-<p>The equivalent for cyclists, with the least common offences categorised as ‘other’, is shown below:</p>
+<p>The equivalent for cyclists, with location present and the least common offences categorised as ‘other’, is shown below:</p>
 <table style="width:100%;" class="table">
 <colgroup>
 <col width="85%">
@@ -419,46 +419,46 @@
 <tr class="odd">
 <td align="left">educational course</td>
 <td align="right">9806</td>
-<td align="left">53.40%</td>
+<td align="left">53.4%</td>
 </tr>
 <tr class="even">
 <td align="left">nfa</td>
 <td align="right">5697</td>
-<td align="left">31.02%</td>
+<td align="left">31.0%</td>
 </tr>
 <tr class="odd">
 <td align="left">conditional offer</td>
 <td align="right">2326</td>
-<td align="left">12.67%</td>
+<td align="left">12.7%</td>
 </tr>
 <tr class="even">
 <td align="left">court</td>
 <td align="right">307</td>
-<td align="left">1.67%</td>
+<td align="left">1.7%</td>
 </tr>
 <tr class="odd">
 <td align="left">dsit investigation</td>
 <td align="right">202</td>
-<td align="left">1.10%</td>
+<td align="left">1.1%</td>
 </tr>
 <tr class="even">
 <td align="left">rpu investigation</td>
 <td align="right">23</td>
-<td align="left">0.13%</td>
+<td align="left">0.1%</td>
 </tr>
 <tr class="odd">
 <td align="left">fine</td>
 <td align="right">1</td>
-<td align="left">0.01%</td>
+<td align="left">0.0%</td>
 </tr>
 <tr class="even">
 <td align="left">NA</td>
 <td align="right">1</td>
-<td align="left">0.01%</td>
+<td align="left">0.0%</td>
 </tr>
 </tbody>
 </table>
-<p>There are 8800 unique location text strings (addresses) in the data, with the most common locations shown below:</p>
+<p>There are 8073 unique location text strings (addresses) in the data, with the most common locations shown below:</p>
 <table class="table">
 <colgroup>
 <col width="68%">
@@ -472,54 +472,54 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Meanwood Road, Leeds</td>
-<td align="right">49</td>
-<td align="left">0.3834%</td>
+<td align="left">meanwood road, leeds</td>
+<td align="right">73</td>
+<td align="left">0.6%</td>
 </tr>
 <tr class="even">
-<td align="left">Dewsbury Road, Ossett</td>
-<td align="right">48</td>
-<td align="left">0.3755%</td>
+<td align="left">dewsbury road, ossett</td>
+<td align="right">56</td>
+<td align="left">0.4%</td>
 </tr>
 <tr class="odd">
-<td align="left">Westgate J/W Park Square West, Leeds</td>
+<td align="left">park square west, leeds</td>
+<td align="right">54</td>
+<td align="left">0.4%</td>
+</tr>
+<tr class="even">
+<td align="left">chapeltown road, leeds</td>
+<td align="right">43</td>
+<td align="left">0.3%</td>
+</tr>
+<tr class="odd">
+<td align="left">tongue lane, leeds</td>
 <td align="right">38</td>
-<td align="left">0.2973%</td>
+<td align="left">0.3%</td>
 </tr>
 <tr class="even">
-<td align="left">Chapeltown Road, Leeds</td>
-<td align="right">35</td>
-<td align="left">0.2738%</td>
+<td align="left">westgate j/w park square west, leeds</td>
+<td align="right">38</td>
+<td align="left">0.3%</td>
 </tr>
 <tr class="odd">
-<td align="left">Park Square West, Leeds</td>
+<td align="left">hollingwood lane, bradford</td>
+<td align="right">34</td>
+<td align="left">0.3%</td>
+</tr>
+<tr class="even">
+<td align="left">westgate junction with park square west, leeds</td>
 <td align="right">33</td>
-<td align="left">0.2582%</td>
-</tr>
-<tr class="even">
-<td align="left">WESTGATE junction with PARK SQUARE WEST, LEEDS</td>
-<td align="right">33</td>
-<td align="left">0.2582%</td>
+<td align="left">0.3%</td>
 </tr>
 <tr class="odd">
-<td align="left">Hollingwood Lane, Bradford</td>
-<td align="right">27</td>
-<td align="left">0.2112%</td>
+<td align="left">clayton road, bradford</td>
+<td align="right">32</td>
+<td align="left">0.3%</td>
 </tr>
 <tr class="even">
-<td align="left">Highgate Road, Bradford</td>
-<td align="right">26</td>
-<td align="left">0.2034%</td>
-</tr>
-<tr class="odd">
-<td align="left">Cemetery Road, Bradford</td>
-<td align="right">25</td>
-<td align="left">0.1956%</td>
-</tr>
-<tr class="even">
-<td align="left">Tongue Lane, Leeds</td>
-<td align="right">25</td>
-<td align="left">0.1956%</td>
+<td align="left">highgate road, bradford</td>
+<td align="right">32</td>
+<td align="left">0.3%</td>
 </tr>
 </tbody>
 </table>
@@ -529,7 +529,7 @@
 </h1>
 <p>We provide a function to geocode the records:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">d_sample</span> <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="va">d_sample</span> <span class="op">=</span> <span class="va">d_with_location</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span>
 <span><span class="va">d_sf</span> <span class="op">=</span> <span class="fu">opsnap</span><span class="fu">:::</span><span class="fu">op_geocode</span><span class="op">(</span><span class="va">d_sample</span><span class="op">)</span></span>
 <span><span class="fu">mapview</span><span class="fu">::</span><span class="fu">mapview</span><span class="op">(</span><span class="va">d_sf</span><span class="op">)</span></span></code></pre></div>
 <p>After geocoding all records we kept only those within the boundary of West Yorkshire, which removed another 3% of records.</p>
@@ -538,7 +538,7 @@
 <h1 id="location-of-incidents">Location of incidents<a class="anchor" aria-label="anchor" href="#location-of-incidents"></a>
 </h1>
 <p>Due to inaccuracy in the geocoding, we only know the locations of the records to within around 500m of each crash (although we can link to specific roads). We’ll present the geographic distribution of crashes using a 500m grid:</p>
-<p><img src="reference/figures/README-unnamed-chunk-17-1.png" style="width:100.0%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-19-1.png" style="width:100.0%"></p>
 <p>The map above represents 8607 incidents in West Yorkshire with an offence that could be geocoded.</p>
 <!-- The results show there is one outlier with a very high number of crashes. We can remove this and plot the data again: -->
 <!-- You can query the data downloaded with `opsnap` functions, e.g. as follows (results not shown): -->
