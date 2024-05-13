@@ -84,49 +84,33 @@ A research agenda using OpSnap data is outlined: comparative analysis of submiss
 # Introduction
 
 Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
-Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities @dft-xxxx. Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (ref).
-
-The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
+Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@dft-xxxx].
+Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (Department for Transport, 2023a).
+Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records (Department for Transport, 2023b).
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
-The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport]. 
- 
+The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” (Department for Transport, 2023b).
 
-Furthermore, it is noted that cyclist crashes are underreported in police recorded datasets (refs) and the extent of injuries sustained by cyclists may be significantly higher when also considering hospital reported cases (references).
-Furthermore, under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions (reference).
-These incidents are often referred to as “near-misses” (reference). 
- 
+```{=html}
+<!-- The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
+Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
+The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
+```
 
-In the UK it has been estimated that commuter cyclists experience approximately one near miss for every 6 miles of riding (reference).
-Previous research has also demonstrated that the concern regarding near misses is a barrier reported for people choosing not to cycle (...), with near misses associated with various driver behaviours including inattentive driving, aggressive driving, drivers driving too fast, drivers passing too close, being car doored, and being cut off by turning drivers (Refs).
-In their recent literature review of near miss cycling crashes, Ibrahim et al (ref) highlight the need for data on near misses to be recorded, as they provide rich information with which to study cyclist crash risk and identify factors associated with risk. 
- 
+Cyclist crashes are underreported in police recorded datasets (Elvik & Mysen, 1999) and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted (Janstrup et al., 2016). Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions (Ibrahim et al., 2021). These incidents are often referred to as “near-misses” (Ibrahim et al., 2021).
 
-Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016] .
-A ‘close pass’ refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph) (XX REF). 
-Close passes take different forms including the ‘punishment pass’ by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024].
-There is no specific law in the UK Road Traffic Act 1988 for driving to close to cyclist, however there are two laws for careless driving which are commonly applied: RT88575- Drive without due care and attention; and RT99576 – Driver without reasonable consideration to others (ref). 
+Commuter cyclists in the UK experience a near miss for every six miles of riding (Aldred & Crosweller, 2015), and concern over near misses are a key reason people choose not to cycle (Sanders, 2015), being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers (Sanders, 2015). In their review of near miss cycling crashes, Ibrahim et al., (2021) highlighted the need for better data on near misses to inform safety research.  
 
- 
+Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016]. A ‘close pass’ refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph).  Close passes take different forms including the ‘punishment pass’ by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024]. There is no specific law in the UK Road Traffic Act 1988 for driving too close to cyclist, but two are commonly applied for careless driving: RT88575- Drive without due care and attention; and RT99576 – Driver without reasonable consideration to others - and these are prominent in the analysis that follows. 
 
--   A paragraph or two about justice/ road crime?? 
 
-This study highlights the potential of using open access data from Operation Snap, the UK police’s national system to receive road users’ video evidence of road traffic offences.
-Operation Snap, often referred to informally as ‘Op Snap’, was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 2018 (Road Safety GB 2018).
-It is now in operation nationally across England and Wales, each police force offering its own submission portal (XX NEED TO CHECK IF ALL HAVE IT)  for road users to submit video evidence.
-The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:   
+This study highlights the potential of using open access data from Operation Snap, the UK police’s national system to receive road users’ video evidence of road traffic offences. Operation Snap, often referred to informally as ‘OpSnap’, was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 20181. It is now in operation nationally across England and Wales, each police force offering its own submission portal for road users to submit video evidence. The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:   
 
--   The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues. 
+- The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues. 
+- The car registration number of the offending vehicle must be clearly visible. 
+- The public should be prepared to sign a witness statement and possibly give evidence in court. 
+- Statements for OpSnap can only be accepted from persons aged 18 or over. If you are under 18 the incident should be reported by email to [email]2. 
 
--   The car registration number of the offending vehicle must be clearly visible. 
-
--   The public should be prepared to sign a witness statement and possibly give evidence in court. 
-
--   Statements for OpSnap can only be accepted from persons aged 18 or over.
-    If you are under 18 the incident should be reported by email to \[email\] [@davidson2022]. 
-
-This is, to our knowledge, the first peer-reviewed study to use this dataset.
-As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents.
-Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
+This is, to our knowledge, the first research study to use this dataset. As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents. Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
 
 # Methods and data {#sec-methods}
 
