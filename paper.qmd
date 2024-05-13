@@ -1,32 +1,15 @@
 ---
 title: "Cyclist video evidence of road traffic offences: Preliminary analysis of Operation Snap data and suggestions for a research agenda"
-format: pdf
-number-sections: true
 bibliography: references.bib
 editor:
   markdown: 
     wrap: sentence
-# knitr:
-#   opts_chunk:
-#     fig.path: images/
-# # # Uncomment for formatted version
-  # elsevier-pdf:
-  #   linestretch: 2
-  #   keep-tex: true
-  #   journal:
-  #     name: European Transport Research Review
-  #     formatting: preprint
-  #     model: 3p
-  #     cite-style: super
-# # # #   # pdf: default
-
-# # Uncomment the following line to produce the cover page
 author:
   - name: Graham Farrell
     affiliations:
       - name: University of Leeds
-        address: TBC
-        orcid: TBC
+        address: School of Law, University of Leeds, Leeds, UK
+        orcid: 0000-0002-3987-8457
   - name: Robin Lovelace
     email: r.lovelace@leeds.ac.uk
     corresponding: true
@@ -47,6 +30,14 @@ keywords:
   - Transport Planning
   - Near Misses
 date: last-modified
+format:
+  # pdf: default
+  arxiv-pdf:
+    keep-tex: true
+linenumbers: true # Add (continuous) line numbers?
+doublespacing: true # Double space the PDF output?
+runninghead: "Preprint" # The text on the top of each page of the output
+authorcols: false # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
 ---
 
 ```{r, include = FALSE}
