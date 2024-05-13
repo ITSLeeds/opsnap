@@ -44,10 +44,10 @@ author:
 keywords: 
   - Cycling
   - Hotspots 
-  - Road Safety
-  - Active Travel
-  - Transport Planning
-  - Near Misses
+  - Road safety
+  - Video evidence
+  - Dashcam
+  - Near misses
 date: last-modified
 format:
   # pdf: default
@@ -56,7 +56,7 @@ format:
 linenumbers: true # Add (continuous) line numbers?
 doublespacing: false # Double space the PDF output?
 runninghead: "Preprint" # The text on the top of each page of the output
-authorcols: false # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
+authorcols: true # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
 ---
 
 ```{r, include = FALSE}
@@ -74,22 +74,17 @@ library(opsnap)
 
 # Abstract {.unnumbered}
 
-This study uses data from Operation Snap (Op Snap), the UK police’s national system to receive road users’ video evidence of road traffic offences.
-Data from one police force area for three calendar years, from its launch in 2021 (N= 18,363 records) is analysed.
-34.4% were submitted by cyclists (n=6,312).
-69% of records resulted in an offence being registered and of those and 63% were for driving ‘without reasonable consideration to others’ or ‘without due care and attention’.
-Three quarters (75.2%) resulted in the recommended disposal of an educational course (including conditional offers), a quarter in no further action, and fewer than 1% for court appearance.
-A preliminary research agenda using Op Snap data is outlined.
-In the first instance, comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional and local levels, replicating the findings of this study.
-Studies of disposal-related decision-making and the role of factors such as video quality and supporting evidence might identify good practice.
-Research into video content, offence concentration, recidivism, repeat submitters of evidence, and case progression including court cases, hold significant potential to inform policy and practice locally, nationally and internationally. 
+This study uses data from Operation Snap (OpSnap), the UK police’s national system to receive road users’ video evidence of road traffic offences.
+Data from one police force area for three calendar years, from its launch in 2021 (N= 18,363 records), is analysed.
+Of submitted cases, 34.4% were from cyclists (n=6,312) of which 69% resulted in an offence being registered, mostly for driving ‘without reasonable consideration to others’ or ‘without due care and attention’.
+Three quarters (75.2%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), a quarter in no further action, and fewer than 1% for court appearance.
+A research agenda using OpSnap data is outlined: comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional, and local levels; research into disposal-related decision-making, video quality, and the role of supporting evidence should identify good practice; further study of video content, offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases, holds significant potential to inform policy and practice locally, nationally and internationally. 
  
 
 # Introduction
 
 Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
-Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities (ref).
-Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (ref).
+Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities @dft-xxxx. Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (ref).
 
 The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
@@ -166,7 +161,6 @@ Each record contained an ‘Offence Location’ field.
 This was typically a street name and town or city name, or an intersection.
 Example offence locations included: ‘A58 Godley Road, Halifax’, ‘Keighley Road, Silsden’ , ‘Woodhouse Lane A660, Leeds’.
 Approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire. 
-
 
 ```{r}
 #| include: false
