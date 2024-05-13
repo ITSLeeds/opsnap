@@ -6,22 +6,41 @@ editor:
     wrap: sentence
 author:
   - name: Graham Farrell
-    affiliations:
-      - name: University of Leeds
-        address: School of Law, University of Leeds, Leeds, UK
-        orcid: 0000-0002-3987-8457
-  - name: Robin Lovelace
-    email: r.lovelace@leeds.ac.uk
     corresponding: true
     affiliations:
       - name: University of Leeds
-        address: Institute for Transport Studies, Leeds, LS2 9JT, United Kingdom
-        orcid: 0000-0001-5679-6536
+        department: School of Law
+        address: The Liberty Building
+        city: Leeds
+        country: United Kingdom
+        postal-code: LS2 9JT
+    orcid: 0000-0002-3987-8457
+  - name: Robin Lovelace
+    affiliations:
+      - name: University of Leeds
+        department: Institute for Transport Studies
+        address: University Road
+        city: Leeds
+        country: United Kingdom
+        postal-code: LS2 9JT
+      - name: Active Travel England
+        # department: Data and Digital
+        # address: West Offices Station Rise
+        # city: York
+        # country: United Kingdom
+        # postal-code: YO1 6GA
+    orcid: 0000-0001-5679-6536
   - name: Steve O'Hern
     affiliations:
       - name: University of Leeds
-        address: Institute for Transport Studies, Leeds, LS2 9JT, United Kingdom
-        orcid: tbc
+        department: Institute for Transport Studies
+        address: University Road
+        city: Leeds
+        country: United Kingdom
+        postal-code: LS2 9JT
+      - name: Monash University Accident Research Centre
+        address: Clayton, VIC 3800, Australia
+    orcid: 0000-0002-7961-3875
 keywords: 
   - Cycling
   - Hotspots 
@@ -35,7 +54,7 @@ format:
   arxiv-pdf:
     keep-tex: true
 linenumbers: true # Add (continuous) line numbers?
-doublespacing: true # Double space the PDF output?
+doublespacing: false # Double space the PDF output?
 runninghead: "Preprint" # The text on the top of each page of the output
 authorcols: false # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
 ---
