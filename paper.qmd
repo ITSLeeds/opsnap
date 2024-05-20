@@ -98,6 +98,8 @@ The 2023 report noted that "the most common contributory factor allocated to ped
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
 The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
 ```
+new sentence here.
+
 Cyclist crashes are underreported in police recorded datasets (Elvik & Mysen, 1999) and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted (Janstrup et al., 2016).
 Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions (Ibrahim et al., 2021).
 These incidents are often referred to as "near-misses" (Ibrahim et al., 2021).
