@@ -225,8 +225,6 @@ d_all |>
 # Results
 
 ```{r}
-#| label: fig-time
-#| fig-cap: "Monthly count of Operation Snap records, West Yorkshire"
 d_all_monthly = d_all |>
   mutate(month = lubridate::floor_date(date, "month")) |>
   group_by(month) |>
@@ -247,6 +245,29 @@ d_complete_monthly = d |>
   summarise(n = n()) |>
   mutate(records = "complete")
 d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
+```
+
+```{r}
+#| label: stats19
+#| include: false
+years = 2021:2022
+dir.create("data/stats19", recursive = TRUE, showWarnings = FALSE)
+collisions = stats19::get_stats19(year = 2022)
+# collisions_2021 = stats19::get_stats19(year = 2021)
+# collisions = purrr::map_df(years, stats19::get_stats19, type = "collision", data_dir = "data/stats19")
+stats19_monthly = collisions |>
+  filter(police_force == "West Yorkshire") |>
+  mutate(month = lubridate::floor_date(date, "month")) |>
+  group_by(month) |>
+  summarise(n = n()) |>
+  mutate(records = "stats19")
+```
+
+
+```{r}
+#| label: fig-time
+#| fig-cap: "Monthly count of Operation Snap records, West Yorkshire"
+d_monthly = bind_rows(d_monthly, stats19_monthly)
 d_monthly |>
   mutate(records = snakecase::to_title_case(records)) |> 
   rename_all(snakecase::to_title_case) |> 
