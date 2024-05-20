@@ -231,6 +231,15 @@ names(d)
 ```{r}
 #| echo: false
 #| include: false
+file_exists = file.exists(file_name)
+if (!file_exists) {
+  # stop("try downloading the data first!")
+  u = "https://github.com/ITSLeeds/opsnap/releases/download/v1/operation_snap_2024-04.csv"
+  f = basename(u)
+  download.file(url = u, destfile = f)
+  dir.create("data/west-yorkshire", recursive = TRUE)
+  file.copy(f, "data/west-yorkshire/")
+}
 d_all = read_csv(file_name)
 d_all = d_all |>
   mutate(
