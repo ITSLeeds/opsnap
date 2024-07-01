@@ -1,6 +1,6 @@
 ---
 title: "Road User video evidence of road traffic offences: Preliminary analysis of Operation Snap data and suggestions for a research agenda"
-bibliography: references.bib
+bibliography: [references.bib, opsnap.bib]
 editor:
   markdown: 
     wrap: sentence
@@ -93,11 +93,11 @@ A research agenda using OpSnap data is outlined: comparative analysis of submiss
 # Introduction
 
 Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
-Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@dft-xxxx].
-Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics (Department for Transport, 2023a).
-Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records (Department for Transport, 2023b).
+Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@departmentfortransport_reported_2023].
+Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics [@departmentfortransport_reported_2023].
+Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records [@departmentfortransport].
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
-The 2023 report noted that "the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was 'driver or rider failed to look properly'" (Department for Transport, 2023b).
+The 2023 report noted that "the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was 'driver or rider failed to look properly'" [@departmentfortransport].
 
 ```{=html}
 <!-- The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
@@ -222,7 +222,7 @@ The data is open acess and looks like this, with names cleaned up by the package
 #| include: false
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
-names(d)
+names(d_with_location)
 # Old names:
 #  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  
 #  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"
@@ -322,9 +322,9 @@ d_monthly |>
   theme_minimal()
 ```
 
-There were `r nrow(d_all)` ecords in the dataset for the three-year study period, shown by month in @fig-time.
+There were `r nrow(d_all)` records in the dataset for the three-year study period, shown by month in @fig-time.
 The number of records increased over time.
-Some records lacked either an offence or a location, leaving `r round(nrow(d) / nrow(d_all) * 100, 1)`% or `r nrow(d)` complete records.
+Some records lacked either an offence or a location, leaving `r round(nrow(d_with_location) / nrow(d_all) * 100, 1)`% or `r nrow(d_with_location)` complete records.
 There was a distinct seasonal pattern to reporting, with significant increases in summer months.
 
 Mode of transport of the complainant is shown in @tbl-mode.
@@ -446,7 +446,7 @@ d_all |>
   knitr::kable()
 ```
 
-There are `r unique(d$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
+There are `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
 
 INSERT Table 5 AND/OR Map (TO BE INCLUDED)
 
@@ -454,9 +454,9 @@ INSERT Table 5 AND/OR Map (TO BE INCLUDED)
 #| echo: false
 #| label: tbl-locations
 #| tbl-cap: "Most common locations recorded in the OpSnap dataset"
-d |>
+d_with_location |>
   count(location, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d)) |>
+  mutate(percent_records = n / nrow(d_with_location)) |>
   mutate(percent_records = scales::percent(round(percent_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
@@ -470,7 +470,7 @@ Drawing on the work and findings described above, this discussion outlines a res
 The breadth and depth of potential policy-relevant work that could be undertaken is, we suggest, enormous.
 While this preliminary list will not prove exhaustive, if it stimulates or informs further research then it will have achieved its objective.
 
-Cyclists undertake two percent of road miles in the UK (Department for Transport, 2023b).
+Cyclists undertake two percent of road miles in the UK [@departmentfortransport].
 Other things equal, this suggests that with respect to distance travelled, cyclists were around 20 times more likely to submit evidence of a road traffic offence than vehicle drivers and other road users in West Yorkshire.
 
 Over 90 percent of offences reported by cyclists were for driving without consideration for other road users and without due care and attention.
