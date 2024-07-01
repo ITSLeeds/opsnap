@@ -76,7 +76,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
 <p>Figure 1: Monthly count of Operation Snap records, West Yorkshire</p>
 </div>
 <p>There were 18363 records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in <a href="#fig-time" class="quarto-xref">Figure 1</a>. Some records lacked either an offence (5707, 31.1%) or a location (3825, 20.8%), or both, leaving 48.1% or 8831 complete records. There was a distinct seasonal pattern to reporting, with significant increases in summer months.</p>
-<p>Mode of transport of the complainant is shown in <a href="#tbl-mode" class="quarto-xref">Table 1</a>. Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.</p>
+<p>Of the 12656 records with an offence, the most common offences were Driving without reasonable consideration to others (rt88576) and Driving without due care and attention (rt88575). This is presented in <strong>?@tbl-offences</strong>, which shows the number and percentage of records by offence type, showing the top 6 offence types and the remainder grouped as ‘Other’. As previously noted, a high proportion of cases did not include information on the reported offence, with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575). Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.</p>
 <table class="table"><colgroup><col width="33%"><col width="33%"><col width="33%"></colgroup><thead><tr class="header"><th align="left">Offence</th>
 <th align="right">Number of records</th>
 <th align="right">Percent of records</th>
@@ -102,11 +102,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
 <td align="right">1936</td>
 <td align="right">15.3</td>
 </tr></tbody></table><p>Number of convictions by offence type (top 6 and other).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co">#&gt;           cyclist       horse rider      motorcyclist        pedestrian </span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#&gt;              6312               407                48              1352 </span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt;           unknown    vehicle driver vehicle passenger </span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt;               497              9167               579</span></span></code></pre></div>
+<p>Vehicle (mostly car and van drivers with dashcams) driver and cyclist reporters dominate reporting for all records, as illustrated in <a href="#tbl-mode" class="quarto-xref">Table 1</a>. Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.</p>
 <div id="tbl-mode">
 <p>Table 1: Number of OpSnap records by observer mode.</p>
 <div class="cell-output-display">
@@ -137,45 +133,6 @@ The 2023 report noted that “the most common contributory factor allocated to p
 </tr><tr class="even"><td align="left">NA</td>
 <td align="right">1</td>
 <td align="right">0.0</td>
-</tr></tbody></table></div>
-</div>
-<p>Classification of the committed offence is shown in <a href="#tbl-offences" class="quarto-xref">Table 2</a>. s previously noted, a high proportion of cases did not include information on the reported office (31.1%), with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575). Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.</p>
-<div id="tbl-offences">
-<p>Table 2: Number and percentages of OpSnap records by offence type.</p>
-<div class="cell-output-display">
-<table class="table"><colgroup><col width="33%"><col width="33%"><col width="33%"></colgroup><thead><tr class="header"><th align="left">Offence</th>
-<th align="right">N</th>
-<th align="left">Percent of Records</th>
-</tr></thead><tbody><tr class="odd"><td align="left">n/a</td>
-<td align="right">5706</td>
-<td align="left">31.1%</td>
-</tr><tr class="even"><td align="left">rt88576 drive without reasonable consideration to others</td>
-<td align="right">4992</td>
-<td align="left">27.2%</td>
-</tr><tr class="odd"><td align="left">rt88575 drive without due care and attention</td>
-<td align="right">2917</td>
-<td align="left">15.9%</td>
-</tr><tr class="even"><td align="left">rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals</td>
-<td align="right">1364</td>
-<td align="left">7.4%</td>
-</tr><tr class="odd"><td align="left">rt88971 fail to comply with red traffic light</td>
-<td align="right">679</td>
-<td align="left">3.7%</td>
-</tr><tr class="even"><td align="left">rt88966 motor vehicle fail to comply with endorsable s36 traffic sign</td>
-<td align="right">411</td>
-<td align="left">2.2%</td>
-</tr><tr class="odd"><td align="left">rv86019 use a handheld phone / device whilst driving a motor vehicle on a road</td>
-<td align="right">357</td>
-<td align="left">1.9%</td>
-</tr><tr class="even"><td align="left">rt88760 fail to comply with solid white lines</td>
-<td align="right">265</td>
-<td align="left">1.4%</td>
-</tr><tr class="odd"><td align="left">rt88751 contravene give way sign</td>
-<td align="right">264</td>
-<td align="left">1.4%</td>
-</tr><tr class="even"><td align="left">suspected contravene weight restriction.</td>
-<td align="right">213</td>
-<td align="left">1.2%</td>
 </tr></tbody></table></div>
 </div>
 <!-- The equivalent table excluding records with missing offence data is shown below: -->
@@ -227,9 +184,9 @@ The 2023 report noted that “the most common contributory factor allocated to p
 <td align="right">100.0</td>
 </tr></tbody></table><p>Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.</p>
 <p>While 39.4 percent of all offences are for inconsiderate driving, they make up the bulk of offences reported by cyclists, with 78.7 percent of all offences reported by cyclists being for inconsiderate driving. Drivers are proportionally 4.9 times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being 6.3 times more likely to report other types of offences as cyclists. While further research is needed, this makes sense if physically-vulnerable cyclists are most concerned with the dangerous driving of vehicles, whereas drivers also report other types of road traffic offence, with pedestrians and others also more likely to encounter other types of offence.</p>
-<p>Disposal categories assigned by police are shown in <a href="#tbl-disposal" class="quarto-xref">Table 3</a>. Roughly a third of cases resulted in no further action, and for most of the remainder drivers were required to undertake an education course. Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome (XX EXPLAIN FURTHER?). Close to two percent of cases went to court and a further one percent underwent further investigation.</p>
+<p>Disposal categories assigned by police are shown in <a href="#tbl-disposal" class="quarto-xref">Table 2</a>. Roughly a third of cases resulted in no further action, and for most of the remainder drivers were required to undertake an education course. Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome (XX EXPLAIN FURTHER?). Close to two percent of cases went to court and a further one percent underwent further investigation.</p>
 <div id="tbl-disposal">
-<p>Table 3: Most common disposal values in the OpSnap dataset.</p>
+<p>Table 2: Most common disposal values in the OpSnap dataset.</p>
 <div class="cell-output-display">
 <table class="table"><thead><tr class="header"><th align="left">Disposal</th>
 <th align="right">N</th>
@@ -260,10 +217,10 @@ The 2023 report noted that “the most common contributory factor allocated to p
 <td align="left">0.0%</td>
 </tr></tbody></table></div>
 </div>
-<p>There are 8801 unique locations (addresses) in the data, with the most common locations shown in <a href="#tbl-locations" class="quarto-xref">Table 4</a>.</p>
+<p>There are 8801 unique locations (addresses) in the data, with the most common locations shown in <a href="#tbl-locations" class="quarto-xref">Table 3</a>.</p>
 <p>INSERT Table 5 AND/OR Map (TO BE INCLUDED)</p>
 <div id="tbl-locations">
-<p>Table 4: Most common locations recorded in the OpSnap dataset</p>
+<p>Table 3: Most common locations recorded in the OpSnap dataset</p>
 <div class="cell-output-display">
 <table class="table"><colgroup><col width="65%"><col width="6%"><col width="27%"></colgroup><thead><tr class="header"><th align="left">Location</th>
 <th align="right">N</th>
