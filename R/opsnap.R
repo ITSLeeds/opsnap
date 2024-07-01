@@ -44,7 +44,8 @@ select_columns = function(d) {
 
 filter_offence_nas = function(d) {
   d |>
-    dplyr::filter(!offence == "N/A") |>
+    # Filter out "n/a" values (case insensitive):
+    dplyr::filter(!grepl("n/a", offence, ignore.case = TRUE)) |>
     dplyr::filter(!is.na(offence))
 }
 

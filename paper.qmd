@@ -50,7 +50,7 @@ keywords:
   - Near misses
 date: last-modified
 format:
-  html: default
+  gfm: default
   # pdf: default
   # arxiv-pdf:
   #   keep-tex: true
@@ -62,7 +62,7 @@ editor_options:
   markdown: 
     wrap: sentence
 execute: 
-  cache: true
+  cache: refresh
   echo: false
   warning: false
 ---
@@ -107,7 +107,6 @@ The 2023 report noted that "the most common contributory factor allocated to ped
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
 The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
 ```
-
 Cyclist crashes are underreported in police recorded datasets [@elvikIncompleteAccidentReporting1999] and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted [@janstrupetal.UnderstandingTrafficCrash2016].
 Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions [@ibrahimCyclingMissesReview2021].
 These incidents are often referred to as "near-misses" [@ibrahimCyclingMissesReview2021]
@@ -224,7 +223,6 @@ The data is open acess and looks like this, with names cleaned up by the package
 #| include: false
 u = "https://www.westyorkshire.police.uk/sites/default/files/2024-01/operation_snap_oct-dec_2023_0.xlsx"
 d = opsnap:::download_and_read(u)
-names(d_with_location)
 # Old names:
 #  [1] "REPORTER TRANSPORT MODE" "OFFENDER VEHICLE MAKE"  
 #  [3] "OFFENDER VEHICLE MODEL"  "OFFENDER VEHICLE COLOUR"
@@ -277,19 +275,35 @@ d_all_monthly = d_all |>
   mutate(records = "all")
 d_offence = d_all |>
   opsnap:::filter_offence_nas()
+# table(d_offence$offence) |> sort() |> tail()
+#                         rv86019 use a handheld phone / device whilst driving a motor vehicle on a road 
+#                                                                                                    357 
+#                                  rt88966 motor vehicle fail to comply with endorsable s36 traffic sign 
+#                                                                                                    411 
+#                                                          rt88971 fail to comply with red traffic light 
+#                                                                                                    679 
+# rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals 
+#                                                                                                   1364 
+#                                                           rt88575 drive without due care and attention 
+#                                                                                                   2917 
+#                                               rt88576 drive without reasonable consideration to others 
+#                                                                                                   4992 
 d_offence_monthly = d_offence |>
   mutate(month = lubridate::floor_date(date, "month")) |>
   group_by(month) |>
   summarise(n = n()) |>
-  mutate(records = "complete_offence")
-d_with_location = d_offence |>
+  mutate(records = "with_offence")
+d_with_location = d_all |>
   opsnap:::filter_location_nas()
-d_complete_monthly = d_with_location |>
+d_complete = d_offence |>
+  opsnap:::filter_location_nas()
+d_complete_monthly = d_complete |>
   mutate(month = lubridate::floor_date(date, "month")) |>
   group_by(month) |>
   summarise(n = n()) |>
   mutate(records = "complete")
 d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
+# d_monthly = bind_rows(d_all_monthly, d_offence_monthly, d_complete_monthly)
 ```
 
 ```{r}
@@ -324,10 +338,10 @@ d_monthly |>
   theme_minimal()
 ```
 
-There were `r nrow(d_all)` records in the dataset for the three-year study period, shown by month in @fig-time.
-The number of records increased over time.
-Some records lacked either an offence or a location, leaving `r round(nrow(d_with_location) / nrow(d_all) * 100, 1)`% or `r nrow(d_with_location)` complete records.
+There were `r nrow(d_all)` records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in @fig-time.
+Some records lacked either an offence (`r nrow(d_all) - nrow(d_offence)`, `r round((nrow(d_all) - nrow(d_offence)) / nrow(d_all) * 100, 1)`%) or a location (`r nrow(d_offence) - nrow(d_complete)`, `r round((nrow(d_offence) - nrow(d_complete)) / nrow(d_all) * 100, 1)`%), or both, leaving `r round(nrow(d_complete) / nrow(d_all) * 100, 1)`% or `r nrow(d_complete)` complete records.
 There was a distinct seasonal pattern to reporting, with significant increases in summer months.
+
 
 Mode of transport of the complainant is shown in @tbl-mode.
 Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.
@@ -335,32 +349,92 @@ Half of cases were reported by vehicle drivers, a third by cyclists, seven perce
 ```{r}
 #| label: tbl-mode-offences
 #| include: true
+#| fig-cap: "Number of convictions by offence type (top 6 and other)."
 # Aim: get table of n. offences by mode
 d_mode_offence_count = d_all |>
   count(mode, offence, sort = TRUE) 
 # offences in order of n. offences
-d_mode_offence_count |>
+d_offence_count = d_all |>
+  count(offence, sort = TRUE)
+# d_offence_count |>
+#   arrange(desc(n)) |>
+#   head(20) |>
+#   knitr::kable()
+# |offence                                                                                                |    n|
+# |:------------------------------------------------------------------------------------------------------|----:|
+# |n/a                                                                                                    | 5706|
+# |rt88576 drive without reasonable consideration to others                                               | 4992|
+# |rt88575 drive without due care and attention                                                           | 2917|
+# |rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals | 1364|
+# |rt88971 fail to comply with red traffic light                                                          |  679|
+# |rt88966 motor vehicle fail to comply with endorsable s36 traffic sign                                  |  411|
+# |rv86019 use a handheld phone / device whilst driving a motor vehicle on a road                         |  357|
+# |rt88760 fail to comply with solid white lines                                                          |  265|
+# |rt88751 contravene give way sign                                                                       |  264|
+# |suspected contravene weight restriction.                                                               |  213|
+# |rt88751 contravene mandatory direction arrows                                                          |  212|
+# |me82009 driving on hard shoulder of motorway                                                           |  113|
+# |rt88975 fail to comply with red traffic light                                                          |  109|
+# |rt88751 motor vehicle fail to comply with a non-endorsable traffic sign other (specify)                |   91|
+# |zp97004 fail to comply with red light pelican crossing                                                 |   84|
+# |zp97003 stop within controlled area of pelican crossing                                                |   81|
+# |rc86814 driver not in proper control of vehicle                                                        |   62|
+# |zp97001 stop vehicle within limits of pelican crossing                                                 |   59|
+# |hy35001 drive/ride on footpath beside a road                                                           |   42|
+# |rr84171 vehicle contravene local traffic order other than parking (e.g. bus lane)                      |   41|
+# Pull out the top 6 offences excluding n/a:
+d_offence_top_6 = d_mode_offence_count |>
+  filter(offence != "n/a") |>
   group_by(offence) |>
   summarise(n = sum(n)) |>
   arrange(desc(n)) |>
-  head(20) |>
+  head(6)
+d_offence_classified = d_offence_count |>
+  filter(offence != "n/a") |>
+  mutate(
+    Offence = case_when(
+      offence %in% d_offence_top_6$offence ~ offence,
+      TRUE ~ "Other"
+    )
+  ) |>
+  group_by(Offence) |>
+  summarise(`Number of records` = sum(n)) |>
+  # Arrange in descending order of n except for "Other":
+  arrange(Offence == "Other", desc(`Number of records`)) |>
+  mutate(`Percent of records` = round(`Number of records` / sum(`Number of records`) * 100, 1))
+d_offence_classified |>
   knitr::kable()
 ```
 
 ```{r}
 # reclassify offences into types
 x = d_all
-regroup_offences = function(x) {
+regroup_offences_simple = function(x) {
  x |> 
    dplyr::mutate(
-     offence_classified = dplyr::case_when(
-       stringr::str_detect(offence, "")
+     offence_simple = dplyr::case_when(
+       stringr::str_detect(offence, "drive without reasonable consideration") ~ "Inconsiderate driving",
+       stringr::str_detect(offence, "drive without due care") ~ "Careless driving",
+       TRUE ~ "Other"
+
      )
    )
 }
+table(x$mode)
+regroup_modes = function(x) {
+  x |> 
+    dplyr::mutate(
+      mode_simplified = dplyr::case_when(
+      mode == "cyclist" ~ "Cyclist",
+      mode == "vehicle driver" ~ "Driver",
+      TRUE ~ "Other"
+    ))
+}
+
+d_all = regroup_offences_simple(d_all)
+d_all = regroup_modes(d_all)
+
 ```
-
-
 
 ```{r}
 #| label: tbl-mode
@@ -368,7 +442,7 @@ regroup_offences = function(x) {
 d_all |>
   count(mode, sort = TRUE) |>
   mutate(percent_of_records = n / nrow(d_all)) |>
-  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
+  mutate(percent_of_records = round(percent_of_records, 3) * 100) |>
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
@@ -409,11 +483,87 @@ d_all |>
   knitr::kable()
 ```
 
-For cases submitted by people riding cycles (shown in @tbl-offences-cyclist-observer), the most common offences were also both associated with careless driving, particularly driving without reasonable consideration to others (78.7%), there were also a small proportion of cases associated with drivers using mobile phones (3.7%), failing to comply with traffic signals (3.5%) and contravening regulator signage (0.6%).
+<!-- For cases submitted by people riding cycles (shown in @tbl-offences-cyclist-observer), the most common offences were also both associated with careless driving, particularly driving without reasonable consideration to others (78.7%), there were also a small proportion of cases associated with drivers using mobile phones (3.7%), failing to comply with traffic signals (3.5%) and contravening regulator signage (0.6%). -->
+
+```{r}
+#| label: tbl-mode-offences-crosstab
+#| fig-cap: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
+
+# | Offence (grouped)       |               | Total |
+# |-------------------------|---------------|-------|
+# |                         | Dangerous driving | Other offences | 
+# |-------------------------|-------------------|-----------------|
+# | **Reporter transport mode** |                   |                 |
+# | Vehicle driver          | **Count**           | **5511**        | **654** | **6165** |
+# |                         | % within Reporter transport mode | **89.4%** | **10.6%** | **100.0%** |
+# | Cyclist                 | **Count**           | **4469**        | **249** | **4718** |
+# |                         | % within Reporter transport mode | **94.7%** | **5.3%**  | **100.0%** |
+# | Other                   | **Count**           | **1279**        | **220** | **1499** |
+# |                         | % within Reporter transport mode | **85.3%** | **14.7%** | **100.0%** |
+# | **Total**               | **Count**           | **11259**       | **1123** | **12382** |
+# |                         | % within Reporter transport mode | **90.9%** | **9.1%**  | **100.0%** |
+
+# R version:
+pivot_counts = d_all |>
+  filter(offence != "n/a") |>
+#   mutate(
+#     offence_simple = case_when(
+#       offence %in% d_offence_top_6$offence ~ offence,
+#       TRUE ~ "Other"
+#   )
+# ) |>
+  group_by(mode_simplified, offence_simple) |>
+  summarise(n = n()) |>
+  pivot_wider(names_from = mode_simplified, values_from = n) |> 
+  mutate(
+    Total = Cyclist + Driver + Other
+  ) |>
+  arrange(offence_simple == "Other", desc(Total))
+pivot_counts_total = tibble::tibble(
+  offence_simple = "Total",
+  Cyclist = sum(pivot_counts$Cyclist),
+  Driver = sum(pivot_counts$Driver),
+  Other = sum(pivot_counts$Other),
+  Total = sum(pivot_counts$Total)
+)
+
+pivot_percents = pivot_counts |>
+  # Calculate percentage of each mode
+  mutate(
+    `Cyclist (%)` = Cyclist / sum(Cyclist) * 100,
+    `Driver (%)` = Driver / sum(Driver) * 100,
+    `Other (%)` = Other / sum(Other) * 100,
+    `Total (%)` = Total / sum(Total) * 100
+  )
+
+pivot_percents_totals = pivot_percents |>
+  group_by(offence_simple = "Total") |>
+  summarise_if(is.numeric, sum) 
+
+pivot_combined = bind_rows(pivot_percents, pivot_percents_totals) 
+
+percent_careless = pivot_combined |> filter(offence_simple == "Careless driving") |> pull(`Total (%)`)
+percent_inconsiderate = pivot_combined |> filter(offence_simple == "Inconsiderate driving") |> pull(`Total (%)`)
+percent_careless_cycling = pivot_combined |> filter(offence_simple == "Careless driving") |> pull(`Cyclist (%)`)
+percent_inconsiderate_cycling = pivot_combined |> filter(offence_simple == "Inconsiderate driving") |> pull(`Cyclist (%)`)
+percent_other = pivot_combined |> filter(offence_simple == "Other") |> pull(`Total (%)`)
+percent_other_cyclist = pivot_combined |> filter(offence_simple == "Other") |> pull(`Cyclist (%)`)
+percent_other_driver = pivot_combined |> filter(offence_simple == "Other") |> pull(`Driver (%)`)
+percent_other_other = pivot_combined |> filter(offence_simple == "Other") |> pull(`Other (%)`)
+
+pivot_combined |>
+  knitr::kable(digits = 1)
+
+```
+
+While `r round(percent_inconsiderate, 1)` percent of all offences are for inconsiderate driving, they make up the bulk of offences reported by cyclists, with `r round(percent_inconsiderate_cycling, 1)` percent of all offences reported by cyclists being for inconsiderate driving.
+Drivers are proportionally `r round(percent_other_driver / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being `r round(percent_other_other / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists.
+While further research is needed, this makes sense if physically-vulnerable cyclists are most concerned with the dangerous driving of vehicles, whereas drivers also report other types of road traffic offence, with pedestrians and others also more likely to encounter other types of offence.
 
 ```{r}
 #| label: tbl-offences-cyclist-observer
 #| tbl-cap: "Number and percentages of OpSnap records, submitted by cyclists, by offence type."
+#| include: false
 d_all |>
   opsnap:::filter_offence_nas() |>
   filter(offence != "n/a") |>
@@ -513,9 +663,9 @@ The British Horse Society[^1] and others may be interested in this data being us
 The British Motorcyclists Federation[^2] may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent
 .
 
-[^1]:  https://www.bhs.org.uk/
+[^1]: https://www.bhs.org.uk/
 
-[^2]:  https://www.britishmotorcyclists.co.uk/
+[^2]: https://www.britishmotorcyclists.co.uk/
 
 This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data, and our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide.
 This suggests the potential for development of a national OpSnap dataset.

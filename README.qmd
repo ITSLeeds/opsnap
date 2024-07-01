@@ -44,7 +44,7 @@ Install the package from GitHub:
 ```{r}
 #| eval: false
 remotes::install_github("ITSLeeds/opsnap", force = TRUE, dependencies = TRUE)
-```
+  ```
 
 ```{r}
 #| include: false
