@@ -21,7 +21,11 @@ Suggests:
     stats19,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    terra,
+    devtools,
+    snakecase,
+    tmap
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
