@@ -177,11 +177,17 @@ both, leaving 48.1% or 8831 complete records. There was a distinct
 seasonal pattern to reporting, with significant increases in summer
 months.
 
-Mode of transport of the complainant is shown in
-<a href="#tbl-mode" class="quarto-xref">Table 1</a>. Half of cases were
-reported by vehicle drivers, a third by cyclists, seven percent by
-pedestrians, with over two percent by horse riders and less than one
-percent by motorcyclists.
+Of the 12656 records with an offence, the most common offences were
+Driving without reasonable consideration to others (rt88576) and Driving
+without due care and attention (rt88575). This is presented in
+**?@tbl-offences**, which shows the number and percentage of records by
+offence type, showing the top 6 offence types and the remainder grouped
+as ‘Other’. As previously noted, a high proportion of cases did not
+include information on the reported offence, with the most common
+offences being Driving without reasonable consideration to others
+(rt88576), and Driving without due care and attention (rt88575). Within
+the road traffic act these offences are related to careless driving and
+drivers are subject to similar penalties.
 
 | Offence | Number of records | Percent of records |
 |:---|---:|---:|
@@ -195,11 +201,12 @@ percent by motorcyclists.
 
 Number of convictions by offence type (top 6 and other).
 
-    #> 
-    #>           cyclist       horse rider      motorcyclist        pedestrian 
-    #>              6312               407                48              1352 
-    #>           unknown    vehicle driver vehicle passenger 
-    #>               497              9167               579
+Vehicle (mostly car and van drivers with dashcams) driver and cyclist
+reporters dominate reporting for all records, as illustrated in
+<a href="#tbl-mode" class="quarto-xref">Table 1</a>. Half of cases were
+reported by vehicle drivers, a third by cyclists, seven percent by
+pedestrians, with over two percent by horse riders and less than one
+percent by motorcyclists.
 
 <div id="tbl-mode">
 
@@ -217,38 +224,6 @@ Table 1: Number of OpSnap records by observer mode.
 | horse rider       |               407 |                2.2 |
 | motorcyclist      |                48 |                0.3 |
 | NA                |                 1 |                0.0 |
-
-</div>
-
-</div>
-
-Classification of the committed offence is shown in
-<a href="#tbl-offences" class="quarto-xref">Table 2</a>. s previously
-noted, a high proportion of cases did not include information on the
-reported office (31.1%), with the most common offences being Driving
-without reasonable consideration to others (rt88576), and Driving
-without due care and attention (rt88575). Within the road traffic act
-these offences are related to careless driving and drivers are subject
-to similar penalties.
-
-<div id="tbl-offences">
-
-Table 2: Number and percentages of OpSnap records by offence type.
-
-<div class="cell-output-display">
-
-| Offence | N | Percent of Records |
-|:---|---:|:---|
-| n/a | 5706 | 31.1% |
-| rt88576 drive without reasonable consideration to others | 4992 | 27.2% |
-| rt88575 drive without due care and attention | 2917 | 15.9% |
-| rt88975 drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals | 1364 | 7.4% |
-| rt88971 fail to comply with red traffic light | 679 | 3.7% |
-| rt88966 motor vehicle fail to comply with endorsable s36 traffic sign | 411 | 2.2% |
-| rv86019 use a handheld phone / device whilst driving a motor vehicle on a road | 357 | 1.9% |
-| rt88760 fail to comply with solid white lines | 265 | 1.4% |
-| rt88751 contravene give way sign | 264 | 1.4% |
-| suspected contravene weight restriction. | 213 | 1.2% |
 
 </div>
 
@@ -279,7 +254,7 @@ other types of road traffic offence, with pedestrians and others also
 more likely to encounter other types of offence.
 
 Disposal categories assigned by police are shown in
-<a href="#tbl-disposal" class="quarto-xref">Table 3</a>. Roughly a third
+<a href="#tbl-disposal" class="quarto-xref">Table 2</a>. Roughly a third
 of cases resulted in no further action, and for most of the remainder
 drivers were required to undertake an education course. Conditional
 offers, that is, drivers being offered a reduced penalty for admitting
@@ -289,7 +264,7 @@ underwent further investigation.
 
 <div id="tbl-disposal">
 
-Table 3: Most common disposal values in the OpSnap dataset.
+Table 2: Most common disposal values in the OpSnap dataset.
 
 <div class="cell-output-display">
 
@@ -310,13 +285,13 @@ Table 3: Most common disposal values in the OpSnap dataset.
 
 There are 8801 unique locations (addresses) in the data, with the most
 common locations shown in
-<a href="#tbl-locations" class="quarto-xref">Table 4</a>.
+<a href="#tbl-locations" class="quarto-xref">Table 3</a>.
 
 INSERT Table 5 AND/OR Map (TO BE INCLUDED)
 
 <div id="tbl-locations">
 
-Table 4: Most common locations recorded in the OpSnap dataset
+Table 3: Most common locations recorded in the OpSnap dataset
 
 <div class="cell-output-display">
 

@@ -82,7 +82,8 @@ browseURL("paper.docx")
 ```
 
 ```{r setup}
-library(opsnap)
+#| include: false
+devtools::load_all()
 ```
 
 # Abstract {.unnumbered}
@@ -342,14 +343,15 @@ There were `r nrow(d_all)` records in the dataset for the three-year study perio
 Some records lacked either an offence (`r nrow(d_all) - nrow(d_offence)`, `r round((nrow(d_all) - nrow(d_offence)) / nrow(d_all) * 100, 1)`%) or a location (`r nrow(d_offence) - nrow(d_complete)`, `r round((nrow(d_offence) - nrow(d_complete)) / nrow(d_all) * 100, 1)`%), or both, leaving `r round(nrow(d_complete) / nrow(d_all) * 100, 1)`% or `r nrow(d_complete)` complete records.
 There was a distinct seasonal pattern to reporting, with significant increases in summer months.
 
-
-Mode of transport of the complainant is shown in @tbl-mode.
-Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.
+Of the `r nrow(d_offence)` records with an offence, the most common offences were Driving without reasonable consideration to others (rt88576) and Driving without due care and attention (rt88575).
+This is presented in @tbl-offences, which shows the number and percentage of records by offence type, showing the top 6 offence types and the remainder grouped as 'Other'.
+As previously noted, a high proportion of cases did not include information on the reported offence, with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575).
+Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.
 
 ```{r}
-#| label: tbl-mode-offences
+#| label: tbl-offences
 #| include: true
-#| fig-cap: "Number of convictions by offence type (top 6 and other)."
+#| tbl-cap: "Number of convictions by offence type (top 6 and other)."
 # Aim: get table of n. offences by mode
 d_mode_offence_count = d_all |>
   count(mode, offence, sort = TRUE) 
@@ -420,7 +422,7 @@ regroup_offences_simple = function(x) {
      )
    )
 }
-table(x$mode)
+# table(x$mode)
 regroup_modes = function(x) {
   x |> 
     dplyr::mutate(
@@ -436,6 +438,9 @@ d_all = regroup_modes(d_all)
 
 ```
 
+Vehicle (mostly car and van drivers with dashcams) driver and cyclist reporters dominate reporting for all records, as illustrated in @tbl-mode.
+Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.
+
 ```{r}
 #| label: tbl-mode
 #| tbl-cap: Number of OpSnap records by observer mode.
@@ -447,23 +452,6 @@ d_all |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
   rename(`Number of Records` = N) |>
-  knitr::kable()
-```
-
-Classification of the committed offence is shown in @tbl-offences.
-s previously noted, a high proportion of cases did not include information on the reported office (31.1%), with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575).
-Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.
-
-```{r}
-#| label: tbl-offences
-#| tbl-cap: Number and percentages of OpSnap records by offence type.
-d_all |>
-  count(offence, sort = TRUE) |>
-  mutate(percent_of_records = n / nrow(d_all)) |>
-  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
-  arrange(desc(n)) |>
-  head(10) |>
-  rename_all(snakecase::to_title_case) |>
   knitr::kable()
 ```
 
@@ -486,8 +474,8 @@ d_all |>
 <!-- For cases submitted by people riding cycles (shown in @tbl-offences-cyclist-observer), the most common offences were also both associated with careless driving, particularly driving without reasonable consideration to others (78.7%), there were also a small proportion of cases associated with drivers using mobile phones (3.7%), failing to comply with traffic signals (3.5%) and contravening regulator signage (0.6%). -->
 
 ```{r}
-#| label: tbl-mode-offences-crosstab
-#| fig-cap: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
+#| label: tbl-mode-offences-crosstab-prep
+
 
 # | Offence (grouped)       |               | Total |
 # |-------------------------|---------------|-------|
@@ -551,14 +539,20 @@ percent_other_cyclist = pivot_combined |> filter(offence_simple == "Other") |> p
 percent_other_driver = pivot_combined |> filter(offence_simple == "Other") |> pull(`Driver (%)`)
 percent_other_other = pivot_combined |> filter(offence_simple == "Other") |> pull(`Other (%)`)
 
-pivot_combined |>
-  knitr::kable(digits = 1)
-
 ```
 
+The cross-tabulation of reporting mode and offence type is shown in @tbl-mode-offences-crosstab.
+The table reveals some interesting tendencies.
 While `r round(percent_inconsiderate, 1)` percent of all offences are for inconsiderate driving, they make up the bulk of offences reported by cyclists, with `r round(percent_inconsiderate_cycling, 1)` percent of all offences reported by cyclists being for inconsiderate driving.
 Drivers are proportionally `r round(percent_other_driver / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being `r round(percent_other_other / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists.
 While further research is needed, this makes sense if physically-vulnerable cyclists are most concerned with the dangerous driving of vehicles, whereas drivers also report other types of road traffic offence, with pedestrians and others also more likely to encounter other types of offence.
+
+```{r}
+#| label: tbl-mode-offences-crosstab
+#| tbl-cap: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
+pivot_combined |>
+  knitr::kable(digits = 1)
+```
 
 ```{r}
 #| label: tbl-offences-cyclist-observer
