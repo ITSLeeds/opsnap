@@ -11,6 +11,7 @@ Depends:
 Imports: 
     dplyr,
     ggplot2,
+    readODS,
     readxl,
     stringr,
     tidygeocoder

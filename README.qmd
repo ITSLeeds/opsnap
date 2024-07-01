@@ -40,8 +40,9 @@ execute:
 
 Install the package from GitHub:
 
-```r
-remotes::install_github("ITSLeeds/opsnap")
+```{r}
+#| eval: false
+remotes::install_github("ITSLeeds/opsnap", force = TRUE)
 ```
 
 ```{r}

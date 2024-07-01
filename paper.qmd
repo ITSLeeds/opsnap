@@ -50,9 +50,10 @@ keywords:
   - Near misses
 date: last-modified
 format:
+  html: default
   # pdf: default
-  arxiv-pdf:
-    keep-tex: true
+  # arxiv-pdf:
+  #   keep-tex: true
 linenumbers: true # Add (continuous) line numbers?
 doublespacing: false # Double space the PDF output?
 runninghead: "Preprint" # The text on the top of each page of the output
@@ -69,6 +70,12 @@ knitr::opts_chunk$set(
   echo = FALSE,
   warning = FALSE
 )
+```
+
+```{r}
+#| eval: false
+#| echo: false
+browseURL("paper.docx")
 ```
 
 ```{r setup}
@@ -246,7 +253,9 @@ d_all = d_all |>
   mutate(
     mode = tolower(mode),
     offence = tolower(offence),
-    disposal = tolower(disposal)
+    disposal = tolower(disposal),
+    # First word of text in offence column:
+    offence_code = str_extract(offence, "\\w+")
   )
 d_all |>
   head(3) |>
@@ -271,9 +280,9 @@ d_offence_monthly = d_offence |>
   group_by(month) |>
   summarise(n = n()) |>
   mutate(records = "complete_offence")
-d = d_offence |>
+d_with_location = d_offence |>
   opsnap:::filter_location_nas()
-d_complete_monthly = d |>
+d_complete_monthly = d_with_location |>
   mutate(month = lubridate::floor_date(date, "month")) |>
   group_by(month) |>
   summarise(n = n()) |>
@@ -320,6 +329,36 @@ There was a distinct seasonal pattern to reporting, with significant increases i
 
 Mode of transport of the complainant is shown in @tbl-mode.
 Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.
+
+```{r}
+#| label: tbl-mode-offences
+#| include: true
+# Aim: get table of n. offences by mode
+d_mode_offence_count = d_all |>
+  count(mode, offence, sort = TRUE) 
+# offences in order of n. offences
+d_mode_offence_count |>
+  group_by(offence) |>
+  summarise(n = sum(n)) |>
+  arrange(desc(n)) |>
+  head(20) |>
+  knitr::kable()
+```
+
+```{r}
+# reclassify offences into types
+x = d_all
+regroup_offences = function(x) {
+ x |> 
+   dplyr::mutate(
+     offence_classified = dplyr::case_when(
+       stringr::str_detect(offence, "")
+     )
+   )
+}
+```
+
+
 
 ```{r}
 #| label: tbl-mode

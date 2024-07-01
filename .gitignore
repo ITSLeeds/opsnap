@@ -6,3 +6,5 @@ docs
 data
 raw_data/
 inst/doc
+
+/.quarto/
