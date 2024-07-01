@@ -61,13 +61,16 @@ authorcols: true # Should authors be listed in a single column (default) or in m
 editor_options: 
   markdown: 
     wrap: sentence
+execute: 
+  cache: true
+  echo: false
+  warning: false
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  echo = FALSE,
   warning = FALSE
 )
 ```
@@ -93,8 +96,8 @@ A research agenda using OpSnap data is outlined: comparative analysis of submiss
 # Introduction
 
 Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
-Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@departmentfortransport_reported_2023].
-Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics [@departmentfortransport_reported_2023].
+Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@departmentfortransportReportedRoadCasualties2023].
+Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics [@departmentfortransportReportedRoadCasualties2023].
 Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records [@departmentfortransport].
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
 The 2023 report noted that "the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was 'driver or rider failed to look properly'" [@departmentfortransport].
@@ -104,14 +107,13 @@ The 2023 report noted that "the most common contributory factor allocated to ped
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
 The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
 ```
-new sentence here.
 
-Cyclist crashes are underreported in police recorded datasets [@elvik_incomplete_1999] and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted (Janstrup et al., 2016).
-Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions (Ibrahim et al., 2021).
-These incidents are often referred to as "near-misses" (Ibrahim et al., 2021).
+Cyclist crashes are underreported in police recorded datasets [@elvikIncompleteAccidentReporting1999] and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted [@janstrupetal.UnderstandingTrafficCrash2016].
+Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions [@ibrahimCyclingMissesReview2021].
+These incidents are often referred to as "near-misses" [@ibrahimCyclingMissesReview2021]
 
-Commuter cyclists in the UK experience a near miss for every six miles of riding (Aldred & Crosweller, 2015), and concern over near misses are a key reason people choose not to cycle (Sanders, 2015), being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers (Sanders, 2015).
-In their review of near miss cycling crashes, Ibrahim et al., (2021) highlighted the need for better data on near misses to inform safety research.
+Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses are a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a], being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a].
+In their review of near miss cycling crashes, @ibrahimCyclingMissesReview2021 highlighted the need for better data on near misses to inform safety research.
 
 Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016].
 A 'close pass' refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph).
@@ -144,7 +146,7 @@ The terms 'record' and 'case' are used interchangeably here to refer to a record
 The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers.
 Video footage is commonly recorded from on-board cameras.
 For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, known as 'dash cams'.
-One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam (iCompario, 2024).
+One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam [@DashCamSubmissions2024].
 For cyclists, footage is commonly recorded using helmet or handlebar-mounted cameras.
 The proportion of cyclists using these cameras is unknown but anecdotal evidence suggests increased usage, with many choosing to record rides in case an incident occurs.
 
@@ -365,10 +367,12 @@ regroup_offences = function(x) {
 #| tbl-cap: Number of OpSnap records by observer mode.
 d_all |>
   count(mode, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
+  mutate(percent_of_records = n / nrow(d_all)) |>
+  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |>
+  # Rename N to "Number of records"
+  rename(`Number of Records` = N) |>
   knitr::kable()
 ```
 
@@ -381,8 +385,8 @@ Within the road traffic act these offences are related to careless driving and d
 #| tbl-cap: Number and percentages of OpSnap records by offence type.
 d_all |>
   count(offence, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
+  mutate(percent_of_records = n / nrow(d_all)) |>
+  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
   rename_all(snakecase::to_title_case) |>
@@ -397,8 +401,8 @@ d_all |>
   opsnap:::filter_offence_nas() |>
   filter(offence != "n/a") |>
   count(offence, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
+  mutate(percent_of_records = n / nrow(d_offence)) |>
+  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
   rename_all(snakecase::to_title_case) |>
@@ -415,8 +419,8 @@ d_all |>
   filter(offence != "n/a") |>
   filter(mode == "cyclist") |>
   count(offence, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_offence)) |>
-  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
+  mutate(percent_of_records = n / nrow(d_offence)) |>
+  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
   mutate(
     offence = ifelse(n < 20, "other", offence)
   ) |>
@@ -439,8 +443,8 @@ Close to two percent of cases went to court and a further one percent underwent 
 #| tbl-cap: "Most common disposal values in the OpSnap dataset."
 d_all |>
   count(disposal, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_all)) |>
-  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
+  mutate(percent_of_records = n / nrow(d_all)) |>
+  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |> 
   knitr::kable()
@@ -456,8 +460,8 @@ INSERT Table 5 AND/OR Map (TO BE INCLUDED)
 #| tbl-cap: "Most common locations recorded in the OpSnap dataset"
 d_with_location |>
   count(location, sort = TRUE) |>
-  mutate(percent_records = n / nrow(d_with_location)) |>
-  mutate(percent_records = scales::percent(round(percent_records, 3))) |>
+  mutate(percent_of_records = n / nrow(d_with_location)) |>
+  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
   arrange(desc(n)) |>
   head(10) |>
   rename_all(snakecase::to_title_case) |> 
@@ -474,7 +478,7 @@ Cyclists undertake two percent of road miles in the UK [@departmentfortransport]
 Other things equal, this suggests that with respect to distance travelled, cyclists were around 20 times more likely to submit evidence of a road traffic offence than vehicle drivers and other road users in West Yorkshire.
 
 Over 90 percent of offences reported by cyclists were for driving without consideration for other road users and without due care and attention.
-This is consistent with the phenomenon of 'close passes' in the cycling safety literature (Aldred, 2016; Cubbin et al., 2024).
+This is consistent with the phenomenon of 'close passes' in the cycling safety literature [@aldred2016; @cubbin2024].
 It suggests the OpSnap data holds the potential for further analysis to inform knowledge about the nature of close passes generally.
 For example, it should be possible to identify hotspot locations.
 As with much of the further research outlined here, this the potential to inform preventive policy and practice relating to police interventions, driver behaviour, the design of roads and roadside environments.
@@ -493,11 +497,11 @@ Research to gauge the differential effectiveness of disposal measures is needed,
 Within the trend of increasing video submissions there were distinct seasonal patterns.
 Seasonal variation in cyclists' submission reflect seasonal (weather and other) influences on cycling prevalence and duration.
 This suggests seasonal variation in preventive responses might be tailored to need.
-It is well established that crime is highly concentrated along whatever dimension is examined (Farrell & Pease, 2017).
+It is well established that crime is highly concentrated along whatever dimension is examined [@farrellPreventingRepeatRepeat2017].
 With respect to video evidence this will include recidivists (repeat offenders), repeat submitters of evidence (who may or may not be repeat victims/survivors), the concentration of incidents (close passes, near misses and crashes) at certain times and places, with different types of experiences concentrated among certain types of road users.
 For example, we hypothesise that close passes are more likely to be reported by cyclists and horse riders than vehicle drivers, both due to the nature of the road user interactions and the relative risk associated with the manoeuvre.
 As such, the types of incidents reported by vehicle drivers would be systematically different, indicating a need for different investigative and preventive approaches.
-Policing and preventions efforts focused on where problems are concentrated are more resource efficient -- it is the foundation of problem-oriented policing (see e.g., (Laing, 2010; Scott & Maddox, 2009)- and research using video submissions holds the potential to analysis of problem concentrations.
+Policing and preventions efforts focused on where problems are concentrated are more resource efficient -- it is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010)- and research using video submissions holds the potential to analysis of problem concentrations.
 
 Evidence submitted by cyclists was the focus here.
 However, Operation Snap data offer potential for analysis of data from other road user sources.
