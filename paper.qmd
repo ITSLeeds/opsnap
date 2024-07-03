@@ -50,7 +50,7 @@ keywords:
   - Near misses
 date: last-modified
 format:
-  gfm: default
+  html: default
   # pdf: default
   # arxiv-pdf:
   #   keep-tex: true
@@ -62,7 +62,7 @@ editor_options:
   markdown: 
     wrap: sentence
 execute: 
-  cache: refresh
+  cache: true
   echo: false
   warning: false
 ---
@@ -78,6 +78,10 @@ knitr::opts_chunk$set(
 ```{r}
 #| eval: false
 #| echo: false
+quarto::quarto_render("paper.qmd", output_format = "pdf")
+quarto::quarto_render("paper.qmd", output_format = "docx")
+file.rename("paper.docx", "~/OneDrive/opsnap_leeds/paper-v6.docx")
+file.rename("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v6.pdf")
 browseURL("paper.docx")
 ```
 
@@ -474,10 +478,7 @@ d_all |>
 <!-- For cases submitted by people riding cycles (shown in @tbl-offences-cyclist-observer), the most common offences were also both associated with careless driving, particularly driving without reasonable consideration to others (78.7%), there were also a small proportion of cases associated with drivers using mobile phones (3.7%), failing to comply with traffic signals (3.5%) and contravening regulator signage (0.6%). -->
 
 ```{r}
-#| label: tbl-mode-offences-crosstab-prep
-
-
-# | Offence (grouped)       |               | Total |
+# # Offence (grouped)       |               | Total |
 # |-------------------------|---------------|-------|
 # |                         | Dangerous driving | Other offences | 
 # |-------------------------|-------------------|-----------------|
@@ -552,6 +553,7 @@ While further research is needed, this makes sense if physically-vulnerable cycl
 #| tbl-cap: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
 pivot_combined |>
   knitr::kable(digits = 1)
+
 ```
 
 ```{r}
@@ -587,8 +589,7 @@ Close to two percent of cases went to court and a further one percent underwent 
 #| tbl-cap: "Most common disposal values in the OpSnap dataset."
 d_all |>
   count(disposal, sort = TRUE) |>
-  mutate(percent_of_records = n / nrow(d_all)) |>
-  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
+  mutate(percent_of_records = round(n / nrow(d_all), 3) * 100) |>
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |> 
   knitr::kable()
@@ -604,8 +605,7 @@ INSERT Table 5 AND/OR Map (TO BE INCLUDED)
 #| tbl-cap: "Most common locations recorded in the OpSnap dataset"
 d_with_location |>
   count(location, sort = TRUE) |>
-  mutate(percent_of_records = n / nrow(d_with_location)) |>
-  mutate(percent_of_records = scales::percent(round(percent_of_records, 3))) |>
+  mutate(percent_of_records = round(n / nrow(d_with_location), 3) * 100) |>
   arrange(desc(n)) |>
   head(10) |>
   rename_all(snakecase::to_title_case) |> 
