@@ -10,7 +10,7 @@
 #' u = "https://www.westyorkshire.police.uk/sites/default/files/2023-10/operation_snap_july-sept_2023.xlsx"
 #' download_and_read(, dir = ".")
 #' }
-download_and_read = function(u, remove_nas = TRUE, dir = "raw_data/west-yorkshire") {
+download_and_read = function(u, remove_nas = FALSE, dir = "raw_data/west-yorkshire") {
     tmp = file.path(dir, basename(u))
     if (!file.exists(tmp)) {
         utils::download.file(u, tmp, mode = "wb")
@@ -21,7 +21,8 @@ download_and_read = function(u, remove_nas = TRUE, dir = "raw_data/west-yorkshir
     names(d) = clean_names(names(d))
     d = select_columns(d)
     if (remove_nas) {
-        d = filter_nas(d)
+        d = filter_offence_nas(d)
+        d = filter_location_nas(d)
     }
     return(d)
 }
@@ -42,6 +43,7 @@ select_columns = function(d) {
   d = d[, !names_remove]
 }
 
+
 filter_offence_nas = function(d) {
   d |>
     # Filter out "n/a" values (case insensitive):
@@ -51,7 +53,8 @@ filter_offence_nas = function(d) {
 
 filter_location_nas = function(d) {
   d |>
-    dplyr::filter(!location == "N/A") |>
+    # Location is not "N/A" or NA (case insensitive):
+    dplyr::filter(!grepl("n/a", location, ignore.case = TRUE)) |>
     dplyr::filter(!is.na(location))
 }
 
