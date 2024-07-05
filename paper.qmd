@@ -170,6 +170,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 library(tidyverse)
+library(gt)
+library(gtExtras)
 remotes::install_github("ITSLeeds/opsnap")
 ```
 
@@ -408,9 +410,34 @@ d_offence_classified = d_offence_count |>
   # Arrange in descending order of n except for "Other":
   arrange(Offence == "Other", desc(`Number of records`)) |>
   mutate(`Percent of records` = round(`Number of records` / sum(`Number of records`) * 100, 1))
+
+# d_offence_classified |>
+#   knitr::kable()
+
 d_offence_classified |>
-  knitr::kable()
+  mutate(
+    `Percent of records`= round(`Percent of records`)
+    ) |> 
+  rename(`# records` = `Number of records`, `% records`=`Percent of records`) |> 
+  gt() |>
+
+  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  text_transform(
+    fn <- function(x){
+      code <- str_extract(x, "^[^\ ]+")
+      desc <- str_remove(x, "^[^\ ]+")
+      glue::glue("<em><span style='font-size:14px'>{code}</span></em><br><span style='font-size:18px'>{desc}</span>")
+      },
+    locations=cells_body(columns=Offence)
+  ) |> 
+  cols_width(1 ~ px(600), 2 ~ px(80)) |> 
+  gt_theme_espn()
 ```
+
+
+
+
+
 
 ```{r}
 # reclassify offences into types
@@ -448,6 +475,16 @@ Half of cases were reported by vehicle drivers, a third by cyclists, seven perce
 ```{r}
 #| label: tbl-mode
 #| tbl-cap: Number of OpSnap records by observer mode.
+# d_all |>
+#   count(mode, sort = TRUE) |>
+#   mutate(percent_of_records = n / nrow(d_all)) |>
+#   mutate(percent_of_records = round(percent_of_records, 3) * 100) |>
+#   arrange(desc(n)) |>
+#   rename_all(snakecase::to_title_case) |>
+#   # Rename N to "Number of records"
+#   rename(`Number of Records` = N) |>
+#   knitr::kable()
+
 d_all |>
   count(mode, sort = TRUE) |>
   mutate(percent_of_records = n / nrow(d_all)) |>
@@ -455,8 +492,15 @@ d_all |>
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
-  rename(`Number of Records` = N) |>
-  knitr::kable()
+  rename(`# records` = N, `% records` = `Percent of Records`) |>
+  gt() |>
+  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  cols_width(1 ~ px(400), 2 ~ px(80)) |> 
+  tab_style(
+    style = cell_text(size=px(18)),
+    locations = cells_body(columns = Mode)
+  ) |>
+  gt_theme_espn()
 ```
 
 <!-- The equivalent table excluding records with missing offence data is shown below: -->
@@ -551,9 +595,28 @@ While further research is needed, this makes sense if physically-vulnerable cycl
 ```{r}
 #| label: tbl-mode-offences-crosstab
 #| tbl-cap: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
+# pivot_combined |>
+#   knitr::kable(digits = 1)
 pivot_combined |>
-  knitr::kable(digits = 1)
-
+  select(-`Total (%)`) |> 
+  filter(offence_simple!="Total") |> 
+  select(-c(Cyclist:Other)) |> 
+  pivot_longer(cols=`Cyclist (%)`:`Other (%)`, names_to="mode", values_to="perc") |> 
+  mutate(
+    mode=factor(str_extract(mode, "^[^\ ]+"), levels=c("Driver", "Cyclist", "Other")),
+    offence_simple=factor(offence_simple, levels=c("Inconsiderate driving", "Careless driving", "Other"))
+    ) |> 
+  group_by(offence_simple) |> 
+  summarise(perc=list(round(perc)), count=first(Total)) |> 
+  gt() |>
+  gt_plt_bar_stack(perc, width=65, labels = c(" Cyclists ", " Drivers ", " Other "),
+                   palette= c("#e31a1c", "#1f78b4", "#bdbdbd")) |>
+    cols_width(1 ~ px(180), 2 ~ px(400), 3 ~ px(150)) |> 
+  tab_style(
+    style = cell_text(size=px(18)),
+    locations = cells_body(columns = c(offence_simple, count))
+    ) |> 
+    gt_theme_espn() 
 ```
 
 ```{r}
@@ -587,12 +650,29 @@ Close to two percent of cases went to court and a further one percent underwent 
 ```{r}
 #| label: tbl-disposal
 #| tbl-cap: "Most common disposal values in the OpSnap dataset."
+# d_all |>
+#   count(disposal, sort = TRUE) |>
+#   mutate(percent_of_records = round(n / nrow(d_all), 3) * 100) |>
+#   arrange(desc(n)) |>
+#   rename_all(snakecase::to_title_case) |> 
+#   knitr::kable()
+
+
 d_all |>
   count(disposal, sort = TRUE) |>
   mutate(percent_of_records = round(n / nrow(d_all), 3) * 100) |>
   arrange(desc(n)) |>
-  rename_all(snakecase::to_title_case) |> 
-  knitr::kable()
+  rename_all(snakecase::to_title_case) |>
+  # Rename N to "Number of records"
+  rename(`# records` = N, `% records` = `Percent of Records`) |>
+  gt() |>
+  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  cols_width(1 ~ px(400), 2 ~ px(80)) |> 
+  tab_style(
+    style = cell_text(size=px(18)),
+    locations = cells_body(columns = Disposal)
+  ) |>
+  gt_theme_espn()
 ```
 
 There are `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
@@ -603,13 +683,28 @@ INSERT Table 5 AND/OR Map (TO BE INCLUDED)
 #| echo: false
 #| label: tbl-locations
 #| tbl-cap: "Most common locations recorded in the OpSnap dataset"
+# d_with_location |>
+#   count(location, sort = TRUE) |>
+#   mutate(percent_of_records = round(n / nrow(d_with_location), 3) * 100) |>
+#   arrange(desc(n)) |>
+#   head(10) |>
+#   rename_all(snakecase::to_title_case) |> 
+#   knitr::kable()
 d_with_location |>
   count(location, sort = TRUE) |>
   mutate(percent_of_records = round(n / nrow(d_with_location), 3) * 100) |>
   arrange(desc(n)) |>
   head(10) |>
-  rename_all(snakecase::to_title_case) |> 
-  knitr::kable()
+  rename_all(snakecase::to_title_case) |>
+  rename(`# records` = N, `% records` = `Percent of Records`) |>
+  gt() |>
+  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  cols_width(1 ~ px(400), 2 ~ px(80)) |> 
+  tab_style(
+    style = cell_text(size=px(18)),
+    locations = cells_body(columns = Location)
+  ) |>
+  gt_theme_espn()
 ```
 
 # Discussion

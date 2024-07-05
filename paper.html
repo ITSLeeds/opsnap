@@ -1,0 +1,2869 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Graham Farrell">
+<meta name="author" content="Robin Lovelace">
+<meta name="author" content="Steve O’Hern">
+<meta name="dcterms.date" content="2024-07-05">
+<meta name="keywords" content="Cycling, Hotspots, Road safety, Video evidence, Dashcam, Near misses">
+
+<title>Road User video evidence of road traffic offences: Preliminary analysis of Operation Snap data and suggestions for a research agenda</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="paper_files/libs/clipboard/clipboard.min.js"></script>
+<script src="paper_files/libs/quarto-html/quarto.js"></script>
+<script src="paper_files/libs/quarto-html/popper.min.js"></script>
+<script src="paper_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="paper_files/libs/quarto-html/anchor.min.js"></script>
+<link href="paper_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="paper_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="paper_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="paper_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="paper_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Road User video evidence of road traffic offences: Preliminary analysis of Operation Snap data and suggestions for a research agenda</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    Graham Farrell <a href="https://orcid.org/0000-0002-3987-8457" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Leeds
+          </p>
+      </div>
+      <div class="quarto-title-meta-contents">
+    Robin Lovelace <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Leeds
+          </p>
+        <p class="affiliation">
+            Active Travel England
+          </p>
+      </div>
+      <div class="quarto-title-meta-contents">
+    Steve O’Hern <a href="https://orcid.org/0000-0002-7961-3875" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Leeds
+          </p>
+        <p class="affiliation">
+            Monash University Accident Research Centre
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 5, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-hash="paper_cache/html/unnamed-chunk-2_58121a0a7bd736247bc14b3b32819519">
+
+</div>
+<section id="abstract" class="level1 unnumbered">
+<h1 class="unnumbered">Abstract</h1>
+<p>This study uses data from Operation Snap (OpSnap), the UK police’s national system to receive road users’ video evidence of road traffic offences. Data from one police force area for the three calendar years 2021 to 2023 (N= 18,363 records), is analysed. Of submitted cases, 34.4% were from cyclists (n=6,312) of which 69% resulted in an offence being registered, mostly for driving ‘without reasonable consideration to others’ or ‘without due care and attention’. Three quarters (75.2%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), a quarter in no further action, and fewer than 1% for court appearance. A research agenda using OpSnap data is outlined: comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional, and local levels; research into disposal-related decision-making, video quality, and the role of supporting evidence should identify good practice; further study of video content, offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases, holds significant potential to inform policy and practice locally, nationally and internationally.&nbsp;</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Dangerous and criminal driving are significant problems that take many forms <span class="citation" data-cites="simon1996 corbett2003 corbett2010">(<a href="#ref-simon1996" role="doc-biblioref">Simon and Corbett 1996</a>; <a href="#ref-corbett2003" role="doc-biblioref">Corbett 2003-06-01, 2003-06</a>, <a href="#ref-corbett2010" role="doc-biblioref">2010</a>)</span>. Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities <span class="citation" data-cites="departmentfortransportReportedRoadCasualties2023">(<a href="#ref-departmentfortransportReportedRoadCasualties2023" role="doc-biblioref">Department for Transport 2023b</a>)</span>. Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics <span class="citation" data-cites="departmentfortransportReportedRoadCasualties2023">(<a href="#ref-departmentfortransportReportedRoadCasualties2023" role="doc-biblioref">Department for Transport 2023b</a>)</span>. Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records <span class="citation" data-cites="departmentfortransport">(<a href="#ref-departmentfortransport" role="doc-biblioref">Department for Transport 2023a</a>)</span>. Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic). The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” <span class="citation" data-cites="departmentfortransport">(<a href="#ref-departmentfortransport" role="doc-biblioref">Department for Transport 2023a</a>)</span>.</p>
+<!-- The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
+Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
+The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
+<p>Cyclist crashes are underreported in police recorded datasets <span class="citation" data-cites="elvikIncompleteAccidentReporting1999">(<a href="#ref-elvikIncompleteAccidentReporting1999" role="doc-biblioref">Elvik and Mysen 1999</a>)</span> and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted <span class="citation" data-cites="janstrupetal.UnderstandingTrafficCrash2016">(<a href="#ref-janstrupetal.UnderstandingTrafficCrash2016" role="doc-biblioref">Janstrup et al. 2016</a>)</span>. Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions <span class="citation" data-cites="ibrahimCyclingMissesReview2021">(<a href="#ref-ibrahimCyclingMissesReview2021" role="doc-biblioref">Ibrahim et al. 2021</a>)</span>. These incidents are often referred to as “near-misses” <span class="citation" data-cites="ibrahimCyclingMissesReview2021">(<a href="#ref-ibrahimCyclingMissesReview2021" role="doc-biblioref">Ibrahim et al. 2021</a>)</span></p>
+<p>Commuter cyclists in the UK experience a near miss for every six miles of riding <span class="citation" data-cites="aldredInvestigatingRatesImpacts2015a">(<a href="#ref-aldredInvestigatingRatesImpacts2015a" role="doc-biblioref">Aldred and Crosweller 2015</a>)</span>, and concern over near misses are a key reason people choose not to cycle <span class="citation" data-cites="sandersPerceivedTrafficRisk2015a">(<a href="#ref-sandersPerceivedTrafficRisk2015a" role="doc-biblioref">Sanders 2015</a>)</span>, being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers <span class="citation" data-cites="sandersPerceivedTrafficRisk2015a">(<a href="#ref-sandersPerceivedTrafficRisk2015a" role="doc-biblioref">Sanders 2015</a>)</span>. In their review of near miss cycling crashes, <span class="citation" data-cites="ibrahimCyclingMissesReview2021">Ibrahim et al. (<a href="#ref-ibrahimCyclingMissesReview2021" role="doc-biblioref">2021</a>)</span> highlighted the need for better data on near misses to inform safety research.</p>
+<p>Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury <span class="citation" data-cites="aldred2016">(<a href="#ref-aldred2016" role="doc-biblioref">Aldred 2016</a>)</span>. A ‘close pass’ refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph). Close passes take different forms including the ‘punishment pass’ by angry drivers for a perceived slight such as causing the driver to slow down <span class="citation" data-cites="cubbin2024">(<a href="#ref-cubbin2024" role="doc-biblioref">Cubbin et al. 2024</a>)</span>. There is no specific law in the UK Road Traffic Act 1988 for driving too close to cyclist, but two are commonly applied for careless driving: RT88575- Drive without due care and attention; and RT99576 – Driver without reasonable consideration to others - and these are prominent in the analysis that follows.&nbsp;</p>
+<p>This study highlights the potential of using open access data from Operation Snap, the UK police’s national system to receive road users’ video evidence of road traffic offences. Operation Snap, often referred to informally as ‘OpSnap’, was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 20181. It is now in operation nationally across England and Wales, each police force offering its own submission portal for road users to submit video evidence. The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:&nbsp;&nbsp;&nbsp;</p>
+<ul>
+<li>The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues.&nbsp;</li>
+<li>The car registration number of the offending vehicle must be clearly visible.&nbsp;</li>
+<li>The public should be prepared to sign a witness statement and possibly give evidence in court.&nbsp;</li>
+<li>Statements for OpSnap can only be accepted from persons aged 18 or over. If you are under 18 the incident should be reported by email to [email]2.&nbsp;</li>
+</ul>
+<p>This is, to our knowledge, the first research study to use this dataset. As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents. Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice.&nbsp;</p>
+</section>
+<section id="sec-methods" class="level1">
+<h1>Methods and data</h1>
+<p>Open access data from West Yorkshire Safer Roads – OpSnap was used for this study, the media submissions portal having opened in July 2020. The West Yorkshire Police (WYP) data used here spanned calendar years 2021, 2022 and 2023. For the year 2021 there was less than half the cases of either 2022 or 2023, which could reflect reduced road use during the COVID-19 pandemic and fewer people being aware of OpSnap when it commenced.</p>
+<p>The dataset is a tabulation of cases submitted to the West Yorkshire Safer Roads OpSnap web portal. The terms ‘record’ and ‘case’ are used interchangeably here to refer to a record in the OpSnap database, each of which represents the separate submission of video evidence by a road user.</p>
+<p>The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers. Video footage is commonly recorded from on-board cameras. For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, known as ‘dash cams’. One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam <span class="citation" data-cites="DashCamSubmissions2024">(<a href="#ref-DashCamSubmissions2024" role="doc-biblioref"><span>“Dash <span>Cam Submissions</span> to <span>Police Rise</span> with <span>Operation Snap</span>”</span> 2024</a>)</span>. For cyclists, footage is commonly recorded using helmet or handlebar-mounted cameras. The proportion of cyclists using these cameras is unknown but anecdotal evidence suggests increased usage, with many choosing to record rides in case an incident occurs.</p>
+<p>Complainants upload footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make, model and colour, the location and time of the incident, and details of the camera used to record the footage. Only vehicle offences can be reported as the registration number of any offending vehicle is required and must be legible in footage. The open access data is a deidentified summary of submitted cases with informtion on: mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location. The offence location is typically a street name and town or city name, or an intersection, and examples included: ‘A58 Godley Road, Halifax’, ‘Keighley Road, Silsden’ , ‘Woodhouse Lane A660, Leeds’. For this study, approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire. Further aspects of the data, their uses and limitations are discussed in what follows.</p>
+<div class="cell" data-hash="paper_cache/html/unnamed-chunk-6_dbd8bf67df713cd28b8668fd4613a8bd">
+
+</div>
+<p>The data is open acess and looks like this, with names cleaned up by the package:</p>
+<!-- The data looks like this (first 3 rows shown): -->
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<div class="cell" data-hash="paper_cache/html/unnamed-chunk-9_d79aca6df4be28954818368d0eee37e6">
+
+</div>
+<div class="cell" data-hash="paper_cache/html/fig-time_b8433a65c2434cba0ebc7baaf64068a5">
+<div class="cell-output-display">
+<div id="fig-time" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="paper_files/figure-html/fig-time-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Monthly count of Operation Snap records, West Yorkshire</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There were 18363 records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in <a href="#fig-time">Figure&nbsp;1</a>. Some records lacked either an offence (5707, 31.1%) or a location (3825, 20.8%), or both, leaving 48.1% or 8831 complete records. There was a distinct seasonal pattern to reporting, with significant increases in summer months.</p>
+<p>Of the 12656 records with an offence, the most common offences were Driving without reasonable consideration to others (rt88576) and Driving without due care and attention (rt88575). This is presented in <a href="#tbl-offences">Table&nbsp;1</a>, which shows the number and percentage of records by offence type, showing the top 6 offence types and the remainder grouped as ‘Other’. As previously noted, a high proportion of cases did not include information on the reported offence, with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575). Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.</p>
+<div class="cell" data-hash="paper_cache/html/tbl-offences_6644d0309fba65875f4c791871070c44">
+<div class="cell-output-display">
+<div id="tbl-offences" class="anchored">
+
+<div id="trsllzuqra" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#trsllzuqra table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#trsllzuqra thead, #trsllzuqra tbody, #trsllzuqra tfoot, #trsllzuqra tr, #trsllzuqra td, #trsllzuqra th {
+  border-style: none;
+}
+
+#trsllzuqra p {
+  margin: 0;
+  padding: 0;
+}
+
+#trsllzuqra .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #FFFFFF;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#trsllzuqra .gt_title {
+  color: #333333;
+  font-size: 24px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#trsllzuqra .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#trsllzuqra .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#trsllzuqra .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#trsllzuqra .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#trsllzuqra .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#trsllzuqra .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#trsllzuqra .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#trsllzuqra .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#trsllzuqra .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#trsllzuqra .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#trsllzuqra .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#trsllzuqra .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #F6F7F7;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#trsllzuqra .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trsllzuqra .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#trsllzuqra .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#trsllzuqra .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#trsllzuqra .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trsllzuqra .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#trsllzuqra .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trsllzuqra .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_striped {
+  background-color: #FAFAFA;
+}
+
+#trsllzuqra .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trsllzuqra .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#trsllzuqra .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#trsllzuqra .gt_left {
+  text-align: left;
+}
+
+#trsllzuqra .gt_center {
+  text-align: center;
+}
+
+#trsllzuqra .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#trsllzuqra .gt_font_normal {
+  font-weight: normal;
+}
+
+#trsllzuqra .gt_font_bold {
+  font-weight: bold;
+}
+
+#trsllzuqra .gt_font_italic {
+  font-style: italic;
+}
+
+#trsllzuqra .gt_super {
+  font-size: 65%;
+}
+
+#trsllzuqra .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#trsllzuqra .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#trsllzuqra .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#trsllzuqra .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#trsllzuqra .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#trsllzuqra .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#trsllzuqra .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;1:  Number of convictions by offence type (top 6 and other). </caption>
+  <colgroup>
+    <col style="width:600px;">
+    <col style="width:80px;">
+    <col style="width:120px;">
+  </colgroup>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Offence">Offence</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">rt88576</span></em><br><span style="font-size:18px"> drive without reasonable consideration to others</span></td>
+<td headers="# records" class="gt_row gt_right">4992</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:39%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">39%</span></div></div></td></tr>
+    <tr><td headers="Offence" class="gt_row gt_left gt_striped"><em><span style="font-size:14px">rt88575</span></em><br><span style="font-size:18px"> drive without due care and attention</span></td>
+<td headers="# records" class="gt_row gt_right gt_striped">2917</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:23%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">23%</span></div></div></td></tr>
+    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">rt88975</span></em><br><span style="font-size:18px"> drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals</span></td>
+<td headers="# records" class="gt_row gt_right">1364</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:11%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:13.2px;font-weight:bold;font-size:15px;">11%</span></div></div></td></tr>
+    <tr><td headers="Offence" class="gt_row gt_left gt_striped"><em><span style="font-size:14px">rt88971</span></em><br><span style="font-size:18px"> fail to comply with red traffic light</span></td>
+<td headers="# records" class="gt_row gt_right gt_striped">679</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:5%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:6px;font-weight:bold;font-size:15px;">5%</span></div></div></td></tr>
+    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">rt88966</span></em><br><span style="font-size:18px"> motor vehicle fail to comply with endorsable s36 traffic sign</span></td>
+<td headers="# records" class="gt_row gt_right">411</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.6px;font-weight:bold;font-size:15px;">3%</span></div></div></td></tr>
+    <tr><td headers="Offence" class="gt_row gt_left gt_striped"><em><span style="font-size:14px">rv86019</span></em><br><span style="font-size:18px"> use a handheld phone / device whilst driving a motor vehicle on a road</span></td>
+<td headers="# records" class="gt_row gt_right gt_striped">357</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.6px;font-weight:bold;font-size:15px;">3%</span></div></div></td></tr>
+    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">Other</span></em><br><span style="font-size:18px"></span></td>
+<td headers="# records" class="gt_row gt_right">1936</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:15%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:18px;font-weight:bold;font-size:15px;">15%</span></div></div></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="cell" data-hash="paper_cache/html/unnamed-chunk-13_5809f761404fa0fd4fd5e24fc3289327">
+
+</div>
+<p>Vehicle (mostly car and van drivers with dashcams) driver and cyclist reporters dominate reporting for all records, as illustrated in <a href="#tbl-mode">Table&nbsp;2</a>. Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.</p>
+<div class="cell" data-hash="paper_cache/html/tbl-mode_7d6b3132cf6c582f06262f5c493d9a44">
+<div class="cell-output-display">
+<div id="tbl-mode" class="anchored">
+
+<div id="odbgqbcmpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#odbgqbcmpx table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#odbgqbcmpx thead, #odbgqbcmpx tbody, #odbgqbcmpx tfoot, #odbgqbcmpx tr, #odbgqbcmpx td, #odbgqbcmpx th {
+  border-style: none;
+}
+
+#odbgqbcmpx p {
+  margin: 0;
+  padding: 0;
+}
+
+#odbgqbcmpx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #FFFFFF;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#odbgqbcmpx .gt_title {
+  color: #333333;
+  font-size: 24px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#odbgqbcmpx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#odbgqbcmpx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#odbgqbcmpx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#odbgqbcmpx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#odbgqbcmpx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#odbgqbcmpx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#odbgqbcmpx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#odbgqbcmpx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#odbgqbcmpx .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #F6F7F7;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#odbgqbcmpx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#odbgqbcmpx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_striped {
+  background-color: #FAFAFA;
+}
+
+#odbgqbcmpx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_left {
+  text-align: left;
+}
+
+#odbgqbcmpx .gt_center {
+  text-align: center;
+}
+
+#odbgqbcmpx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#odbgqbcmpx .gt_font_normal {
+  font-weight: normal;
+}
+
+#odbgqbcmpx .gt_font_bold {
+  font-weight: bold;
+}
+
+#odbgqbcmpx .gt_font_italic {
+  font-style: italic;
+}
+
+#odbgqbcmpx .gt_super {
+  font-size: 65%;
+}
+
+#odbgqbcmpx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#odbgqbcmpx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#odbgqbcmpx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#odbgqbcmpx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#odbgqbcmpx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#odbgqbcmpx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#odbgqbcmpx .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2:  Number of OpSnap records by observer mode. </caption>
+  <colgroup>
+    <col style="width:400px;">
+    <col style="width:80px;">
+    <col style="width:120px;">
+  </colgroup>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Mode">Mode</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">vehicle driver</td>
+<td headers="# records" class="gt_row gt_right">9167</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:49.9%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">49.9%</span></div></div></td></tr>
+    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">cyclist</td>
+<td headers="# records" class="gt_row gt_right gt_striped">6312</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:34.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">34.4%</span></div></div></td></tr>
+    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">pedestrian</td>
+<td headers="# records" class="gt_row gt_right">1352</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:7.4%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:8.88px;font-weight:bold;font-size:15px;">7.4%</span></div></div></td></tr>
+    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">vehicle passenger</td>
+<td headers="# records" class="gt_row gt_right gt_striped">579</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:3.2%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.84px;font-weight:bold;font-size:15px;">3.2%</span></div></div></td></tr>
+    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">unknown</td>
+<td headers="# records" class="gt_row gt_right">497</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:2.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.24px;font-weight:bold;font-size:15px;">2.7%</span></div></div></td></tr>
+    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">horse rider</td>
+<td headers="# records" class="gt_row gt_right gt_striped">407</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:2.2%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:2.64px;font-weight:bold;font-size:15px;">2.2%</span></div></div></td></tr>
+    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">motorcyclist</td>
+<td headers="# records" class="gt_row gt_right">48</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0.36px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
+    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">NA</td>
+<td headers="# records" class="gt_row gt_right gt_striped">1</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span></div></div></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- The equivalent table excluding records with missing offence data is shown below: -->
+<!-- For cases submitted by people riding cycles (shown in @tbl-offences-cyclist-observer), the most common offences were also both associated with careless driving, particularly driving without reasonable consideration to others (78.7%), there were also a small proportion of cases associated with drivers using mobile phones (3.7%), failing to comply with traffic signals (3.5%) and contravening regulator signage (0.6%). -->
+<div class="cell" data-hash="paper_cache/html/unnamed-chunk-16_3a7bcca13570c8ec2b7bf5907c6ccbd7">
+
+</div>
+<p>The cross-tabulation of reporting mode and offence type is shown in <a href="#tbl-mode-offences-crosstab">Table&nbsp;3</a>. The table reveals some interesting tendencies. While 39.4 percent of all offences are for inconsiderate driving, they make up the bulk of offences reported by cyclists, with 78.7 percent of all offences reported by cyclists being for inconsiderate driving. Drivers are proportionally 4.9 times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being 6.3 times more likely to report other types of offences as cyclists. While further research is needed, this makes sense if physically-vulnerable cyclists are most concerned with the dangerous driving of vehicles, whereas drivers also report other types of road traffic offence, with pedestrians and others also more likely to encounter other types of offence.</p>
+<div class="cell" data-hash="paper_cache/html/tbl-mode-offences-crosstab_89927f367dce642aaef33967c06362d2">
+<div class="cell-output-display">
+<div id="tbl-mode-offences-crosstab" class="anchored">
+
+<div id="odbgqbcmpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#odbgqbcmpx table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#odbgqbcmpx thead, #odbgqbcmpx tbody, #odbgqbcmpx tfoot, #odbgqbcmpx tr, #odbgqbcmpx td, #odbgqbcmpx th {
+  border-style: none;
+}
+
+#odbgqbcmpx p {
+  margin: 0;
+  padding: 0;
+}
+
+#odbgqbcmpx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #FFFFFF;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#odbgqbcmpx .gt_title {
+  color: #333333;
+  font-size: 24px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#odbgqbcmpx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#odbgqbcmpx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#odbgqbcmpx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#odbgqbcmpx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#odbgqbcmpx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#odbgqbcmpx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#odbgqbcmpx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#odbgqbcmpx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#odbgqbcmpx .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #F6F7F7;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#odbgqbcmpx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#odbgqbcmpx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_striped {
+  background-color: #FAFAFA;
+}
+
+#odbgqbcmpx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_left {
+  text-align: left;
+}
+
+#odbgqbcmpx .gt_center {
+  text-align: center;
+}
+
+#odbgqbcmpx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#odbgqbcmpx .gt_font_normal {
+  font-weight: normal;
+}
+
+#odbgqbcmpx .gt_font_bold {
+  font-weight: bold;
+}
+
+#odbgqbcmpx .gt_font_italic {
+  font-style: italic;
+}
+
+#odbgqbcmpx .gt_super {
+  font-size: 65%;
+}
+
+#odbgqbcmpx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#odbgqbcmpx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#odbgqbcmpx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#odbgqbcmpx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#odbgqbcmpx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#odbgqbcmpx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#odbgqbcmpx .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;3:  Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode. </caption>
+  <colgroup>
+    <col style="width:180px;">
+    <col style="width:400px;">
+    <col style="width:150px;">
+  </colgroup>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="offence_simple">offence_simple</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<div><span style='color:#e31a1c'><b> Cyclists </b></span>||<span style='color:#1f78b4'><b> Drivers </b></span>||<span style='color:#bdbdbd'><b> Other </b></span></div>"><div><span style="color:#e31a1c"><b> Cyclists </b></span>||<span style="color:#1f78b4"><b> Drivers </b></span>||<span style="color:#bdbdbd"><b> Other </b></span></div></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="count">count</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="offence_simple" class="gt_row gt_center" style="font-size: 18px;">Inconsiderate driving</td>
+<td headers="perc" class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==">    <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="127.68" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="127.68" y="0.0000000000000018" width="24.24" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="151.93" y="0.0000000000000018" width="32.32" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="63.84" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">79</text><text x="139.81" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">15</text><text x="168.09" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">20</text></g></svg></td>
+<td headers="count" class="gt_row gt_right" style="font-size: 18px;">4992</td></tr>
+    <tr><td headers="offence_simple" class="gt_row gt_center gt_striped" style="font-size: 18px;">Careless driving</td>
+<td headers="perc" class="gt_row gt_center gt_striped"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==">    <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="33.78" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="33.78" y="0.0000000000000018" width="107.48" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="141.26" y="0.0000000000000018" width="42.99" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="16.89" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">11</text><text x="87.52" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">35</text><text x="162.76" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">14</text></g></svg></td>
+<td headers="count" class="gt_row gt_right gt_striped" style="font-size: 18px;">2917</td></tr>
+    <tr><td headers="offence_simple" class="gt_row gt_center" style="font-size: 18px;">Other</td>
+<td headers="perc" class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==">    <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="14.74" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="14.74" y="0.0000000000000018" width="73.70" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="88.44" y="0.0000000000000018" width="95.81" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="7.37" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">10</text><text x="51.59" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">50</text><text x="136.35" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">65</text></g></svg></td>
+<td headers="count" class="gt_row gt_right" style="font-size: 18px;">4747</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+<p>Disposal categories assigned by police are shown in <a href="#tbl-disposal">Table&nbsp;4</a>. Roughly a third of cases resulted in no further action, and for most of the remainder drivers were required to undertake an education course. Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome (XX EXPLAIN FURTHER?). Close to two percent of cases went to court and a further one percent underwent further investigation.</p>
+<div class="cell" data-hash="paper_cache/html/tbl-disposal_1a75a1e336fadbdd76954855f4afc4e5">
+<div class="cell-output-display">
+<div id="tbl-disposal" class="anchored">
+
+<div id="odbgqbcmpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#odbgqbcmpx table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#odbgqbcmpx thead, #odbgqbcmpx tbody, #odbgqbcmpx tfoot, #odbgqbcmpx tr, #odbgqbcmpx td, #odbgqbcmpx th {
+  border-style: none;
+}
+
+#odbgqbcmpx p {
+  margin: 0;
+  padding: 0;
+}
+
+#odbgqbcmpx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #FFFFFF;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#odbgqbcmpx .gt_title {
+  color: #333333;
+  font-size: 24px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#odbgqbcmpx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#odbgqbcmpx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#odbgqbcmpx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#odbgqbcmpx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#odbgqbcmpx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#odbgqbcmpx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#odbgqbcmpx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#odbgqbcmpx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#odbgqbcmpx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#odbgqbcmpx .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #F6F7F7;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#odbgqbcmpx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#odbgqbcmpx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#odbgqbcmpx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_striped {
+  background-color: #FAFAFA;
+}
+
+#odbgqbcmpx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#odbgqbcmpx .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#odbgqbcmpx .gt_left {
+  text-align: left;
+}
+
+#odbgqbcmpx .gt_center {
+  text-align: center;
+}
+
+#odbgqbcmpx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#odbgqbcmpx .gt_font_normal {
+  font-weight: normal;
+}
+
+#odbgqbcmpx .gt_font_bold {
+  font-weight: bold;
+}
+
+#odbgqbcmpx .gt_font_italic {
+  font-style: italic;
+}
+
+#odbgqbcmpx .gt_super {
+  font-size: 65%;
+}
+
+#odbgqbcmpx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#odbgqbcmpx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#odbgqbcmpx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#odbgqbcmpx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#odbgqbcmpx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#odbgqbcmpx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#odbgqbcmpx .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;4:  Most common disposal values in the OpSnap dataset. </caption>
+  <colgroup>
+    <col style="width:400px;">
+    <col style="width:80px;">
+    <col style="width:120px;">
+  </colgroup>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Disposal">Disposal</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">educational course</td>
+<td headers="# records" class="gt_row gt_right">9806</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:53.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">53.4%</span></div></div></td></tr>
+    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">nfa</td>
+<td headers="# records" class="gt_row gt_right gt_striped">5697</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:31%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">31%</span></div></div></td></tr>
+    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">conditional offer</td>
+<td headers="# records" class="gt_row gt_right">2326</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:12.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:15.24px;font-weight:bold;font-size:15px;">12.7%</span></div></div></td></tr>
+    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">court</td>
+<td headers="# records" class="gt_row gt_right gt_striped">307</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:1.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:2.04px;font-weight:bold;font-size:15px;">1.7%</span></div></div></td></tr>
+    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">dsit investigation</td>
+<td headers="# records" class="gt_row gt_right">202</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:1.1%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:1.32px;font-weight:bold;font-size:15px;">1.1%</span></div></div></td></tr>
+    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">rpu investigation</td>
+<td headers="# records" class="gt_row gt_right gt_striped">23</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.1%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0.12px;font-weight:bold;font-size:15px;">0.1%</span></div></div></td></tr>
+    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">fine</td>
+<td headers="# records" class="gt_row gt_right">1</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span></div></div></td></tr>
+    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">NA</td>
+<td headers="# records" class="gt_row gt_right gt_striped">1</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span></div></div></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+<p>There are 8801 unique locations (addresses) in the data, with the most common locations shown in <a href="#tbl-locations">Table&nbsp;5</a>.</p>
+<p>INSERT Table 5 AND/OR Map (TO BE INCLUDED)</p>
+<div class="cell" data-hash="paper_cache/html/tbl-locations_164e8b6a99268c149d756499e1609327">
+<div class="cell-output-display">
+<div id="tbl-locations" class="anchored">
+
+<div id="owzgsnvahl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+#owzgsnvahl table {
+  font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#owzgsnvahl thead, #owzgsnvahl tbody, #owzgsnvahl tfoot, #owzgsnvahl tr, #owzgsnvahl td, #owzgsnvahl th {
+  border-style: none;
+}
+
+#owzgsnvahl p {
+  margin: 0;
+  padding: 0;
+}
+
+#owzgsnvahl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #FFFFFF;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#owzgsnvahl .gt_title {
+  color: #333333;
+  font-size: 24px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#owzgsnvahl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#owzgsnvahl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#owzgsnvahl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#owzgsnvahl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#owzgsnvahl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#owzgsnvahl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#owzgsnvahl .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#owzgsnvahl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#owzgsnvahl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#owzgsnvahl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#owzgsnvahl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#owzgsnvahl .gt_row {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #F6F7F7;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#owzgsnvahl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#owzgsnvahl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#owzgsnvahl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#owzgsnvahl .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#owzgsnvahl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#owzgsnvahl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#owzgsnvahl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#owzgsnvahl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_striped {
+  background-color: #FAFAFA;
+}
+
+#owzgsnvahl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#owzgsnvahl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#owzgsnvahl .gt_sourcenote {
+  font-size: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#owzgsnvahl .gt_left {
+  text-align: left;
+}
+
+#owzgsnvahl .gt_center {
+  text-align: center;
+}
+
+#owzgsnvahl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#owzgsnvahl .gt_font_normal {
+  font-weight: normal;
+}
+
+#owzgsnvahl .gt_font_bold {
+  font-weight: bold;
+}
+
+#owzgsnvahl .gt_font_italic {
+  font-style: italic;
+}
+
+#owzgsnvahl .gt_super {
+  font-size: 65%;
+}
+
+#owzgsnvahl .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#owzgsnvahl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#owzgsnvahl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#owzgsnvahl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#owzgsnvahl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#owzgsnvahl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#owzgsnvahl .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;5:  Most common locations recorded in the OpSnap dataset </caption>
+  <colgroup>
+    <col style="width:400px;">
+    <col style="width:80px;">
+    <col style="width:120px;">
+  </colgroup>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Location">Location</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Meanwood Road, Leeds</td>
+<td headers="# records" class="gt_row gt_right">49</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.4%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Dewsbury Road, Ossett</td>
+<td headers="# records" class="gt_row gt_right gt_striped">48</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.4%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Westgate J/W Park Square West, Leeds</td>
+<td headers="# records" class="gt_row gt_right">38</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Chapeltown Road, Leeds</td>
+<td headers="# records" class="gt_row gt_right gt_striped">35</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Park Square West, Leeds</td>
+<td headers="# records" class="gt_row gt_right">33</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">WESTGATE junction with PARK SQUARE WEST, LEEDS</td>
+<td headers="# records" class="gt_row gt_right gt_striped">33</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Hollingwood Lane, Bradford</td>
+<td headers="# records" class="gt_row gt_right">27</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Highgate Road, Bradford</td>
+<td headers="# records" class="gt_row gt_right gt_striped">26</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Cemetery Road, Bradford</td>
+<td headers="# records" class="gt_row gt_right">25</td>
+<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
+    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Tongue Lane, Leeds</td>
+<td headers="# records" class="gt_row gt_right gt_striped">25</td>
+<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>Drawing on the work and findings described above, this discussion outlines a research agenda. The breadth and depth of potential policy-relevant work that could be undertaken is, we suggest, enormous. While this preliminary list will not prove exhaustive, if it stimulates or informs further research then it will have achieved its objective.</p>
+<p>Cyclists undertake two percent of road miles in the UK <span class="citation" data-cites="departmentfortransport">(<a href="#ref-departmentfortransport" role="doc-biblioref">Department for Transport 2023a</a>)</span>. Other things equal, this suggests that with respect to distance travelled, cyclists were around 20 times more likely to submit evidence of a road traffic offence than vehicle drivers and other road users in West Yorkshire.</p>
+<p>Over 90 percent of offences reported by cyclists were for driving without consideration for other road users and without due care and attention. This is consistent with the phenomenon of ‘close passes’ in the cycling safety literature <span class="citation" data-cites="aldred2016 cubbin2024">(<a href="#ref-aldred2016" role="doc-biblioref">Aldred 2016</a>; <a href="#ref-cubbin2024" role="doc-biblioref">Cubbin et al. 2024</a>)</span>. It suggests the OpSnap data holds the potential for further analysis to inform knowledge about the nature of close passes generally. For example, it should be possible to identify hotspot locations. As with much of the further research outlined here, this the potential to inform preventive policy and practice relating to police interventions, driver behaviour, the design of roads and roadside environments.</p>
+<p>There was an increase in submissions over time between 2021 and 2023. This may reflect changing levels of road use during and after the Covid-19 pandemic, increased awareness of OpSnap, or increased video camera ownership levels. Comparative analysis including other police jurisdictions will be able to determine whether this experience is common or isolated. We hypothesise that it will prove to be a common experience and that that the volume of submissions will continue to increase in the near and middle term (though ideally, a decline would occur as roads become safer).</p>
+<p>If submission volumes continue to increase, means of informing triage and prioritisation of cases will be increasingly valuable. Triage systems are probably already in use in different areas, and research to identify and inform best practice should be undertaken. Likewise, research to determine best practice in determining disposal recommendations will prove fruitful. It may provide feasible, perhaps using machine learning, to develop automated means of triage, determination of offence type and disposal. Research to gauge the differential effectiveness of disposal measures is needed, starting with measures of recividism.</p>
+<p>Within the trend of increasing video submissions there were distinct seasonal patterns. Seasonal variation in cyclists’ submission reflect seasonal (weather and other) influences on cycling prevalence and duration. This suggests seasonal variation in preventive responses might be tailored to need. It is well established that crime is highly concentrated along whatever dimension is examined <span class="citation" data-cites="farrellPreventingRepeatRepeat2017">(<a href="#ref-farrellPreventingRepeatRepeat2017" role="doc-biblioref">Farrell and Pease 2017</a>)</span>. With respect to video evidence this will include recidivists (repeat offenders), repeat submitters of evidence (who may or may not be repeat victims/survivors), the concentration of incidents (close passes, near misses and crashes) at certain times and places, with different types of experiences concentrated among certain types of road users. For example, we hypothesise that close passes are more likely to be reported by cyclists and horse riders than vehicle drivers, both due to the nature of the road user interactions and the relative risk associated with the manoeuvre. As such, the types of incidents reported by vehicle drivers would be systematically different, indicating a need for different investigative and preventive approaches. Policing and preventions efforts focused on where problems are concentrated are more resource efficient – it is the foundation of problem-oriented policing (see e.g., (<span class="citation" data-cites="laingAggressiveDriving2010">Laing (<a href="#ref-laingAggressiveDriving2010" role="doc-biblioref">2010</a>)</span>; <span class="citation" data-cites="scottSpeedingResidentialAreas2010">Scott and Maddox (<a href="#ref-scottSpeedingResidentialAreas2010" role="doc-biblioref">2010</a>)</span>)- and research using video submissions holds the potential to analysis of problem concentrations.</p>
+<p>Evidence submitted by cyclists was the focus here. However, Operation Snap data offer potential for analysis of data from other road user sources. Studies focused on specific types of road user will prove informative with respect to policy and practice. Dash cam submissions by motorists offers great potential to inform other aspects of road safety. Research into submissions by pedestrians, horse riders and motorcyclists should prove viable to improve the safety of these parties. There were over four hundred submissions by horse riders in West Yorkshire, which means there will be thousands nationwide. The British Horse Society<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and others may be interested in this data being used to inform the safety of horses and riders. The British Motorcyclists Federation<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent .</p>
+<p>This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data, and our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide. This suggests the potential for development of a national OpSnap dataset. A feasibility study is needed to establish the availability and compatibility of the data from different forces. Should a national dataset prove feasible it holds potential for national-level, cross-regional, and comparative analyses of patterns and trends. A national dataset will enhance the possibility for cross-national comparative analysis and international cooperation in road safety. It holds the potential for the development of rankings according to different criteria and, thereby, potential performance indicators.</p>
+<p>Comparison by complainant mode of transport, reported offense type and disposal, subdivided by other characteristics, is needed. Determining which type of submission - by which type of road user for example - is more likely to result in a recommendation of court proceedings, may help refine police investigations. For example, are submissions by cyclists (or horse riders) more or less likely to result in court proceedings than those by motorists? If so, why? What is the role of substantive issues, and to what extent are decisions affected by video quality? Further work with police investigators should inform best practice in the processing and further investigation of submissions. How are disposal options determined? Cross-police force comparative analysis may inform national best practice guidelines.</p>
+<p>A constraint on the present analysis was the nature of the publicly-available data. A pilot project should be undertaken in collaboration with police to establish the potential to further enhance policing and public safety using non-public aspects of the submissions data. This would require working partnerships and a secure research platform to meet GDPR requirements. Such collaborative approaches are increasingly common in health, medicine, and policing research.</p>
+<p>Video footage holds significant potential for further analysis, both qualitative and quantitative. Police investigations might be improved by research to identify and promote good practice in the assessment of footage, its use in determining disposals, further investigations, and prosecutions. What type of footage works best in the courtroom, and how is it best identified and prepared? What is the potential for machine learning to identify, clean, and prepare footage of the most serious submissions? There are also likely to be lessons that can be learned for how footage is gathered, edited and submitted by road users. More generally, video footage might be used to identification risk factors, that is, the types of situations in which crashes, near misses, and close passes occur. This promises the potential to inform policy and practice in ways that ameliorate risk factors. Within this area of research, analysis from dash cams is likely to inform different practices than that from cycle-cams, that from pedestrians, horse riders and motorcyclists, and so on.</p>
+<p>Some research into the relationship between video footage and supporting written evidence is needed. Is written supported evidence always needed? Which is deemed most important by police, and which by courts? What are the characteristics of strong supporting written evidence, and what are the characteristics of strong video evidence? Are both needed or can a weakness in one be overcome by particularly strong aspects in the other?</p>
+<p>The spatial analysis undertaken here was obliged to use data for ‘all’ video submissions. We were unable to separate the submissions by cyclists because, in the publicly-available data, locations could not be matched to individual cases: they were scrambled to ensure anonymity for GDPR purposes. An obvious next step, in the context of a secure research platform, would be spatial analysis for different types of road users, for different types of incidents, for incidents resulting in different disposals, and so on. Hotspots and spatial clustering are likely to vary by type of road user, type of incident, day or week, time of day, and so on.</p>
+<p>Creating opportunities to access video submission data would be an alternate approach that facilitates research into the nature of footage. Another option would be research using existing online videos, of which there appear to be many thousands on social media including those posted by police forces. Such research will face different methodological challenges but could provide proof-of-concept of the potential for analysis of OpSnap footage.</p>
+<p>OpSnap data should be compared to, and integrated with, other road safety datasets. For example, spatial analysis that was Integrated with Strava data (road use data by cyclists and pedestrians), Google road use and other data, may facilitate exposure-based measures rather than the counts used here. The use of rates will enhance the identification locations with higher risk because based on their volume of traffic: different types of risk need to be gauged. Comparison and integration of OpSnap and Stats193 is an obvious starting point. To what extent do OpSnap and Crashmap incidents overlap? To what extent are they complementary? To what extent do they identify the same or different types of problems?</p>
+<p>More generally, OpSnap data holds potential for use in the evaluation of experimental interventions. Depending on the level of submissions there is the potential to use the data to assess effects before and after interventions, and to identify comparison (control group) sites. Different road safety interventions imply different resource needs. Ideally, evaluations would include cost-benefit analysis of the portfolio of social and economic costs involved, including the cost of death and injury.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>This study offers what we believe is the first study using the open access Operation Snap data. It provides proof-of-concept that OpSnap data holds considerable research potential. It has the potential to inform policy and practice promoting road safety. Drawing on the analysis of the West Yorkshire data, a research agenda was outlined. This preliminary list will prove far from exhaustive. While aspects of that agenda may appear ambitious at the time of writing, we suggest that the present study will have achieved one of its aims if this agenda is rapidly superseded by further research.</p>
+<p>The focus here was video evidence submissions by cyclists. Relative to distance travelled by cyclists, their submissions were around 20 times over-represented in the West Yorkshire data. This was the justification for our focus. The disproportionality likely reflects the vulnerability of cyclists relative to motor vehicle users when the two forms of transport interact, and when close passes, near misses and crashes occur. Our primary conclusion is that further research into video submissions to Operation Snap holds significant potential to inform the future of road safety for a broad range of road users.</p>
+</section>
+<section id="references" class="level1 unnumbered">
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-aldred2016" class="csl-entry" role="doc-biblioentry">
+Aldred, Rachel. 2016. <span>“Cycling Near Misses: <span>Their</span> Frequency, Impact, and Prevention.”</span> <em>Transportation Research Part A: Policy and Practice</em> 90 (August): 69–83. <a href="https://doi.org/10.1016/j.tra.2016.04.016">https://doi.org/10.1016/j.tra.2016.04.016</a>.
+</div>
+<div id="ref-aldredInvestigatingRatesImpacts2015a" class="csl-entry" role="doc-biblioentry">
+Aldred, Rachel, and Sian Crosweller. 2015. <span>“Investigating the Rates and Impacts of Near Misses and Related Incidents Among <span>UK</span> Cyclists.”</span> <em>Journal of Transport &amp; Health</em> 2 (3): 379–93. <a href="https://doi.org/10.1016/j.jth.2015.05.006">https://doi.org/10.1016/j.jth.2015.05.006</a>.
+</div>
+<div id="ref-corbett2003" class="csl-entry" role="doc-biblioentry">
+Corbett, Claire. 2003-06-01, 2003-06. <em>Car Crime</em>. 1st edition. Cullompton: Willan.
+</div>
+<div id="ref-corbett2010" class="csl-entry" role="doc-biblioentry">
+———. 2010. <span>“Driving Offences.”</span> In. Willan.
+</div>
+<div id="ref-cubbin2024" class="csl-entry" role="doc-biblioentry">
+Cubbin, William, Kjell van Paridon, Helen Keyes, and Matthew Timmis. 2024. <span>“Close Passes Caught on Camera – <span>How</span> Knowledge and Behavioural Norms Relate to Perceptions of Liability When Cars Overtake Cyclists.”</span> <em>Transportation Research Part F: Traffic Psychology and Behaviour</em> 100 (January): 308–22. <a href="https://doi.org/10.1016/j.trf.2023.12.002">https://doi.org/10.1016/j.trf.2023.12.002</a>.
+</div>
+<div id="ref-DashCamSubmissions2024" class="csl-entry" role="doc-biblioentry">
+<span>“Dash <span>Cam Submissions</span> to <span>Police Rise</span> with <span>Operation Snap</span>.”</span> 2024. https://www.icompario.com/en-gb/guides/dash-cam-police-submission-statistics/.
+</div>
+<div id="ref-departmentfortransport" class="csl-entry" role="doc-biblioentry">
+Department for Transport. 2023a. <span>“Reported Road Casualties in <span>Great Britain</span>: Pedal Cycle Factsheet, 2022.”</span>
+</div>
+<div id="ref-departmentfortransportReportedRoadCasualties2023" class="csl-entry" role="doc-biblioentry">
+———. 2023b. <span>“Reported Road Casualties <span>Great Britain</span>, Annual Report: 2022.”</span> <em>GOV.UK</em>. https://www.gov.uk/government/statistics/reported-road-casualties-great-britain-annual-report-2022/reported-road-casualties-great-britain-annual-report-2022.
+</div>
+<div id="ref-elvikIncompleteAccidentReporting1999" class="csl-entry" role="doc-biblioentry">
+Elvik, Rune, and Anne Mysen. 1999. <span>“Incomplete <span>Accident Reporting</span>: <span>Meta-Analysis</span> of <span>Studies Made</span> in 13 <span>Countries</span>.”</span> <em>Transportation Research Record</em> 1665 (1): 133–40. <a href="https://doi.org/10.3141/1665-18">https://doi.org/10.3141/1665-18</a>.
+</div>
+<div id="ref-farrellPreventingRepeatRepeat2017" class="csl-entry" role="doc-biblioentry">
+Farrell, Graham, and Ken Pease. 2017. <span>“Preventing Repeat and Near Repeat Crime Concentrations.”</span> In.
+</div>
+<div id="ref-ibrahimCyclingMissesReview2021" class="csl-entry" role="doc-biblioentry">
+Ibrahim, M., J. Haworth, N. Christie, T. Cheng, and S. Hailes. 2021. <span>“Cycling Near Misses: <span>A</span> Review of the Current Methods, Challenges and the Potential of an <span class="nocase">AI-embedded</span> System.”</span> <em>Transport Reviews</em> 41 (3): 304–28.
+</div>
+<div id="ref-janstrupetal.UnderstandingTrafficCrash2016" class="csl-entry" role="doc-biblioentry">
+Janstrup et al. 2016. <span>“Understanding Traffic Crash Under-Reporting: <span>Linking</span> Police and Medical Records to Individual and Crash Characteristics.”</span> <em>Traffic Injury Prevention</em> 17 (6): 580–84. <a href="https://doi.org/10.1080/15389588.2015.1128533">https://doi.org/10.1080/15389588.2015.1128533</a>.
+</div>
+<div id="ref-laingAggressiveDriving2010" class="csl-entry" role="doc-biblioentry">
+Laing, Colleen. 2010. <em>Aggressive <span>Driving</span></em>. Problem-<span>Oriented Guides</span> for <span>Police Problem-Specific Guides Series</span> 61. U.S. Department of Justice.
+</div>
+<div id="ref-sandersPerceivedTrafficRisk2015a" class="csl-entry" role="doc-biblioentry">
+Sanders, Rebecca L. 2015. <span>“Perceived Traffic Risk for Cyclists: <span>The</span> Impact of Near Miss and Collision Experiences.”</span> <em>Accident Analysis &amp; Prevention</em> 75 (February): 26–34. <a href="https://doi.org/10.1016/j.aap.2014.11.004">https://doi.org/10.1016/j.aap.2014.11.004</a>.
+</div>
+<div id="ref-scottSpeedingResidentialAreas2010" class="csl-entry" role="doc-biblioentry">
+Scott, Michael, and David K. Maddox. 2010. <em>Speeding in <span>Residential Areas</span>, 2nd Edition</em>. Problem-<span>Oriented Guides</span> for <span>Police Problem-Specific Guides Series</span> 3. U.S. Department of Justice.
+</div>
+<div id="ref-simon1996" class="csl-entry" role="doc-biblioentry">
+Simon, Frances, and Claire Corbett. 1996. <span>“Road Traffic Offending, Stress, Age, and Accident History Among Male and Female Drivers.”</span> <em>Ergonomics</em> 39 (5): 757–80. <a href="https://doi.org/10.1080/00140139608964497">https://doi.org/10.1080/00140139608964497</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>https://www.bhs.org.uk/<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://www.britishmotorcyclists.co.uk/<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
