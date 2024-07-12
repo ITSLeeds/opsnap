@@ -51,9 +51,10 @@ keywords:
 date: last-modified
 format:
   # html: default
-  pdf: default
-  # arxiv-pdf:
-  #   keep-tex: true
+  # docx: default
+  # pdf: default
+  arxiv-pdf:
+    keep-tex: true
 linenumbers: true # Add (continuous) line numbers?
 doublespacing: false # Double space the PDF output?
 runninghead: "Preprint" # The text on the top of each page of the output
@@ -64,6 +65,7 @@ editor_options:
 execute: 
   echo: false
   warning: false
+  cache: refresh
 ---
 
 ```{r, include = FALSE}
@@ -89,76 +91,7 @@ browseURL("paper.docx")
 devtools::load_all()
 ```
 
-# Abstract {.unnumbered}
 
-This study uses data from Operation Snap (OpSnap), the UK police's national system to receive road users' video evidence of road traffic offences.
-Data from one police force area for the three calendar years 2021 to 2023 (N= 18,363 records), is analysed.
-Of submitted cases, 34.4% were from cyclists (n=6,312) of which 69% resulted in an offence being registered, mostly for driving 'without reasonable consideration to others' or 'without due care and attention'.
-Three quarters (75.2%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), a quarter in no further action, and fewer than 1% for court appearance.
-A research agenda using OpSnap data is outlined: comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional, and local levels; research into disposal-related decision-making, video quality, and the role of supporting evidence should identify good practice; further study of video content, offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases, holds significant potential to inform policy and practice locally, nationally and internationally. 
-
-# Introduction
-
-Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
-Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@departmentfortransportReportedRoadCasualties2023].
-Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics [@departmentfortransportReportedRoadCasualties2023].
-Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records [@departmentfortransport].
-Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
-The 2023 report noted that "the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was 'driver or rider failed to look properly'" [@departmentfortransport].
-
-```{=html}
-<!-- The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
-Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
-The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
-```
-Cyclist crashes are underreported in police recorded datasets [@elvikIncompleteAccidentReporting1999] and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted [@janstrupetal.UnderstandingTrafficCrash2016].
-Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions [@ibrahimCyclingMissesReview2021].
-These incidents are often referred to as "near-misses" [@ibrahimCyclingMissesReview2021]
-
-Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses are a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a], being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a].
-In their review of near miss cycling crashes, @ibrahimCyclingMissesReview2021 highlighted the need for better data on near misses to inform safety research.
-
-Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016].
-A 'close pass' refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph).
-Close passes take different forms including the 'punishment pass' by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024].
-There is no specific law in the UK Road Traffic Act 1988 for driving too close to cyclist, but two are commonly applied for careless driving: RT88575- Drive without due care and attention; and RT99576 -- Driver without reasonable consideration to others - and these are prominent in the analysis that follows. 
-
-This study highlights the potential of using open access data from Operation Snap, the UK police's national system to receive road users' video evidence of road traffic offences.
-Operation Snap, often referred to informally as 'OpSnap', was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 20181.
-It is now in operation nationally across England and Wales, each police force offering its own submission portal for road users to submit video evidence.
-The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:   
-
--   The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues. 
--   The car registration number of the offending vehicle must be clearly visible. 
--   The public should be prepared to sign a witness statement and possibly give evidence in court. 
--   Statements for OpSnap can only be accepted from persons aged 18 or over. If you are under 18 the incident should be reported by email to \[email\]2. 
-
-This is, to our knowledge, the first research study to use this dataset.
-As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents.
-Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
-
-# Methods and data {#sec-methods}
-
-Open access data from West Yorkshire Safer Roads -- OpSnap was used for this study, the media submissions portal having opened in July 2020.
-The West Yorkshire Police (WYP) data used here spanned calendar years 2021, 2022 and 2023.
-For the year 2021 there was less than half the cases of either 2022 or 2023, which could reflect reduced road use during the COVID-19 pandemic and fewer people being aware of OpSnap when it commenced.
-
-The dataset is a tabulation of cases submitted to the West Yorkshire Safer Roads OpSnap web portal.
-The terms 'record' and 'case' are used interchangeably here to refer to a record in the OpSnap database, each of which represents the separate submission of video evidence by a road user.
-
-The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers.
-Video footage is commonly recorded from on-board cameras.
-For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, known as 'dash cams'.
-One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam [@DashCamSubmissions2024].
-For cyclists, footage is commonly recorded using helmet or handlebar-mounted cameras.
-The proportion of cyclists using these cameras is unknown but anecdotal evidence suggests increased usage, with many choosing to record rides in case an incident occurs.
-
-Complainants upload footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make, model and colour, the location and time of the incident, and details of the camera used to record the footage.
-Only vehicle offences can be reported as the registration number of any offending vehicle is required and must be legible in footage.
-The open access data is a deidentified summary of submitted cases with informtion on: mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location.
-The offence location is typically a street name and town or city name, or an intersection, and examples included: 'A58 Godley Road, Halifax', 'Keighley Road, Silsden' , 'Woodhouse Lane A660, Leeds'.
-For this study, approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire.
-Further aspects of the data, their uses and limitations are discussed in what follows.
 
 ```{r}
 #| include: false
@@ -221,7 +154,7 @@ dir.create("data/west-yorkshire", recursive = TRUE, showWarnings = FALSE)
 write_csv(d_all, file_name)
 ```
 
-The data is open acess and looks like this, with names cleaned up by the package:
+<!-- The data is open acess and looks like this, with names cleaned up by the package: -->
 
 ```{r}
 #| eval: false
@@ -270,8 +203,6 @@ d_all |>
   # snakecase::to_title_case
   knitr::kable()
 ```
-
-# Results
 
 ```{r}
 d_all_monthly = d_all |>
@@ -326,7 +257,150 @@ stats19_monthly = collisions |>
   group_by(month) |>
   summarise(n = n()) |>
   mutate(records = "stats19")
+
+perc_vehicle_driver = d_all |>
+  count(mode) |>
+  filter(mode == "vehicle driver") |>
+  pull(n) / nrow(d_all) * 100 
+perc_cyclist = d_all |>
+  count(mode) |>
+  filter(mode == "cyclist") |>
+  pull(n) / nrow(d_all) * 100 
+perc_pedestrian = d_all |>
+  count(mode) |>
+  filter(mode == "pedestrian") |>
+  pull(n) / nrow(d_all) * 100 
+perc_disposal_educational_course_conditional = d_all |>
+  mutate(disposal = case_when(
+    disposal == "conditional offer" ~ "educational course",
+    TRUE ~ disposal
+  )) |>
+  count(disposal) |>
+  filter(disposal == "educational course") |>
+  pull(n) / nrow(d_all) * 100 
+perc_no_further_action = d_all |>
+  count(disposal) |>
+  filter(disposal == "no further action") |>
+  pull(n) / nrow(d_all) * 100
+perc_course = d_all |>
+  count(disposal) |>
+  filter(disposal == "conditional offer") |>
+  pull(n) / nrow(d_all) * 100
 ```
+
+# Abstract {.unnumbered}
+
+This study uses data from Operation Snap (OpSnap), the UK police's national system to receive road users' video evidence of road traffic offences.
+Data from one police force area for the three calendar years 2021 to 2023
+<!-- (N= 18,363 records) -->
+(N = `r nrow(d_all)` records)
+is analysed.
+<!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. -->
+Of submitted cases, `r round(perc_vehicle_driver, 1)`% were from vehicle drivers, `r round(perc_cyclist, 1)`% were from cyclists, and `r round(perc_pedestrian, 1)`% were from pedestrians.
+The most common offences were driving 'without reasonable consideration to others' or 'without due care and attention'.
+<!-- Two thirds (66.1%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), 31% no further action, and fewer than 1% for court appearance. -->
+Two-thirds (`r round(perc_disposal_educational_course_conditional, 1)`%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), `r round(perc_no_further_action, 1)`% no further action, and `r round(perc_course, 1)`% for court appearance.
+A research agenda using OpSnap data is outlined: comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional, and local levels; research into disposal-related decision-making, video quality, and the role of supporting evidence should identify good practice; further study of video content, offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases, holds significant potential to inform policy and practice locally, nationally and internationally. 
+
+# Introduction
+
+Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
+Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@departmentfortransportReportedRoadCasualties2023].
+
+Traditionally, road safety research has relied on retrospective analysis of crashes to assess and enhance road safety [@towards2008].
+However, relying on historical crash data poses several challenges.
+Crashes are rare events [@elvik2006], requiring extended periods, often at least five years, of data to obtain statistically significant estimates [@songchitruksa2006].
+Furthermore, the reactive nature of crash analysis means that safety improvements only follow after crashes occur, which is both inefficient and ethically problematic.
+
+Surrogate safety measures, offer a proactive alternative to identify
+road safety issues [@songchitruksa2006].
+These measures do not depend on crash data but instead use more frequently observable, less severe, traffic events to identify road
+safety issues (reference).
+One prominent surrogate measure is traffic
+conflicts (reference).
+A traffic conflict occurs when road users’
+paths intersect, with a risk of collision if no action was taken
+(reference).
+The concept of using traffic conflicts as a surrogate
+measure was notably illustrated by Hyden’s safety pyramid
+(reference).
+This pyramid represents the spectrum of traffic events
+from safe, undisturbed passages at the base, to severe, rare crashes
+at the top.
+Hyden’s model demonstrates that the inverse
+relationship between crash frequency and severity.
+Understanding this
+relationship allows for the prediction of severe crashes based on the
+more common, less sever conflicts.
+
+Traditional methods for observing traffic conflicts have relied on
+manual observation, which is resource intensive.
+This study
+highlights the potential of using open access data from Operation
+Snap, the UK police’s national system to receive road users’
+video evidence of road traffic offences as a surrogate measure of
+road safety.
+
+<!-- Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics [@departmentfortransportReportedRoadCasualties2023].
+Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records [@departmentfortransport].
+Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
+The 2023 report noted that "the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was 'driver or rider failed to look properly'" [@departmentfortransport]. -->
+
+<!-- The context for the study is that, between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year according to official records recorded by police forces across Great Britain [@departmentfortransport].
+Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
+The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
+
+Cyclist crashes are underreported in police recorded datasets [@elvikIncompleteAccidentReporting1999] and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted [@janstrupetal.UnderstandingTrafficCrash2016].
+Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions [@ibrahimCyclingMissesReview2021].
+These incidents are often referred to as "near-misses" [@ibrahimCyclingMissesReview2021]
+
+Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses are a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a], being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a].
+In their review of near miss cycling crashes, @ibrahimCyclingMissesReview2021 highlighted the need for better data on near misses to inform safety research.
+
+Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016].
+A 'close pass' refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph).
+Close passes take different forms including the 'punishment pass' by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024].
+There is no specific law in the UK Road Traffic Act 1988 for driving too close to cyclist, but two are commonly applied for careless driving: RT88575- Drive without due care and attention; and RT99576 -- Driver without reasonable consideration to others - and these are prominent in the analysis that follows. 
+
+Operation Snap, often referred to informally as 'OpSnap', was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 2018.
+It is now in operation nationally across England and Wales, each police force offering its own submission portal for road users to submit video evidence.
+The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:   
+
+-   The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues. 
+-   The car registration number of the offending vehicle must be clearly visible. 
+-   The public should be prepared to sign a witness statement and possibly give evidence in court. 
+-   Statements for OpSnap can only be accepted from persons aged 18 or over. If you are under 18 the incident should be reported by email. 
+
+This is, to our knowledge, the first research study to use this dataset.
+As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents.
+Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
+
+# Methods and data {#sec-methods}
+
+Open access data from West Yorkshire Safer Roads -- OpSnap was used for this study, the media submissions portal having opened in July 2020.
+The West Yorkshire Police (WYP) data used here spanned calendar years 2021, 2022 and 2023.
+For the year 2021 there was less than half the cases of either 2022 or 2023, which could reflect reduced road use during the COVID-19 pandemic and fewer people being aware of OpSnap when it commenced.
+
+The dataset is a tabulation of cases submitted to the West Yorkshire Safer Roads OpSnap web portal.
+The terms 'record' and 'case' are used interchangeably here to refer to a record in the OpSnap database, each of which represents the separate submission of video evidence by a road user.
+
+The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers.
+Video footage is commonly recorded from on-board cameras.
+For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, known as 'dash cams'.
+One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam [@DashCamSubmissions2024].
+For cyclists, footage is commonly recorded using helmet or handlebar-mounted cameras.
+The proportion of cyclists using these cameras is unknown but anecdotal evidence suggests increased usage, with many choosing to record rides in case an incident occurs.
+
+Complainants upload footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make, model and colour, the location and time of the incident, and details of the camera used to record the footage.
+Only vehicle offences can be reported as the registration number of any offending vehicle is required and must be legible in footage.
+The open access data is a deidentified summary of submitted cases with informtion on: mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location.
+The offence location is typically a street name and town or city name, or an intersection, and examples included: 'A58 Godley Road, Halifax', 'Keighley Road, Silsden' , 'Woodhouse Lane A660, Leeds'.
+For this study, approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire.
+Further aspects of the data, their uses and limitations are discussed in what follows.
+
+
+# Results
+
 
 ```{r}
 #| label: fig-time
@@ -434,11 +508,6 @@ tbl = d_offence_classified |>
 gt::gtsave(tbl, "tbl-offences.png")
 knitr::include_graphics("tbl-offences.png")
 ```
-
-
-
-
-
 
 ```{r}
 # reclassify offences into types
