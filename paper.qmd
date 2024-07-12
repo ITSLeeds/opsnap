@@ -413,7 +413,7 @@ d_offence_classified = d_offence_count |>
 # d_offence_classified |>
 #   knitr::kable()
 
-d_offence_classified |>
+tbl = d_offence_classified |>
   mutate(
     `Percent of records`= round(`Percent of records`)
     ) |> 
@@ -431,6 +431,8 @@ d_offence_classified |>
   ) |> 
   cols_width(1 ~ px(600), 2 ~ px(80)) |> 
   gt_theme_espn()
+gt::gtsave(tbl, "tbl-offences.png")
+knitr::include_graphics("tbl-offences.png")
 ```
 
 
@@ -484,7 +486,7 @@ Half of cases were reported by vehicle drivers, a third by cyclists, seven perce
 #   rename(`Number of Records` = N) |>
 #   knitr::kable()
 
-d_all |>
+tbl = d_all |>
   count(mode, sort = TRUE) |>
   mutate(percent_of_records = n / nrow(d_all)) |>
   mutate(percent_of_records = round(percent_of_records, 3) * 100) |>
@@ -500,6 +502,8 @@ d_all |>
     locations = cells_body(columns = Mode)
   ) |>
   gt_theme_espn()
+gt::gtsave(tbl, "tbl-mode.png")
+knitr::include_graphics("tbl-mode.png")
 ```
 
 <!-- The equivalent table excluding records with missing offence data is shown below: -->
@@ -596,7 +600,7 @@ While further research is needed, this makes sense if physically-vulnerable cycl
 #| tbl-cap: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
 # pivot_combined |>
 #   knitr::kable(digits = 1)
-pivot_combined |>
+tbl = pivot_combined |>
   select(-`Total (%)`) |> 
   filter(offence_simple!="Total") |> 
   select(-c(Cyclist:Other)) |> 
@@ -616,6 +620,8 @@ pivot_combined |>
     locations = cells_body(columns = c(offence_simple, count))
     ) |> 
     gt_theme_espn() 
+gt::gtsave(tbl, "tbl-mode-offences-crosstab.png")
+knitr::include_graphics("tbl-mode-offences-crosstab.png")
 ```
 
 ```{r}
@@ -657,7 +663,7 @@ Close to two percent of cases went to court and a further one percent underwent 
 #   knitr::kable()
 
 
-d_all |>
+tbl = d_all |>
   count(disposal, sort = TRUE) |>
   mutate(percent_of_records = round(n / nrow(d_all), 3) * 100) |>
   arrange(desc(n)) |>
@@ -672,6 +678,8 @@ d_all |>
     locations = cells_body(columns = Disposal)
   ) |>
   gt_theme_espn()
+gt::gtsave(tbl, "tbl-disposal.png")
+knitr::include_graphics("tbl-disposal.png")
 ```
 
 There are `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
@@ -689,7 +697,7 @@ INSERT Table 5 AND/OR Map (TO BE INCLUDED)
 #   head(10) |>
 #   rename_all(snakecase::to_title_case) |> 
 #   knitr::kable()
-d_with_location |>
+tbl = d_with_location |>
   count(location, sort = TRUE) |>
   mutate(percent_of_records = round(n / nrow(d_with_location), 3) * 100) |>
   arrange(desc(n)) |>
@@ -704,6 +712,8 @@ d_with_location |>
     locations = cells_body(columns = Location)
   ) |>
   gt_theme_espn()
+gt::gtsave(tbl, "tbl-locations.png")
+knitr::include_graphics("tbl-locations.png")
 ```
 
 # Discussion
