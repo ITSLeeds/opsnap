@@ -51,10 +51,10 @@ keywords:
 date: last-modified
 format:
   # html: default
-  # docx: default
+  docx: default
   # pdf: default
-  arxiv-pdf:
-    keep-tex: true
+  # arxiv-pdf:
+  #   keep-tex: true
 linenumbers: true # Add (continuous) line numbers?
 doublespacing: false # Double space the PDF output?
 runninghead: "Preprint" # The text on the top of each page of the output
@@ -81,8 +81,8 @@ knitr::opts_chunk$set(
 #| echo: false
 quarto::quarto_render("paper.qmd", output_format = "pdf")
 quarto::quarto_render("paper.qmd", output_format = "docx")
-file.rename("paper.docx", "~/OneDrive/opsnap_leeds/paper-v6.docx")
-file.rename("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v6.pdf")
+file.rename("paper.docx", "~/OneDrive/opsnap_leeds/paper-v7.docx")
+file.rename("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v7.pdf")
 browseURL("paper.docx")
 ```
 
@@ -410,17 +410,19 @@ d_all |>
   mutate(date = as.Date(date)) |>
   arrange(date) |>
   rename_all(snakecase::to_title_case) |>
-  knitr::kable() |>
-  # Striped styling and tiny text to fit:
-  kableExtra::kable_styling(latex_options = "striped") |>
-  # Set column widths:
-  kableExtra::column_spec(1, width = "3em") |>
-  kableExtra::column_spec(2, width = "3em") |>
-  kableExtra::column_spec(3, width = "4em") |>
-  kableExtra::column_spec(4, width = "4em") |>
-  kableExtra::column_spec(5, width = "6em") |>
-  kableExtra::column_spec(6, width = "4em") |>
-  kableExtra::column_spec(8, width = "10em")
+  knitr::kable() 
+  
+  # |>
+  # # Striped styling and tiny text to fit:
+  # kableExtra::kable_styling(latex_options = "striped") |>
+  # # Set column widths:
+  # kableExtra::column_spec(1, width = "3em") |>
+  # kableExtra::column_spec(2, width = "3em") |>
+  # kableExtra::column_spec(3, width = "4em") |>
+  # kableExtra::column_spec(4, width = "4em") |>
+  # kableExtra::column_spec(5, width = "6em") |>
+  # kableExtra::column_spec(6, width = "4em") |>
+  # kableExtra::column_spec(8, width = "10em")
 
 
 
@@ -798,8 +800,6 @@ knitr::include_graphics("tbl-disposal.png")
 
 There are `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
 
-INSERT Table 5 AND/OR Map (TO BE INCLUDED)
-
 ```{r}
 #| echo: false
 #| label: tbl-locations
@@ -826,7 +826,7 @@ tbl = d_with_location |>
     locations = cells_body(columns = Location)
   ) |>
   gt_theme_espn()
-gt::gtsave(tbl, "tbl-locations.png")
+# gt::gtsave(tbl, "tbl-locations.png")
 knitr::include_graphics("tbl-locations.png")
 ```
 
