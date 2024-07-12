@@ -65,7 +65,7 @@ editor_options:
 execute: 
   echo: false
   warning: false
-  cache: refresh
+  cache: true
 ---
 
 ```{r, include = FALSE}
@@ -377,8 +377,8 @@ Following analysis and discussion of three years of data for one police force ar
 
 # Methods and data {#sec-methods}
 
-Open access data from West Yorkshire Safer Roads -- OpSnap was used for this study, the media submissions portal having opened in July 2020.
-The West Yorkshire Police (WYP) data used here spanned calendar years 2021, 2022 and 2023.
+Open access data from West Yorkshire Safer Roads from the OpSnap project was used for this study.
+The media submissions portal opened in July 2020, and available data from the West Yorkshire Police (WYP) used in this paper span the calendar years 2021, 2022 and 2023.
 For the year 2021 there was less than half the cases of either 2022 or 2023, which could reflect reduced road use during the COVID-19 pandemic and fewer people being aware of OpSnap when it commenced.
 
 The dataset is a tabulation of cases submitted to the West Yorkshire Safer Roads OpSnap web portal.
@@ -393,10 +393,38 @@ The proportion of cyclists using these cameras is unknown but anecdotal evidence
 
 Complainants upload footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make, model and colour, the location and time of the incident, and details of the camera used to record the footage.
 Only vehicle offences can be reported as the registration number of any offending vehicle is required and must be legible in footage.
-The open access data is a deidentified summary of submitted cases with informtion on: mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location.
-The offence location is typically a street name and town or city name, or an intersection, and examples included: 'A58 Godley Road, Halifax', 'Keighley Road, Silsden' , 'Woodhouse Lane A660, Leeds'.
+The open access data is a deidentified summary of submitted cases with information on: mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location.
+The offence location is typically a street name and town or city name, or an intersection, and examples included: 'A58 Godley Road, Halifax', 'Keighley Road, Silsden', 'Woodhouse Lane A660, Leeds'.
 For this study, approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire.
 Further aspects of the data, their uses and limitations are discussed in what follows.
+
+A random sample of 5 records from the raw data is shown in @tbl-raw (note: "nfa" refers to "no further action").
+
+```{r}
+#| label: tbl-raw
+#| tbl-cap: "Random sample of 5 records from the raw data."
+set.seed(2024)
+d_all |>
+  sample_n(5) |>
+  select(-district, -`offence_code`) |>
+  mutate(date = as.Date(date)) |>
+  arrange(date) |>
+  rename_all(snakecase::to_title_case) |>
+  knitr::kable() |>
+  # Striped styling and tiny text to fit:
+  kableExtra::kable_styling(latex_options = "striped") |>
+  # Set column widths:
+  kableExtra::column_spec(1, width = "3em") |>
+  kableExtra::column_spec(2, width = "3em") |>
+  kableExtra::column_spec(3, width = "4em") |>
+  kableExtra::column_spec(4, width = "4em") |>
+  kableExtra::column_spec(5, width = "6em") |>
+  kableExtra::column_spec(6, width = "4em") |>
+  kableExtra::column_spec(8, width = "10em")
+
+
+
+```
 
 
 # Results
