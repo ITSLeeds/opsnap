@@ -65,7 +65,7 @@ editor_options:
 execute: 
   echo: false
   warning: false
-  cache: true
+  cache: false
 ---
 
 ```{r, include = FALSE}
@@ -293,7 +293,7 @@ perc_course = d_all |>
 This study uses data from Operation Snap (OpSnap), the UK police's national system to receive road users' video evidence of road traffic offences.
 Data from one police force area for the three calendar years 2021 to 2023
 <!-- (N= 18,363 records) -->
-(N = `r nrow(d_all)` records)
+(N = `r nrow(d_all) |> scales::number(big.mark = ",")` records)
 is analysed.
 <!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. -->
 Of submitted cases, `r round(perc_vehicle_driver, 1)`% were from vehicle drivers, `r round(perc_cyclist, 1)`% were from cyclists, and `r round(perc_pedestrian, 1)`% were from pedestrians.
@@ -429,6 +429,8 @@ d_all |>
 
 # Results
 
+There were `r nrow(d_all) |> scales::number(big.mark = ",")` records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in @fig-time.
+
 
 ```{r}
 #| label: fig-time
@@ -446,14 +448,16 @@ d_monthly |>
   theme_minimal()
 ```
 
-There were `r nrow(d_all)` records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in @fig-time.
-Some records lacked either an offence (`r nrow(d_all) - nrow(d_offence)`, `r round((nrow(d_all) - nrow(d_offence)) / nrow(d_all) * 100, 1)`%) or a location (`r nrow(d_offence) - nrow(d_complete)`, `r round((nrow(d_offence) - nrow(d_complete)) / nrow(d_all) * 100, 1)`%), or both, leaving `r round(nrow(d_complete) / nrow(d_all) * 100, 1)`% or `r nrow(d_complete)` complete records.
+Some records lacked either an offence (`r format(nrow(d_all) - nrow(d_offence), big.mark = ",", scientific = FALSE)`, `r round((nrow(d_all) - nrow(d_offence)) / nrow(d_all) * 100, 1)`%) or a location (`r format(nrow(d_offence) - nrow(d_complete), big.mark = ",", scientific = FALSE)`, `r round((nrow(d_offence) - nrow(d_complete)) / nrow(d_all) * 100, 1)`%), or both, leaving `r round(nrow(d_complete) / nrow(d_all) * 100, 1)`% or `r format(nrow(d_complete), big.mark = ",", scientific = FALSE)` complete records.
 There was a distinct seasonal pattern to reporting, with significant increases in summer months.
 
-Of the `r nrow(d_offence)` records with an offence, the most common offences were Driving without reasonable consideration to others (rt88576) and Driving without due care and attention (rt88575).
-This is presented in @tbl-offences, which shows the number and percentage of records by offence type, showing the top 6 offence types and the remainder grouped as 'Other'.
-As previously noted, a high proportion of cases did not include information on the reported offence, with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575).
-Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.
+A summary of the `r nrow(d_offence) |> scales::number(big.mark = ",")` records with an offence is presented in @tbl-offences.
+Included in the table are the number and percentage of records by offence type, showing the top 6 offence types and the remainder grouped as ‘Other’.
+
+The most common offences were ‘Driving without reasonable consideration to others (rt88576)’ and ‘Driving without due care and attention (rt88575)’.
+Within the Road Traffic Act these offences are related to careless driving and drivers are subject to similar penalties.
+The other common offences included failing to comply with traffic signals, traffic signs and the use of a handheld phone while driving. 
+<!-- TODO: Within the other category... -->
 
 ```{r}
 #| label: tbl-offences
@@ -568,7 +572,7 @@ d_all = regroup_modes(d_all)
 ```
 
 Vehicle (mostly car and van drivers with dashcams) driver and cyclist reporters dominate reporting for all records, as illustrated in @tbl-mode.
-Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.
+Half of the cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.
 
 ```{r}
 #| label: tbl-mode
@@ -584,6 +588,8 @@ Half of cases were reported by vehicle drivers, a third by cyclists, seven perce
 #   knitr::kable()
 
 tbl = d_all |>
+  # NA is Unknown:
+  mutate(mode = ifelse(is.na(mode), "Unknown", mode)) |>
   count(mode, sort = TRUE) |>
   mutate(percent_of_records = n / nrow(d_all)) |>
   mutate(percent_of_records = round(percent_of_records, 3) * 100) |>
@@ -686,11 +692,12 @@ percent_other_other = pivot_combined |> filter(offence_simple == "Other") |> pul
 
 ```
 
-The cross-tabulation of reporting mode and offence type is shown in @tbl-mode-offences-crosstab.
-The table reveals some interesting tendencies.
-While `r round(percent_inconsiderate, 1)` percent of all offences are for inconsiderate driving, they make up the bulk of offences reported by cyclists, with `r round(percent_inconsiderate_cycling, 1)` percent of all offences reported by cyclists being for inconsiderate driving.
-Drivers are proportionally `r round(percent_other_driver / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being `r round(percent_other_other / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists.
-While further research is needed, this makes sense if physically-vulnerable cyclists are most concerned with the dangerous driving of vehicles, whereas drivers also report other types of road traffic offence, with pedestrians and others also more likely to encounter other types of offence.
+The cross-tabulation of reporting mode and offence type is shown in Table @tbl-mode-offences-crosstab, revealing some interesting tendencies.
+
+While `r round(percent_inconsiderate, 1)` percent of all offences are for driving without reasonable considered to others (rt88576), they make up the bulk of offences reported by cyclists (`r round(percent_inconsiderate_cycling, 1)`%). Drivers are proportionally `r round(percent_other_driver / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being `r round(percent_other_other / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists.
+While further research is needed to understand the reasons for these tendencies, the results match intuition.
+Physically-vulnerable cyclists are understandably most concerned with the dangerous driving of vehicles, whereas drivers tend to focus on other types of road traffic offence.
+Pedestrians and other reporting modes were also relatively more likely to encounter other types of offence.
 
 ```{r}
 #| label: tbl-mode-offences-crosstab
@@ -742,11 +749,21 @@ d_all |>
   mutate(`% of total` = scales::percent(n / sum(n), accuracy = 0.1)) |>
   rename_all(snakecase::to_title_case) |> 
   knitr::kable()
+
+perc_no_further_action = d_all |>
+  count(disposal) |>
+  filter(disposal == "nfa") |>
+  pull(n) / nrow(d_all) * 100
+
+perc_course = d_all |>
+  count(disposal) |>
+  filter(disposal == "course") |>
+  pull(n) / nrow(d_all) * 100
 ```
 
 Disposal categories assigned by police are shown in @tbl-disposal.
-Roughly a third of cases resulted in no further action, and for most of the remainder drivers were required to undertake an education course.
-Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome (XX EXPLAIN FURTHER?).
+Roughly a third of cases (`r round(perc_no_further_action, 1)`%) resulted in no further action, and for most of the remainder drivers were required to undertake an education course (`r round(perc_course, 1)`%).
+Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome.
 Close to two percent of cases went to court and a further one percent underwent further investigation.
 
 ```{r}
@@ -819,25 +836,18 @@ Drawing on the work and findings described above, this discussion outlines a res
 The breadth and depth of potential policy-relevant work that could be undertaken is, we suggest, enormous.
 While this preliminary list will not prove exhaustive, if it stimulates or informs further research then it will have achieved its objective.
 
-Cyclists undertake two percent of road miles in the UK [@departmentfortransport].
-Other things equal, this suggests that with respect to distance travelled, cyclists were around 20 times more likely to submit evidence of a road traffic offence than vehicle drivers and other road users in West Yorkshire.
-
-Over 90 percent of offences reported by cyclists were for driving without consideration for other road users and without due care and attention.
-This is consistent with the phenomenon of 'close passes' in the cycling safety literature [@aldred2016; @cubbin2024].
-It suggests the OpSnap data holds the potential for further analysis to inform knowledge about the nature of close passes generally.
-For example, it should be possible to identify hotspot locations.
-As with much of the further research outlined here, this the potential to inform preventive policy and practice relating to police interventions, driver behaviour, the design of roads and roadside environments.
-
 There was an increase in submissions over time between 2021 and 2023.
 This may reflect changing levels of road use during and after the Covid-19 pandemic, increased awareness of OpSnap, or increased video camera ownership levels.
 Comparative analysis including other police jurisdictions will be able to determine whether this experience is common or isolated.
 We hypothesise that it will prove to be a common experience and that that the volume of submissions will continue to increase in the near and middle term (though ideally, a decline would occur as roads become safer).
 
+This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data, and our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide. This suggests the potential for development of a national OpSnap dataset. A feasibility study is needed to establish the availability and compatibility of the data from different forces. Should a national dataset prove feasible it holds potential for national-level, cross-regional, and comparative analyses of patterns and trends. A national dataset will enhance the possibility for cross-national comparative analysis and international cooperation in road safety. It holds the potential for the development of rankings according to different criteria and, thereby, potential performance indicators.
+
 If submission volumes continue to increase, means of informing triage and prioritisation of cases will be increasingly valuable.
 Triage systems are probably already in use in different areas, and research to identify and inform best practice should be undertaken.
 Likewise, research to determine best practice in determining disposal recommendations will prove fruitful.
 It may provide feasible, perhaps using machine learning, to develop automated means of triage, determination of offence type and disposal.
-Research to gauge the differential effectiveness of disposal measures is needed, starting with measures of recividism.
+Research to gauge the differential effectiveness of disposal measures is needed, starting with measures of recidivism.
 
 Within the trend of increasing video submissions there were distinct seasonal patterns.
 Seasonal variation in cyclists' submission reflect seasonal (weather and other) influences on cycling prevalence and duration.
@@ -848,19 +858,23 @@ For example, we hypothesise that close passes are more likely to be reported by 
 As such, the types of incidents reported by vehicle drivers would be systematically different, indicating a need for different investigative and preventive approaches.
 Policing and preventions efforts focused on where problems are concentrated are more resource efficient -- it is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010)- and research using video submissions holds the potential to analysis of problem concentrations.
 
-Evidence submitted by cyclists was the focus here.
-However, Operation Snap data offer potential for analysis of data from other road user sources.
 Studies focused on specific types of road user will prove informative with respect to policy and practice.
 Dash cam submissions by motorists offers great potential to inform other aspects of road safety.
 Research into submissions by pedestrians, horse riders and motorcyclists should prove viable to improve the safety of these parties.
 There were over four hundred submissions by horse riders in West Yorkshire, which means there will be thousands nationwide.
 The British Horse Society[^1] and others may be interested in this data being used to inform the safety of horses and riders.
-The British Motorcyclists Federation[^2] may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent
-.
+The British Motorcyclists Federation[^2] may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent.
 
 [^1]: https://www.bhs.org.uk/
 
 [^2]: https://www.britishmotorcyclists.co.uk/
+
+As an example, cyclists undertake two percent of road miles in the UK [@departmentfortransport].
+Other things equal, this suggests that with respect to distance travelled, cyclists were around 20 times more likely to submit evidence of a road traffic offence than vehicle drivers and other road users in West Yorkshire.
+
+Over 90 percent of offences reported by cyclists were for driving without consideration for other road users and without due care and attention.
+This is consistent with the phenomenon of 'close passes' in the cycling safety literature [@aldred2016; @cubbin2024].
+It suggests the OpSnap data holds the potential for further analysis to inform knowledge about the nature of close passes generally. For example, it should be possible to identify hotspot locations. As with much of the further research outlined here, this the potential to inform preventive policy and practice relating to police interventions, driver behaviour, the design of roads and roadside environments.
 
 This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data, and our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide.
 This suggests the potential for development of a national OpSnap dataset.
@@ -899,7 +913,7 @@ What are the characteristics of strong supporting written evidence, and what are
 Are both needed or can a weakness in one be overcome by particularly strong aspects in the other?
 
 The spatial analysis undertaken here was obliged to use data for 'all' video submissions.
-We were unable to separate the submissions by cyclists because, in the publicly-available data, locations could not be matched to individual cases: they were scrambled to ensure anonymity for GDPR purposes.
+We were unable to cross-tabulate the geographic location of submissions by different road users because, in the publicly-available data, locations are not be matched to individual cases: they were scrambled to ensure anonymity for GDPR purposes.
 An obvious next step, in the context of a secure research platform, would be spatial analysis for different types of road users, for different types of incidents, for incidents resulting in different disposals, and so on.
 Hotspots and spatial clustering are likely to vary by type of road user, type of incident, day or week, time of day, and so on.
 
