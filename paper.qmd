@@ -50,8 +50,8 @@ keywords:
   - Near misses
 date: last-modified
 format:
-  html: default
-  # pdf: default
+  # html: default
+  pdf: default
   # arxiv-pdf:
   #   keep-tex: true
 linenumbers: true # Add (continuous) line numbers?
@@ -62,7 +62,6 @@ editor_options:
   markdown: 
     wrap: sentence
 execute: 
-  cache: true
   echo: false
   warning: false
 ---
@@ -418,10 +417,10 @@ d_offence_classified |>
   mutate(
     `Percent of records`= round(`Percent of records`)
     ) |> 
-  rename(`# records` = `Number of records`, `% records`=`Percent of records`) |> 
+  rename(`Number` = `Number of records`, `Percent`=`Percent of records`) |> 
   gt() |>
 
-  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  gt_plt_bar_pct(column = `Percent`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
   text_transform(
     fn <- function(x){
       code <- str_extract(x, "^[^\ ]+")
@@ -492,9 +491,9 @@ d_all |>
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
-  rename(`# records` = N, `% records` = `Percent of Records`) |>
+  rename(`Number` = N, `Percent` = `Percent of Records`) |>
   gt() |>
-  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  gt_plt_bar_pct(column = `Percent`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
   cols_width(1 ~ px(400), 2 ~ px(80)) |> 
   tab_style(
     style = cell_text(size=px(18)),
@@ -664,9 +663,9 @@ d_all |>
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
-  rename(`# records` = N, `% records` = `Percent of Records`) |>
+  rename(`Number` = N, `Percent` = `Percent of Records`) |>
   gt() |>
-  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  gt_plt_bar_pct(column = `Percent`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
   cols_width(1 ~ px(400), 2 ~ px(80)) |> 
   tab_style(
     style = cell_text(size=px(18)),
@@ -696,9 +695,9 @@ d_with_location |>
   arrange(desc(n)) |>
   head(10) |>
   rename_all(snakecase::to_title_case) |>
-  rename(`# records` = N, `% records` = `Percent of Records`) |>
+  rename(`Number` = N, `Percent` = `Percent of Records`) |>
   gt() |>
-  gt_plt_bar_pct(column = `% records`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
+  gt_plt_bar_pct(column = `Percent`, fill = "#252525", scaled = TRUE, labels=TRUE, width=120, height=30, font_size = "15px") |> 
   cols_width(1 ~ px(400), 2 ~ px(80)) |> 
   tab_style(
     style = cell_text(size=px(18)),

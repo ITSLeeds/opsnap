@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Graham Farrell">
 <meta name="author" content="Robin Lovelace">
 <meta name="author" content="Steve O’Hern">
-<meta name="dcterms.date" content="2024-07-05">
+<meta name="dcterms.date" content="2024-07-12">
 <meta name="keywords" content="Cycling, Hotspots, Road safety, Video evidence, Dashcam, Near misses">
 
 <title>Road User video evidence of road traffic offences: Preliminary analysis of Operation Snap data and suggestions for a research agenda</title>
@@ -22,14 +22,16 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -43,8 +45,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="paper_files/libs/clipboard/clipboard.min.js"></script>
@@ -61,10 +62,11 @@ div.csl-indent {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="paper.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -78,17 +80,17 @@ div.csl-indent {
   <div class="quarto-title-meta-heading">Affiliations</div>
   
     <div class="quarto-title-meta-contents">
-    Graham Farrell <a href="https://orcid.org/0000-0002-3987-8457" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
+    <p class="author">Graham Farrell <a href="https://orcid.org/0000-0002-3987-8457" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             University of Leeds
           </p>
       </div>
-      <div class="quarto-title-meta-contents">
-    Robin Lovelace <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
-  </div>
     <div class="quarto-title-meta-contents">
+    <p class="author">Robin Lovelace <a href="https://orcid.org/0000-0001-5679-6536" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             University of Leeds
           </p>
@@ -96,10 +98,10 @@ div.csl-indent {
             Active Travel England
           </p>
       </div>
-      <div class="quarto-title-meta-contents">
-    Steve O’Hern <a href="https://orcid.org/0000-0002-7961-3875" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a>
-  </div>
     <div class="quarto-title-meta-contents">
+    <p class="author">Steve O’Hern <a href="https://orcid.org/0000-0002-7961-3875" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             University of Leeds
           </p>
@@ -107,7 +109,7 @@ div.csl-indent {
             Monash University Accident Research Centre
           </p>
       </div>
-    </div>
+  </div>
 
 <div class="quarto-title-meta">
 
@@ -115,7 +117,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 5, 2024</p>
+      <p class="date">July 12, 2024</p>
     </div>
   </div>
   
@@ -123,11 +125,16 @@ div.csl-indent {
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Cycling, Hotspots, Road safety, Video evidence, Dashcam, Near misses</p>
+  </div>
+</div>
+
 </header>
 
-<div class="cell" data-hash="paper_cache/html/unnamed-chunk-2_58121a0a7bd736247bc14b3b32819519">
 
-</div>
 <section id="abstract" class="level1 unnumbered">
 <h1 class="unnumbered">Abstract</h1>
 <p>This study uses data from Operation Snap (OpSnap), the UK police’s national system to receive road users’ video evidence of road traffic offences. Data from one police force area for the three calendar years 2021 to 2023 (N= 18,363 records), is analysed. Of submitted cases, 34.4% were from cyclists (n=6,312) of which 69% resulted in an offence being registered, mostly for driving ‘without reasonable consideration to others’ or ‘without due care and attention’. Three quarters (75.2%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), a quarter in no further action, and fewer than 1% for court appearance. A research agenda using OpSnap data is outlined: comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional, and local levels; research into disposal-related decision-making, video quality, and the role of supporting evidence should identify good practice; further study of video content, offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases, holds significant potential to inform policy and practice locally, nationally and internationally.&nbsp;</p>
@@ -156,51 +163,53 @@ The 2023 report noted that “the most common contributory factor allocated to p
 <p>The dataset is a tabulation of cases submitted to the West Yorkshire Safer Roads OpSnap web portal. The terms ‘record’ and ‘case’ are used interchangeably here to refer to a record in the OpSnap database, each of which represents the separate submission of video evidence by a road user.</p>
 <p>The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers. Video footage is commonly recorded from on-board cameras. For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, known as ‘dash cams’. One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam <span class="citation" data-cites="DashCamSubmissions2024">(<a href="#ref-DashCamSubmissions2024" role="doc-biblioref"><span>“Dash <span>Cam Submissions</span> to <span>Police Rise</span> with <span>Operation Snap</span>”</span> 2024</a>)</span>. For cyclists, footage is commonly recorded using helmet or handlebar-mounted cameras. The proportion of cyclists using these cameras is unknown but anecdotal evidence suggests increased usage, with many choosing to record rides in case an incident occurs.</p>
 <p>Complainants upload footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make, model and colour, the location and time of the incident, and details of the camera used to record the footage. Only vehicle offences can be reported as the registration number of any offending vehicle is required and must be legible in footage. The open access data is a deidentified summary of submitted cases with informtion on: mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location. The offence location is typically a street name and town or city name, or an intersection, and examples included: ‘A58 Godley Road, Halifax’, ‘Keighley Road, Silsden’ , ‘Woodhouse Lane A660, Leeds’. For this study, approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire. Further aspects of the data, their uses and limitations are discussed in what follows.</p>
-<div class="cell" data-hash="paper_cache/html/unnamed-chunk-6_dbd8bf67df713cd28b8668fd4613a8bd">
-
-</div>
 <p>The data is open acess and looks like this, with names cleaned up by the package:</p>
 <!-- The data looks like this (first 3 rows shown): -->
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
-<div class="cell" data-hash="paper_cache/html/unnamed-chunk-9_d79aca6df4be28954818368d0eee37e6">
-
-</div>
-<div class="cell" data-hash="paper_cache/html/fig-time_b8433a65c2434cba0ebc7baaf64068a5">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-time" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="paper_files/figure-html/fig-time-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Monthly count of Operation Snap records, West Yorkshire</figcaption><p></p>
+<div id="fig-time" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="man/figures/README-fig-time-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-time-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Monthly count of Operation Snap records, West Yorkshire
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>There were 18363 records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in <a href="#fig-time">Figure&nbsp;1</a>. Some records lacked either an offence (5707, 31.1%) or a location (3825, 20.8%), or both, leaving 48.1% or 8831 complete records. There was a distinct seasonal pattern to reporting, with significant increases in summer months.</p>
-<p>Of the 12656 records with an offence, the most common offences were Driving without reasonable consideration to others (rt88576) and Driving without due care and attention (rt88575). This is presented in <a href="#tbl-offences">Table&nbsp;1</a>, which shows the number and percentage of records by offence type, showing the top 6 offence types and the remainder grouped as ‘Other’. As previously noted, a high proportion of cases did not include information on the reported offence, with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575). Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.</p>
-<div class="cell" data-hash="paper_cache/html/tbl-offences_6644d0309fba65875f4c791871070c44">
+<p>There were 18363 records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in <a href="#fig-time" class="quarto-xref">Figure&nbsp;1</a>. Some records lacked either an offence (5707, 31.1%) or a location (3825, 20.8%), or both, leaving 48.1% or 8831 complete records. There was a distinct seasonal pattern to reporting, with significant increases in summer months.</p>
+<p>Of the 12656 records with an offence, the most common offences were Driving without reasonable consideration to others (rt88576) and Driving without due care and attention (rt88575). This is presented in <a href="#tbl-offences" class="quarto-xref">Table&nbsp;1</a>, which shows the number and percentage of records by offence type, showing the top 6 offence types and the remainder grouped as ‘Other’. As previously noted, a high proportion of cases did not include information on the reported offence, with the most common offences being Driving without reasonable consideration to others (rt88576), and Driving without due care and attention (rt88575). Within the road traffic act these offences are related to careless driving and drivers are subject to similar penalties.</p>
+<div class="cell">
+<div id="tbl-offences" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-offences-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Number of convictions by offence type (top 6 and other).
+</figcaption>
+<div aria-describedby="tbl-offences-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-offences" class="anchored">
-
-<div id="trsllzuqra" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="okungbujhz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#trsllzuqra table {
+#okungbujhz table {
   font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#trsllzuqra thead, #trsllzuqra tbody, #trsllzuqra tfoot, #trsllzuqra tr, #trsllzuqra td, #trsllzuqra th {
+#okungbujhz thead, #okungbujhz tbody, #okungbujhz tfoot, #okungbujhz tr, #okungbujhz td, #okungbujhz th {
   border-style: none;
 }
 
-#trsllzuqra p {
+#okungbujhz p {
   margin: 0;
   padding: 0;
 }
 
-#trsllzuqra .gt_table {
+#okungbujhz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -226,12 +235,12 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-left-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_caption {
+#okungbujhz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#trsllzuqra .gt_title {
+#okungbujhz .gt_title {
   color: #333333;
   font-size: 24px;
   font-weight: initial;
@@ -243,7 +252,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-width: 0;
 }
 
-#trsllzuqra .gt_subtitle {
+#okungbujhz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -255,7 +264,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-width: 0;
 }
 
-#trsllzuqra .gt_heading {
+#okungbujhz .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -267,13 +276,13 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_bottom_border {
+#okungbujhz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_col_headings {
+#okungbujhz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -288,7 +297,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_col_heading {
+#okungbujhz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -308,7 +317,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#trsllzuqra .gt_column_spanner_outer {
+#okungbujhz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -320,15 +329,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 4px;
 }
 
-#trsllzuqra .gt_column_spanner_outer:first-child {
+#okungbujhz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#trsllzuqra .gt_column_spanner_outer:last-child {
+#okungbujhz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#trsllzuqra .gt_column_spanner {
+#okungbujhz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -340,11 +349,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   width: 100%;
 }
 
-#trsllzuqra .gt_spanner_row {
+#okungbujhz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#trsllzuqra .gt_group_heading {
+#okungbujhz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -370,7 +379,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   text-align: left;
 }
 
-#trsllzuqra .gt_empty_group_heading {
+#okungbujhz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -385,15 +394,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: middle;
 }
 
-#trsllzuqra .gt_from_md > :first-child {
+#okungbujhz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#trsllzuqra .gt_from_md > :last-child {
+#okungbujhz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#trsllzuqra .gt_row {
+#okungbujhz .gt_row {
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 5px;
@@ -412,7 +421,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#trsllzuqra .gt_stub {
+#okungbujhz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -425,7 +434,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#trsllzuqra .gt_stub_row_group {
+#okungbujhz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -439,15 +448,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: top;
 }
 
-#trsllzuqra .gt_row_group_first td {
+#okungbujhz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#trsllzuqra .gt_row_group_first th {
+#okungbujhz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#trsllzuqra .gt_summary_row {
+#okungbujhz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -457,16 +466,16 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#trsllzuqra .gt_first_summary_row {
+#okungbujhz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_first_summary_row.thick {
+#okungbujhz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#trsllzuqra .gt_last_summary_row {
+#okungbujhz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -476,7 +485,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_grand_summary_row {
+#okungbujhz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -486,7 +495,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#trsllzuqra .gt_first_grand_summary_row {
+#okungbujhz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -496,7 +505,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_last_grand_summary_row_top {
+#okungbujhz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -506,11 +515,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_striped {
+#okungbujhz .gt_striped {
   background-color: #FAFAFA;
 }
 
-#trsllzuqra .gt_table_body {
+#okungbujhz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -519,7 +528,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_footnotes {
+#okungbujhz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -533,7 +542,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_footnote {
+#okungbujhz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -542,7 +551,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#trsllzuqra .gt_sourcenotes {
+#okungbujhz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -556,7 +565,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#trsllzuqra .gt_sourcenote {
+#okungbujhz .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -564,136 +573,182 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#trsllzuqra .gt_left {
+#okungbujhz .gt_left {
   text-align: left;
 }
 
-#trsllzuqra .gt_center {
+#okungbujhz .gt_center {
   text-align: center;
 }
 
-#trsllzuqra .gt_right {
+#okungbujhz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#trsllzuqra .gt_font_normal {
+#okungbujhz .gt_font_normal {
   font-weight: normal;
 }
 
-#trsllzuqra .gt_font_bold {
+#okungbujhz .gt_font_bold {
   font-weight: bold;
 }
 
-#trsllzuqra .gt_font_italic {
+#okungbujhz .gt_font_italic {
   font-style: italic;
 }
 
-#trsllzuqra .gt_super {
+#okungbujhz .gt_super {
   font-size: 65%;
 }
 
-#trsllzuqra .gt_footnote_marks {
+#okungbujhz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#trsllzuqra .gt_asterisk {
+#okungbujhz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#trsllzuqra .gt_indent_1 {
+#okungbujhz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#trsllzuqra .gt_indent_2 {
+#okungbujhz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#trsllzuqra .gt_indent_3 {
+#okungbujhz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#trsllzuqra .gt_indent_4 {
+#okungbujhz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#trsllzuqra .gt_indent_5 {
+#okungbujhz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;1:  Number of convictions by offence type (top 6 and other). </caption>
-  <colgroup>
-    <col style="width:600px;">
-    <col style="width:80px;">
-    <col style="width:120px;">
-  </colgroup>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Offence">Offence</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">rt88576</span></em><br><span style="font-size:18px"> drive without reasonable consideration to others</span></td>
-<td headers="# records" class="gt_row gt_right">4992</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:39%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">39%</span></div></div></td></tr>
-    <tr><td headers="Offence" class="gt_row gt_left gt_striped"><em><span style="font-size:14px">rt88575</span></em><br><span style="font-size:18px"> drive without due care and attention</span></td>
-<td headers="# records" class="gt_row gt_right gt_striped">2917</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:23%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">23%</span></div></div></td></tr>
-    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">rt88975</span></em><br><span style="font-size:18px"> drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals</span></td>
-<td headers="# records" class="gt_row gt_right">1364</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:11%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:13.2px;font-weight:bold;font-size:15px;">11%</span></div></div></td></tr>
-    <tr><td headers="Offence" class="gt_row gt_left gt_striped"><em><span style="font-size:14px">rt88971</span></em><br><span style="font-size:18px"> fail to comply with red traffic light</span></td>
-<td headers="# records" class="gt_row gt_right gt_striped">679</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:5%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:6px;font-weight:bold;font-size:15px;">5%</span></div></div></td></tr>
-    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">rt88966</span></em><br><span style="font-size:18px"> motor vehicle fail to comply with endorsable s36 traffic sign</span></td>
-<td headers="# records" class="gt_row gt_right">411</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.6px;font-weight:bold;font-size:15px;">3%</span></div></div></td></tr>
-    <tr><td headers="Offence" class="gt_row gt_left gt_striped"><em><span style="font-size:14px">rv86019</span></em><br><span style="font-size:18px"> use a handheld phone / device whilst driving a motor vehicle on a road</span></td>
-<td headers="# records" class="gt_row gt_right gt_striped">357</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.6px;font-weight:bold;font-size:15px;">3%</span></div></div></td></tr>
-    <tr><td headers="Offence" class="gt_row gt_left"><em><span style="font-size:14px">Other</span></em><br><span style="font-size:18px"></span></td>
-<td headers="# records" class="gt_row gt_right">1936</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:15%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:18px;font-weight:bold;font-size:15px;">15%</span></div></div></td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Offence" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Offence</th>
+<th id="Number" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number</th>
+<th id="Percent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Percent</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Offence"><em><span style="font-size:14px">rt88576</span></em><br>
+<span style="font-size:18px"> drive without reasonable consideration to others</span></td>
+<td class="gt_row gt_right" headers="Number">4992</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:39%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">39%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Offence"><em><span style="font-size:14px">rt88575</span></em><br>
+<span style="font-size:18px"> drive without due care and attention</span></td>
+<td class="gt_row gt_right gt_striped" headers="Number">2917</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:23%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">23%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Offence"><em><span style="font-size:14px">rt88975</span></em><br>
+<span style="font-size:18px"> drive motor vehicle fail to comply with red / green arrow / lane closure traffic light signals</span></td>
+<td class="gt_row gt_right" headers="Number">1364</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:11%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:13.2px;font-weight:bold;font-size:15px;">11%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Offence"><em><span style="font-size:14px">rt88971</span></em><br>
+<span style="font-size:18px"> fail to comply with red traffic light</span></td>
+<td class="gt_row gt_right gt_striped" headers="Number">679</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:5%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:6px;font-weight:bold;font-size:15px;">5%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Offence"><em><span style="font-size:14px">rt88966</span></em><br>
+<span style="font-size:18px"> motor vehicle fail to comply with endorsable s36 traffic sign</span></td>
+<td class="gt_row gt_right" headers="Number">411</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:3.6px;font-weight:bold;font-size:15px;">3%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Offence"><em><span style="font-size:14px">rv86019</span></em><br>
+<span style="font-size:18px"> use a handheld phone / device whilst driving a motor vehicle on a road</span></td>
+<td class="gt_row gt_right gt_striped" headers="Number">357</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:3.6px;font-weight:bold;font-size:15px;">3%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Offence"><em><span style="font-size:14px">Other</span></em><br>
+<span style="font-size:18px"></span></td>
+<td class="gt_row gt_right" headers="Number">1936</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:15%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:18px;font-weight:bold;font-size:15px;">15%</span>
+</div>
+</div></td>
+</tr>
+</tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="cell" data-hash="paper_cache/html/unnamed-chunk-13_5809f761404fa0fd4fd5e24fc3289327">
 
 </div>
-<p>Vehicle (mostly car and van drivers with dashcams) driver and cyclist reporters dominate reporting for all records, as illustrated in <a href="#tbl-mode">Table&nbsp;2</a>. Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.</p>
-<div class="cell" data-hash="paper_cache/html/tbl-mode_7d6b3132cf6c582f06262f5c493d9a44">
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Vehicle (mostly car and van drivers with dashcams) driver and cyclist reporters dominate reporting for all records, as illustrated in <a href="#tbl-mode" class="quarto-xref">Table&nbsp;2</a>. Half of cases were reported by vehicle drivers, a third by cyclists, seven percent by pedestrians, with over two percent by horse riders and less than one percent by motorcyclists.</p>
+<div class="cell">
+<div id="tbl-mode" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Number of OpSnap records by observer mode.
+</figcaption>
+<div aria-describedby="tbl-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-mode" class="anchored">
-
-<div id="odbgqbcmpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="zlnbiotnfe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#odbgqbcmpx table {
+#zlnbiotnfe table {
   font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#odbgqbcmpx thead, #odbgqbcmpx tbody, #odbgqbcmpx tfoot, #odbgqbcmpx tr, #odbgqbcmpx td, #odbgqbcmpx th {
+#zlnbiotnfe thead, #zlnbiotnfe tbody, #zlnbiotnfe tfoot, #zlnbiotnfe tr, #zlnbiotnfe td, #zlnbiotnfe th {
   border-style: none;
 }
 
-#odbgqbcmpx p {
+#zlnbiotnfe p {
   margin: 0;
   padding: 0;
 }
 
-#odbgqbcmpx .gt_table {
+#zlnbiotnfe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -719,12 +774,12 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-left-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_caption {
+#zlnbiotnfe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#odbgqbcmpx .gt_title {
+#zlnbiotnfe .gt_title {
   color: #333333;
   font-size: 24px;
   font-weight: initial;
@@ -736,7 +791,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-width: 0;
 }
 
-#odbgqbcmpx .gt_subtitle {
+#zlnbiotnfe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -748,7 +803,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-width: 0;
 }
 
-#odbgqbcmpx .gt_heading {
+#zlnbiotnfe .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -760,13 +815,13 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_bottom_border {
+#zlnbiotnfe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_col_headings {
+#zlnbiotnfe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -781,7 +836,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_col_heading {
+#zlnbiotnfe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -801,7 +856,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer {
+#zlnbiotnfe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -813,15 +868,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 4px;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer:first-child {
+#zlnbiotnfe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer:last-child {
+#zlnbiotnfe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#odbgqbcmpx .gt_column_spanner {
+#zlnbiotnfe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -833,11 +888,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   width: 100%;
 }
 
-#odbgqbcmpx .gt_spanner_row {
+#zlnbiotnfe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#odbgqbcmpx .gt_group_heading {
+#zlnbiotnfe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -863,7 +918,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   text-align: left;
 }
 
-#odbgqbcmpx .gt_empty_group_heading {
+#zlnbiotnfe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -878,15 +933,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: middle;
 }
 
-#odbgqbcmpx .gt_from_md > :first-child {
+#zlnbiotnfe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#odbgqbcmpx .gt_from_md > :last-child {
+#zlnbiotnfe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#odbgqbcmpx .gt_row {
+#zlnbiotnfe .gt_row {
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 5px;
@@ -905,7 +960,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#odbgqbcmpx .gt_stub {
+#zlnbiotnfe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -918,7 +973,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_stub_row_group {
+#zlnbiotnfe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -932,15 +987,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: top;
 }
 
-#odbgqbcmpx .gt_row_group_first td {
+#zlnbiotnfe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_row_group_first th {
+#zlnbiotnfe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_summary_row {
+#zlnbiotnfe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -950,16 +1005,16 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_first_summary_row {
+#zlnbiotnfe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_first_summary_row.thick {
+#zlnbiotnfe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_last_summary_row {
+#zlnbiotnfe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -969,7 +1024,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_grand_summary_row {
+#zlnbiotnfe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -979,7 +1034,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_first_grand_summary_row {
+#zlnbiotnfe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -989,7 +1044,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_last_grand_summary_row_top {
+#zlnbiotnfe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -999,11 +1054,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_striped {
+#zlnbiotnfe .gt_striped {
   background-color: #FAFAFA;
 }
 
-#odbgqbcmpx .gt_table_body {
+#zlnbiotnfe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1012,7 +1067,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_footnotes {
+#zlnbiotnfe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1026,7 +1081,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_footnote {
+#zlnbiotnfe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1035,7 +1090,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_sourcenotes {
+#zlnbiotnfe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1049,7 +1104,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_sourcenote {
+#zlnbiotnfe .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1057,142 +1112,186 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_left {
+#zlnbiotnfe .gt_left {
   text-align: left;
 }
 
-#odbgqbcmpx .gt_center {
+#zlnbiotnfe .gt_center {
   text-align: center;
 }
 
-#odbgqbcmpx .gt_right {
+#zlnbiotnfe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#odbgqbcmpx .gt_font_normal {
+#zlnbiotnfe .gt_font_normal {
   font-weight: normal;
 }
 
-#odbgqbcmpx .gt_font_bold {
+#zlnbiotnfe .gt_font_bold {
   font-weight: bold;
 }
 
-#odbgqbcmpx .gt_font_italic {
+#zlnbiotnfe .gt_font_italic {
   font-style: italic;
 }
 
-#odbgqbcmpx .gt_super {
+#zlnbiotnfe .gt_super {
   font-size: 65%;
 }
 
-#odbgqbcmpx .gt_footnote_marks {
+#zlnbiotnfe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#odbgqbcmpx .gt_asterisk {
+#zlnbiotnfe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#odbgqbcmpx .gt_indent_1 {
+#zlnbiotnfe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#odbgqbcmpx .gt_indent_2 {
+#zlnbiotnfe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#odbgqbcmpx .gt_indent_3 {
+#zlnbiotnfe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#odbgqbcmpx .gt_indent_4 {
+#zlnbiotnfe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#odbgqbcmpx .gt_indent_5 {
+#zlnbiotnfe .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;2:  Number of OpSnap records by observer mode. </caption>
-  <colgroup>
-    <col style="width:400px;">
-    <col style="width:80px;">
-    <col style="width:120px;">
-  </colgroup>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Mode">Mode</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">vehicle driver</td>
-<td headers="# records" class="gt_row gt_right">9167</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:49.9%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">49.9%</span></div></div></td></tr>
-    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">cyclist</td>
-<td headers="# records" class="gt_row gt_right gt_striped">6312</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:34.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">34.4%</span></div></div></td></tr>
-    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">pedestrian</td>
-<td headers="# records" class="gt_row gt_right">1352</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:7.4%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:8.88px;font-weight:bold;font-size:15px;">7.4%</span></div></div></td></tr>
-    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">vehicle passenger</td>
-<td headers="# records" class="gt_row gt_right gt_striped">579</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:3.2%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.84px;font-weight:bold;font-size:15px;">3.2%</span></div></div></td></tr>
-    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">unknown</td>
-<td headers="# records" class="gt_row gt_right">497</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:2.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:3.24px;font-weight:bold;font-size:15px;">2.7%</span></div></div></td></tr>
-    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">horse rider</td>
-<td headers="# records" class="gt_row gt_right gt_striped">407</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:2.2%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:2.64px;font-weight:bold;font-size:15px;">2.2%</span></div></div></td></tr>
-    <tr><td headers="Mode" class="gt_row gt_left" style="font-size: 18px;">motorcyclist</td>
-<td headers="# records" class="gt_row gt_right">48</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0.36px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
-    <tr><td headers="Mode" class="gt_row gt_left gt_striped" style="font-size: 18px;">NA</td>
-<td headers="# records" class="gt_row gt_right gt_striped">1</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span></div></div></td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
-</div>
-</div>
 
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Mode" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Mode</th>
+<th id="Number" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number</th>
+<th id="Percent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Percent</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Mode" style="font-size: 18px">vehicle driver</td>
+<td class="gt_row gt_right" headers="Number">9167</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:49.9%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">49.9%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Mode" style="font-size: 18px">cyclist</td>
+<td class="gt_row gt_right gt_striped" headers="Number">6312</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:34.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">34.4%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Mode" style="font-size: 18px">pedestrian</td>
+<td class="gt_row gt_right" headers="Number">1352</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:7.4%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:8.88px;font-weight:bold;font-size:15px;">7.4%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Mode" style="font-size: 18px">vehicle passenger</td>
+<td class="gt_row gt_right gt_striped" headers="Number">579</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:3.2%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:3.84px;font-weight:bold;font-size:15px;">3.2%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Mode" style="font-size: 18px">unknown</td>
+<td class="gt_row gt_right" headers="Number">497</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:2.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:3.24px;font-weight:bold;font-size:15px;">2.7%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Mode" style="font-size: 18px">horse rider</td>
+<td class="gt_row gt_right gt_striped" headers="Number">407</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:2.2%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:2.64px;font-weight:bold;font-size:15px;">2.2%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Mode" style="font-size: 18px">motorcyclist</td>
+<td class="gt_row gt_right" headers="Number">48</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:0.36px;font-weight:bold;font-size:15px;">0.3%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Mode" style="font-size: 18px">NA</td>
+<td class="gt_row gt_right gt_striped" headers="Number">1</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
 <!-- The equivalent table excluding records with missing offence data is shown below: -->
 <!-- For cases submitted by people riding cycles (shown in @tbl-offences-cyclist-observer), the most common offences were also both associated with careless driving, particularly driving without reasonable consideration to others (78.7%), there were also a small proportion of cases associated with drivers using mobile phones (3.7%), failing to comply with traffic signals (3.5%) and contravening regulator signage (0.6%). -->
-<div class="cell" data-hash="paper_cache/html/unnamed-chunk-16_3a7bcca13570c8ec2b7bf5907c6ccbd7">
-
-</div>
-<p>The cross-tabulation of reporting mode and offence type is shown in <a href="#tbl-mode-offences-crosstab">Table&nbsp;3</a>. The table reveals some interesting tendencies. While 39.4 percent of all offences are for inconsiderate driving, they make up the bulk of offences reported by cyclists, with 78.7 percent of all offences reported by cyclists being for inconsiderate driving. Drivers are proportionally 4.9 times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being 6.3 times more likely to report other types of offences as cyclists. While further research is needed, this makes sense if physically-vulnerable cyclists are most concerned with the dangerous driving of vehicles, whereas drivers also report other types of road traffic offence, with pedestrians and others also more likely to encounter other types of offence.</p>
-<div class="cell" data-hash="paper_cache/html/tbl-mode-offences-crosstab_89927f367dce642aaef33967c06362d2">
+<p>The cross-tabulation of reporting mode and offence type is shown in <a href="#tbl-mode-offences-crosstab" class="quarto-xref">Table&nbsp;3</a>. The table reveals some interesting tendencies. While 39.4 percent of all offences are for inconsiderate driving, they make up the bulk of offences reported by cyclists, with 78.7 percent of all offences reported by cyclists being for inconsiderate driving. Drivers are proportionally 4.9 times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being 6.3 times more likely to report other types of offences as cyclists. While further research is needed, this makes sense if physically-vulnerable cyclists are most concerned with the dangerous driving of vehicles, whereas drivers also report other types of road traffic offence, with pedestrians and others also more likely to encounter other types of offence.</p>
+<div class="cell">
+<div id="tbl-mode-offences-crosstab" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mode-offences-crosstab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
+</figcaption>
+<div aria-describedby="tbl-mode-offences-crosstab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-mode-offences-crosstab" class="anchored">
-
-<div id="odbgqbcmpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="athzgstwlr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#odbgqbcmpx table {
+#athzgstwlr table {
   font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#odbgqbcmpx thead, #odbgqbcmpx tbody, #odbgqbcmpx tfoot, #odbgqbcmpx tr, #odbgqbcmpx td, #odbgqbcmpx th {
+#athzgstwlr thead, #athzgstwlr tbody, #athzgstwlr tfoot, #athzgstwlr tr, #athzgstwlr td, #athzgstwlr th {
   border-style: none;
 }
 
-#odbgqbcmpx p {
+#athzgstwlr p {
   margin: 0;
   padding: 0;
 }
 
-#odbgqbcmpx .gt_table {
+#athzgstwlr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1218,12 +1317,12 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-left-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_caption {
+#athzgstwlr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#odbgqbcmpx .gt_title {
+#athzgstwlr .gt_title {
   color: #333333;
   font-size: 24px;
   font-weight: initial;
@@ -1235,7 +1334,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-width: 0;
 }
 
-#odbgqbcmpx .gt_subtitle {
+#athzgstwlr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1247,7 +1346,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-width: 0;
 }
 
-#odbgqbcmpx .gt_heading {
+#athzgstwlr .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1259,13 +1358,13 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_bottom_border {
+#athzgstwlr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_col_headings {
+#athzgstwlr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1280,7 +1379,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_col_heading {
+#athzgstwlr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1300,7 +1399,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer {
+#athzgstwlr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1312,15 +1411,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 4px;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer:first-child {
+#athzgstwlr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer:last-child {
+#athzgstwlr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#odbgqbcmpx .gt_column_spanner {
+#athzgstwlr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1332,11 +1431,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   width: 100%;
 }
 
-#odbgqbcmpx .gt_spanner_row {
+#athzgstwlr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#odbgqbcmpx .gt_group_heading {
+#athzgstwlr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1362,7 +1461,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   text-align: left;
 }
 
-#odbgqbcmpx .gt_empty_group_heading {
+#athzgstwlr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1377,15 +1476,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: middle;
 }
 
-#odbgqbcmpx .gt_from_md > :first-child {
+#athzgstwlr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#odbgqbcmpx .gt_from_md > :last-child {
+#athzgstwlr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#odbgqbcmpx .gt_row {
+#athzgstwlr .gt_row {
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 5px;
@@ -1404,7 +1503,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#odbgqbcmpx .gt_stub {
+#athzgstwlr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1417,7 +1516,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_stub_row_group {
+#athzgstwlr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1431,15 +1530,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: top;
 }
 
-#odbgqbcmpx .gt_row_group_first td {
+#athzgstwlr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_row_group_first th {
+#athzgstwlr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_summary_row {
+#athzgstwlr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1449,16 +1548,16 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_first_summary_row {
+#athzgstwlr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_first_summary_row.thick {
+#athzgstwlr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_last_summary_row {
+#athzgstwlr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1468,7 +1567,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_grand_summary_row {
+#athzgstwlr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1478,7 +1577,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_first_grand_summary_row {
+#athzgstwlr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1488,7 +1587,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_last_grand_summary_row_top {
+#athzgstwlr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1498,11 +1597,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_striped {
+#athzgstwlr .gt_striped {
   background-color: #FAFAFA;
 }
 
-#odbgqbcmpx .gt_table_body {
+#athzgstwlr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1511,7 +1610,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_footnotes {
+#athzgstwlr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1525,7 +1624,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_footnote {
+#athzgstwlr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1534,7 +1633,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_sourcenotes {
+#athzgstwlr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1548,7 +1647,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_sourcenote {
+#athzgstwlr .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1556,121 +1655,141 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_left {
+#athzgstwlr .gt_left {
   text-align: left;
 }
 
-#odbgqbcmpx .gt_center {
+#athzgstwlr .gt_center {
   text-align: center;
 }
 
-#odbgqbcmpx .gt_right {
+#athzgstwlr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#odbgqbcmpx .gt_font_normal {
+#athzgstwlr .gt_font_normal {
   font-weight: normal;
 }
 
-#odbgqbcmpx .gt_font_bold {
+#athzgstwlr .gt_font_bold {
   font-weight: bold;
 }
 
-#odbgqbcmpx .gt_font_italic {
+#athzgstwlr .gt_font_italic {
   font-style: italic;
 }
 
-#odbgqbcmpx .gt_super {
+#athzgstwlr .gt_super {
   font-size: 65%;
 }
 
-#odbgqbcmpx .gt_footnote_marks {
+#athzgstwlr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#odbgqbcmpx .gt_asterisk {
+#athzgstwlr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#odbgqbcmpx .gt_indent_1 {
+#athzgstwlr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#odbgqbcmpx .gt_indent_2 {
+#athzgstwlr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#odbgqbcmpx .gt_indent_3 {
+#athzgstwlr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#odbgqbcmpx .gt_indent_4 {
+#athzgstwlr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#odbgqbcmpx .gt_indent_5 {
+#athzgstwlr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;3:  Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode. </caption>
-  <colgroup>
-    <col style="width:180px;">
-    <col style="width:400px;">
-    <col style="width:150px;">
-  </colgroup>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="offence_simple">offence_simple</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<div><span style='color:#e31a1c'><b> Cyclists </b></span>||<span style='color:#1f78b4'><b> Drivers </b></span>||<span style='color:#bdbdbd'><b> Other </b></span></div>"><div><span style="color:#e31a1c"><b> Cyclists </b></span>||<span style="color:#1f78b4"><b> Drivers </b></span>||<span style="color:#bdbdbd"><b> Other </b></span></div></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="count">count</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="offence_simple" class="gt_row gt_center" style="font-size: 18px;">Inconsiderate driving</td>
-<td headers="perc" class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==">    <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="127.68" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="127.68" y="0.0000000000000018" width="24.24" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="151.93" y="0.0000000000000018" width="32.32" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="63.84" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">79</text><text x="139.81" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">15</text><text x="168.09" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">20</text></g></svg></td>
-<td headers="count" class="gt_row gt_right" style="font-size: 18px;">4992</td></tr>
-    <tr><td headers="offence_simple" class="gt_row gt_center gt_striped" style="font-size: 18px;">Careless driving</td>
-<td headers="perc" class="gt_row gt_center gt_striped"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==">    <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="33.78" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="33.78" y="0.0000000000000018" width="107.48" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="141.26" y="0.0000000000000018" width="42.99" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="16.89" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">11</text><text x="87.52" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">35</text><text x="162.76" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">14</text></g></svg></td>
-<td headers="count" class="gt_row gt_right gt_striped" style="font-size: 18px;">2917</td></tr>
-    <tr><td headers="offence_simple" class="gt_row gt_center" style="font-size: 18px;">Other</td>
-<td headers="perc" class="gt_row gt_center"><!--?xml version='1.0' encoding='UTF-8' ?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17"><defs>  <style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style></defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs>  <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==">    <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect>  </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="14.74" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="14.74" y="0.0000000000000018" width="73.70" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="88.44" y="0.0000000000000018" width="95.81" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="7.37" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">10</text><text x="51.59" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">50</text><text x="136.35" y="9.52" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.24px" lengthadjust="spacingAndGlyphs">65</text></g></svg></td>
-<td headers="count" class="gt_row gt_right" style="font-size: 18px;">4747</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
-</div>
-</div>
-<p>Disposal categories assigned by police are shown in <a href="#tbl-disposal">Table&nbsp;4</a>. Roughly a third of cases resulted in no further action, and for most of the remainder drivers were required to undertake an education course. Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome (XX EXPLAIN FURTHER?). Close to two percent of cases went to court and a further one percent underwent further investigation.</p>
-<div class="cell" data-hash="paper_cache/html/tbl-disposal_1a75a1e336fadbdd76954855f4afc4e5">
-<div class="cell-output-display">
-<div id="tbl-disposal" class="anchored">
 
-<div id="odbgqbcmpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="offence_simple" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">offence_simple</th>
+<th id="<div><span style='color:#e31a1c'><b> Cyclists </b></span>||<span style='color:#1f78b4'><b> Drivers </b></span>||<span style='color:#bdbdbd'><b> Other </b></span></div>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><div>
+<span style="color:#e31a1c"> <strong>Cyclists</strong> </span>||<span style="color:#1f78b4"> <strong>Drivers</strong> </span>||<span style="color:#bdbdbd"> <strong>Other</strong> </span>
+</div></th>
+<th id="count" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">count</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="offence_simple" style="font-size: 18px">Inconsiderate driving</td>
+<td class="gt_row gt_center" headers="perc"><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17">
+<defs>
+<style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs> <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="> <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect> </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="127.68" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="127.68" y="0.0000000000000018" width="24.24" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="151.93" y="0.0000000000000018" width="32.32" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="63.84" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">79</text><text x="139.81" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">15</text><text x="168.09" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">20</text></g>
+</svg></td>
+<td class="gt_row gt_right" headers="count" style="font-size: 18px">4992</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center gt_striped" headers="offence_simple" style="font-size: 18px">Careless driving</td>
+<td class="gt_row gt_center gt_striped" headers="perc"><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17">
+<defs>
+<style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs> <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="> <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect> </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="33.78" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="33.78" y="0.0000000000000018" width="107.48" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="141.26" y="0.0000000000000018" width="42.99" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="16.89" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">11</text><text x="87.52" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">35</text><text x="162.76" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">14</text></g>
+</svg></td>
+<td class="gt_row gt_right gt_striped" headers="count" style="font-size: 18px">2917</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="offence_simple" style="font-size: 18px">Other</td>
+<td class="gt_row gt_center" headers="perc"><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" class="svglite" width="184.25pt" height="14.17pt" viewbox="0 0 184.25 14.17">
+<defs>
+<style type="text/css">    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {      fill: none;      stroke: #000000;      stroke-linecap: round;      stroke-linejoin: round;      stroke-miterlimit: 10.00;    }    .svglite text {      white-space: pre;    }  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs> <clippath id="cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw=="> <rect x="0.00" y="0.00" width="184.25" height="14.17"></rect> </clippath></defs><g clip-path="url(#cpMC4wMHwxODQuMjV8MC4wMHwxNC4xNw==)"><rect x="0.00" y="0.0000000000000018" width="14.74" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;"></rect><rect x="14.74" y="0.0000000000000018" width="73.70" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #1F78B4;"></rect><rect x="88.44" y="0.0000000000000018" width="95.81" height="14.17" style="stroke-width: 1.07; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDBDBD;"></rect><text x="7.37" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">10</text><text x="51.59" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">50</text><text x="136.35" y="10.20" text-anchor="middle" style="font-size: 8.54px;fill: #FFFFFF; font-family: &quot;Courier&quot;;" textlength="10.27px" lengthadjust="spacingAndGlyphs">65</text></g>
+</svg></td>
+<td class="gt_row gt_right" headers="count" style="font-size: 18px">4747</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Disposal categories assigned by police are shown in <a href="#tbl-disposal" class="quarto-xref">Table&nbsp;4</a>. Roughly a third of cases resulted in no further action, and for most of the remainder drivers were required to undertake an education course. Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome (XX EXPLAIN FURTHER?). Close to two percent of cases went to court and a further one percent underwent further investigation.</p>
+<div class="cell">
+<div id="tbl-disposal" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-disposal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Most common disposal values in the OpSnap dataset.
+</figcaption>
+<div aria-describedby="tbl-disposal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="tvaytqmiam" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#odbgqbcmpx table {
+#tvaytqmiam table {
   font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#odbgqbcmpx thead, #odbgqbcmpx tbody, #odbgqbcmpx tfoot, #odbgqbcmpx tr, #odbgqbcmpx td, #odbgqbcmpx th {
+#tvaytqmiam thead, #tvaytqmiam tbody, #tvaytqmiam tfoot, #tvaytqmiam tr, #tvaytqmiam td, #tvaytqmiam th {
   border-style: none;
 }
 
-#odbgqbcmpx p {
+#tvaytqmiam p {
   margin: 0;
   padding: 0;
 }
 
-#odbgqbcmpx .gt_table {
+#tvaytqmiam .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1696,12 +1815,12 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-left-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_caption {
+#tvaytqmiam .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#odbgqbcmpx .gt_title {
+#tvaytqmiam .gt_title {
   color: #333333;
   font-size: 24px;
   font-weight: initial;
@@ -1713,7 +1832,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-width: 0;
 }
 
-#odbgqbcmpx .gt_subtitle {
+#tvaytqmiam .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1725,7 +1844,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-width: 0;
 }
 
-#odbgqbcmpx .gt_heading {
+#tvaytqmiam .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -1737,13 +1856,13 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_bottom_border {
+#tvaytqmiam .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_col_headings {
+#tvaytqmiam .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1758,7 +1877,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_col_heading {
+#tvaytqmiam .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1778,7 +1897,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer {
+#tvaytqmiam .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1790,15 +1909,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 4px;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer:first-child {
+#tvaytqmiam .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#odbgqbcmpx .gt_column_spanner_outer:last-child {
+#tvaytqmiam .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#odbgqbcmpx .gt_column_spanner {
+#tvaytqmiam .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1810,11 +1929,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   width: 100%;
 }
 
-#odbgqbcmpx .gt_spanner_row {
+#tvaytqmiam .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#odbgqbcmpx .gt_group_heading {
+#tvaytqmiam .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1840,7 +1959,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   text-align: left;
 }
 
-#odbgqbcmpx .gt_empty_group_heading {
+#tvaytqmiam .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1855,15 +1974,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: middle;
 }
 
-#odbgqbcmpx .gt_from_md > :first-child {
+#tvaytqmiam .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#odbgqbcmpx .gt_from_md > :last-child {
+#tvaytqmiam .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#odbgqbcmpx .gt_row {
+#tvaytqmiam .gt_row {
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 5px;
@@ -1882,7 +2001,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#odbgqbcmpx .gt_stub {
+#tvaytqmiam .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -1895,7 +2014,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_stub_row_group {
+#tvaytqmiam .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1909,15 +2028,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: top;
 }
 
-#odbgqbcmpx .gt_row_group_first td {
+#tvaytqmiam .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_row_group_first th {
+#tvaytqmiam .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_summary_row {
+#tvaytqmiam .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1927,16 +2046,16 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_first_summary_row {
+#tvaytqmiam .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_first_summary_row.thick {
+#tvaytqmiam .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#odbgqbcmpx .gt_last_summary_row {
+#tvaytqmiam .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1946,7 +2065,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_grand_summary_row {
+#tvaytqmiam .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1956,7 +2075,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_first_grand_summary_row {
+#tvaytqmiam .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1966,7 +2085,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_last_grand_summary_row_top {
+#tvaytqmiam .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1976,11 +2095,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_striped {
+#tvaytqmiam .gt_striped {
   background-color: #FAFAFA;
 }
 
-#odbgqbcmpx .gt_table_body {
+#tvaytqmiam .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1989,7 +2108,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_footnotes {
+#tvaytqmiam .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2003,7 +2122,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_footnote {
+#tvaytqmiam .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2012,7 +2131,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_sourcenotes {
+#tvaytqmiam .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2026,7 +2145,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#odbgqbcmpx .gt_sourcenote {
+#tvaytqmiam .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2034,137 +2153,185 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#odbgqbcmpx .gt_left {
+#tvaytqmiam .gt_left {
   text-align: left;
 }
 
-#odbgqbcmpx .gt_center {
+#tvaytqmiam .gt_center {
   text-align: center;
 }
 
-#odbgqbcmpx .gt_right {
+#tvaytqmiam .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#odbgqbcmpx .gt_font_normal {
+#tvaytqmiam .gt_font_normal {
   font-weight: normal;
 }
 
-#odbgqbcmpx .gt_font_bold {
+#tvaytqmiam .gt_font_bold {
   font-weight: bold;
 }
 
-#odbgqbcmpx .gt_font_italic {
+#tvaytqmiam .gt_font_italic {
   font-style: italic;
 }
 
-#odbgqbcmpx .gt_super {
+#tvaytqmiam .gt_super {
   font-size: 65%;
 }
 
-#odbgqbcmpx .gt_footnote_marks {
+#tvaytqmiam .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#odbgqbcmpx .gt_asterisk {
+#tvaytqmiam .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#odbgqbcmpx .gt_indent_1 {
+#tvaytqmiam .gt_indent_1 {
   text-indent: 5px;
 }
 
-#odbgqbcmpx .gt_indent_2 {
+#tvaytqmiam .gt_indent_2 {
   text-indent: 10px;
 }
 
-#odbgqbcmpx .gt_indent_3 {
+#tvaytqmiam .gt_indent_3 {
   text-indent: 15px;
 }
 
-#odbgqbcmpx .gt_indent_4 {
+#tvaytqmiam .gt_indent_4 {
   text-indent: 20px;
 }
 
-#odbgqbcmpx .gt_indent_5 {
+#tvaytqmiam .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;4:  Most common disposal values in the OpSnap dataset. </caption>
-  <colgroup>
-    <col style="width:400px;">
-    <col style="width:80px;">
-    <col style="width:120px;">
-  </colgroup>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Disposal">Disposal</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">educational course</td>
-<td headers="# records" class="gt_row gt_right">9806</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:53.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">53.4%</span></div></div></td></tr>
-    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">nfa</td>
-<td headers="# records" class="gt_row gt_right gt_striped">5697</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:31%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">31%</span></div></div></td></tr>
-    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">conditional offer</td>
-<td headers="# records" class="gt_row gt_right">2326</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:12.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:15.24px;font-weight:bold;font-size:15px;">12.7%</span></div></div></td></tr>
-    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">court</td>
-<td headers="# records" class="gt_row gt_right gt_striped">307</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:1.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:2.04px;font-weight:bold;font-size:15px;">1.7%</span></div></div></td></tr>
-    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">dsit investigation</td>
-<td headers="# records" class="gt_row gt_right">202</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:1.1%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:1.32px;font-weight:bold;font-size:15px;">1.1%</span></div></div></td></tr>
-    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">rpu investigation</td>
-<td headers="# records" class="gt_row gt_right gt_striped">23</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.1%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0.12px;font-weight:bold;font-size:15px;">0.1%</span></div></div></td></tr>
-    <tr><td headers="Disposal" class="gt_row gt_left" style="font-size: 18px;">fine</td>
-<td headers="# records" class="gt_row gt_right">1</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span></div></div></td></tr>
-    <tr><td headers="Disposal" class="gt_row gt_left gt_striped" style="font-size: 18px;">NA</td>
-<td headers="# records" class="gt_row gt_right gt_striped">1</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;"><span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span></div></div></td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Disposal" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Disposal</th>
+<th id="Number" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number</th>
+<th id="Percent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Percent</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Disposal" style="font-size: 18px">educational course</td>
+<td class="gt_row gt_right" headers="Number">9806</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:53.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">53.4%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Disposal" style="font-size: 18px">nfa</td>
+<td class="gt_row gt_right gt_striped" headers="Number">5697</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:31%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">31%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Disposal" style="font-size: 18px">conditional offer</td>
+<td class="gt_row gt_right" headers="Number">2326</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:12.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:15.24px;font-weight:bold;font-size:15px;">12.7%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Disposal" style="font-size: 18px">court</td>
+<td class="gt_row gt_right gt_striped" headers="Number">307</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:1.7%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:2.04px;font-weight:bold;font-size:15px;">1.7%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Disposal" style="font-size: 18px">dsit investigation</td>
+<td class="gt_row gt_right" headers="Number">202</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:1.1%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:1.32px;font-weight:bold;font-size:15px;">1.1%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Disposal" style="font-size: 18px">rpu investigation</td>
+<td class="gt_row gt_right gt_striped" headers="Number">23</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.1%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:0.12px;font-weight:bold;font-size:15px;">0.1%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Disposal" style="font-size: 18px">fine</td>
+<td class="gt_row gt_right" headers="Number">1</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Disposal" style="font-size: 18px">NA</td>
+<td class="gt_row gt_right gt_striped" headers="Number">1</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0%;height:30px;display:flex;align-items:center;justify-content:center;color:#000000;font-weight:bold;font-size:15px;position:relative;">
+<span style="color:#000000;position:absolute;left:0%;margin-left:0px;font-weight:bold;font-size:15px;">0%</span>
+</div>
+</div></td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
+</figure>
 </div>
-<p>There are 8801 unique locations (addresses) in the data, with the most common locations shown in <a href="#tbl-locations">Table&nbsp;5</a>.</p>
+</div>
+<p>There are 8801 unique locations (addresses) in the data, with the most common locations shown in <a href="#tbl-locations" class="quarto-xref">Table&nbsp;5</a>.</p>
 <p>INSERT Table 5 AND/OR Map (TO BE INCLUDED)</p>
-<div class="cell" data-hash="paper_cache/html/tbl-locations_164e8b6a99268c149d756499e1609327">
+<div class="cell">
+<div id="tbl-locations" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-locations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Most common locations recorded in the OpSnap dataset
+</figcaption>
+<div aria-describedby="tbl-locations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-locations" class="anchored">
-
-<div id="owzgsnvahl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wabnomcmsj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#owzgsnvahl table {
+#wabnomcmsj table {
   font-family: Lato, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#owzgsnvahl thead, #owzgsnvahl tbody, #owzgsnvahl tfoot, #owzgsnvahl tr, #owzgsnvahl td, #owzgsnvahl th {
+#wabnomcmsj thead, #wabnomcmsj tbody, #wabnomcmsj tfoot, #wabnomcmsj tr, #wabnomcmsj td, #wabnomcmsj th {
   border-style: none;
 }
 
-#owzgsnvahl p {
+#wabnomcmsj p {
   margin: 0;
   padding: 0;
 }
 
-#owzgsnvahl .gt_table {
+#wabnomcmsj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2190,12 +2357,12 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-left-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_caption {
+#wabnomcmsj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#owzgsnvahl .gt_title {
+#wabnomcmsj .gt_title {
   color: #333333;
   font-size: 24px;
   font-weight: initial;
@@ -2207,7 +2374,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-width: 0;
 }
 
-#owzgsnvahl .gt_subtitle {
+#wabnomcmsj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2219,7 +2386,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-width: 0;
 }
 
-#owzgsnvahl .gt_heading {
+#wabnomcmsj .gt_heading {
   background-color: #FFFFFF;
   text-align: left;
   border-bottom-color: #FFFFFF;
@@ -2231,13 +2398,13 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_bottom_border {
+#wabnomcmsj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_col_headings {
+#wabnomcmsj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2252,7 +2419,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_col_heading {
+#wabnomcmsj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2272,7 +2439,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#owzgsnvahl .gt_column_spanner_outer {
+#wabnomcmsj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2284,15 +2451,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 4px;
 }
 
-#owzgsnvahl .gt_column_spanner_outer:first-child {
+#wabnomcmsj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#owzgsnvahl .gt_column_spanner_outer:last-child {
+#wabnomcmsj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#owzgsnvahl .gt_column_spanner {
+#wabnomcmsj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2304,11 +2471,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   width: 100%;
 }
 
-#owzgsnvahl .gt_spanner_row {
+#wabnomcmsj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#owzgsnvahl .gt_group_heading {
+#wabnomcmsj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2334,7 +2501,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   text-align: left;
 }
 
-#owzgsnvahl .gt_empty_group_heading {
+#wabnomcmsj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2349,15 +2516,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: middle;
 }
 
-#owzgsnvahl .gt_from_md > :first-child {
+#wabnomcmsj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#owzgsnvahl .gt_from_md > :last-child {
+#wabnomcmsj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#owzgsnvahl .gt_row {
+#wabnomcmsj .gt_row {
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 5px;
@@ -2376,7 +2543,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   overflow-x: hidden;
 }
 
-#owzgsnvahl .gt_stub {
+#wabnomcmsj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 80%;
@@ -2389,7 +2556,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#owzgsnvahl .gt_stub_row_group {
+#wabnomcmsj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2403,15 +2570,15 @@ The 2023 report noted that “the most common contributory factor allocated to p
   vertical-align: top;
 }
 
-#owzgsnvahl .gt_row_group_first td {
+#wabnomcmsj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#owzgsnvahl .gt_row_group_first th {
+#wabnomcmsj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#owzgsnvahl .gt_summary_row {
+#wabnomcmsj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2421,16 +2588,16 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#owzgsnvahl .gt_first_summary_row {
+#wabnomcmsj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_first_summary_row.thick {
+#wabnomcmsj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#owzgsnvahl .gt_last_summary_row {
+#wabnomcmsj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2440,7 +2607,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_grand_summary_row {
+#wabnomcmsj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2450,7 +2617,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#owzgsnvahl .gt_first_grand_summary_row {
+#wabnomcmsj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2460,7 +2627,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-top-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_last_grand_summary_row_top {
+#wabnomcmsj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2470,11 +2637,11 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_striped {
+#wabnomcmsj .gt_striped {
   background-color: #FAFAFA;
 }
 
-#owzgsnvahl .gt_table_body {
+#wabnomcmsj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2483,7 +2650,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-bottom-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_footnotes {
+#wabnomcmsj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2497,7 +2664,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_footnote {
+#wabnomcmsj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2506,7 +2673,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#owzgsnvahl .gt_sourcenotes {
+#wabnomcmsj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2520,7 +2687,7 @@ The 2023 report noted that “the most common contributory factor allocated to p
   border-right-color: #D3D3D3;
 }
 
-#owzgsnvahl .gt_sourcenote {
+#wabnomcmsj .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2528,117 +2695,173 @@ The 2023 report noted that “the most common contributory factor allocated to p
   padding-right: 5px;
 }
 
-#owzgsnvahl .gt_left {
+#wabnomcmsj .gt_left {
   text-align: left;
 }
 
-#owzgsnvahl .gt_center {
+#wabnomcmsj .gt_center {
   text-align: center;
 }
 
-#owzgsnvahl .gt_right {
+#wabnomcmsj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#owzgsnvahl .gt_font_normal {
+#wabnomcmsj .gt_font_normal {
   font-weight: normal;
 }
 
-#owzgsnvahl .gt_font_bold {
+#wabnomcmsj .gt_font_bold {
   font-weight: bold;
 }
 
-#owzgsnvahl .gt_font_italic {
+#wabnomcmsj .gt_font_italic {
   font-style: italic;
 }
 
-#owzgsnvahl .gt_super {
+#wabnomcmsj .gt_super {
   font-size: 65%;
 }
 
-#owzgsnvahl .gt_footnote_marks {
+#wabnomcmsj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#owzgsnvahl .gt_asterisk {
+#wabnomcmsj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#owzgsnvahl .gt_indent_1 {
+#wabnomcmsj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#owzgsnvahl .gt_indent_2 {
+#wabnomcmsj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#owzgsnvahl .gt_indent_3 {
+#wabnomcmsj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#owzgsnvahl .gt_indent_4 {
+#wabnomcmsj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#owzgsnvahl .gt_indent_5 {
+#wabnomcmsj .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" style="table-layout: fixed;; width: 0px" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;5:  Most common locations recorded in the OpSnap dataset </caption>
-  <colgroup>
-    <col style="width:400px;">
-    <col style="width:80px;">
-    <col style="width:120px;">
-  </colgroup>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Location">Location</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# records"># records</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="% records">% records</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Meanwood Road, Leeds</td>
-<td headers="# records" class="gt_row gt_right">49</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.4%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Dewsbury Road, Ossett</td>
-<td headers="# records" class="gt_row gt_right gt_striped">48</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.4%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Westgate J/W Park Square West, Leeds</td>
-<td headers="# records" class="gt_row gt_right">38</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Chapeltown Road, Leeds</td>
-<td headers="# records" class="gt_row gt_right gt_striped">35</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Park Square West, Leeds</td>
-<td headers="# records" class="gt_row gt_right">33</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">WESTGATE junction with PARK SQUARE WEST, LEEDS</td>
-<td headers="# records" class="gt_row gt_right gt_striped">33</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Hollingwood Lane, Bradford</td>
-<td headers="# records" class="gt_row gt_right">27</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Highgate Road, Bradford</td>
-<td headers="# records" class="gt_row gt_right gt_striped">26</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left" style="font-size: 18px;">Cemetery Road, Bradford</td>
-<td headers="# records" class="gt_row gt_right">25</td>
-<td headers="% records" class="gt_row gt_left"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
-    <tr><td headers="Location" class="gt_row gt_left gt_striped" style="font-size: 18px;">Tongue Lane, Leeds</td>
-<td headers="# records" class="gt_row gt_right gt_striped">25</td>
-<td headers="% records" class="gt_row gt_left gt_striped"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;"><div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;"><span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span></div></div></td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="Location" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Location</th>
+<th id="Number" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number</th>
+<th id="Percent" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Percent</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Location" style="font-size: 18px">Meanwood Road, Leeds</td>
+<td class="gt_row gt_right" headers="Number">49</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.4%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Location" style="font-size: 18px">Dewsbury Road, Ossett</td>
+<td class="gt_row gt_right gt_striped" headers="Number">48</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.4%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.4%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Location" style="font-size: 18px">Westgate J/W Park Square West, Leeds</td>
+<td class="gt_row gt_right" headers="Number">38</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Location" style="font-size: 18px">Chapeltown Road, Leeds</td>
+<td class="gt_row gt_right gt_striped" headers="Number">35</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Location" style="font-size: 18px">Park Square West, Leeds</td>
+<td class="gt_row gt_right" headers="Number">33</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Location" style="font-size: 18px">WESTGATE junction with PARK SQUARE WEST, LEEDS</td>
+<td class="gt_row gt_right gt_striped" headers="Number">33</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.3%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.3%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Location" style="font-size: 18px">Hollingwood Lane, Bradford</td>
+<td class="gt_row gt_right" headers="Number">27</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Location" style="font-size: 18px">Highgate Road, Bradford</td>
+<td class="gt_row gt_right gt_striped" headers="Number">26</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span>
+</div>
+</div></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Location" style="font-size: 18px">Cemetery Road, Bradford</td>
+<td class="gt_row gt_right" headers="Number">25</td>
+<td class="gt_row gt_left" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span>
+</div>
+</div></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Location" style="font-size: 18px">Tongue Lane, Leeds</td>
+<td class="gt_row gt_right gt_striped" headers="Number">25</td>
+<td class="gt_row gt_left gt_striped" headers="Percent"><div style="flex-grow:1;margin-left:8px;background:#e1e1e1;">
+<div style="background:#252525;width:0.2%;height:30px;display:flex;align-items:center;justify-content:flex-start;position:relative;">
+<span style="color:#FFFFFF;position:absolute;left:0px;margin-left:5px;font-weight:bold;font-size:15px;">0.2%</span>
+</div>
+</div></td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 </section>
@@ -2672,53 +2895,53 @@ The 2023 report noted that “the most common contributory factor allocated to p
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-aldred2016" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-aldred2016" class="csl-entry" role="listitem">
 Aldred, Rachel. 2016. <span>“Cycling Near Misses: <span>Their</span> Frequency, Impact, and Prevention.”</span> <em>Transportation Research Part A: Policy and Practice</em> 90 (August): 69–83. <a href="https://doi.org/10.1016/j.tra.2016.04.016">https://doi.org/10.1016/j.tra.2016.04.016</a>.
 </div>
-<div id="ref-aldredInvestigatingRatesImpacts2015a" class="csl-entry" role="doc-biblioentry">
+<div id="ref-aldredInvestigatingRatesImpacts2015a" class="csl-entry" role="listitem">
 Aldred, Rachel, and Sian Crosweller. 2015. <span>“Investigating the Rates and Impacts of Near Misses and Related Incidents Among <span>UK</span> Cyclists.”</span> <em>Journal of Transport &amp; Health</em> 2 (3): 379–93. <a href="https://doi.org/10.1016/j.jth.2015.05.006">https://doi.org/10.1016/j.jth.2015.05.006</a>.
 </div>
-<div id="ref-corbett2003" class="csl-entry" role="doc-biblioentry">
+<div id="ref-corbett2003" class="csl-entry" role="listitem">
 Corbett, Claire. 2003-06-01, 2003-06. <em>Car Crime</em>. 1st edition. Cullompton: Willan.
 </div>
-<div id="ref-corbett2010" class="csl-entry" role="doc-biblioentry">
+<div id="ref-corbett2010" class="csl-entry" role="listitem">
 ———. 2010. <span>“Driving Offences.”</span> In. Willan.
 </div>
-<div id="ref-cubbin2024" class="csl-entry" role="doc-biblioentry">
+<div id="ref-cubbin2024" class="csl-entry" role="listitem">
 Cubbin, William, Kjell van Paridon, Helen Keyes, and Matthew Timmis. 2024. <span>“Close Passes Caught on Camera – <span>How</span> Knowledge and Behavioural Norms Relate to Perceptions of Liability When Cars Overtake Cyclists.”</span> <em>Transportation Research Part F: Traffic Psychology and Behaviour</em> 100 (January): 308–22. <a href="https://doi.org/10.1016/j.trf.2023.12.002">https://doi.org/10.1016/j.trf.2023.12.002</a>.
 </div>
-<div id="ref-DashCamSubmissions2024" class="csl-entry" role="doc-biblioentry">
+<div id="ref-DashCamSubmissions2024" class="csl-entry" role="listitem">
 <span>“Dash <span>Cam Submissions</span> to <span>Police Rise</span> with <span>Operation Snap</span>.”</span> 2024. https://www.icompario.com/en-gb/guides/dash-cam-police-submission-statistics/.
 </div>
-<div id="ref-departmentfortransport" class="csl-entry" role="doc-biblioentry">
+<div id="ref-departmentfortransport" class="csl-entry" role="listitem">
 Department for Transport. 2023a. <span>“Reported Road Casualties in <span>Great Britain</span>: Pedal Cycle Factsheet, 2022.”</span>
 </div>
-<div id="ref-departmentfortransportReportedRoadCasualties2023" class="csl-entry" role="doc-biblioentry">
+<div id="ref-departmentfortransportReportedRoadCasualties2023" class="csl-entry" role="listitem">
 ———. 2023b. <span>“Reported Road Casualties <span>Great Britain</span>, Annual Report: 2022.”</span> <em>GOV.UK</em>. https://www.gov.uk/government/statistics/reported-road-casualties-great-britain-annual-report-2022/reported-road-casualties-great-britain-annual-report-2022.
 </div>
-<div id="ref-elvikIncompleteAccidentReporting1999" class="csl-entry" role="doc-biblioentry">
+<div id="ref-elvikIncompleteAccidentReporting1999" class="csl-entry" role="listitem">
 Elvik, Rune, and Anne Mysen. 1999. <span>“Incomplete <span>Accident Reporting</span>: <span>Meta-Analysis</span> of <span>Studies Made</span> in 13 <span>Countries</span>.”</span> <em>Transportation Research Record</em> 1665 (1): 133–40. <a href="https://doi.org/10.3141/1665-18">https://doi.org/10.3141/1665-18</a>.
 </div>
-<div id="ref-farrellPreventingRepeatRepeat2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-farrellPreventingRepeatRepeat2017" class="csl-entry" role="listitem">
 Farrell, Graham, and Ken Pease. 2017. <span>“Preventing Repeat and Near Repeat Crime Concentrations.”</span> In.
 </div>
-<div id="ref-ibrahimCyclingMissesReview2021" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ibrahimCyclingMissesReview2021" class="csl-entry" role="listitem">
 Ibrahim, M., J. Haworth, N. Christie, T. Cheng, and S. Hailes. 2021. <span>“Cycling Near Misses: <span>A</span> Review of the Current Methods, Challenges and the Potential of an <span class="nocase">AI-embedded</span> System.”</span> <em>Transport Reviews</em> 41 (3): 304–28.
 </div>
-<div id="ref-janstrupetal.UnderstandingTrafficCrash2016" class="csl-entry" role="doc-biblioentry">
+<div id="ref-janstrupetal.UnderstandingTrafficCrash2016" class="csl-entry" role="listitem">
 Janstrup et al. 2016. <span>“Understanding Traffic Crash Under-Reporting: <span>Linking</span> Police and Medical Records to Individual and Crash Characteristics.”</span> <em>Traffic Injury Prevention</em> 17 (6): 580–84. <a href="https://doi.org/10.1080/15389588.2015.1128533">https://doi.org/10.1080/15389588.2015.1128533</a>.
 </div>
-<div id="ref-laingAggressiveDriving2010" class="csl-entry" role="doc-biblioentry">
+<div id="ref-laingAggressiveDriving2010" class="csl-entry" role="listitem">
 Laing, Colleen. 2010. <em>Aggressive <span>Driving</span></em>. Problem-<span>Oriented Guides</span> for <span>Police Problem-Specific Guides Series</span> 61. U.S. Department of Justice.
 </div>
-<div id="ref-sandersPerceivedTrafficRisk2015a" class="csl-entry" role="doc-biblioentry">
+<div id="ref-sandersPerceivedTrafficRisk2015a" class="csl-entry" role="listitem">
 Sanders, Rebecca L. 2015. <span>“Perceived Traffic Risk for Cyclists: <span>The</span> Impact of Near Miss and Collision Experiences.”</span> <em>Accident Analysis &amp; Prevention</em> 75 (February): 26–34. <a href="https://doi.org/10.1016/j.aap.2014.11.004">https://doi.org/10.1016/j.aap.2014.11.004</a>.
 </div>
-<div id="ref-scottSpeedingResidentialAreas2010" class="csl-entry" role="doc-biblioentry">
+<div id="ref-scottSpeedingResidentialAreas2010" class="csl-entry" role="listitem">
 Scott, Michael, and David K. Maddox. 2010. <em>Speeding in <span>Residential Areas</span>, 2nd Edition</em>. Problem-<span>Oriented Guides</span> for <span>Police Problem-Specific Guides Series</span> 3. U.S. Department of Justice.
 </div>
-<div id="ref-simon1996" class="csl-entry" role="doc-biblioentry">
+<div id="ref-simon1996" class="csl-entry" role="listitem">
 Simon, Frances, and Claire Corbett. 1996. <span>“Road Traffic Offending, Stress, Age, and Accident History Among Male and Female Drivers.”</span> <em>Ergonomics</em> 39 (5): 757–80. <a href="https://doi.org/10.1080/00140139608964497">https://doi.org/10.1080/00140139608964497</a>.
 </div>
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
@@ -2756,12 +2979,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2793,11 +3019,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2807,8 +3072,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2820,9 +3094,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2863,6 +3373,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
