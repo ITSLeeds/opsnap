@@ -695,7 +695,7 @@ tbl = pivot_combined |>
     locations = cells_body(columns = c(offence_simple, count))
     ) |> 
     gt_theme_espn() 
-gt::gtsave(tbl, "tbl-mode-offences-crosstab.png")
+# gt::gtsave(tbl, "tbl-mode-offences-crosstab.png")
 knitr::include_graphics("tbl-mode-offences-crosstab.png")
 ```
 
@@ -763,7 +763,7 @@ tbl = d_all |>
     locations = cells_body(columns = Disposal)
   ) |>
   gt_theme_espn()
-gt::gtsave(tbl, "tbl-disposal.png")
+# gt::gtsave(tbl, "tbl-disposal.png")
 knitr::include_graphics("tbl-disposal.png")
 ```
 
