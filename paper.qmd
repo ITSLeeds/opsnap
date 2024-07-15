@@ -506,7 +506,8 @@ tbl = d_offence_classified |>
   ) |> 
   cols_width(1 ~ px(600), 2 ~ px(80)) |> 
   gt_theme_espn()
-gt::gtsave(tbl, "tbl-offences.png")
+# gt::gtsave(tbl, "tbl-offences.png")
+# browseURL("tbl-offences.png")
 knitr::include_graphics("tbl-offences.png")
 ```
 
