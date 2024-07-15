@@ -247,14 +247,16 @@ d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
 ```{r}
 #| label: stats19
 #| include: false
-years = 2021:2022
-dir.create("data/stats19", recursive = TRUE, showWarnings = FALSE)
-collisions_2022 = stats19::get_stats19(year = 2022)
-collisions_2021 = stats19::get_stats19(year = 2021)
-collisions_2020 = stats19::get_stats19(year = 2020)
-collisions = bind_rows(collisions_2020, collisions_2021, collisions_2022)
+# years = 2021:2022
+# dir.create("data/stats19", recursive = TRUE, showWarnings = FALSE)
+# collisions_2022 = stats19::get_stats19(year = 2022)
 # collisions_2021 = stats19::get_stats19(year = 2021)
-# collisions = purrr::map_df(years, stats19::get_stats19, type = "collision", data_dir = "data/stats19")
+# collisions_2020 = stats19::get_stats19(year = 2020)
+# collisions = bind_rows(collisions_2020, collisions_2021, collisions_2022)
+# write_csv(collisions, "collisions_2020-2022.csv")
+# piggyback::pb_upload("collisions_2020-2022.csv")
+system("gh release download v1")
+collisions = read_csv("collisions_2020-2022.csv")
 stats19_monthly = collisions |>
   filter(police_force == "West Yorkshire") |>
   mutate(month = lubridate::floor_date(date, "month")) |>
@@ -930,9 +932,8 @@ Such research will face different methodological challenges but could provide pr
 OpSnap data should be compared to, and integrated with, other road safety datasets.
 For example, spatial analysis that was Integrated with Strava data (road use data by cyclists and pedestrians), Google road use and other data, may facilitate exposure-based measures rather than the counts used here.
 The use of rates will enhance the identification locations with higher risk because based on their volume of traffic: different types of risk need to be gauged.
-Comparison and integration of OpSnap and Stats193 is an obvious starting point.
-To what extent do OpSnap and Crashmap incidents overlap?
-To what extent are they complementary?
+Comparison and integration of OpSnap and STATS19 datasets could provide a logical starting point.
+To what extent are OpSnap and STATS19 records overlapping or complementary?
 To what extent do they identify the same or different types of problems?
 
 More generally, OpSnap data holds potential for use in the evaluation of experimental interventions.
