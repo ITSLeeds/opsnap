@@ -575,7 +575,7 @@ tbl = d_all |>
     locations = cells_body(columns = Mode)
   ) |>
   gt_theme_espn()
-gt::gtsave(tbl, "tbl-mode.png")
+# gt::gtsave(tbl, "tbl-mode.png")
 knitr::include_graphics("tbl-mode.png")
 ```
 
