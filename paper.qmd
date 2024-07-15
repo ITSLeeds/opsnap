@@ -52,9 +52,9 @@ date: last-modified
 format:
   # html: default
   # docx: default
-  pdf: default
-  # arxiv-pdf:
-  #   keep-tex: true
+  # pdf: default
+  arxiv-pdf:
+    keep-tex: true
 linenumbers: true # Add (continuous) line numbers?
 doublespacing: false # Double space the PDF output?
 runninghead: "Preprint" # The text on the top of each page of the output
@@ -84,6 +84,8 @@ quarto::quarto_render("paper.qmd", output_format = "docx")
 file.rename("paper.docx", "~/OneDrive/opsnap_leeds/paper-v7.docx")
 file.rename("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v7.pdf")
 browseURL("paper.docx")
+# Install extension:
+system("quarto install extension mikemahoney218/quarto-arxiv")
 ```
 
 ```{r setup}
