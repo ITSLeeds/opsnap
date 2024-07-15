@@ -86,6 +86,7 @@ file.rename("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v7.pdf")
 browseURL("paper.docx")
 # Install extension:
 system("quarto install extension mikemahoney218/quarto-arxiv")
+system("sudo apt install lmodern")
 ```
 
 ```{r setup}
@@ -248,7 +249,10 @@ d_monthly = bind_rows(d_all_monthly, d_complete_monthly)
 #| include: false
 years = 2021:2022
 dir.create("data/stats19", recursive = TRUE, showWarnings = FALSE)
-collisions = stats19::get_stats19(year = 2022)
+collisions_2022 = stats19::get_stats19(year = 2022)
+collisions_2021 = stats19::get_stats19(year = 2021)
+collisions_2020 = stats19::get_stats19(year = 2020)
+collisions = bind_rows(collisions_2020, collisions_2021, collisions_2022)
 # collisions_2021 = stats19::get_stats19(year = 2021)
 # collisions = purrr::map_df(years, stats19::get_stats19, type = "collision", data_dir = "data/stats19")
 stats19_monthly = collisions |>
@@ -402,18 +406,28 @@ d_all |>
 # Results
 
 There were `r nrow(d_all) |> scales::number(big.mark = ",")` records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in @fig-time.
+Since early 2022, there have been more monthly records in the OpSnap data than in the official 'STATS19' road traffic collision records for West Yorkshire, highlighting the under-reporting of road traffic incidents in official statistics.
+STATS19 records are from the Department for Transport's database of road traffic collisions reported to the police and only include incidents that result in injury.
+Like OpSnap data, STATS19 records are open access.
+They were downloaded with the `stats19` R package  and filtered to include only records from West Yorkshire to ensure comparability with the OpSnap data.
 
 ```{r}
 #| label: fig-time
-#| fig-cap: "Monthly count of Operation Snap records, West Yorkshire"
+#| fig-cap: "Monthly count of Operation Snap (complete and with offence and location data, red and green) and official STATS19 road traffic collision records (blue), West Yorkshire."
 d_monthly = bind_rows(d_monthly, stats19_monthly)
 d_monthly |>
-  mutate(records = snakecase::to_title_case(records)) |> 
+  mutate(records = case_when(
+    records == "all" ~ "OpSnap (all)",
+    records == "complete" ~ "OpSnap (complete)",
+    records == "stats19" ~ "STATS19"
+    )
+  ) |>
   rename_all(snakecase::to_title_case) |> 
   ggplot() +
   geom_line(aes(Month, N, colour = Records), alpha = 0.5, size = 2) +
   # geom_smooth(aes(month, n, colour = records), method = "lm", se = FALSE) +
-  labs(title = "Number of records in West Yorkshire Police\nOperation Snap data",
+  labs(
+    # title = "Number of monthly records in West Yorkshire Police\nOperation Snap data",
        x = "Date",
        y = "Number of records per month") +
   theme_minimal()
