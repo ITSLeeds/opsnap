@@ -290,12 +290,17 @@ perc_course = d_all |>
   count(disposal) |>
   filter(disposal == "conditional offer") |>
   pull(n) / nrow(d_all) * 100
+date_range = range(d_all$date)
+# Crashes in 2024:
+d_all_2024 = d_all |>
+  filter(date >= "2024-01-01")
+table(d_all_2024$date)
 ```
 
 # Abstract {.unnumbered}
 
 This study uses data from Operation Snap (OpSnap), the UK police's national system to receive road users' video evidence of road traffic offences.
-Data from one police force area for the three calendar years 2021 to 2023 <!-- (N= 18,363 records) --> (N = `r nrow(d_all) |> scales::number(big.mark = ",")` records) is analysed.
+Data from one police force area for the three years (January 2021 to March 2024) <!-- (N= 18,363 records) --> (N = `r nrow(d_all) |> scales::number(big.mark = ",")` records) is analysed.
 <!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. --> Of submitted cases, `r round(perc_vehicle_driver, 1)`% were from vehicle drivers, `r round(perc_cyclist, 1)`% were from cyclists, and `r round(perc_pedestrian, 1)`% were from pedestrians.
 The most common offences were driving 'without reasonable consideration to others' or 'without due care and attention'.
 <!-- Two thirds (66.1%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), 31% no further action, and fewer than 1% for court appearance. --> Two-thirds (`r round(perc_disposal_educational_course_conditional, 1)`%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), `r round(perc_no_further_action, 1)`% no further action, and `r round(perc_course, 1)`% for court appearance.
@@ -316,7 +321,7 @@ One prominent surrogate measure is traffic conflicts [@lord2021].
 A traffic conflict occurs when road users’ paths intersect, with a risk of collision if no action was taken [@tarko2018].
 The concept of using traffic conflicts as a surrogate measure was notably illustrated by Hyden’s safety pyramid [@hyden1987].
 This pyramid represents the spectrum of traffic events from safe, undisturbed passages at the base, to severe, rare crashes at the top.
-Hyden’s model demonstrates that the inverse relationship between crash frequency and severity.
+Hyden’s model demonstrates the inverse relationship between crash frequency and severity.
 Understanding this relationship allows for the prediction of severe crashes based on the more common, less sever conflicts.
 
 Traditional methods for observing traffic conflicts have relied on manual observation, which is resource intensive.
@@ -337,7 +342,7 @@ These incidents are often referred to as "near-misses" [@ibrahimCyclingMissesRev
 Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses are a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a], being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a].
 In their review of near miss cycling crashes, @ibrahimCyclingMissesReview2021 highlighted the need for better data on near misses to inform safety research.
 
-Close passes are the most common type of near miss reported by cyclists, and are associated with collisions resulting in injury [@aldred2016].
+Close passes are the most common type of near miss reported by cyclists and are associated with collisions resulting in injury [@aldred2016].
 A 'close pass' refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph).
 Close passes take different forms including the 'punishment pass' by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024].
 There is no specific law in the UK Road Traffic Act 1988 for driving too close to cyclist, but two are commonly applied for careless driving: RT88575- Drive without due care and attention; and RT99576 -- Driver without reasonable consideration to others - and these are prominent in the analysis that follows. 
@@ -373,7 +378,7 @@ The proportion of cyclists using these cameras is unknown but anecdotal evidence
 
 Complainants upload footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make, model and colour, the location and time of the incident, and details of the camera used to record the footage.
 Only vehicle offences can be reported as the registration number of any offending vehicle is required and must be legible in footage.
-The open access data is a deidentified summary of submitted cases with information on: mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location.
+The open access data is a deidentified summary of submitted cases with information on mode of transport of the person reporting, offender vehicle details (make, model, colour), offence code, recommended disposal, date of submission, district, and offence location.
 The offence location is typically a street name and town or city name, or an intersection, and examples included: 'A58 Godley Road, Halifax', 'Keighley Road, Silsden', 'Woodhouse Lane A660, Leeds'.
 For this study, approximate geolocations were obtained using Google API, restricting cases to within West Yorkshire.
 Further aspects of the data, their uses and limitations are discussed in what follows.
@@ -383,7 +388,7 @@ A random sample of 5 records from the raw data is shown in @tbl-raw (note: "nfa"
 ```{r}
 #| label: tbl-raw
 #| tbl-cap: "Random sample of 5 records from the raw data."
-set.seed(2024)
+set.seed(24)
 d_all |>
   sample_n(5) |>
   select(-district, -`offence_code`) |>
@@ -396,18 +401,18 @@ d_all |>
   # Set column widths:
   kableExtra::column_spec(1, width = "3em") |>
   kableExtra::column_spec(2, width = "3em") |>
-  kableExtra::column_spec(3, width = "4em") |>
-  kableExtra::column_spec(4, width = "4em") |>
-  kableExtra::column_spec(5, width = "6em") |>
+  kableExtra::column_spec(3, width = "3em") |>
+  kableExtra::column_spec(4, width = "3em") |>
+  kableExtra::column_spec(5, width = "9em") |>
   kableExtra::column_spec(6, width = "4em") |>
-  kableExtra::column_spec(8, width = "10em")
+  kableExtra::column_spec(8, width = "8em")
 ```
 
 # Results
 
 There were `r nrow(d_all) |> scales::number(big.mark = ",")` records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in @fig-time.
 Since early 2022, there have been more monthly records in the OpSnap data than in the official 'STATS19' road traffic collision records for West Yorkshire, highlighting the under-reporting of road traffic incidents in official statistics.
-STATS19 records are from the Department for Transport's database of road traffic collisions reported to the police and only include incidents that result in injury.
+STATS19 record cs are from the Department for Transport's database of road traffic collisions reported to the police and only include incidents that result in injury.
 Like OpSnap data, STATS19 records are open access.
 They were downloaded with the `stats19` R package [@lovelace2019] and filtered to include only records from West Yorkshire to ensure comparability with the OpSnap data.
 
@@ -448,6 +453,7 @@ The other common offences included failing to comply with traffic signals, traff
 #| label: tbl-offences
 #| include: true
 #| tbl-cap: "Number of convictions by offence type (top 6 and other)."
+#| width: 60%
 # Aim: get table of n. offences by mode
 d_mode_offence_count = d_all |>
   count(mode, offence, sort = TRUE) 
@@ -563,6 +569,7 @@ Half of the cases were reported by vehicle drivers, a third by cyclists, seven p
 ```{r}
 #| label: tbl-mode
 #| tbl-cap: Number of OpSnap records by observer mode.
+#| width: "80%"
 # d_all |>
 #   count(mode, sort = TRUE) |>
 #   mutate(percent_of_records = n / nrow(d_all)) |>
@@ -575,10 +582,14 @@ Half of the cases were reported by vehicle drivers, a third by cyclists, seven p
 
 tbl = d_all |>
   # NA is Unknown:
-  mutate(mode = ifelse(is.na(mode), "Unknown", mode)) |>
+  mutate(mode = case_when(
+    is.na(mode) ~ "unknown",
+    TRUE ~ mode
+  )) |>
   count(mode, sort = TRUE) |>
   mutate(percent_of_records = n / nrow(d_all)) |>
   mutate(percent_of_records = round(percent_of_records, 3) * 100) |>
+  # Reclassify Unknown to unknown:
   arrange(desc(n)) |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
@@ -591,9 +602,11 @@ tbl = d_all |>
     locations = cells_body(columns = Mode)
   ) |>
   gt_theme_espn()
+tbl
 # gt::gtsave(tbl, "tbl-mode.png")
 knitr::include_graphics("tbl-mode.png")
 ```
+
 
 <!-- The equivalent table excluding records with missing offence data is shown below: -->
 
