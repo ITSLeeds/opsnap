@@ -602,7 +602,7 @@ tbl = d_all |>
     locations = cells_body(columns = Mode)
   ) |>
   gt_theme_espn()
-tbl
+# tbl
 # gt::gtsave(tbl, "tbl-mode.png")
 knitr::include_graphics("tbl-mode.png")
 ```
@@ -691,7 +691,7 @@ percent_other_other = pivot_combined |> filter(offence_simple == "Other") |> pul
 
 ```
 
-The cross-tabulation of reporting mode and offence type is shown in Table @tbl-mode-offences-crosstab, revealing some interesting tendencies.
+The cross-tabulation of reporting mode and offence type is shown in @tbl-mode-offences-crosstab, revealing some interesting tendencies.
 
 While `r round(percent_inconsiderate, 1)` percent of all offences are for driving without reasonable considered to others (rt88576), they make up the bulk of offences reported by cyclists (`r round(percent_inconsiderate_cycling, 1)`%).
 Drivers are proportionally `r round(percent_other_driver / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being `r round(percent_other_other / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists.
