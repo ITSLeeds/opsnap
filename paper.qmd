@@ -409,7 +409,7 @@ There were `r nrow(d_all) |> scales::number(big.mark = ",")` records in the data
 Since early 2022, there have been more monthly records in the OpSnap data than in the official 'STATS19' road traffic collision records for West Yorkshire, highlighting the under-reporting of road traffic incidents in official statistics.
 STATS19 records are from the Department for Transport's database of road traffic collisions reported to the police and only include incidents that result in injury.
 Like OpSnap data, STATS19 records are open access.
-They were downloaded with the `stats19` R package  and filtered to include only records from West Yorkshire to ensure comparability with the OpSnap data.
+They were downloaded with the `stats19` R package [@lovelace2019] and filtered to include only records from West Yorkshire to ensure comparability with the OpSnap data.
 
 ```{r}
 #| label: fig-time
