@@ -419,6 +419,7 @@ For motor vehicles these cameras are typically mounted on or near the vehicle fr
 One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam [@DashCamSubmissions2024].
 For cyclists, footage is commonly recorded using helmet or handlebar-mounted cameras.
 The proportion of cyclists using these cameras is unknown but anecdotal evidence suggests increased usage, with many choosing to record rides in case an incident occurs.
+The proportions of horse riders, pedestrians and motor cyclists recording video footage is, to our knowledge, also unknown.
 
 Complainants upload footage and complete a short form that includes their personal details, the details of the vehicle involved including registration, make, model and colour, the location and time of the incident, and details of the camera used to record the footage.
 Only vehicle offences can be reported as the registration number of any offending vehicle is required and must be legible in footage.
@@ -456,7 +457,7 @@ d_all |>
 
 There were `r nrow(d_all) |> scales::number(big.mark = ",")` records in the dataset for the three-year study period, with a strong upward trend, as shown in the monthly counts presented in @fig-time.
 Since early 2022, there have been more monthly records in the OpSnap data than in the official 'STATS19' road traffic collision records for West Yorkshire, highlighting the under-reporting of road traffic incidents in official statistics.
-STATS19 record cs are from the Department for Transport's database of road traffic collisions reported to the police and only include incidents that result in injury.
+STATS19 records are from the Department for Transport's database of road traffic collisions reported to the police and only include incidents that result in injury.
 Like OpSnap data, STATS19 records are open access.
 They were downloaded with the `stats19` R package [@lovelace2019] and filtered to include only records from West Yorkshire to ensure comparability with the OpSnap data.
 
