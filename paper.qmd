@@ -262,6 +262,15 @@ stats19_monthly = collisions |>
   summarise(n = n()) |>
   mutate(records = "stats19")
 
+table(d_all$mode)
+
+table(d_all$mode)
+
+          # cyclist       horse rider      motorcyclist        pedestrian 
+          #    7069               456                50              1467 
+          # unknown    vehicle driver vehicle passenger 
+          #     526             10145               650 
+
 perc_vehicle_driver = d_all |>
   count(mode) |>
   filter(mode == "vehicle driver") |>
@@ -273,7 +282,23 @@ perc_cyclist = d_all |>
 perc_pedestrian = d_all |>
   count(mode) |>
   filter(mode == "pedestrian") |>
-  pull(n) / nrow(d_all) * 100 
+  pull(n) / nrow(d_all) * 100
+perc_horse = d_all |>
+  count(mode) |>
+  filter(mode == "horse rider") |>
+  pull(n) / nrow(d_all) * 100
+perc_motorcyclist = d_all |>
+  count(mode) |>
+  filter(mode == "motorcyclist") |>
+  pull(n) / nrow(d_all) * 100
+perc_other = 100 - perc_vehicle_driver - perc_cyclist - perc_pedestrian - perc_horse - perc_motorcyclist
+
+# table(d_all$disposal)
+#  conditional offer              court dsit investigation educational course 
+#               2563                321                202              10887 
+#               fine                nfa  rpu investigation 
+#                  1               6365                 24 
+
 perc_disposal_educational_course_conditional = d_all |>
   mutate(disposal = case_when(
     disposal == "conditional offer" ~ "educational course",
@@ -281,7 +306,24 @@ perc_disposal_educational_course_conditional = d_all |>
   )) |>
   count(disposal) |>
   filter(disposal == "educational course") |>
-  pull(n) / nrow(d_all) * 100 
+  pull(n) / nrow(d_all) * 100
+# Just educational:
+perc_disposal_educational = d_all |>
+  count(disposal) |>
+  filter(disposal == "educational course") |>
+  pull(n) / nrow(d_all) * 100
+perc_disposal_conditional = d_all |>
+  count(disposal) |>
+  filter(disposal == "conditional offer") |>
+  pull(n) / nrow(d_all) * 100
+perc_disposal_court = d_all |>
+  count(disposal) |>
+  filter(disposal == "court") |>
+  pull(n) / nrow(d_all) * 100
+perc_undergoing_further_investigation = d_all |>
+  count(disposal) |>
+  filter(disposal == "undergoing further investigation") |>
+  pull(n) / nrow(d_all) * 100
 perc_no_further_action = d_all |>
   count(disposal) |>
   filter(disposal == "no further action") |>
@@ -301,9 +343,12 @@ table(d_all_2024$date)
 
 This study uses data from Operation Snap (OpSnap), the UK police's national system to receive road users' video evidence of road traffic offences.
 Data from one police force area for 39 months (January 2021 to March 2024) <!-- (N= 18,363 records) --> (N = `r nrow(d_all) |> scales::number(big.mark = ",")` records) is analysed.
-<!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. --> Of submitted cases, `r round(perc_vehicle_driver, 1)`% were from vehicle drivers, `r round(perc_cyclist, 1)`% were from cyclists, and `r round(perc_pedestrian, 1)`% were from pedestrians.
-The most common offences were driving 'without reasonable consideration to others' or 'without due care and attention'.
-<!-- Two thirds (66.1%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), 31% no further action, and fewer than 1% for court appearance. --> Two-thirds (`r round(perc_disposal_educational_course_conditional, 1)`%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), `r round(perc_no_further_action, 1)`% no further action, and `r round(perc_course, 1)`% for court appearance.
+<!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. -->
+Half were submitted by vehicle drivers (`r round(perc_vehicle_driver, 1)`%), a third by cyclists (`r round(perc_cyclist, 1)`%), `r round(perc_pedestrian, 1)`% by pedestrians, `r round(perc_horse, 1)`% by horse riders,  `r round(perc_motorcyclist, 1)`% by motorcyclists, and `r round(perc_other, 1)`% were unknown.
+We estimate that, relative to road distance travelled, cyclists were 20 times more likely to submit video evidence than vehicle drivers.
+The most common offences overall were driving 'without reasonable consideration to others' or 'without due care and attention'.
+<!-- Two thirds (66.1%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), 31% no further action, and fewer than 1% for court appearance. -->
+Half (`r round(perc_disposal_educational, 1)`%) of reported cases resulted in the recommended disposal of an educational course, `r round(perc_no_further_action, 1)`% no further action, 
 A research agenda using OpSnap data is outlined: comparative analysis of submission type, source, hotspot locations, and case disposal should be undertaken at national, regional, and local levels; research into disposal-related decision-making, video quality, and the role of supporting evidence should identify good practice; further study of video content, offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases, holds significant potential to inform policy and practice locally, nationally and internationally. 
 
 # Introduction
