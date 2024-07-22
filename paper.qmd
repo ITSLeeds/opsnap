@@ -354,7 +354,8 @@ A research agenda using OpSnap data is outlined that could emerge if national da
 # Introduction
 
 Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
-Across Great Britain there were an estimated 1,711 fatalities resulting from a road traffic crash in 2022 and 135,480 causalities reported across all severities [@departmentfortransportReportedRoadCasualties2023].
+There were 1,711 fatalities and 135,480 causalities across all severity categories (slight, serious fatal) in Britain resulting from car crashes and other road traffic collisions reported by the police in 2022  [@departmentfortransportReportedRoadCasualties2023].
+This is just the tip of the iceberg of road traffic incidents, with many more near misses and minor incidents going unreported.
 
 Traditionally, road safety research has relied on retrospective analysis of crashes to assess and enhance road safety [@towards2008].
 However, relying on historical crash data poses several challenges.
