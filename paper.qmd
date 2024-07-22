@@ -42,8 +42,6 @@ author:
         address: Clayton, VIC 3800, Australia
     orcid: 0000-0002-7961-3875
 keywords: 
-  - Cycling
-  - Hotspots 
   - Road safety
   - Video evidence
   - Dashcam
@@ -302,7 +300,7 @@ table(d_all_2024$date)
 # Abstract {.unnumbered}
 
 This study uses data from Operation Snap (OpSnap), the UK police's national system to receive road users' video evidence of road traffic offences.
-Data from one police force area for the three years (January 2021 to March 2024) <!-- (N= 18,363 records) --> (N = `r nrow(d_all) |> scales::number(big.mark = ",")` records) is analysed.
+Data from one police force area for 39 months (January 2021 to March 2024) <!-- (N= 18,363 records) --> (N = `r nrow(d_all) |> scales::number(big.mark = ",")` records) is analysed.
 <!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. --> Of submitted cases, `r round(perc_vehicle_driver, 1)`% were from vehicle drivers, `r round(perc_cyclist, 1)`% were from cyclists, and `r round(perc_pedestrian, 1)`% were from pedestrians.
 The most common offences were driving 'without reasonable consideration to others' or 'without due care and attention'.
 <!-- Two thirds (66.1%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), 31% no further action, and fewer than 1% for court appearance. --> Two-thirds (`r round(perc_disposal_educational_course_conditional, 1)`%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), `r round(perc_no_further_action, 1)`% no further action, and `r round(perc_course, 1)`% for court appearance.
