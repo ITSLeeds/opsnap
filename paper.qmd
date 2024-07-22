@@ -362,16 +362,15 @@ However, relying on historical crash data poses several challenges.
 Crashes are rare events [@elvik2006], requiring extended periods, often at least five years, of data to obtain statistically significant estimates [@songchitruksa2006].
 Furthermore, the reactive nature of crash analysis means that safety improvements only follow after crashes occur, which is both inefficient and ethically problematic.
 
-Surrogate safety measures offer an alternative to the use of casualty data to identify safety issues by using more frequently observable, less severe, traffic events to identify road safety issues [@songchitruksa2006].
+Surrogate safety measures offer an alternative to casualty data by using more frequently observable, less severe, traffic events to identify road safety issues [@songchitruksa2006].
 One prominent surrogate measure is traffic conflicts [@lord2021].
-A traffic conflict occurs when road users’ paths intersect, with a risk of collision if no action was taken [@tarko2018].
-The concept of using traffic conflicts as a surrogate measure was notably illustrated by Hyden’s safety pyramid [@hyden1987].
-This pyramid represents the spectrum of traffic events from safe, undisturbed passages at the base, to severe, rare crashes at the top.
+A traffic conflict occurs when road users’ paths intersect with a collision risk if no action was taken [@tarko2018].
+The use of traffic conflicts is illustrated by Hyden’s safety pyramid [@hyden1987], which represents the spectrum of traffic events from safe, undisturbed passages at the base, to severe, rare crashes at the top.
 Hyden’s model demonstrates the inverse relationship between crash frequency and severity.
-Understanding this relationship allows for the prediction of severe crashes based on the more common, less sever conflicts.
+Understanding this relationship allows for the prediction of severe crashes based on the more common, less severe conflicts.
 
 Traditional methods for observing traffic conflicts have relied on manual observation, which is resource intensive.
-This study highlights the potential of using open access data from Operation Snap, the UK police’s national system to receive road users’ video evidence of road traffic offences as a surrogate measure of road safety.
+The present paper highlights the potential of using open access data from Operation Snap, the UK police’s national system to receive road users’ video evidence of road traffic offences as a surrogate measure of road safety.
 
 <!-- Most injuries involve motor vehicle occupants, however when accounting for the distance travelled by road user groups, cyclists are over-represented in injury statistics [@departmentfortransportReportedRoadCasualties2023].
 Between 2004 and 2022, an average of 104 cyclists were killed and 4,212 were seriously injured each year in Britain according to police records [@departmentfortransport].
@@ -381,30 +380,29 @@ The 2023 report noted that "the most common contributory factor allocated to ped
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
 The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
 
+In what follows, it emerges that video submissions are, relative to road distance travelled, 20 times disproportionately reported by cyclists. 
 Cyclist crashes are underreported in police recorded datasets [@elvikIncompleteAccidentReporting1999] and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted [@janstrupetal.UnderstandingTrafficCrash2016].
 Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions [@ibrahimCyclingMissesReview2021].
 These incidents are often referred to as "near-misses" [@ibrahimCyclingMissesReview2021]
 
-Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses are a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a], being associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a].
-In their review of near miss cycling crashes, @ibrahimCyclingMissesReview2021 highlighted the need for better data on near misses to inform safety research.
+Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses is a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a]. Near misses are associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a; @cubbin2024].
+A review of near-miss cycling crashes highlighted the need for better data to inform safety research [@ibrahimCyclingMissesReview2021].
 
 Close passes are the most common type of near miss reported by cyclists and are associated with collisions resulting in injury [@aldred2016].
 A 'close pass' refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph).
-Close passes take different forms including the 'punishment pass' by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024].
-There is no specific law in the UK Road Traffic Act 1988 for driving too close to cyclist, but two are commonly applied for careless driving: RT88575- Drive without due care and attention; and RT99576 -- Driver without reasonable consideration to others - and these are prominent in the analysis that follows. 
+<!-- Close passes take different forms including the 'punishment pass' by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024]. -->
+There is no specific law in the UK Road Traffic Act 1988 for driving too close to a cyclist, but two are commonly applied for careless driving: RT88575, driving without due care and attention; and RT99576, driving without reasonable consideration to others - and these are prominent in the analysis that follows. 
 
 Operation Snap, often referred to informally as 'OpSnap', was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 2018.
 It is now in operation nationally across England and Wales, each police force offering its own submission portal for road users to submit video evidence.
-The nature of video submissions and the related expectations are summarised on the website of one Police and Crime Commissioner as follows:   
+The nature of video submissions and the related expectations were summarised on the website of one Police and Crime Commissioner as follows:   
 
 -   The secure form is for traffic offences, it is NOT for submitting footage of road traffic collisions, any other offences or for parking issues. 
 -   The car registration number of the offending vehicle must be clearly visible. 
 -   The public should be prepared to sign a witness statement and possibly give evidence in court. 
 -   Statements for OpSnap can only be accepted from persons aged 18 or over. If you are under 18 the incident should be reported by email. 
 
-This is, to our knowledge, the first research study to use this dataset.
-As such, the study is offered as proof-of-concept of the potential for analysis of this data, and of its further potential, including understanding the factors associated with cyclist near miss incidents.
-Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
+This is, to our knowledge, the first research study to use this dataset. As such, the study is offered as proof-of-concept of the potential for its further analysis to improve road safety. Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
 
 # Methods and data {#sec-methods}
 
@@ -492,7 +490,7 @@ Included in the table are the number and percentage of records by offence type, 
 
 The most common offences were ‘Driving without reasonable consideration to others (rt88576)’ and ‘Driving without due care and attention (rt88575)’.
 Within the Road Traffic Act these offences are related to careless driving and drivers are subject to similar penalties.
-The other common offences included failing to comply with traffic signals, traffic signs and the use of a handheld phone while driving.
+The other common offences included failing to comply with traffic signals, traffic signs and using a handheld phone while driving.
 <!-- TODO: Within the other category... -->
 
 ```{r}
