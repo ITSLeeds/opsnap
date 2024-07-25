@@ -459,7 +459,7 @@ There were `r nrow(d_all) |> scales::number(big.mark = ",")` records in the data
 Since early 2022, there have been more monthly records in the OpSnap data than in the official 'STATS19' road traffic collision records for West Yorkshire, highlighting the under-reporting of road traffic incidents in official statistics.
 STATS19 records are from the Department for Transport's database of road traffic collisions reported to the police and only include incidents that result in injury.
 Like OpSnap data, STATS19 records are open access.
-They were downloaded with the `stats19` R package [@lovelace2019] and filtered to include only records from West Yorkshire to ensure comparability with the OpSnap data.
+For the results presented in @fig-time, STATS19 datasets were downloaded with the `stats19` R package [@lovelace2019] and filtered to include only records from West Yorkshire.
 
 ```{r}
 #| label: fig-time
@@ -497,7 +497,7 @@ The other common offences included failing to comply with traffic signals, traff
 ```{r}
 #| label: tbl-offences
 #| include: true
-#| tbl-cap: "Number of convictions by offence type (top 6 and other)."
+#| tbl-cap: "Offence types reported (top 6 and other)."
 #| width: 60%
 # Aim: get table of n. offences by mode
 d_mode_offence_count = d_all |>
@@ -533,13 +533,12 @@ d_offence_count = d_all |>
 # |rr84171 vehicle contravene local traffic order other than parking (e.g. bus lane)                      |   41|
 # Pull out the top 6 offences excluding n/a:
 d_offence_top_6 = d_mode_offence_count |>
-  filter(offence != "n/a") |>
+  # filter(offence != "n/a") |>
   group_by(offence) |>
   summarise(n = sum(n)) |>
   arrange(desc(n)) |>
   head(6)
 d_offence_classified = d_offence_count |>
-  filter(offence != "n/a") |>
   mutate(
     Offence = case_when(
       offence %in% d_offence_top_6$offence ~ offence,
@@ -550,12 +549,22 @@ d_offence_classified = d_offence_count |>
   summarise(`Number of records` = sum(n)) |>
   # Arrange in descending order of n except for "Other":
   arrange(Offence == "Other", desc(`Number of records`)) |>
+  # Rename "n/a" to "No offence":
+  mutate(Offence = case_when(
+    Offence == "n/a" ~ "NA No offence or unknown offence type",
+    TRUE ~ Offence
+  )) |>
   mutate(`Percent of records` = round(`Number of records` / sum(`Number of records`) * 100, 1))
+
+d_offence_totals = d_offence_classified |>
+  summarise(`Number of records` = sum(`Number of records`), `Percent of records` = sum(`Percent of records`)) |>
+  mutate(Offence = "Total")
 
 # d_offence_classified |>
 #   knitr::kable()
 
 tbl = d_offence_classified |>
+  bind_rows(d_offence_totals) |>
   mutate(
     `Percent of records`= round(`Percent of records`)
     ) |> 
@@ -573,7 +582,8 @@ tbl = d_offence_classified |>
   ) |> 
   cols_width(1 ~ px(600), 2 ~ px(80)) |> 
   gt_theme_espn()
-# gt::gtsave(tbl, "tbl-offences.png")
+# gt::gtsave(tbl, "tbl-offences.html")
+# webshot2::webshot("tbl-offences.html", "tbl-offences.png")
 # browseURL("tbl-offences.png")
 knitr::include_graphics("tbl-offences.png")
 ```
@@ -588,7 +598,6 @@ regroup_offences_simple = function(x) {
        stringr::str_detect(offence, "drive without reasonable consideration") ~ "Inconsiderate driving",
        stringr::str_detect(offence, "drive without due care") ~ "Careless driving",
        TRUE ~ "Other"
-
      )
    )
 }
@@ -613,7 +622,7 @@ Half of the cases were reported by vehicle drivers, a third by cyclists, seven p
 
 ```{r}
 #| label: tbl-mode
-#| tbl-cap: Number of OpSnap records by observer mode.
+#| tbl-cap: Mode of transport of person submitting video evidence
 #| width: "80%"
 # d_all |>
 #   count(mode, sort = TRUE) |>
@@ -635,7 +644,12 @@ tbl = d_all |>
   mutate(percent_of_records = n / nrow(d_all)) |>
   mutate(percent_of_records = round(percent_of_records, 3) * 100) |>
   # Reclassify Unknown to unknown:
-  arrange(desc(n)) |>
+  arrange(desc(n))
+tbl_totals = tbl |>
+  summarise(n = sum(n), percent_of_records = sum(percent_of_records)) |>
+  mutate(percent_of_records = round(percent_of_records)) |>
+  mutate(mode = "Total")
+tbl = bind_rows(tbl, tbl_totals) |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
   rename(`Number` = N, `Percent` = `Percent of Records`) |>
@@ -648,7 +662,8 @@ tbl = d_all |>
   ) |>
   gt_theme_espn()
 # tbl
-# gt::gtsave(tbl, "tbl-mode.png")
+# gt::gtsave(tbl, "tbl-mode.html")
+# webshot2::webshot("tbl-mode.html", "tbl-mode.png")
 knitr::include_graphics("tbl-mode.png")
 ```
 
@@ -736,7 +751,8 @@ percent_other_other = pivot_combined |> filter(offence_simple == "Other") |> pul
 
 ```
 
-The cross-tabulation of reporting mode and offence type is shown in @tbl-mode-offences-crosstab, revealing some interesting tendencies.
+A cross-tabulation of transport mode (of the person submitting video evidence) and the offence type is shown in @tbl-mode-offences-crosstab.
+For both variables it shows the two main categories plus an 'other' category.
 
 While `r round(percent_inconsiderate, 1)` percent of all offences are for driving without reasonable considered to others (rt88576), they make up the bulk of offences reported by cyclists (`r round(percent_inconsiderate_cycling, 1)`%).
 Drivers are proportionally `r round(percent_other_driver / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists, while other reporting modes are most likely to report other types of offences, being `r round(percent_other_other / percent_other_cyclist, 1)` times more likely to report other types of offences as cyclists.
@@ -746,7 +762,7 @@ Pedestrians and other reporting modes were also relatively more likely to encoun
 
 ```{r}
 #| label: tbl-mode-offences-crosstab
-#| tbl-cap: Mode of transport from which video was recorded (columns) and offence type (rows), with counts and percentages within each reporting mode.
+#| tbl-cap: Mode of transport of person submitting video (columns).
 # pivot_combined |>
 #   knitr::kable(digits = 1)
 tbl = pivot_combined |>
@@ -807,9 +823,9 @@ perc_course = d_all |>
 ```
 
 Disposal categories assigned by police are shown in @tbl-disposal.
-Roughly a third of cases (`r round(perc_no_further_action, 1)`%) resulted in no further action, and for most of the remainder drivers were required to undertake an education course (`r round(perc_course, 1)`%).
+Roughly a third of cases (`r round(perc_no_further_action, 1)`%) resulted in no further action and, for most of the remainder drivers were required to undertake an education course.
 Conditional offers, that is, drivers being offered a reduced penalty for admitting guilt, were the third most common outcome.
-Close to two percent of cases went to court and a further one percent underwent further investigation.
+Nearly two percent of cases went to court and a further one percent underwent further investigation.
 
 ```{r}
 #| label: tbl-disposal
@@ -841,7 +857,7 @@ tbl = d_all |>
 knitr::include_graphics("tbl-disposal.png")
 ```
 
-There are `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
+There were `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
 
 ```{r}
 #| echo: false
@@ -879,10 +895,10 @@ Drawing on the work and findings described above, this discussion outlines a res
 The breadth and depth of potential policy-relevant work that could be undertaken is, we suggest, enormous.
 While this preliminary list will not prove exhaustive, if it stimulates or informs further research then it will have achieved its objective.
 
-There was an increase in submissions over time between 2021 and 2023.
+There was an increase in submissions to opsnap over time between 2021 and 2023.
 This may reflect changing levels of road use during and after the Covid-19 pandemic, increased awareness of OpSnap, or increased video camera ownership levels.
-Comparative analysis including other police jurisdictions will be able to determine whether this experience is common or isolated.
-We hypothesise that it will prove to be a common experience and that that the volume of submissions will continue to increase in the near and middle term (though ideally, a decline would occur as roads become safer).
+Comparative analysis including other police jurisdictions should be undertaken to determine whether this experience is common or isolated.
+We hypothesise that it is a common experience and also that that the volume of submissions will continue to increase in the near and middle term (though ideally, a decline would occur as roads become safer).
 
 This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data, and our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide.
 This suggests the potential for development of a national OpSnap dataset.
@@ -911,8 +927,7 @@ Dash-cam submissions by motorists offers great potential to inform other aspects
 Research into submissions by pedestrians, horse riders and motorcyclists should prove viable to improve the safety of these parties.
 There were over four hundred submissions by horse riders in West Yorkshire, which means there will be thousands nationwide.
 The British Horse Society[^1] and others may be interested in this data being used to inform the safety of horses and riders.
-The British Motorcyclists Federation[^2] may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent
-.
+The British Motorcyclists Federation[^2] may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent.
 
 [^1]: https://www.bhs.org.uk/
 
