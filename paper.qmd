@@ -961,13 +961,6 @@ It suggests the OpSnap data holds the potential for further analysis to inform k
 For example, it should be possible to identify hotspot locations.
 As with much of the further research outlined here, this the potential to inform preventive policy and practice relating to police interventions, driver behaviour, the design of roads and roadside environments.
 
-This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data, and our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide.
-This suggests the potential for development of a national OpSnap dataset.
-A feasibility study is needed to establish the availability and compatibility of the data from different forces.
-Should a national dataset prove feasible it holds potential for national-level, cross-regional, and comparative analyses of patterns and trends.
-A national dataset will enhance the possibility for cross-national comparative analysis and international cooperation in road safety.
-It holds the potential for the development of rankings according to different criteria and, thereby, potential performance indicators.
-
 Comparison by complainant mode of transport, reported offense type and disposal, subdivided by other characteristics, is needed.
 Determining which type of submission - by which type of road user for example - is more likely to result in a recommendation of court proceedings, may help refine police investigations.
 For example, are submissions by cyclists (or horse riders) more or less likely to result in court proceedings than those by motorists?
@@ -979,7 +972,7 @@ Cross-police force comparative analysis may inform national best practice guidel
 
 A constraint on the present analysis was the nature of the publicly-available data.
 A pilot project should be undertaken in collaboration with police to establish the potential to further enhance policing and public safety using non-public aspects of the submissions data.
-This would require working partnerships and a secure research platform to meet GDPR requirements.
+This would require working partnerships and a secure research platform to meet GDPR requirements and Data Protection Act (2018).
 Such collaborative approaches are increasingly common in health, medicine, and policing research.
 
 Video footage holds significant potential for further analysis, both qualitative and quantitative.
@@ -987,34 +980,48 @@ Police investigations might be improved by research to identify and promote good
 What type of footage works best in the courtroom, and how is it best identified and prepared?
 What is the potential for machine learning to identify, clean, and prepare footage of the most serious submissions?
 There are also likely to be lessons that can be learned for how footage is gathered, edited and submitted by road users.
-More generally, video footage might be used to identification risk factors, that is, the types of situations in which crashes, near misses, and close passes occur.
-This promises the potential to inform policy and practice in ways that ameliorate risk factors.
-Within this area of research, analysis from dash-cams is likely to inform different practices than that from cycle-cams, that from pedestrians, horse riders and motorcyclists, and so on.
+
+Analysis of video footage should be undertaken to identify risk factors, that is, the types of situations in which crashes, near misses, close passes and other offences occur.
+Such research can inform policy and practice in ways that ameliorate risk.
+Within this area of research, analysis from dash cams is likely to inform different practices than that from cycle-cams, that from pedestrians, horse riders and motorcyclists, and so on. 
 
 Some research into the relationship between video footage and supporting written evidence is needed.
 Is written supported evidence always needed?
 Which is deemed most important by police, and which by courts?
 What are the characteristics of strong supporting written evidence, and what are the characteristics of strong video evidence?
-Are both needed or can a weakness in one be overcome by particularly strong aspects in the other?
+Do both need to be ‘strong’ or can a weakness in one be overcome by particularly strong aspects in the other?
+Research should identify further aspects of good practice for those submitting evidence to police.
 
 The spatial analysis undertaken here was obliged to use data for 'all' video submissions.
 We were unable to cross-tabulate the geographic location of submissions by different road users because, in the publicly-available data, locations are not be matched to individual cases: they were scrambled to ensure anonymity for GDPR purposes.
 An obvious next step, in the context of a secure research platform, would be spatial analysis for different types of road users, for different types of incidents, for incidents resulting in different disposals, and so on.
 Hotspots and spatial clustering are likely to vary by type of road user, type of incident, day or week, time of day, and so on.
 
-Creating opportunities to access video submission data would be an alternate approach that facilitates research into the nature of footage.
-Another option would be research using existing online videos, of which there appear to be many thousands on social media including those posted by police forces.
-Such research will face different methodological challenges but could provide proof-of-concept of the potential for analysis of OpSnap footage.
+Some research into the relationship between video footage and supporting written evidence is needed.
+Is written supported evidence always needed?
+Which is deemed most important by police, and which by courts?
+What are the characteristics of strong supporting written evidence, and what are the characteristics of strong video evidence?
+Do both need to be ‘strong’ or can a weakness in one be overcome by particularly strong aspects in the other?
+Research should identify further aspects of good practice for those submitting evidence to police. 
+ 
 
-OpSnap data should be compared to, and integrated with, other road safety datasets.
-For example, spatial analysis that was Integrated with Strava data (road use data by cyclists and pedestrians), Google road use and other data, may facilitate exposure-based measures rather than the counts used here.
-The use of rates will enhance the identification locations with higher risk because based on their volume of traffic: different types of risk need to be gauged.
-Comparison and integration of OpSnap and STATS19 datasets could provide a logical starting point.
-To what extent are OpSnap and STATS19 records overlapping or complementary?
-To what extent do they identify the same or different types of problems?
+We did not include spatial analysis here, but the data hold that potential.
+The public data ued here only allowed spatial analysis for ‘all’ video submissions.
+That is, we were unable to distinguish the geographic location of submissions by different types of road users because, or for different offence types, because the locations were scrambled for data protection purposes.
+Future research, in the context of a secure data platform, should include spatial analysis for different types of road users, for different types of incidents, for incidents resulting in different disposals.
+Hotspots and spatial clustering will vary by type of road user, type of incident, day or week, time of day, and so on, and parsing the data will produce more informed road safety research. 
 
-More generally, OpSnap data holds potential for use in the evaluation of experimental interventions.
-Depending on the level of submissions there is the potential to use the data to assess effects before and after interventions, and to identify comparison (control group) sites.
+Accessing OpSnap data in collaboration with police is likely to prove the most fruitful approach for future research.
+Were that impractical, research using existing online videos should be undertaken.
+There are many thousands of such videos on social media in the public realm, including those posted by police forces, and while there are different sampling issues to consider, this sources offers a plausible alternative route to informing road safety.
+
+OpSnap data should be compared to, and integrated with, other road use and road safety datasets.
+Here we offered preliminary comparison to the volume of Stats19 data on road crashes.
+patial analysis integrated with Strava data (road use data by cyclists and pedestrians), Google road use and other data, may facilitate exposure-based measures rather than the counts used here.
+The use of rates will enhance the identification of locations with higher risk other than that due to volume of traffic.
+ 
+Future research should recognise that OpSnapdata holds the potential for use in the evaluation of experimental interventions.
+It may offer the potential for pre-post intervention comparative evaluations using control sites.
 Different road safety interventions imply different resource needs.
 Ideally, evaluations would include cost-benefit analysis of the portfolio of social and economic costs involved, including the cost of death and injury.
 
