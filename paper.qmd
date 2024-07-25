@@ -343,18 +343,17 @@ table(d_all_2024$date)
 
 This study uses data from Operation Snap (OpSnap), the UK police's national system to receive road users' video evidence of road traffic offences.
 Data from one police force area for 39 months (January 2021 to March 2024) <!-- (N= 18,363 records) --> (N = `r nrow(d_all) |> scales::number(big.mark = ",")` records) is analysed.
-<!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. -->
-Half were submitted by vehicle drivers (`r round(perc_vehicle_driver, 1)`%), a third by cyclists (`r round(perc_cyclist, 1)`%), `r round(perc_pedestrian, 1)`% by pedestrians, `r round(perc_horse, 1)`% by horse riders,  `r round(perc_motorcyclist, 1)`% by motorcyclists, and `r round(perc_other, 1)`% were unknown.
+<!-- Of submitted cases, 49.9% were from vehicle drivers, 34.4% were from cyclists, and 7.4% were from pedestrians. --> Half were submitted by vehicle drivers (`r round(perc_vehicle_driver, 1)`%), a third by cyclists (`r round(perc_cyclist, 1)`%), `r round(perc_pedestrian, 1)`% by pedestrians, `r round(perc_horse, 1)`% by horse riders, `r round(perc_motorcyclist, 1)`% by motorcyclists, and `r round(perc_other, 1)`% were unknown.
 We estimate that, relative to road distance travelled, cyclists were 20 times more likely to submit video evidence than vehicle drivers.
 The most common offences overall were driving 'without reasonable consideration to others' or 'without due care and attention'.
-<!-- Two thirds (66.1%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), 31% no further action, and fewer than 1% for court appearance. -->
-Half (`r round(perc_disposal_educational, 1)`%) of reported cases resulted in the recommended disposal of an educational course, `r round(perc_no_further_action, 1)`% no further action `r round(perc_disposal_conditional, 1)`% conditional offer, and `r round(perc_disposal_court, 1)`% resulted in court appearance.
-A research agenda using OpSnap data is outlined that could emerge if national datasets are compiled and responsibly opened-up and made available for research and policy-making: data-driven research should identify hotspot locations and other correlates of dangerous and antisocial road use at regional, and local levels; research projects should investigate disposal-related decision-making, video quality, and the role of supporting evidence; offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases should be explored with reference to new video evidence. We conclude that datasets derived from publicly-uploaded video submission portals have the potential to transform evidence-based policy and practice locally, nationally and internationally. 
+<!-- Two thirds (66.1%) of reported cases resulted in the recommended disposal of an educational course (including conditional offers), 31% no further action, and fewer than 1% for court appearance. --> Half (`r round(perc_disposal_educational, 1)`%) of reported cases resulted in the recommended disposal of an educational course, `r round(perc_no_further_action, 1)`% no further action `r round(perc_disposal_conditional, 1)`% conditional offer, and `r round(perc_disposal_court, 1)`% resulted in court appearance.
+A research agenda using OpSnap data is outlined that could emerge if national datasets are compiled and responsibly opened-up and made available for research and policy-making: data-driven research should identify hotspot locations and other correlates of dangerous and antisocial road use at regional, and local levels; research projects should investigate disposal-related decision-making, video quality, and the role of supporting evidence; offence concentration (recidivism, repeat submitters of evidence, spatial hotspots) and case progression including court cases should be explored with reference to new video evidence.
+We conclude that datasets derived from publicly-uploaded video submission portals have the potential to transform evidence-based policy and practice locally, nationally and internationally. 
 
 # Introduction
 
 Dangerous and criminal driving are significant problems that take many forms [@simon1996; @corbett2003; @corbett2010].
-There were 1,711 fatalities and 135,480 causalities across all severity categories (slight, serious fatal) in Britain resulting from car crashes and other road traffic collisions reported by the police in 2022  [@departmentfortransportReportedRoadCasualties2023].
+There were 1,711 fatalities and 135,480 causalities across all severity categories (slight, serious fatal) in Britain resulting from car crashes and other road traffic collisions reported by the police in 2022 [@departmentfortransportReportedRoadCasualties2023].
 This is just the tip of the iceberg of road traffic incidents, with many more near misses and minor incidents going unreported.
 
 Traditionally, road safety research has relied on retrospective analysis of crashes to assess and enhance road safety [@towards2008].
@@ -380,18 +379,18 @@ The 2023 report noted that "the most common contributory factor allocated to ped
 Almost half of cyclist fatalities involved collision with a car, with 56% on rural roads (compared to 30% of traffic).
 The 2023 report noted that “the most common contributory factor allocated to pedal cyclists in fatal or serious collisions (FSC) with another vehicle was ‘driver or rider failed to look properly’” [@departmentfortransport].  -->
 
-In what follows, it emerges that video submissions are, relative to road distance travelled, 20 times disproportionately reported by cyclists. 
+In what follows, it emerges that video submissions are, relative to road distance travelled, 20 times disproportionately reported by cyclists.
 Cyclist crashes are underreported in police recorded datasets [@elvikIncompleteAccidentReporting1999] and the extent of injuries sustained by cyclists may be higher when hospital-recorded cases are counted [@janstrupetal.UnderstandingTrafficCrash2016].
 Under-reporting in police datasets is likely to be greatest for minor injuries, while records are seldom kept when a collision or injury is avoided due to riders or drivers taking evasive actions [@ibrahimCyclingMissesReview2021].
 These incidents are often referred to as "near-misses" [@ibrahimCyclingMissesReview2021]
 
-Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses is a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a]. Near misses are associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a; @cubbin2024].
+Commuter cyclists in the UK experience a near miss for every six miles of riding [@aldredInvestigatingRatesImpacts2015a], and concern over near misses is a key reason people choose not to cycle [@sandersPerceivedTrafficRisk2015a].
+Near misses are associated with inattentive driving, aggressive driving, driving too fast, passing too close, being car-doored, and being cut off by turning drivers [@sandersPerceivedTrafficRisk2015a; @cubbin2024].
 A review of near-miss cycling crashes highlighted the need for better data to inform safety research [@ibrahimCyclingMissesReview2021].
 
 Close passes are the most common type of near miss reported by cyclists and are associated with collisions resulting in injury [@aldred2016].
 A 'close pass' refers to when a vehicle passes too close to a cyclist, which is defined in the UK as less than 1.5 metres away at 30mph (50kph).
-<!-- Close passes take different forms including the 'punishment pass' by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024]. -->
-There is no specific law in the UK Road Traffic Act 1988 for driving too close to a cyclist, but two are commonly applied for careless driving: RT88575, driving without due care and attention; and RT99576, driving without reasonable consideration to others - and these are prominent in the analysis that follows. 
+<!-- Close passes take different forms including the 'punishment pass' by angry drivers for a perceived slight such as causing the driver to slow down [@cubbin2024]. --> There is no specific law in the UK Road Traffic Act 1988 for driving too close to a cyclist, but two are commonly applied for careless driving: RT88575, driving without due care and attention; and RT99576, driving without reasonable consideration to others - and these are prominent in the analysis that follows. 
 
 Operation Snap, often referred to informally as 'OpSnap', was piloted by North Wales police in October 2016 and adopted by all Welsh forces by 2018.
 It is now in operation nationally across England and Wales, each police force offering its own submission portal for road users to submit video evidence.
@@ -402,7 +401,9 @@ The nature of video submissions and the related expectations were summarised on 
 -   The public should be prepared to sign a witness statement and possibly give evidence in court. 
 -   Statements for OpSnap can only be accepted from persons aged 18 or over. If you are under 18 the incident should be reported by email. 
 
-This is, to our knowledge, the first research study to use this dataset. As such, the study is offered as proof-of-concept of the potential for its further analysis to improve road safety. Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
+This is, to our knowledge, the first research study to use this dataset.
+As such, the study is offered as proof-of-concept of the potential for its further analysis to improve road safety.
+Following analysis and discussion of three years of data for one police force area, the study outlines a research agenda designed to inform policy and practice. 
 
 # Methods and data {#sec-methods}
 
@@ -667,7 +668,6 @@ tbl = bind_rows(tbl, tbl_totals) |>
 knitr::include_graphics("tbl-mode.png")
 ```
 
-
 <!-- The equivalent table excluding records with missing offence data is shown below: -->
 
 ```{r}
@@ -895,39 +895,51 @@ Drawing on the work and findings described above, this discussion outlines a res
 The breadth and depth of potential policy-relevant work that could be undertaken is, we suggest, enormous.
 While this preliminary list will not prove exhaustive, if it stimulates or informs further research then it will have achieved its objective.
 
-There was an increase in submissions to opsnap over time between 2021 and 2023.
+There has been an increase in submissions to West Yorkshire Police's OpSnap system since it was set-up in 2021.
 This may reflect changing levels of road use during and after the Covid-19 pandemic, increased awareness of OpSnap, or increased video camera ownership levels.
 Comparative analysis including other police jurisdictions should be undertaken to determine whether this experience is common or isolated.
-We hypothesise that it is a common experience and also that that the volume of submissions will continue to increase in the near and middle term (though ideally, a decline would occur as roads become safer).
+We hypothesise that it is a common experience for police forces (and other organisations) setting up public video submissions reporting antisocial and dangerous driving and that that the rate of submissions will continue to increase (longer term, ideally, submission rates decline as roads become safer).
 
-This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data, and our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide.
-This suggests the potential for development of a national OpSnap dataset.
-A feasibility study is needed to establish the availability and compatibility of the data from different forces.
-Should a national dataset prove feasible it holds potential for national-level, cross-regional, and comparative analyses of patterns and trends.
-A national dataset will enhance the possibility for cross-national comparative analysis and international cooperation in road safety.
-It holds the potential for the development of rankings according to different criteria and, thereby, potential performance indicators.
+This was a case study of West Yorkshire but each of the 43 police forces in England and Wales collates OpSnap data.
+Our preliminary scoping of individual force websites suggests OpSnap data is publicly available nationwide.
+A national dataset should be developed that includes OpSnap data from all police forces.
+ A feasibility study should be undertaken to establish cross-force data availability and compatibility.
+A national dataset holds potential for national-level, cross-regional, and comparative analyses of patterns and trends.
+It would have the potential to promote cross-national comparative analysis and international cooperation in road safety should similar data be collated elsewhere.
+It would hold the potential for the development of rankings according to different criteria and, thereby, potential performance-related metrics [@tiwana2015].
+There will be added-value from a national dataset when multiple incidents involve the same persons in different jursdictions, such as recidivist drivers, and in relation to other cross-jurisdictional issues.
+ 
 
-If submission volumes continue to increase, means of informing triage and prioritisation of cases will be increasingly valuable.
-Triage systems are probably already in use in different areas, and research to identify and inform best practice should be undertaken.
-Likewise, research to determine best practice in determining disposal recommendations will prove fruitful.
+With submission volumes likely to continue to increase, means of informing triage and prioritisation of cases will be increasingly valuable.
+Triage systems are almost certainly used already, and research to identify best practice should be undertaken.
+Similarly, research to determine best practice in determining disposal recommendations should be undertaken.
 It may provide feasible, perhaps using machine learning, to develop automated means of triage, determination of offence type and disposal.
-Research to gauge the differential effectiveness of disposal measures is needed, starting with measures of recidivism.
+Research to gauge the differential effectiveness of disposal measures is also needed.
+A starting point for an evaluation may be easures of recidivism found in the OpSnap data.
+ 
 
 Within the trend of increasing video submissions there were distinct seasonal patterns.
-Seasonal variation in cyclists' submission reflect seasonal (weather and other) influences on cycling prevalence and duration.
+Seasonal variation in submissions reflect seasonal (weather and other) influences, and these will vary by transport mode: cycling, for example, is less prevalent in winter.
 This suggests seasonal variation in preventive responses might be tailored to need.
+
+Future research should focus on different types of problem concentration.
 It is well established that crime is highly concentrated along whatever dimension is examined [@farrellPreventingRepeatRepeat2017].
 With respect to video evidence this will include recidivists (repeat offenders), repeat submitters of evidence (who may or may not be repeat victims/survivors), the concentration of incidents (close passes, near misses and crashes) at certain times and places, with different types of experiences concentrated among certain types of road users.
-For example, we hypothesise that close passes are more likely to be reported by cyclists and horse riders than vehicle drivers, both due to the nature of the road user interactions and the relative risk associated with the manoeuvre.
-As such, the types of incidents reported by vehicle drivers would be systematically different, indicating a need for different investigative and preventive approaches.
-Policing and preventions efforts focused on where problems are concentrated are more resource efficient -- it is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010)- and research using video submissions holds the potential to analysis of problem concentrations.
+As discussed in the introduction, close passes are more likely to be reported by cyclists and horse riders than vehicle drivers, both due to the nature of the road user interactions and the relative risk associated with the maneuver.
+
+There was preliminary confirmation of this pattern in our analysis which found that offence types reported by vehicle drivers are systematically different to those of other road users.
+Hence future research should consider that investigative and preventive approaches should be tailored to different contexts and types of road user.
+Rural roads account for a disproportionate amount of fatalities @brake, and further research using video evidence may inform preventive approaches tailored to road type.
+
+Policing and prevention efforts focused on where problems are concentrated are more resource efficient — it is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010).
 
 Studies focused on specific types of road user will prove informative with respect to policy and practice.
 Dash-cam submissions by motorists offers great potential to inform other aspects of road safety.
 Research into submissions by pedestrians, horse riders and motorcyclists should prove viable to improve the safety of these parties.
 There were over four hundred submissions by horse riders in West Yorkshire, which means there will be thousands nationwide.
 The British Horse Society[^1] and others may be interested in this data being used to inform the safety of horses and riders.
-The British Motorcyclists Federation[^2] may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent.
+The British Motorcyclists Federation[^2] may be interested in research promoting the safety of its members and in why motorcyclist submissions are relatively infrequent
+.
 
 [^1]: https://www.bhs.org.uk/
 
