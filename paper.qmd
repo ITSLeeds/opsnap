@@ -937,9 +937,8 @@ As discussed in the introduction, close passes are more likely to be reported by
 
 There was preliminary confirmation of this pattern in our analysis which found that offence types reported by vehicle drivers are systematically different to those of other road users.
 Hence future research should consider that investigative and preventive approaches should be tailored to different contexts and types of road user.
-Rural roads account for a disproportionate amount of fatalities @brake, and further research using video evidence may inform preventive approaches tailored to road type.
-
-Policing and prevention efforts focused on where problems are concentrated are more resource efficient — it is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010).
+Rural roads account for a disproportionate amount of fatalities @brakeDirectLineBrake2018, and further research using video evidence may inform preventive approaches tailored to road type.
+Policing and prevention efforts focused on where problems are concentrated are more resource efficient and is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010).
 
 Studies focused on specific types of road user will prove informative with respect to policy and practice.
 Dash-cam submissions by motorists offers great potential to inform other aspects of road safety.
