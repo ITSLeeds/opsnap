@@ -443,19 +443,17 @@ d_all |>
   mutate(date = as.Date(date)) |>
   arrange(date) |>
   rename_all(snakecase::to_title_case) |>
-  knitr::kable()
-  
-  # |>
-  # # Striped styling and tiny text to fit:
-  # kableExtra::kable_styling(latex_options = "striped") |>
-  # # Set column widths:
-  # kableExtra::column_spec(1, width = "3em") |>
-  # kableExtra::column_spec(2, width = "3em") |>
-  # kableExtra::column_spec(3, width = "3em") |>
-  # kableExtra::column_spec(4, width = "3em") |>
-  # kableExtra::column_spec(5, width = "9em") |>
-  # kableExtra::column_spec(6, width = "4em") |>
-  # kableExtra::column_spec(8, width = "8em")
+  knitr::kable() |>
+  # Striped styling and tiny text to fit:
+  kableExtra::kable_styling(latex_options = "striped") |>
+  # Set column widths:
+  kableExtra::column_spec(1, width = "3em") |>
+  kableExtra::column_spec(2, width = "3em") |>
+  kableExtra::column_spec(3, width = "3em") |>
+  kableExtra::column_spec(4, width = "3em") |>
+  kableExtra::column_spec(5, width = "9em") |>
+  kableExtra::column_spec(6, width = "4em") |>
+  kableExtra::column_spec(8, width = "8em")
 ```
 
 # Results
