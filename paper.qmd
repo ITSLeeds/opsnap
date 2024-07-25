@@ -838,10 +838,16 @@ Nearly two percent of cases went to court and a further one percent underwent fu
 #   knitr::kable()
 
 
-tbl = d_all |>
+tbl_disposal = d_all |>
   count(disposal, sort = TRUE) |>
   mutate(percent_of_records = round(n / nrow(d_all), 3) * 100) |>
-  arrange(desc(n)) |>
+  arrange(desc(n)) 
+
+tbl_disposal_totals = tbl_disposal |>
+  summarise(n = sum(n), percent_of_records = round(sum(percent_of_records))) |>
+  mutate(disposal = "Total")
+
+tbl = bind_rows(tbl_disposal, tbl_disposal_totals) |>
   rename_all(snakecase::to_title_case) |>
   # Rename N to "Number of records"
   rename(`Number` = N, `Percent` = `Percent of Records`) |>
@@ -853,7 +859,8 @@ tbl = d_all |>
     locations = cells_body(columns = Disposal)
   ) |>
   gt_theme_espn()
-# gt::gtsave(tbl, "tbl-disposal.png")
+# gt::gtsave(tbl, "tbl-disposal.html")
+# webshot2::webshot("tbl-disposal.html", "tbl-disposal.png")
 knitr::include_graphics("tbl-disposal.png")
 ```
 
