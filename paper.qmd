@@ -78,9 +78,11 @@ knitr::opts_chunk$set(
 #| eval: false
 #| echo: false
 quarto::quarto_render("paper.qmd", output_format = "pdf")
+file.rename("paper.pdf", "paper-v10.pdf")
 quarto::quarto_render("paper.qmd", output_format = "docx")
-file.rename("paper.docx", "~/OneDrive/opsnap_leeds/paper-v8.docx")
-file.rename("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v8.pdf")
+# file.rename("paper.docx", "/OneDrive/opsnap_leeds/paper-v10.docx")
+file.rename("paper.docx", "paper-v10.docx")
+system("gh release upload v1 paper-v10.docx paper-v10.pdf")
 browseURL("paper.docx")
 # Install extension:
 system("quarto install extension mikemahoney218/quarto-arxiv")
@@ -441,17 +443,19 @@ d_all |>
   mutate(date = as.Date(date)) |>
   arrange(date) |>
   rename_all(snakecase::to_title_case) |>
-  knitr::kable() |>
-  # Striped styling and tiny text to fit:
-  kableExtra::kable_styling(latex_options = "striped") |>
-  # Set column widths:
-  kableExtra::column_spec(1, width = "3em") |>
-  kableExtra::column_spec(2, width = "3em") |>
-  kableExtra::column_spec(3, width = "3em") |>
-  kableExtra::column_spec(4, width = "3em") |>
-  kableExtra::column_spec(5, width = "9em") |>
-  kableExtra::column_spec(6, width = "4em") |>
-  kableExtra::column_spec(8, width = "8em")
+  knitr::kable()
+  
+  # |>
+  # # Striped styling and tiny text to fit:
+  # kableExtra::kable_styling(latex_options = "striped") |>
+  # # Set column widths:
+  # kableExtra::column_spec(1, width = "3em") |>
+  # kableExtra::column_spec(2, width = "3em") |>
+  # kableExtra::column_spec(3, width = "3em") |>
+  # kableExtra::column_spec(4, width = "3em") |>
+  # kableExtra::column_spec(5, width = "9em") |>
+  # kableExtra::column_spec(6, width = "4em") |>
+  # kableExtra::column_spec(8, width = "8em")
 ```
 
 # Results
@@ -865,6 +869,7 @@ knitr::include_graphics("tbl-disposal.png")
 ```
 
 There were `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
+The locations were scrambled by West Yorkshire Police before being made available for data protection purposes, which meant spatial analysis would only possible for ‘all’ video submissions, ignoring different types of road users or offence types.
 
 ```{r}
 #| echo: false
@@ -914,17 +919,13 @@ A national dataset should be developed that includes OpSnap data from all police
 A national dataset holds potential for national-level, cross-regional, and comparative analyses of patterns and trends.
 It would have the potential to promote cross-national comparative analysis and international cooperation in road safety should similar data be collated elsewhere.
 It would hold the potential for the development of rankings according to different criteria and, thereby, potential performance-related metrics [@tiwana2015].
-There will be added-value from a national dataset when multiple incidents involve the same persons in different jursdictions, such as recidivist drivers, and in relation to other cross-jurisdictional issues.
- 
+There will be added-value from a national dataset which allows identification of cross-jurisdictional issues such as the same vehicles or persons involved in incidents in different police force areas. 
 
 With submission volumes likely to continue to increase, means of informing triage and prioritisation of cases will be increasingly valuable.
 Triage systems are almost certainly used already, and research to identify best practice should be undertaken.
 Similarly, research to determine best practice in determining disposal recommendations should be undertaken.
 It may provide feasible, perhaps using machine learning, to develop automated means of triage, determination of offence type and disposal.
 Research to gauge the differential effectiveness of disposal measures is also needed.
-A starting point for an evaluation may be easures of recidivism found in the OpSnap data.
- 
-
 Within the trend of increasing video submissions there were distinct seasonal patterns.
 Seasonal variation in submissions reflect seasonal (weather and other) influences, and these will vary by transport mode: cycling, for example, is less prevalent in winter.
 This suggests seasonal variation in preventive responses might be tailored to need.
@@ -962,7 +963,7 @@ For example, it should be possible to identify hotspot locations.
 As with much of the further research outlined here, this the potential to inform preventive policy and practice relating to police interventions, driver behaviour, the design of roads and roadside environments.
 
 Comparison by complainant mode of transport, reported offense type and disposal, subdivided by other characteristics, is needed.
-Determining which type of submission - by which type of road user for example - is more likely to result in a recommendation of court proceedings, may help refine police investigations.
+Determining which type of submission - by which type of road user for example — is more likely to result in a recommendation of court proceedings, may help refine police investigations.
 For example, are submissions by cyclists (or horse riders) more or less likely to result in court proceedings than those by motorists?
 If so, why?
 What is the role of substantive issues, and to what extent are decisions affected by video quality?
@@ -1019,8 +1020,7 @@ OpSnap data should be compared to, and integrated with, other road use and road 
 Here we offered preliminary comparison to the volume of Stats19 data on road crashes.
 patial analysis integrated with Strava data (road use data by cyclists and pedestrians), Google road use and other data, may facilitate exposure-based measures rather than the counts used here.
 The use of rates will enhance the identification of locations with higher risk other than that due to volume of traffic.
- 
-Future research should recognise that OpSnapdata holds the potential for use in the evaluation of experimental interventions.
+  Future research should recognise that OpSnapdata holds the potential for use in the evaluation of experimental interventions.
 It may offer the potential for pre-post intervention comparative evaluations using control sites.
 Different road safety interventions imply different resource needs.
 Ideally, evaluations would include cost-benefit analysis of the portfolio of social and economic costs involved, including the cost of death and injury.
@@ -1029,15 +1029,9 @@ Ideally, evaluations would include cost-benefit analysis of the portfolio of soc
 
 This study offers what we believe is the first study using the open access Operation Snap data.
 It provides proof-of-concept that OpSnap data holds considerable research potential.
-It has the potential to inform policy and practice promoting road safety.
-Drawing on the analysis of the West Yorkshire data, a research agenda was outlined.
-This preliminary list will prove far from exhaustive.
-While aspects of that agenda may appear ambitious at the time of writing, we suggest that the present study will have achieved one of its aims if this agenda is rapidly superseded by further research.
-
-The focus here was video evidence submissions by cyclists.
-Relative to distance travelled by cyclists, their submissions were around 20 times over-represented in the West Yorkshire data.
-This was the justification for our focus.
-The disproportionality likely reflects the vulnerability of cyclists relative to motor vehicle users when the two forms of transport interact, and when close passes, near misses and crashes occur.
-Our primary conclusion is that further research into video submissions to Operation Snap holds significant potential to inform the future of road safety for a broad range of road users.
+OpSnap data has, we suggest, significant potential to inform policy and practice promoting road safety.
+Drawing on the preliminary analysis of the West Yorkshire data, a  research agenda was outlined.
+Our preliminary list will prove far from exhaustive.
+And while aspects of that agenda may appear ambitious at the time of writing, we suggest that the present study will have achieved one of its aims if this agenda is rapidly superseded. 
 
 # References
