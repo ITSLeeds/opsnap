@@ -415,8 +415,8 @@ The terms 'record' and 'case' are used interchangeably here to refer to a record
 
 The portal allows members of the public to submit video footage of suspected traffic offences committed by motor vehicle drivers.
 Video footage is commonly recorded from on-board cameras.
-For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, known as 'dash cams'.
-One source examined GB Driving Licence data to find that by early 2024, close to a third of private and commercial vehicle in the UK had a dash cam [@DashCamSubmissions2024].
+For motor vehicles these cameras are typically mounted on or near the vehicle front dashboard, known as 'dash-cams'.
+One source examined GB Driving Licence data to find that, by early 2024, close to a third of private and commercial vehicle in the UK had a dash-cam [@DashCamSubmissions2024].
 For cyclists, footage is commonly recorded using helmet or handlebar-mounted cameras.
 The proportion of cyclists using these cameras is unknown but anecdotal evidence suggests increased usage, with many choosing to record rides in case an incident occurs.
 The proportions of horse riders, pedestrians and motor cyclists recording video footage is, to our knowledge, also unknown.
@@ -907,7 +907,7 @@ As such, the types of incidents reported by vehicle drivers would be systematica
 Policing and preventions efforts focused on where problems are concentrated are more resource efficient -- it is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010)- and research using video submissions holds the potential to analysis of problem concentrations.
 
 Studies focused on specific types of road user will prove informative with respect to policy and practice.
-Dash cam submissions by motorists offers great potential to inform other aspects of road safety.
+Dash-cam submissions by motorists offers great potential to inform other aspects of road safety.
 Research into submissions by pedestrians, horse riders and motorcyclists should prove viable to improve the safety of these parties.
 There were over four hundred submissions by horse riders in West Yorkshire, which means there will be thousands nationwide.
 The British Horse Society[^1] and others may be interested in this data being used to inform the safety of horses and riders.
@@ -955,7 +955,7 @@ What is the potential for machine learning to identify, clean, and prepare foota
 There are also likely to be lessons that can be learned for how footage is gathered, edited and submitted by road users.
 More generally, video footage might be used to identification risk factors, that is, the types of situations in which crashes, near misses, and close passes occur.
 This promises the potential to inform policy and practice in ways that ameliorate risk factors.
-Within this area of research, analysis from dash cams is likely to inform different practices than that from cycle-cams, that from pedestrians, horse riders and motorcyclists, and so on.
+Within this area of research, analysis from dash-cams is likely to inform different practices than that from cycle-cams, that from pedestrians, horse riders and motorcyclists, and so on.
 
 Some research into the relationship between video footage and supporting written evidence is needed.
 Is written supported evidence always needed?
