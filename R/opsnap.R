@@ -7,7 +7,10 @@
 #' @export
 #' @examples
 #' if (FALSE) {
-#' u = "https://www.westyorkshire.police.uk/sites/default/files/2023-10/operation_snap_july-sept_2023.xlsx"
+#' u = paste0(
+#'   "https://www.westyorkshire.police.uk/sites/default/files/",
+#'   "2023-10/operation_snap_july-sept_2023.xlsx"
+#' )
 #' download_and_read(, dir = ".")
 #' }
 download_and_read = function(u, remove_nas = FALSE, dir = "raw_data/west-yorkshire") {
