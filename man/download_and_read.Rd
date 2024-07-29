@@ -4,7 +4,7 @@
 \alias{download_and_read}
 \title{Download and read data from opsnap project}
 \usage{
-download_and_read(u, remove_nas = TRUE, dir = "raw_data/west-yorkshire")
+download_and_read(u, remove_nas = FALSE, dir = "raw_data/west-yorkshire")
 }
 \arguments{
 \item{u}{URL of data}

@@ -3,6 +3,8 @@
 #' This function gets the criminal justice codes from the Criminal Justice Hub website.
 #' See [www.criminaljusticehub.org.uk](https://www.criminaljusticehub.org.uk/jargon-buster/cjs-offence-code/)
 #' 
+#' @param u The URL of the Criminal Justice Hub website.
+#' 
 #' @export 
 #' @examples
 #' get_cjs_codes()
