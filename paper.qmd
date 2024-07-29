@@ -4,48 +4,13 @@ bibliography: [references.bib, opsnap.bib]
 editor:
   markdown: 
     wrap: sentence
-author:
-  - name: Graham Farrell
-    corresponding: true
-    affiliations:
-      - name: University of Leeds
-        department: School of Law
-        address: The Liberty Building
-        city: Leeds
-        country: United Kingdom
-        postal-code: LS2 9JT
-    orcid: 0000-0002-3987-8457
-  - name: Robin Lovelace
-    affiliations:
-      - name: University of Leeds
-        department: Institute for Transport Studies
-        address: University Road
-        city: Leeds
-        country: United Kingdom
-        postal-code: LS2 9JT
-      - name: Active Travel England
-        # department: Data and Digital
-        # address: West Offices Station Rise
-        # city: York
-        # country: United Kingdom
-        # postal-code: YO1 6GA
-    orcid: 0000-0001-5679-6536
-  - name: Steve O'Hern
-    affiliations:
-      - name: University of Leeds
-        department: Institute for Transport Studies
-        address: University Road
-        city: Leeds
-        country: United Kingdom
-        postal-code: LS2 9JT
-      - name: Monash University Accident Research Centre
-        address: Clayton, VIC 3800, Australia
-    orcid: 0000-0002-7961-3875
 keywords: 
   - Road safety
   - Video evidence
-  - Dashcam
   - Near misses
+  - Operation Snap
+  - Dangerous driving
+  - Antisocial driving
 date: last-modified
 format:
   # html: default
@@ -77,16 +42,21 @@ knitr::opts_chunk$set(
 ```{r}
 #| eval: false
 #| echo: false
-quarto::quarto_render("paper.qmd", output_format = "pdf")
-file.rename("paper.pdf", "paper-v10.pdf")
-quarto::quarto_render("paper.qmd", output_format = "docx")
-# file.rename("paper.docx", "/OneDrive/opsnap_leeds/paper-v10.docx")
-file.rename("paper.docx", "paper-v10.docx")
-system("gh release upload v1 paper-v10.docx paper-v10.pdf")
-browseURL("paper.docx")
-# Install extension:
-system("quarto install extension mikemahoney218/quarto-arxiv")
-system("sudo apt install lmodern")
+# quarto::quarto_render("paper.qmd", output_format = "pdf")
+# file.copy("paper.pdf", "~/OneDrive/opsnap_leeds/paper-no-line-numbers-v11.pdf")
+# quarto::quarto_render("paper.qmd", output_format = "arxiv-pdf")
+# file.copy("paper.pdf", "paper-v11.pdf")
+# file.copy("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v11.pdf")
+# quarto::quarto_render("paper.qmd", output_format = "docx")
+# # file.copy("paper.docx", "~/OneDrive/opsnap_leeds/paper-v11.docx")
+# file.copy("paper.docx", "paper-v11.docx")
+# quarto::quarto_render("title.qmd", output_format = "arxiv-pdf")
+# browseURL("title.pdf")
+# system("gh release upload v1 --clobber paper-v11.pdf title.pdf")
+# browseURL("paper.docx")
+# # Install extension:
+# system("quarto install extension mikemahoney218/quarto-arxiv")
+# system("sudo apt install lmodern")
 ```
 
 ```{r setup}
@@ -866,11 +836,12 @@ tbl = bind_rows(tbl_disposal, tbl_disposal_totals) |>
 knitr::include_graphics("tbl-disposal.png")
 ```
 
-There were `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations shown in @tbl-locations.
+There were `r unique(d_with_location$location) |> length()` unique locations (addresses) in the data, with the most common locations corresponding to busy roads: Meanwood Road (Leeds), Dewsbury Road (Wakefield) and Chapeltown Road (Leeds), with no single address accounting for more than 0.4% of records.
 The locations were scrambled by West Yorkshire Police before being made available for data protection purposes, which meant spatial analysis would only possible for ‘all’ video submissions, ignoring different types of road users or offence types.
 
 ```{r}
 #| echo: false
+#| eval: false
 #| label: tbl-locations
 #| tbl-cap: "Most common locations recorded in the OpSnap dataset"
 # d_with_location |>
@@ -896,7 +867,7 @@ tbl = d_with_location |>
   ) |>
   gt_theme_espn()
 # gt::gtsave(tbl, "tbl-locations.png")
-knitr::include_graphics("tbl-locations.png")
+# knitr::include_graphics("tbl-locations.png")
 ```
 
 # Discussion
@@ -936,7 +907,7 @@ As discussed in the introduction, close passes are more likely to be reported by
 There was preliminary confirmation of this pattern in our analysis which found that offence types reported by vehicle drivers are systematically different to those of other road users.
 Hence future research should consider that investigative and preventive approaches should be tailored to different contexts and types of road user.
 Rural roads account for a disproportionate amount of fatalities @brakeDirectLineBrake2018, and further research using video evidence may inform preventive approaches tailored to road type.
-Policing and prevention efforts focused on where problems are concentrated are more resource efficient and is the foundation of problem-oriented policing (see e.g., (@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010).
+Policing and prevention efforts focused on where problems are concentrated are more resource efficient and is the foundation of problem-oriented policing [@laingAggressiveDriving2010; @scottSpeedingResidentialAreas2010].
 
 Studies focused on specific types of road user will prove informative with respect to policy and practice.
 Dash-cam submissions by motorists offers great potential to inform other aspects of road safety.
@@ -1029,6 +1000,18 @@ It provides proof-of-concept that OpSnap data holds considerable research potent
 OpSnap data has, we suggest, significant potential to inform policy and practice promoting road safety.
 Drawing on the preliminary analysis of the West Yorkshire data, a  research agenda was outlined.
 Our preliminary list will prove far from exhaustive.
-And while aspects of that agenda may appear ambitious at the time of writing, we suggest that the present study will have achieved one of its aims if this agenda is rapidly superseded. 
+And while aspects of that agenda may appear ambitious at the time of writing, we suggest that the present study will have achieved one of its aims if this agenda is rapidly superseded.
+
+# Acknowledgements
+
+[To be added after peer review]
+
+<!--
+
+We would like to thank Ian King for making the connections that led to this paper being written.
+Thanks to Roger Beecham who wrote code for visualising some of the tables/figures in the paper, testing and supporting with reproducibility. 
+Thanks to Simon D'vali and colleagues from City of Bradford Metropolitan Council for their support and advice on the project and colleagues from the Safer Cycling Yorkshire group.
+
+-->
 
 # References
