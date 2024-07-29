@@ -37,6 +37,32 @@ execute:
 # usethis::use_github_pages()
 ```
 
+# Note
+
+This package is in development and not yet on CRAN.
+If you would like to use it, please install it from GitHub as shown below, and cite it as follows:
+
+Farrell, G., Lovelace, R., & O'Hern, S. (2024). Road User Video Evidence of Road Traffic Offences: Preliminary Analysis of Operation Snap Data and Suggestions for a Research Agenda. https://doi.org/10.31235/osf.io/cgjmr
+
+```
+@misc{farrellRoadUserVideo2024,
+  title = {Road {{User Video Evidence}} of {{Road Traffic Offences}}: {{Preliminary Analysis}} of {{Operation Snap Data}} and {{Suggestions}} for a {{Research Agenda}}},
+  shorttitle = {{{ROAD USER VIDEO EVIDENCE OF ROAD TRAFFIC OFFENCES}}},
+  author = {Farrell, Graham and Lovelace, Robin and O'Hern, Steve},
+  year = {2024},
+  month = jul,
+  publisher = {OSF},
+  doi = {10.31235/osf.io/cgjmr},
+  urldate = {2024-07-29},
+  archiveprefix = {OSF},
+  langid = {american},
+  keywords = {antisocial driving,dangerous driving,near misses,Operation Snap,OpSnap,roas safety,Video evidence}
+}
+
+```
+
+Read the full paper [here](https://osf.io/cgjmr/download/).
+
 # Installation
 
 Install the package from GitHub:
@@ -44,7 +70,7 @@ Install the package from GitHub:
 ```{r}
 #| eval: false
 remotes::install_github("ITSLeeds/opsnap", force = TRUE, dependencies = TRUE)
-  ```
+```
 
 ```{r}
 #| include: false
