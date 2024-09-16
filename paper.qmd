@@ -4,13 +4,13 @@ bibliography: [references.bib, opsnap.bib]
 editor:
   markdown: 
     wrap: sentence
-keywords: 
-  - Road safety
-  - Video evidence
-  - Near misses
-  - Operation Snap
-  - Dangerous driving
-  - Antisocial driving
+# keywords: 
+#   - Road safety
+#   - Video evidence
+#   - Near misses
+#   - Operation Snap
+#   - Dangerous driving
+#   - Antisocial driving
 date: last-modified
 format:
   # html: default
@@ -18,13 +18,10 @@ format:
   # pdf: default
   arxiv-pdf:
     keep-tex: true
-linenumbers: true # Add (continuous) line numbers?
-doublespacing: false # Double space the PDF output?
-runninghead: "Preprint" # The text on the top of each page of the output
-authorcols: true # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
-editor_options: 
-  markdown: 
-    wrap: sentence
+# linenumbers: true # Add (continuous) line numbers?
+# doublespacing: false # Double space the PDF output?
+# runninghead: "Preprint" # The text on the top of each page of the output
+# authorcols: true # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
 execute: 
   echo: false
   warning: false
@@ -43,16 +40,16 @@ knitr::opts_chunk$set(
 #| eval: false
 #| echo: false
 # quarto::quarto_render("paper.qmd", output_format = "pdf")
-# file.copy("paper.pdf", "~/OneDrive/opsnap_leeds/paper-no-line-numbers-v11.pdf")
+# file.copy("paper.pdf", "~/OneDrive/opsnap_leeds/paper-no-line-numbers-v12.pdf")
 # quarto::quarto_render("paper.qmd", output_format = "arxiv-pdf")
-# file.copy("paper.pdf", "paper-v11.pdf")
-# file.copy("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v11.pdf")
+# file.copy("paper.pdf", "paper-v12.pdf")
+# file.copy("paper.pdf", "~/OneDrive/opsnap_leeds/paper-v12.pdf")
 # quarto::quarto_render("paper.qmd", output_format = "docx")
-# # file.copy("paper.docx", "~/OneDrive/opsnap_leeds/paper-v11.docx")
-# file.copy("paper.docx", "paper-v11.docx")
+# # file.copy("paper.docx", "~/OneDrive/opsnap_leeds/paper-v12.docx")
+# file.copy("paper.docx", "paper-v12.docx")
 # quarto::quarto_render("title.qmd", output_format = "arxiv-pdf")
 # browseURL("title.pdf")
-# system("gh release upload v1 --clobber paper-v11.pdf title.pdf")
+# system("gh release upload v1 --clobber paper-v12.docx")
 # browseURL("paper.docx")
 # # Install extension:
 # system("quarto install extension mikemahoney218/quarto-arxiv")
@@ -86,7 +83,7 @@ devtools::load_all()
 
 ```{r}
 #| echo: false
-#| include: false
+#| eval: false
 library(rvest)
 query = ".file-link a"
 url = "https://www.westyorkshire.police.uk/SaferRoadsSubmissions"
@@ -100,7 +97,10 @@ urls = paste0("https://www.westyorkshire.police.uk", links_available)
 file_names = basename(links_available)
 tibble::tibble(file_names) |>
   knitr::kable()
+```
 
+```{r}
+#| include: false
 # In preparation for reading-in all data:
 # date_str = format(Sys.Date(), "%Y-%m")
 date_str = format(as.Date("2024-04-01"), "%Y-%m")
@@ -413,17 +413,20 @@ d_all |>
   mutate(date = as.Date(date)) |>
   arrange(date) |>
   rename_all(snakecase::to_title_case) |>
-  knitr::kable() |>
-  # Striped styling and tiny text to fit:
-  kableExtra::kable_styling(latex_options = "striped") |>
-  # Set column widths:
-  kableExtra::column_spec(1, width = "3em") |>
-  kableExtra::column_spec(2, width = "3em") |>
-  kableExtra::column_spec(3, width = "3em") |>
-  kableExtra::column_spec(4, width = "3em") |>
-  kableExtra::column_spec(5, width = "9em") |>
-  kableExtra::column_spec(6, width = "4em") |>
-  kableExtra::column_spec(8, width = "8em")
+  knitr::kable()
+  
+  # # For PDF:
+  # #  |>
+  # # Striped styling and tiny text to fit:
+  # kableExtra::kable_styling(latex_options = "striped") |>
+  # # Set column widths:
+  # kableExtra::column_spec(1, width = "3em") |>
+  # kableExtra::column_spec(2, width = "3em") |>
+  # kableExtra::column_spec(3, width = "3em") |>
+  # kableExtra::column_spec(4, width = "3em") |>
+  # kableExtra::column_spec(5, width = "9em") |>
+  # kableExtra::column_spec(6, width = "4em") |>
+  # kableExtra::column_spec(8, width = "8em")
 ```
 
 # Results
